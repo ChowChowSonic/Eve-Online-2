@@ -1,0 +1,246 @@
+package my.gdx.game;
+
+import java.awt.DisplayMode;
+import java.awt.RenderingHints.Key;
+import java.util.ArrayList;
+
+import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Mesh;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.VertexAttribute;
+import com.badlogic.gdx.graphics.VertexAttributes;
+import com.badlogic.gdx.graphics.VertexAttributes.Usage;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.Material;
+import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.Shader;
+import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
+import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
+import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
+import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.graphics.g3d.utils.MeshBuilder;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Quaternion;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
+
+import my.gdx.game.entities.CelestialObject;
+import my.gdx.game.entities.Entity;
+import my.gdx.game.entities.Entity.EntityType;
+import my.gdx.game.entities.NPC;
+import my.gdx.game.entities.Player;
+import my.gdx.game.entities.Station;
+
+public class EveOnline2 extends ApplicationAdapter {
+	private static Camera cam;
+	private static ModelBuilder builder;
+	private ModelBatch batch;
+	private AssetManager manager;
+	private Model object;
+	private ModelInstance instance, background;
+	private static ArrayList<Entity> entities = new ArrayList<Entity>();
+	private ArrayList<Hud> windows = new ArrayList<Hud>();
+	private Player player; 
+	private ShapeRenderer hudrenderer;
+	private SpriteBatch textrenderer;
+	private Environment env; 
+	private float xvel=0, yvel=0, zvel=0;
+	private final float ACCEL = 0.001f;
+	private final int renderDist = 260000, vanishingpoint = 260000-10000;//20100;
+	/*
+	 * Reminder:
+	 * X = -<------------------>+
+	 * Y = -[down]  	    [up]+
+	 * Z = -[Forward] [Backward]+ 
+	 */
+	@Override
+	public void create() {
+		super.create();
+		cam = new PerspectiveCamera(80,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		cam.position.set(0f,0f,3f);
+		cam.lookAt(0f,0f,0f);
+		cam.near = 2f;
+		cam.far = renderDist;
+		batch = new ModelBatch();
+		builder = new ModelBuilder();
+		manager = new AssetManager();
+		
+		manager.load("spacesphere3.obj", Model.class);
+		manager.load("SpaceStation.obj", Model.class);
+		manager.load("ship.obj", Model.class);
+		manager.finishLoading();
+		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
+				ColorAttribute.createSpecular(1, 1, 1, 1),
+				FloatAttribute.createShininess(8f));
+		final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
+		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
+		EveOnline2.addEntity(new NPC(object, Entity.EntityType.FRIEND));
+		EveOnline2.addEntity(new NPC(object, Entity.EntityType.FRIEND));
+		entities.get(1).setPos(10, 0, 0);
+
+		EveOnline2.addEntity(new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER));
+		this.player = this.getPlayer();
+
+		env = new Environment();
+		env.set(new ColorAttribute(ColorAttribute.AmbientLight, Color.YELLOW));
+		env.add(new DirectionalLight().set(0.95f, 0.8f, 0.5f, 0f, 0f, 0f));
+
+		player.setPos(551, 0, 0);
+		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("2k_sun.jpg"))), 
+				ColorAttribute.createSpecular(1, 1, 1, 1),
+				FloatAttribute.createShininess(100f));
+		object = builder.createSphere(1000f, 1000f, 1000f, 100, 100, material, attributes);
+		EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
+		
+		EveOnline2.addEntity(new Station(new Vector3(800,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
+		
+		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));
+
+		textrenderer = Hud.getTextrenderer();
+
+		hudrenderer = Hud.getRenderer();
+		hudrenderer.setAutoShapeType(true);
+
+		windows.add(new HealthBar(player));
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void render() {
+		// TODO Auto-generated method stub
+		super.render();
+		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+
+		//camera rotations:
+		if(cam.position.dst(player.getPos()) > 3.75 || cam.position.dst(player.getPos()) < 2.75) {
+			Vector3 normvec = cam.position.cpy().sub(player.getPos()).nor();
+			cam.position.set(player.getPos().x+(3*normvec.x), player.getPos().y+(3*normvec.y),player.getPos().z+(3*normvec.z));
+			cam.lookAt(player.getPos());
+		}//*/
+		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
+
+			float deltax = Gdx.input.getDeltaX(); 
+			float deltay = Gdx.input.getDeltaY();
+			float magnitude = (float) Math.sqrt(Math.pow(deltax, 2) + Math.pow(deltay, 2));//Pythagroean Theorem
+			cam.position.set(player.getPos());
+			cam.rotate(magnitude, deltay/magnitude, deltax/magnitude, 0);
+			Vector3 normvec = cam.direction.cpy().nor().cpy();
+			cam.translate(-normvec.x*3, -normvec.y*3, -normvec.z*3);//*/
+			cam.up.set(0, 1, 0);//Keep the camera facing upright
+			//X and Y are reversed here for some reason and I don't know why. //*/ 
+
+		}
+		cam.lookAt(player.getPos());
+
+		//entity management
+		for(int i =0; i < entities.size(); i++)
+			for(int e =0; e < entities.size(); e++) {
+				if(i < e) {
+					entities.get(i).touches(entities.get(e));
+				}
+			}
+		background.transform.set(player.getPos(), new Quaternion());
+		batch.begin(cam);
+		batch.render(background);
+		for(Entity e : entities) {
+			if(e.getPos().dst(player.getPos()) < renderDist)
+			batch.render(e.getInstance());
+			e.update(Gdx.graphics.getDeltaTime());
+		}
+		batch.end();
+		cam.translate(player.getVel());
+		cam.update();
+
+		//Hud rendering
+		for(Hud window : windows) {
+			window.updateShape();
+		}
+		hudrenderer.end();
+
+		for(Hud window : windows) {
+			window.updateText();
+		}
+		textrenderer.end();
+		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+			this.dispose();
+			
+		}
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		super.dispose();
+		manager.dispose();
+		batch.dispose();
+		System.gc();
+		System.exit(1);
+	}
+	public static Vector3 getCamRotation() {
+		return cam.direction;
+	}
+	public static Matrix4 getCamMatrix() {
+		return cam.combined;
+	}
+	public static void addEntity(Entity e) {
+		if(e instanceof CelestialObject)
+			entities.add(0, e);
+		else if(e instanceof Player) {
+			entities.add(entities.size(), e);
+		}else entities.add(entities.size(), e);
+	}
+	public Player getPlayer() {
+		for(Entity e : entities){ {
+			if(e instanceof Player)
+				return (Player) e;
+		}
+		}
+		System.out.print("New player created");
+		Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER);
+		addEntity(p);
+		return p;
+	}
+	public static Model createsphere(float width, float height, float depth, int quality, Material material, long attributes) {
+		return builder.createSphere(width, height, depth, quality, quality, material, attributes);
+	}
+}
