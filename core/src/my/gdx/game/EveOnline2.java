@@ -124,6 +124,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		hudrenderer.setAutoShapeType(true);
 
 		windows.add(new HealthBar(player));
+		windows.add(new InventoryMenu(player));
 	}
 
 	@Override

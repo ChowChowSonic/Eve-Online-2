@@ -1,11 +1,13 @@
-package my.gdx.game.entities;
+package my.gdx.game.inventory;
 
 import java.util.ArrayList;
 
-public class InventoryItem {
-	private final float weight, size, stacksize;
-	private final String name;
-	private final ArrayList<InventoryItem> components; 
+public class InventoryItem<components> {
+	private String name;
+	private float weight;
+	private float size;
+	private ArrayList<InventoryItem> components;
+	private int stacksize;
 	public InventoryItem(String name, float kg, float cubicm3) {
 		this.name = name;
 		this.weight = kg; 
@@ -13,6 +15,15 @@ public class InventoryItem {
 		stacksize = 1; 
 		components = new ArrayList<InventoryItem>();
 	}
+	
+	public InventoryItem(String name, float kg, float cubicm3, int stacksize) {
+		this.name = name;
+		this.weight = kg; 
+		this.size = cubicm3;
+		this.stacksize = stacksize; 
+		components = new ArrayList<InventoryItem>();
+	}
+	
 	public InventoryItem(String name, float kg, float cubicm3, ArrayList<InventoryItem> components) {
 		this.name = name;
 		this.weight = kg; 
@@ -20,6 +31,15 @@ public class InventoryItem {
 		this.components = components;
 		stacksize = 1;
 	}
+	
+	public InventoryItem(String name, float kg, float cubicm3, int stacksize, ArrayList<InventoryItem> components) {
+		this.name = name;
+		this.weight = kg; 
+		this.size = cubicm3;
+		this.components = components;
+		this.stacksize = stacksize;
+	}
+	
 	public String getName() {
 		return name;
 	}

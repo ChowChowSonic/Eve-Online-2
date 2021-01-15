@@ -11,9 +11,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public abstract class Hud {
+	
 	private BitmapFont Texts[]; 
 	protected static ShapeRenderer renderer = new ShapeRenderer(); 
 	protected static SpriteBatch textrenderer = new SpriteBatch();
+	
 	public void updateShape() {
 		if(!renderer.isDrawing())renderer.begin(ShapeType.Filled);
 	}

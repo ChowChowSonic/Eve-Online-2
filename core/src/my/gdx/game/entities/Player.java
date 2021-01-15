@@ -12,9 +12,11 @@ import com.badlogic.gdx.math.Vector3;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity.EntityType;
+import my.gdx.game.inventory.Inventory;
+import my.gdx.game.inventory.InventoryItem;
 
 public class Player extends Entity{
-	Inventory inventory;
+	public Inventory inventory;
 	float invmass, basemass = 1;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
@@ -24,6 +26,8 @@ public class Player extends Entity{
 		this.size = 1f;
 		this.setPos(6, 0, 0);
 		inventory = new Inventory(100);
+		inventory.additem(new InventoryItem("Shipping Crates", 50, 50));
+		inventory.additem(new InventoryItem("Shipping Crate", 20, 20));
 		// TODO Auto-generated constructor stub
 	}
 	private boolean justpressedboost = false;
@@ -34,10 +38,11 @@ public class Player extends Entity{
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		totalDeltaTime += deltaTime;
-		//Movement controls
 		Vector3 camRot = new Vector3(ACCEL*deltaTime*camrotation.x/this.mass,ACCEL*deltaTime*camrotation.y/this.mass,ACCEL*deltaTime*camrotation.z/this.mass);
 		Vector3 invCamRot = new Vector3(-ACCEL*deltaTime*camrotation.x,-ACCEL*deltaTime*camrotation.y,-ACCEL*deltaTime*camrotation.z);
-		if(Gdx.input.isKeyPressed(Keys.W)&& !justpressedboost) {
+		
+		//Movement controls
+		if(Gdx.input.isKeyPressed(Keys.W) && !justpressedboost) {
 			this.accel.add(camRot);
 		}else if(Gdx.input.isKeyPressed(Keys.S)) {
 			this.accel.add(invCamRot);
