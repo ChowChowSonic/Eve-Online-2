@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class Inventory {
 	private float weight, occupiedspace, capacity, itemcount;
-	ArrayList<InventoryItems> items; 
+	ArrayList<Item> items; 
 	public Inventory(float size) {
 		weight = 0; 
 		this.capacity = size; 
 		occupiedspace = 0; 
-		items = new ArrayList<InventoryItems>();
+		items = new ArrayList<Item>();
 	}
-	public Inventory(ArrayList<InventoryItems> items, float size) {
+	public Inventory(ArrayList<Item> items, float size) {
 		this.items = items; 
 		weight = 0; 
 		this.capacity = size; 
 		occupiedspace = 0; 
-		for(InventoryItems item : items) {
-			occupiedspace += (item.getSize()*item.getStacksize());
+		for(Item item : items) {
+			occupiedspace += (item.getVolume()*item.getStacksize());
 			weight += (item.getWeight()*item.getStacksize());
 		}
 	}
@@ -28,11 +28,49 @@ public class Inventory {
 	 * @param i
 	 * @return whether or not the item was added to the inventory. 
 	 */
-	public boolean additem(InventoryItems i) {
-		if(this.occupiedspace + (i.getSize()*i.getStacksize()) <= this.capacity) {
+	public boolean additem(Item i) {
+		if(this.occupiedspace + (i.getVolume()*i.getStacksize()) <= this.capacity) {
+			for(Item e : this.items) {
+				if(e.getName().equals(i.getName())) {
+					e.combinestack(i.getStacksize());
+					return true;
+				}
+			}
 		items.add(i);
 		this.weight += i.getWeight()*i.getStacksize();
-		this.occupiedspace += i.getSize()*i.getStacksize();
+		this.occupiedspace += i.getVolume()*i.getStacksize();
+		return true;
+		}
+		return false;
+	}
+	public boolean additem(InventoryItems i) {
+		Item newitem = new Item(i);
+		if(this.occupiedspace + (newitem.getVolume()*newitem.getStacksize()) <= this.capacity) {
+			for(Item e : this.items) {
+				if(e.getName().equals(newitem.getName())) {
+					e.combinestack(newitem.getStacksize());
+					return true;
+				}
+			}
+		items.add(newitem);
+		this.weight += i.getWeight()*newitem.getStacksize();
+		this.occupiedspace += newitem.getVolume()*newitem.getStacksize();
+		return true;
+		}
+		return false;
+	}
+	public boolean additem(InventoryItems i, int stacksize) {
+		Item newitem = new Item(i, stacksize);
+		if(this.occupiedspace + (newitem.getVolume()*newitem.getStacksize()) <= this.capacity) {
+			for(Item e : this.items) {
+				if(e.getName().equals(newitem.getName())) {
+					e.combinestack(newitem.getStacksize());
+					return true;
+				}
+			}
+		items.add(newitem);
+		this.weight += i.getWeight()*newitem.getStacksize();
+		this.occupiedspace += newitem.getVolume()*newitem.getStacksize();
 		return true;
 		}
 		return false;
@@ -52,7 +90,7 @@ public class Inventory {
 	public float getItemcount() {
 		return itemcount;
 	}
-	public ArrayList<InventoryItems> getItems() {
+	public ArrayList<Item> getItems() {
 		return items;
 	}
 }

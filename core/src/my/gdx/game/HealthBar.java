@@ -43,7 +43,13 @@ public class HealthBar extends Hud{
 	public void updateText() {
 		super.updateText();
 		health.setColor(Color.BLACK);
-		health.draw(textrenderer, String.format("%.2f", p.getVel().len()/Entity.METER)+" m/s", Gdx.graphics.getWidth()/2-20, 20);
+		float velocity = p.getVel().len()/Entity.METER;
+		if (velocity < 14959) {
+		health.draw(textrenderer, String.format("%.2f", velocity)+" km/s", Gdx.graphics.getWidth()/2-20, 20);
+		}else {
+			velocity *=1000;
+			health.draw(textrenderer, String.format("%.2f", velocity/149597871.0)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
+		}
 	}
 
 }

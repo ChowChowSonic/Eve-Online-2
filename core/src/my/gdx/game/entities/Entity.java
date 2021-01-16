@@ -19,7 +19,7 @@ public abstract class Entity{
 	protected EntityType type; 
 	protected float mass;
 	protected float size;
-	public static final float ACCEL = 0.0075f, METER = 0.01f; 
+	public static final float METER = 0.00005f, ACCEL = 10*METER; 
 	public Entity(Model model, EntityType type){
 		this.type = type;
 		this.model = model; 
@@ -107,6 +107,12 @@ public abstract class Entity{
 
 	public void setVel(float x, float y, float z) {
 		vel = new Vector3(x,y,z);
+	}
+	public void addVel(float x, float y, float z) {
+		vel.add(x,y,z);
+	}
+	public void addVel(Vector3 accel) {
+		vel.add(accel);
 	}
 
 	//Accel

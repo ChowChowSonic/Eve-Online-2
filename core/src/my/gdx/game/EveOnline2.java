@@ -66,7 +66,7 @@ public class EveOnline2 extends ApplicationAdapter {
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env; 
-	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
+	private final int renderDist = 260000, vanishingpoint = 8500;//20100;
 	/*
 	 * Reminder:
 	 * X = -<------------------>+
@@ -221,12 +221,15 @@ public class EveOnline2 extends ApplicationAdapter {
 		System.gc();
 		System.exit(1);
 	}
+	
 	public static Vector3 getCamRotation() {
 		return cam.direction;
 	}
+	
 	public static Matrix4 getCamMatrix() {
 		return cam.combined;
 	}
+	
 	public static void addEntity(Entity e) {
 		if(e instanceof CelestialObject)
 			entities.add(0, e);
@@ -234,13 +237,13 @@ public class EveOnline2 extends ApplicationAdapter {
 			entities.add(entities.size(), e);
 		}else entities.add(entities.size(), e);
 	}
+	
 	public Player getPlayer() {
 		for(Entity e : entities){ {
 			if(e instanceof Player)
 				return (Player) e;
 		}
 		}
-		System.out.print("New player created");
 		Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER);
 		addEntity(p);
 		return p;

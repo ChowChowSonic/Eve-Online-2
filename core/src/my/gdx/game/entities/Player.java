@@ -1,17 +1,11 @@
 package my.gdx.game.entities;
 
-import java.util.ArrayList;
-import java.util.TimerTask;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.ai.btree.Task.Status;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Vector3;
 
-import my.gdx.game.EveOnline2;
-import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 
@@ -25,17 +19,12 @@ public class Player extends Entity{
 		this.mass = basemass;
 		this.size = 1f;
 		this.setPos(6, 0, 0);
-		inventory = new Inventory(100);
+		inventory = new Inventory(250);
+		
 		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
 		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
 		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Odor_Blocker_Bodywash, 5);
 		// TODO Auto-generated constructor stub
 	}
 	private boolean justpressedboost = false;
@@ -46,8 +35,8 @@ public class Player extends Entity{
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		totalDeltaTime += deltaTime;
-		Vector3 camRot = new Vector3(ACCEL*deltaTime*camrotation.x/this.mass,ACCEL*deltaTime*camrotation.y/this.mass,ACCEL*deltaTime*camrotation.z/this.mass);
-		Vector3 invCamRot = new Vector3(-ACCEL*deltaTime*camrotation.x,-ACCEL*deltaTime*camrotation.y,-ACCEL*deltaTime*camrotation.z);
+		Vector3 camRot = new Vector3(2*ACCEL*deltaTime*camrotation.x/this.mass, 2*ACCEL*deltaTime*camrotation.y/this.mass, 2*ACCEL*deltaTime*camrotation.z/this.mass);
+		Vector3 invCamRot = new Vector3(-ACCEL*deltaTime*camrotation.x/this.mass,-ACCEL*deltaTime*camrotation.y/this.mass,-ACCEL*deltaTime*camrotation.z/this.mass);
 		
 		//Movement controls
 		if(Gdx.input.isKeyPressed(Keys.W) && !justpressedboost) {
@@ -66,13 +55,13 @@ public class Player extends Entity{
 				this.vel.setZero();
 			}
 		}
-		//Starts up the warp drive
+		//Starts up & shuts down the warp drive
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
 			justpressedboost = true;
 			Vector3 accelnorm = this.vel.cpy().nor();
-			this.addAccel(accelnorm.x*(deltaTime/this.mass)*(250/this.mass-this.vel.len2()), 
-					accelnorm.y*(deltaTime/this.mass)*(250/this.mass-this.vel.len2()), 
-					accelnorm.z*(deltaTime/this.mass)*(250/this.mass-this.vel.len2()) );
+			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())), 
+					    (float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())), 
+					    (float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())) );//*/
 		}else if(justpressedboost) {
 			this.vel.x/=1.05;
 			this.vel.y/=1.05;
@@ -82,6 +71,7 @@ public class Player extends Entity{
 				justpressedboost = false;
 				this.vel.setZero();
 			}
+			
 		}
 		if(totalDeltaTime > 5.0f) {
 			totalDeltaTime -= 5;

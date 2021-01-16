@@ -30,7 +30,7 @@ public class CelestialObject extends Entity{
 	@Override
 	public void update(float deltaTime) {
 		this.instance.transform.set(this.pos, new Quaternion());
-		int size2 = (int) Math.max(1000f*Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*10), 2)), 1);
+		float size2 = (float) (1000f*Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*10), 2)));
 		Model newmodel = this.model;
 		if(size2 > 0) {
 			newmodel = EveOnline2.builder.createSphere(size2, size2, size2, 100, 100, this.material, attributes);

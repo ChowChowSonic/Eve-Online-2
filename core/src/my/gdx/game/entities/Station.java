@@ -42,7 +42,6 @@ public class Station extends CelestialObject{
 	@Override
 	public void update(float DeltaTime) {
 		this.instance.transform.set(this.pos, new Quaternion());
-		System.out.println(EveOnline2.player.pos.dst(this.pos));
 	}
 
 	@Override
