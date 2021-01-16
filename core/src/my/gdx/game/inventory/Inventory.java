@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class Inventory {
 	private float weight, occupiedspace, capacity, itemcount;
-	ArrayList<InventoryItem> items; 
+	ArrayList<InventoryItems> items; 
 	public Inventory(float size) {
 		weight = 0; 
 		this.capacity = size; 
 		occupiedspace = 0; 
-		items = new ArrayList<InventoryItem>();
+		items = new ArrayList<InventoryItems>();
 	}
-	public Inventory(ArrayList<InventoryItem> items, float size) {
+	public Inventory(ArrayList<InventoryItems> items, float size) {
 		this.items = items; 
 		weight = 0; 
 		this.capacity = size; 
 		occupiedspace = 0; 
-		for(InventoryItem item : items) {
+		for(InventoryItems item : items) {
 			occupiedspace += (item.getSize()*item.getStacksize());
 			weight += (item.getWeight()*item.getStacksize());
 		}
@@ -28,8 +28,8 @@ public class Inventory {
 	 * @param i
 	 * @return whether or not the item was added to the inventory. 
 	 */
-	public boolean additem(InventoryItem i) {
-		if(this.occupiedspace + (i.getSize()*i.getStacksize()) < this.capacity) {
+	public boolean additem(InventoryItems i) {
+		if(this.occupiedspace + (i.getSize()*i.getStacksize()) <= this.capacity) {
 		items.add(i);
 		this.weight += i.getWeight()*i.getStacksize();
 		this.occupiedspace += i.getSize()*i.getStacksize();
@@ -52,7 +52,7 @@ public class Inventory {
 	public float getItemcount() {
 		return itemcount;
 	}
-	public ArrayList<InventoryItem> getItems() {
+	public ArrayList<InventoryItems> getItems() {
 		return items;
 	}
 }

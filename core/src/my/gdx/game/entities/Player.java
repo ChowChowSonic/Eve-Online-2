@@ -13,7 +13,7 @@ import com.badlogic.gdx.math.Vector3;
 import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
-import my.gdx.game.inventory.InventoryItem;
+import my.gdx.game.inventory.InventoryItems;
 
 public class Player extends Entity{
 	public Inventory inventory;
@@ -26,8 +26,16 @@ public class Player extends Entity{
 		this.size = 1f;
 		this.setPos(6, 0, 0);
 		inventory = new Inventory(100);
-		inventory.additem(new InventoryItem("Shipping Crates", 50, 50));
-		inventory.additem(new InventoryItem("Shipping Crate", 20, 20));
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
+		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
 		// TODO Auto-generated constructor stub
 	}
 	private boolean justpressedboost = false;
@@ -62,9 +70,9 @@ public class Player extends Entity{
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
 			justpressedboost = true;
 			Vector3 accelnorm = this.vel.cpy().nor();
-			this.addAccel(accelnorm.x*(deltaTime/5)*(50-this.vel.len2()), 
-					accelnorm.y*(deltaTime/5)*(50-this.vel.len2()), 
-					accelnorm.z*(deltaTime/5)*(50-this.vel.len2()));
+			this.addAccel(accelnorm.x*(deltaTime/this.mass)*(250/this.mass-this.vel.len2()), 
+					accelnorm.y*(deltaTime/this.mass)*(250/this.mass-this.vel.len2()), 
+					accelnorm.z*(deltaTime/this.mass)*(250/this.mass-this.vel.len2()) );
 		}else if(justpressedboost) {
 			this.vel.x/=1.05;
 			this.vel.y/=1.05;

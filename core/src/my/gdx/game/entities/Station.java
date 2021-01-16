@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
@@ -17,14 +18,14 @@ import my.gdx.game.EveOnline2;
 public class Station extends CelestialObject{
 	float tetherradius;
 	Entity bobbers[];
+	Model bobbermodel = EveOnline2.builder.createSphere(1f, 1f, 1f, 5, 5,
+			new Material(ColorAttribute.createSpecular(1, 1, 1, 1),
+					FloatAttribute.createShininess(8f)), (long)(Usage.Position | Usage.Normal | Usage.TextureCoordinates));
 	public Station(Vector3 pos, Model model, float mass, float innerradius, float outerraidus) {
 		super(pos, model, mass, innerradius);
 		this.tetherradius = outerraidus;
 		bobbers = new Entity[8];
-		Model bobbermodel = EveOnline2.createsphere(1f, 1f, 1f, 5,
-				new Material(ColorAttribute.createSpecular(1, 1, 1, 1),
-				FloatAttribute.createShininess(8f)), (long)(Usage.Position | Usage.Normal | Usage.TextureCoordinates));
-		System.out.print(bobbermodel.toString());
+
 		bobbers[0]= new NPC(new Vector3(this.pos.x+tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
 		bobbers[1]= new NPC(new Vector3(this.pos.x-tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
 		bobbers[2]= new NPC(new Vector3(this.pos.x, this.pos.y, this.pos.z+tetherradius),bobbermodel, EntityType.FRIEND);
@@ -37,6 +38,11 @@ public class Station extends CelestialObject{
 			EveOnline2.addEntity(bobber);
 		}
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public void update(float DeltaTime) {
+		this.instance.transform.set(this.pos, new Quaternion());
+		System.out.println(EveOnline2.player.pos.dst(this.pos));
 	}
 
 	@Override

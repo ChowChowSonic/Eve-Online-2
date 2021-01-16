@@ -57,6 +57,7 @@ public abstract class Entity{
 		}
 		this.instance.transform.set(this.pos, quaternion);
 	}
+	
 	public boolean touches(Entity e) {
 		float distance  = this.pos.dst2(e.pos);
 		if(distance < (this.size*this.size)+(e.size*e.size)) {
@@ -85,6 +86,7 @@ public abstract class Entity{
 	public ModelInstance getInstance() {
 		return this.instance;
 	}
+	
 	//Position
 	public Vector3 getPos() { return pos; }
 
@@ -95,6 +97,7 @@ public abstract class Entity{
 	public void setPos(float x, float y, float z) {
 		this.pos = new Vector3(x,y,z);
 	}
+	
 	//Velcoity
 	public Vector3 getVel() {return vel;}
 
@@ -124,6 +127,7 @@ public abstract class Entity{
 	public void addAccel(float x, float y, float z) {
 		accel = accel.add(x,y,z);
 	}
+	
 	//Mass
 	public float getMass() {
 		return mass;
@@ -131,5 +135,10 @@ public abstract class Entity{
 
 	public void setMass(float mass) {
 		this.mass = mass;
+	}
+	
+	//Entity Type
+	public EntityType getEntityType() {
+		return this.type; 
 	}
 }

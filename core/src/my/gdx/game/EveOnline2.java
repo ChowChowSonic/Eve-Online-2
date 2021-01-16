@@ -54,21 +54,19 @@ import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 
 public class EveOnline2 extends ApplicationAdapter {
+	public static ModelBuilder builder;
+	public static Player player; 
 	private static Camera cam;
-	private static ModelBuilder builder;
+	private static ArrayList<Entity> entities = new ArrayList<Entity>();
 	private ModelBatch batch;
 	private AssetManager manager;
 	private Model object;
-	private ModelInstance instance, background;
-	private static ArrayList<Entity> entities = new ArrayList<Entity>();
+	private ModelInstance background;
 	private ArrayList<Hud> windows = new ArrayList<Hud>();
-	private Player player; 
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env; 
-	private float xvel=0, yvel=0, zvel=0;
-	private final float ACCEL = 0.001f;
-	private final int renderDist = 260000, vanishingpoint = 260000-10000;//20100;
+	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	/*
 	 * Reminder:
 	 * X = -<------------------>+
@@ -86,7 +84,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		batch = new ModelBatch();
 		builder = new ModelBuilder();
 		manager = new AssetManager();
-		
+
 		manager.load("spacesphere3.obj", Model.class);
 		manager.load("SpaceStation.obj", Model.class);
 		manager.load("ship.obj", Model.class);
@@ -96,10 +94,8 @@ public class EveOnline2 extends ApplicationAdapter {
 				FloatAttribute.createShininess(8f));
 		final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
-		EveOnline2.addEntity(new NPC(object, Entity.EntityType.FRIEND));
-		EveOnline2.addEntity(new NPC(object, Entity.EntityType.FRIEND));
-		entities.get(1).setPos(10, 0, 0);
 
+		//add the player
 		EveOnline2.addEntity(new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER));
 		this.player = this.getPlayer();
 
@@ -107,15 +103,17 @@ public class EveOnline2 extends ApplicationAdapter {
 		env.set(new ColorAttribute(ColorAttribute.AmbientLight, Color.YELLOW));
 		env.add(new DirectionalLight().set(0.95f, 0.8f, 0.5f, 0f, 0f, 0f));
 
+		//add the sun
 		player.setPos(551, 0, 0);
 		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("2k_sun.jpg"))), 
 				ColorAttribute.createSpecular(1, 1, 1, 1),
 				FloatAttribute.createShininess(100f));
 		object = builder.createSphere(1000f, 1000f, 1000f, 100, 100, material, attributes);
 		EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
-		
+
+		//add a station
 		EveOnline2.addEntity(new Station(new Vector3(800,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
-		
+
 		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));
 
 		textrenderer = Hud.getTextrenderer();
@@ -172,8 +170,12 @@ public class EveOnline2 extends ApplicationAdapter {
 		batch.begin(cam);
 		batch.render(background);
 		for(Entity e : entities) {
-			if(e.getPos().dst(player.getPos()) < renderDist)
-			batch.render(e.getInstance());
+			float distance = e.getPos().dst(player.getPos());
+			if(e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
+				batch.render(e.getInstance());
+			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
+				batch.render(e.getInstance());
+			}
 			e.update(Gdx.graphics.getDeltaTime());
 		}
 		batch.end();
@@ -192,7 +194,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		textrenderer.end();
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
 			this.dispose();
-			
+
 		}
 	}
 
@@ -214,6 +216,8 @@ public class EveOnline2 extends ApplicationAdapter {
 		super.dispose();
 		manager.dispose();
 		batch.dispose();
+		textrenderer.dispose();
+		hudrenderer.dispose();
 		System.gc();
 		System.exit(1);
 	}
@@ -240,8 +244,5 @@ public class EveOnline2 extends ApplicationAdapter {
 		Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER);
 		addEntity(p);
 		return p;
-	}
-	public static Model createsphere(float width, float height, float depth, int quality, Material material, long attributes) {
-		return builder.createSphere(width, height, depth, quality, quality, material, attributes);
 	}
 }

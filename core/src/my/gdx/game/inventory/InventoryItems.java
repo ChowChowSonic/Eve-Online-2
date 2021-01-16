@@ -2,29 +2,32 @@ package my.gdx.game.inventory;
 
 import java.util.ArrayList;
 
-public class InventoryItem<components> {
+public enum InventoryItems {
+	Jimbabwe_Shipping_Crates("Jimbabwe Shipping Crates", 0, 10);
+	
 	private String name;
 	private float weight;
 	private float size;
-	private ArrayList<InventoryItem> components;
+	private ArrayList<InventoryItems> components;
 	private int stacksize;
-	public InventoryItem(String name, float kg, float cubicm3) {
+	
+	InventoryItems(String name, float kg, float cubicm3) {
 		this.name = name;
 		this.weight = kg; 
 		this.size = cubicm3;
 		stacksize = 1; 
-		components = new ArrayList<InventoryItem>();
+		components = new ArrayList<InventoryItems>();
 	}
 	
-	public InventoryItem(String name, float kg, float cubicm3, int stacksize) {
+	InventoryItems(String name, float kg, float cubicm3, int stacksize) {
 		this.name = name;
 		this.weight = kg; 
 		this.size = cubicm3;
 		this.stacksize = stacksize; 
-		components = new ArrayList<InventoryItem>();
+		components = new ArrayList<InventoryItems>();
 	}
 	
-	public InventoryItem(String name, float kg, float cubicm3, ArrayList<InventoryItem> components) {
+	InventoryItems(String name, float kg, float cubicm3, ArrayList<InventoryItems> components) {
 		this.name = name;
 		this.weight = kg; 
 		this.size = cubicm3;
@@ -32,7 +35,7 @@ public class InventoryItem<components> {
 		stacksize = 1;
 	}
 	
-	public InventoryItem(String name, float kg, float cubicm3, int stacksize, ArrayList<InventoryItem> components) {
+	InventoryItems(String name, float kg, float cubicm3, int stacksize, ArrayList<InventoryItems> components) {
 		this.name = name;
 		this.weight = kg; 
 		this.size = cubicm3;
@@ -49,7 +52,7 @@ public class InventoryItem<components> {
 	public float getSize() {
 		return size; 
 	}
-	public ArrayList<InventoryItem> getComponents() {
+	public ArrayList<InventoryItems> getComponents() {
 		return components;
 	}
 	public float getStacksize() {
