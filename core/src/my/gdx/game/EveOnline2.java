@@ -1,66 +1,53 @@
 package my.gdx.game;
 
-import java.awt.DisplayMode;
-import java.awt.RenderingHints.Key;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Mesh;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.VertexAttribute;
-import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.graphics.g3d.Shader;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
-import com.badlogic.gdx.graphics.g3d.utils.MeshBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Disposable;
 
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
-import my.gdx.game.entities.Entity.EntityType;
-import my.gdx.game.entities.NPC;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
+import my.gdx.game.inventory.Inventory;
+import my.gdx.game.inventory.InventoryItems;
+import my.gdx.game.inventory.Item;
 
 public class EveOnline2 extends ApplicationAdapter {
 	public static ModelBuilder builder;
 	public static Player player; 
+	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
+	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));
 	private static Camera cam;
 	private static ArrayList<Entity> entities = new ArrayList<Entity>();
 	private ModelBatch batch;
-	private AssetManager manager;
+	private static AssetManager manager;
 	private Model object;
 	private ModelInstance background;
 	private ArrayList<Hud> windows = new ArrayList<Hud>();
@@ -68,6 +55,7 @@ public class EveOnline2 extends ApplicationAdapter {
 	private SpriteBatch textrenderer;
 	private Environment env; 
 	private final int renderDist = 260000, vanishingpoint = 8500;//20100;
+	final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	/*
 	 * Reminder:
 	 * X = -<------------------>+
@@ -90,10 +78,12 @@ public class EveOnline2 extends ApplicationAdapter {
 		manager.load("SpaceStation.obj", Model.class);
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
+		
+		materialcensus.additem(InventoryItems.Jimbabwe_Shipping_Crates, 101);
+		
 		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 				ColorAttribute.createSpecular(1, 1, 1, 1),
 				FloatAttribute.createShininess(8f));
-		final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
 
 		//add the player
@@ -114,6 +104,10 @@ public class EveOnline2 extends ApplicationAdapter {
 
 		//add a station & an asteroid
 		EveOnline2.addEntity(new Station(new Vector3(1000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
+		
+		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
+				ColorAttribute.createSpecular(1, 1, 1, 1),
+				FloatAttribute.createShininess(100f));		
 		object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
 		EveOnline2.addEntity(new Debris(new Vector3(600, 0, 0), object, 10) ); 
 
@@ -170,6 +164,7 @@ public class EveOnline2 extends ApplicationAdapter {
 				}
 			}
 		background.transform.set(player.getPos(), new Quaternion());
+		
 		batch.begin(cam);
 		batch.render(background);
 		for(Entity e : entities) {
@@ -180,8 +175,16 @@ public class EveOnline2 extends ApplicationAdapter {
 				batch.render(e.getInstance());
 			}
 			e.update(Gdx.graphics.getDeltaTime());
+			
+			//Material Census gathering
+			usedmaterials.empty();
+			if(e.inventory != null)
+			usedmaterials.additem(e.inventory.getItems()); 
+			
 		}
 		batch.end();
+		runItemCensus();
+		
 		cam.translate(player.getVel());
 		cam.update();
 
@@ -194,11 +197,13 @@ public class EveOnline2 extends ApplicationAdapter {
 		for(Hud window : windows) {
 			window.updateText();
 		}
+		
 		textrenderer.end();
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
 			this.dispose();
 
 		}
+		System.gc();
 	}
 
 	@Override
@@ -250,5 +255,26 @@ public class EveOnline2 extends ApplicationAdapter {
 		Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER);
 		addEntity(p);
 		return p;
+	}
+	private void runItemCensus() {
+		if(materialcensus.getItemcount() != usedmaterials.getItemcount()) {
+			for(Item i : materialcensus.getItems()) {
+				for(Item u : usedmaterials.getItems()) {
+					if(i.getName().equals(u.getName())) {
+						vanishedmaterials.additem(i.getTemplate(), i.getStacksize()-u.getStacksize()); 
+					}else if(!usedmaterials.contains(i)) {
+						vanishedmaterials.additem(i); 
+					}
+				}
+			}
+		}
+		
+		if(vanishedmaterials.getItemcount()>100) {
+			addEntity(new Debris( new Vector3(700, 0, 0), 
+					this.builder.createSphere(15, 15, 15, 10, 10, new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
+							ColorAttribute.createSpecular(1, 1, 1, 1),FloatAttribute.createShininess(8f)), attributes), 
+					vanishedmaterials.getItems(),15));
+			vanishedmaterials.empty();System.out.println("worked");
+		}
 	}
 }

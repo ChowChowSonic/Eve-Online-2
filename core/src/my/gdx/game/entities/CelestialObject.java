@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Disposable;
 
 import my.gdx.game.EveOnline2;
 
@@ -13,7 +14,7 @@ public class CelestialObject extends Entity{
 
 	protected Material material;
 	protected final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
-
+	private Model newmodel = this.model;
 	public CelestialObject(Vector3 position, Model model, float mass, float radius) {
 		super(model, EntityType.CELESTIALOBJ);
 		material = model.materials.get(0);
@@ -24,15 +25,10 @@ public class CelestialObject extends Entity{
 	
 	@Override
 	public void update(float deltaTime) {
-		this.instance.transform.set(this.pos, new Quaternion());
-		float size2 = (float) (1000f*Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*10), 2)));
-		Model newmodel = this.model;
-		if(size2 > 0) {
-			newmodel = EveOnline2.builder.createSphere(size2, size2, size2, 100, 100, this.material, attributes);
-		}else {//Generate an image of what should be a star from really far away...\]
-			
-		}
-		this.instance = new ModelInstance(newmodel);
+		this.instance.transform.set(this.pos, new Quaternion());		
+		float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*10), 2)));
+		this.instance.transform.scl(size2, size2, size2);
+		
 	}
 
 	/**

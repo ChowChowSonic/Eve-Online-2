@@ -10,7 +10,6 @@ import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 
 public class Player extends Entity{
-	public Inventory inventory;
 	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
@@ -20,7 +19,7 @@ public class Player extends Entity{
 		this.size = 1f;
 		this.setPos(6, 0, 0);
 		inventory = new Inventory(100);
-		inventory.additem(InventoryItems.Platinum, 120);
+		/*inventory.additem(InventoryItems.Platinum, 120);
 		inventory.additem(InventoryItems.Gold, 67);
 		inventory.additem(InventoryItems.Copper, 120);//*/
 		invmass = inventory.getWeight();
@@ -147,4 +146,5 @@ public class Player extends Entity{
 	public int getMaxhull() {
 		return maxhull;
 	}
+	
 }

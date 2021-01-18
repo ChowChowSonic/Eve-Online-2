@@ -32,8 +32,15 @@ public class Item {
 			return new Item(this.blueprint, secondstack);
 		}
 	}
+	
+	public void dropItem(int amount) {
+		this.stacksize-=amount; 
+	}
 	public String getName() {
 		return blueprint.getName();
+	}
+	public InventoryItems getTemplate() {
+		return blueprint; 
 	}
 	public float getWeight() {
 		return blueprint.getWeight()*this.stacksize;
