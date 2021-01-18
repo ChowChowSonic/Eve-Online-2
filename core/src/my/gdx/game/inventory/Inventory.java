@@ -59,9 +59,10 @@ public class Inventory {
 		}
 		return false;
 	}
+	
 	public boolean additem(InventoryItems i, int stacksize) {
 		Item newitem = new Item(i, stacksize);
-		if(this.occupiedspace + (newitem.getVolume()*newitem.getStacksize()) <= this.capacity) {
+		if(this.occupiedspace + (newitem.getVolume()) <= this.capacity) {
 			for(Item e : this.items) {
 				if(e.getName().equals(newitem.getName())) {
 					e.combinestack(newitem.getStacksize());
@@ -75,6 +76,7 @@ public class Inventory {
 		}
 		return false;
 	}
+	
 	public float getWeight() {
 		return weight;
 	}

@@ -1,14 +1,9 @@
 package my.gdx.game.entities;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 
@@ -16,17 +11,17 @@ import my.gdx.game.EveOnline2;
 
 public class CelestialObject extends Entity{
 
-	protected final Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("2k_sun.jpg"))), 
-			ColorAttribute.createSpecular(1, 1, 1, 1),
-			FloatAttribute.createShininess(100f));
+	protected Material material;
 	protected final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 
 	public CelestialObject(Vector3 position, Model model, float mass, float radius) {
 		super(model, EntityType.CELESTIALOBJ);
+		material = model.materials.get(0);
 		this.pos = position;
 		this.setMass(mass); this.size = radius;
 		// TODO Auto-generated constructor stub
 	}
+	
 	@Override
 	public void update(float deltaTime) {
 		this.instance.transform.set(this.pos, new Quaternion());
@@ -60,7 +55,7 @@ public class CelestialObject extends Entity{
 				return true; 
 			}else {
 				Vector3 difference = this.pos.cpy().sub(e.pos).nor(); 
-				e.addAccel(-difference.x*ACCEL, -difference.y*ACCEL, -difference.z*ACCEL);
+				e.addAccel(-difference.x*METER/e.mass, -difference.y*METER/e.mass, -difference.z*METER/e.mass);
 			}
 		}
 		return false;

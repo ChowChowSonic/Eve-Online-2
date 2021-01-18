@@ -62,9 +62,9 @@ public class InventoryMenu extends Hud{
 			int counter =0; CharSequence str = "";
 			for(Item i : user.inventory.getItems()) {
 				if(i.getStacksize() == 1) {
-					str = i.getName().replaceAll(" ", "\n") +"\n"+ (int)i.getVolume() +"m3, "+(int)i.getWeight()+"kg";			
+					str = i.getName().replaceAll(" ", "\n") +"\n"+ (int)i.getVolume() +"m3, "+(int)i.getWeight()+"T";			
 				}else {
-					str = i.getName().replaceAll(" ", "\n") + " x"+i.getStacksize() +"\n"+ (int)i.getVolume()*i.getStacksize() +"m3, "+(int)i.getWeight()*i.getStacksize()+"kg";
+					str = i.getName().replaceAll(" ", "\n") + " x"+i.getStacksize() +"\n"+ (int)i.getVolume()*i.getStacksize() +"m3, "+(int)i.getWeight()*i.getStacksize()+"T";
 				}
 				spriteBatch.begin();
 				font.getData().setScale((float) 1);

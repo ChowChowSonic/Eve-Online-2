@@ -1,15 +1,10 @@
 package my.gdx.game.entities;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
-import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 
@@ -57,12 +52,12 @@ public class Station extends CelestialObject{
 				e.setVel(forcetoapply1);
 				return true; 
 			}else {
-				if(e.vel.len2() > 100*METER*METER) {
+				if(e.vel.len() > 100*METER) {
 					if(e instanceof Player) {
 						Player ent = (Player) e;
 						if(!ent.isBoosting()) {
 							Vector3 tmp = e.vel.cpy().nor();
-							e.setVel(tmp.x*10*METER, tmp.y*10*METER, tmp.z*10*METER);
+							e.setVel(tmp.x*500*METER, tmp.y*500*METER, tmp.z*500*METER);
 						}
 					}
 				}

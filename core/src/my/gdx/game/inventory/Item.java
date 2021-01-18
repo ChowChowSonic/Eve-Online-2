@@ -36,10 +36,10 @@ public class Item {
 		return blueprint.getName();
 	}
 	public float getWeight() {
-		return blueprint.getWeight();
+		return blueprint.getWeight()*this.stacksize;
 	}
 	public float getVolume() {
-		return blueprint.getVolume(); 
+		return blueprint.getVolume()*this.stacksize; 
 	}
 	public ArrayList<InventoryItems> getComponents() {
 		return blueprint.getComponents();

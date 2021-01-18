@@ -11,7 +11,7 @@ import my.gdx.game.inventory.InventoryItems;
 
 public class Player extends Entity{
 	public Inventory inventory;
-	float invmass, basemass = 1;
+	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
 	public Player(Model model, EntityType type) {
@@ -19,12 +19,13 @@ public class Player extends Entity{
 		this.mass = basemass;
 		this.size = 1f;
 		this.setPos(6, 0, 0);
-		inventory = new Inventory(250);
-		
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Jimbabwe_Shipping_Crates);
-		inventory.additem(InventoryItems.Odor_Blocker_Bodywash, 5);
+		inventory = new Inventory(100);
+		inventory.additem(InventoryItems.Platinum, 120);
+		inventory.additem(InventoryItems.Gold, 67);
+		inventory.additem(InventoryItems.Copper, 120);//*/
+		invmass = inventory.getWeight();
+		this.mass = basemass+invmass;
+		System.out.println(this.mass);
 		// TODO Auto-generated constructor stub
 	}
 	private boolean justpressedboost = false;
@@ -35,8 +36,8 @@ public class Player extends Entity{
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		totalDeltaTime += deltaTime;
-		Vector3 camRot = new Vector3(2*ACCEL*deltaTime*camrotation.x/this.mass, 2*ACCEL*deltaTime*camrotation.y/this.mass, 2*ACCEL*deltaTime*camrotation.z/this.mass);
-		Vector3 invCamRot = new Vector3(-ACCEL*deltaTime*camrotation.x/this.mass,-ACCEL*deltaTime*camrotation.y/this.mass,-ACCEL*deltaTime*camrotation.z/this.mass);
+		Vector3 camRot = new Vector3(basemass*METER*camrotation.x/this.mass, basemass*METER*camrotation.y/this.mass, basemass*METER*camrotation.z/this.mass);
+		Vector3 invCamRot = new Vector3(-METER*camrotation.x/this.mass,-METER*camrotation.y/this.mass,-METER*camrotation.z/this.mass);
 		
 		//Movement controls
 		if(Gdx.input.isKeyPressed(Keys.W) && !justpressedboost) {
@@ -51,7 +52,7 @@ public class Player extends Entity{
 			this.vel.y -= (Math.abs(this.vel.y) > 0.06) ? this.vel.y/100: this.vel.y/10;
 			this.vel.z -= (Math.abs(this.vel.z) > 0.06) ? this.vel.z/100: this.vel.z/10;
 			//System.out.println(this.vel.toString());
-			if(this.vel.len() < ACCEL/(100*this.mass)) {
+			if(this.vel.len() < METER/(100*this.mass)) {
 				this.vel.setZero();
 			}
 		}

@@ -47,6 +47,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
 import my.gdx.game.entities.CelestialObject;
+import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.entities.NPC;
@@ -111,8 +112,10 @@ public class EveOnline2 extends ApplicationAdapter {
 		object = builder.createSphere(1000f, 1000f, 1000f, 100, 100, material, attributes);
 		EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
 
-		//add a station
-		EveOnline2.addEntity(new Station(new Vector3(800,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
+		//add a station & an asteroid
+		EveOnline2.addEntity(new Station(new Vector3(1000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
+		object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
+		EveOnline2.addEntity(new Debris(new Vector3(600, 0, 0), object, 10) ); 
 
 		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));
 

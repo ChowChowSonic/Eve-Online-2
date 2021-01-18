@@ -19,7 +19,7 @@ public abstract class Entity{
 	protected EntityType type; 
 	protected float mass;
 	protected float size;
-	public static final float METER = 0.00005f, ACCEL = 10*METER; 
+	public static final float METER = 0.00005f;
 	public Entity(Model model, EntityType type){
 		this.type = type;
 		this.model = model; 
