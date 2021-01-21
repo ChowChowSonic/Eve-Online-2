@@ -45,8 +45,10 @@ public class HealthBar extends Hud{
 		super.updateText();
 		health.setColor(Color.BLACK);
 		float velocity = p.getVel().len()/Entity.METER;
-		if (velocity < AU/100) {
+		if (velocity < 1000) {
 		health.draw(textrenderer, String.format("%.2f", velocity)+" m/s", Gdx.graphics.getWidth()/2-20, 20);
+		}else if(velocity < AU/100){
+			health.draw(textrenderer, String.format("%.2f", velocity/1000)+" km/s", Gdx.graphics.getWidth()/2-20, 20);
 		}else {
 			health.draw(textrenderer, String.format("%.2f", velocity/AU)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
 		}

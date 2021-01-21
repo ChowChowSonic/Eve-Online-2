@@ -19,9 +19,7 @@ public class Player extends Entity{
 		this.size = 1f;
 		this.setPos(6, 0, 0);
 		inventory = new Inventory(100);
-		inventory.additem(InventoryItems.Platinum, 120);
-		inventory.additem(InventoryItems.Gold, 67);
-		inventory.additem(InventoryItems.Copper, 120);//*/
+		inventory.additem(InventoryItems.Platinum, 100);
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		System.out.println(this.mass);
@@ -41,7 +39,7 @@ public class Player extends Entity{
 		
 		//Movement controls
 		if(Gdx.input.isKeyJustPressed(Keys.W) && !justpressedboost) {
-			this.isAccelerating = !this.isAccelerating; 
+			this.isAccelerating = true;
 			camRot = new Vector3(basemass*METER*camrotation.x/this.mass, basemass*METER*camrotation.y/this.mass, basemass*METER*camrotation.z/this.mass);
 		}else if(Gdx.input.isKeyPressed(Keys.S)) {
 			this.isAccelerating = false;
