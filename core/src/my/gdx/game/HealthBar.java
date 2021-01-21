@@ -15,6 +15,7 @@ import my.gdx.game.entities.Player;
 public class HealthBar extends Hud{
 	private Player p;
 	BitmapFont health;
+	private final float AU = (float) (Math.pow(10, 11)*1.4960);
 
 	HealthBar(Player player2track) {
 		this.p = player2track;
@@ -44,11 +45,10 @@ public class HealthBar extends Hud{
 		super.updateText();
 		health.setColor(Color.BLACK);
 		float velocity = p.getVel().len()/Entity.METER;
-		if (velocity < 14959) {
+		if (velocity < AU/100) {
 		health.draw(textrenderer, String.format("%.2f", velocity)+" m/s", Gdx.graphics.getWidth()/2-20, 20);
 		}else {
-			velocity *=1000;
-			health.draw(textrenderer, String.format("%.2f", velocity/149597871.0)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
+			health.draw(textrenderer, String.format("%.2f", velocity/AU)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
 		}
 	}
 

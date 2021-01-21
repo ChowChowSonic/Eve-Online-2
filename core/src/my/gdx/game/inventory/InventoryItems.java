@@ -3,7 +3,7 @@ package my.gdx.game.inventory;
 import java.util.ArrayList;
 
 public enum InventoryItems {
-	Jimbabwe_Shipping_Crates("Jimbabwe Shipping Crates", 10, 10),
+	Jimbabwe_Shipping_Crates("Jimbabwe Shipping Crates", 10, 1),
 	Iron("Chunk of Iron", 7.874f, 1), 
 	Cobalt("Chunk of Cobalt", 8.900f, 1),
 	Nickel("Chunk of Cobalt", 8.908f, 1),

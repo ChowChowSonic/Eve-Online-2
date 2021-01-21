@@ -79,7 +79,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
 		
-		materialcensus.additem(InventoryItems.Jimbabwe_Shipping_Crates, 101);
+		materialcensus.additem(InventoryItems.Aluminum, 101);
 		
 		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 				ColorAttribute.createSpecular(1, 1, 1, 1),
@@ -135,7 +135,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
-		//camera rotations:
+		//camera rotations
 		if(cam.position.dst(player.getPos()) > 3.75 || cam.position.dst(player.getPos()) < 2.75) {
 			Vector3 normvec = cam.position.cpy().sub(player.getPos()).nor();
 			cam.position.set(player.getPos().x+(3*normvec.x), player.getPos().y+(3*normvec.y),player.getPos().z+(3*normvec.z));
@@ -174,13 +174,13 @@ public class EveOnline2 extends ApplicationAdapter {
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
 				batch.render(e.getInstance());
 			}
-			e.update(Gdx.graphics.getDeltaTime());
 			
 			//Material Census gathering
 			usedmaterials.empty();
-			if(e.inventory != null)
+			if(e.inventory != null) {
 			usedmaterials.additem(e.inventory.getItems()); 
-			
+			}
+			e.update(Gdx.graphics.getDeltaTime());
 		}
 		batch.end();
 		runItemCensus();
@@ -256,6 +256,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		addEntity(p);
 		return p;
 	}
+	
 	private void runItemCensus() {
 		if(materialcensus.getItemcount() != usedmaterials.getItemcount()) {
 			for(Item i : materialcensus.getItems()) {
@@ -268,13 +269,13 @@ public class EveOnline2 extends ApplicationAdapter {
 				}
 			}
 		}
-		
-		if(vanishedmaterials.getItemcount()>100) {
+		System.out.println(usedmaterials.getItems().toString());
+		if(vanishedmaterials.getItemcount() > 100) {
 			addEntity(new Debris( new Vector3(700, 0, 0), 
 					this.builder.createSphere(15, 15, 15, 10, 10, new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 							ColorAttribute.createSpecular(1, 1, 1, 1),FloatAttribute.createShininess(8f)), attributes), 
 					vanishedmaterials.getItems(),15));
-			vanishedmaterials.empty();System.out.println("worked");
+			vanishedmaterials.empty();
 		}
 	}
 }

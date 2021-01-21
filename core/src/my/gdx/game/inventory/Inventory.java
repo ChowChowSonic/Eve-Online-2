@@ -62,7 +62,7 @@ public class Inventory {
 	 * @param inv
 	 * @return
 	 */
-	public boolean additem(ArrayList<Item> inv) {
+	public void additem(ArrayList<Item> inv) {
 		for(Item i : inv) {
 			if(this.occupiedspace + (i.getVolume()*i.getStacksize()) <= this.capacity) {
 				for(Item e : this.items) {
@@ -77,7 +77,6 @@ public class Inventory {
 				this.itemcount+= i.getStacksize(); 
 			}
 		}
-		return true;
 	}
 	
 	/**
@@ -166,6 +165,11 @@ public class Inventory {
 		this.capacity = capacity;
 	}
 	public float getItemcount() {
+		int tmpct = 0;
+		for(Item i : this.items) {
+			tmpct+=i.getStacksize(); 
+		}
+		itemcount = tmpct;
 		return itemcount;
 	}
 	public ArrayList<Item> getItems() {

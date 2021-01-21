@@ -22,13 +22,11 @@ public class CelestialObject extends Entity{
 		this.setMass(mass); this.size = radius;
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public void update(float deltaTime) {
-		this.instance.transform.set(this.pos, new Quaternion());		
-		float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*10), 2)));
-		this.instance.transform.scl(size2, size2, size2);
-		
+		super.update(deltaTime);
+
 	}
 
 	/**

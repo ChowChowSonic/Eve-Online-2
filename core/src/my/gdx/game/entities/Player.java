@@ -19,7 +19,7 @@ public class Player extends Entity{
 		this.size = 1f;
 		this.setPos(6, 0, 0);
 		inventory = new Inventory(100);
-		/*inventory.additem(InventoryItems.Platinum, 120);
+		inventory.additem(InventoryItems.Platinum, 120);
 		inventory.additem(InventoryItems.Gold, 67);
 		inventory.additem(InventoryItems.Copper, 120);//*/
 		invmass = inventory.getWeight();
@@ -29,24 +29,33 @@ public class Player extends Entity{
 	}
 	private boolean justpressedboost = false;
 	private float totalDeltaTime= 0;
+	private boolean isAccelerating = false;
+	private Vector3 camRot; 
 	@Override
 	public void update(float deltaTime) {
 		//Inventory management
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		totalDeltaTime += deltaTime;
-		Vector3 camRot = new Vector3(basemass*METER*camrotation.x/this.mass, basemass*METER*camrotation.y/this.mass, basemass*METER*camrotation.z/this.mass);
-		Vector3 invCamRot = new Vector3(-METER*camrotation.x/this.mass,-METER*camrotation.y/this.mass,-METER*camrotation.z/this.mass);
+		
 		
 		//Movement controls
-		if(Gdx.input.isKeyPressed(Keys.W) && !justpressedboost) {
-			this.accel.add(camRot);
+		if(Gdx.input.isKeyJustPressed(Keys.W) && !justpressedboost) {
+			this.isAccelerating = !this.isAccelerating; 
+			camRot = new Vector3(basemass*METER*camrotation.x/this.mass, basemass*METER*camrotation.y/this.mass, basemass*METER*camrotation.z/this.mass);
 		}else if(Gdx.input.isKeyPressed(Keys.S)) {
-			this.accel.add(invCamRot);
+			this.isAccelerating = false;
+			camRot = new Vector3(basemass*METER*camrotation.x/this.mass, basemass*METER*camrotation.y/this.mass, basemass*METER*camrotation.z/this.mass);
+			this.accel.add(-camRot.x, -camRot.y, -camRot.z);
+		}
+		
+		if(this.isAccelerating) {
+			this.accel.add(camRot);
 		}
 
 		//Stop the player
 		if(Gdx.input.isKeyPressed(Keys.SPACE) && !justpressedboost) {
+			this.isAccelerating = false;
 			this.vel.x -= (Math.abs(this.vel.x) > 0.06) ? this.vel.x/100: this.vel.x/10;
 			this.vel.y -= (Math.abs(this.vel.y) > 0.06) ? this.vel.y/100: this.vel.y/10;
 			this.vel.z -= (Math.abs(this.vel.z) > 0.06) ? this.vel.z/100: this.vel.z/10;
