@@ -22,7 +22,6 @@ public class Player extends Entity{
 		inventory.additem(InventoryItems.Platinum, 100);
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
-		System.out.println(this.mass);
 		// TODO Auto-generated constructor stub
 	}
 	private boolean justpressedboost = false;
@@ -57,7 +56,6 @@ public class Player extends Entity{
 			this.vel.x -= (Math.abs(this.vel.x) > 0.06) ? this.vel.x/100: this.vel.x/10;
 			this.vel.y -= (Math.abs(this.vel.y) > 0.06) ? this.vel.y/100: this.vel.y/10;
 			this.vel.z -= (Math.abs(this.vel.z) > 0.06) ? this.vel.z/100: this.vel.z/10;
-			//System.out.println(this.vel.toString());
 			if(this.vel.len() < METER/(100*this.mass)) {
 				this.vel.setZero();
 			}

@@ -18,6 +18,11 @@ public class Item {
 		this.stacksize = stacksize; 
 	}
 	
+	public Item(Item newitem) {
+		// TODO Auto-generated constructor stub
+		this.blueprint = newitem.getTemplate(); 
+		this.stacksize = newitem.getStacksize(); 
+	}
 	public int getStacksize() {
 		return stacksize;
 	}
@@ -50,5 +55,10 @@ public class Item {
 	}
 	public ArrayList<InventoryItems> getComponents() {
 		return blueprint.getComponents();
+	}
+	@Override
+	public String toString() {
+		return this.getName() +" x"+ this.getStacksize() +": " +this.getVolume()+" m3, "+this.getWeight()+" kg";
+		
 	}
 }

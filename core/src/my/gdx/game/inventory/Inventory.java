@@ -16,7 +16,7 @@ public class Inventory {
 		items = new ArrayList<Item>();
 		this.itemcount = 0;
 	}
-	
+
 	/**
 	 * Create a new inventory of specified size with specified items in it. 
 	 * @param items
@@ -33,6 +33,20 @@ public class Inventory {
 			this.itemcount+= item.getStacksize(); 
 		}
 	}
+	/**
+	 * Copies the selected inventory
+	 * @param i
+	 */
+	public Inventory(Inventory i) {
+		this.items = new ArrayList<Item>();
+		for(Item e : i.getItems()) {
+			this.items.add(new Item(e)); 
+		}
+		weight = i.getWeight(); 
+		this.capacity = i.getCapacity(); 
+		occupiedspace = i.getOccupiedspace();
+		this.itemcount = i.getItemcount(); 
+	}
 
 	/**
 	 * Tries to add an item to the inventory. If there isn't enough space it fails and returns false
@@ -41,50 +55,55 @@ public class Inventory {
 	 * @return whether or not the item was added to the inventory. 
 	 */
 	public boolean additem(Item i) {
+
+		if(i.getStacksize() <= 0) {
+			return false; 
+		} 
 		if(this.occupiedspace + (i.getVolume()*i.getStacksize()) <= this.capacity) {
-			for(Item e : this.items) {
-				if(e.getName().equals(i.getName())) {
-					e.combinestack(i.getStacksize());
-					return true;
+			if(this.contains(i)) {
+				for(Item e : this.items) {
+					if(i.getName().equals(e.getName())) {
+						e.combinestack(i.getStacksize());
+						this.weight += i.getWeight()*i.getStacksize();
+						this.occupiedspace += i.getVolume()*i.getStacksize();
+						this.itemcount+= i.getStacksize(); 
+						break;
+					}
 				}
+				verifycontents();
+				return true;
 			}
-			items.add(i);
+			items.add(new Item(i));
 			this.weight += i.getWeight()*i.getStacksize();
 			this.occupiedspace += i.getVolume()*i.getStacksize();
 			this.itemcount+= i.getStacksize(); 
+			verifycontents();
 			return true;
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Tries to add multiple items to the inventory
 	 * @param inv
 	 * @return
 	 */
 	public void additem(ArrayList<Item> inv) {
+		verifycontents();
 		for(Item i : inv) {
-			if(this.occupiedspace + (i.getVolume()*i.getStacksize()) <= this.capacity) {
-				for(Item e : this.items) {
-					if(e.getName().equals(i.getName())) {
-						e.combinestack(i.getStacksize());
-					}else {
-						items.add(i);
-					}
-				}
-				this.weight += i.getWeight()*i.getStacksize();
-				this.occupiedspace += i.getVolume()*i.getStacksize();
-				this.itemcount+= i.getStacksize(); 
-			}
+			if(i.getStacksize() > 0) {
+				this.additem(i.getTemplate(), i.getStacksize()); 
+			} 
 		}
 	}
-	
+
 	/**
 	 * Tries to add one item of specified type to the inventory
 	 * @param i
 	 * @return
 	 */
 	public boolean additem(InventoryItems i) {
+		verifycontents();
 		Item newitem = new Item(i);
 		if(this.occupiedspace + (newitem.getVolume()*newitem.getStacksize()) <= this.capacity) {
 			for(Item e : this.items) {
@@ -101,7 +120,7 @@ public class Inventory {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Adds a stack of a specified item to the inventory. 
 	 * @param i
@@ -109,11 +128,16 @@ public class Inventory {
 	 * @return
 	 */
 	public boolean additem(InventoryItems i, int stacksize) {
+		verifycontents();
+		if(stacksize <= 0) {
+			return false;  
+		} 
 		Item newitem = new Item(i, stacksize);
 		if(this.occupiedspace + (newitem.getVolume()) <= this.capacity) {
 			for(Item e : this.items) {
 				if(e.getName().equals(newitem.getName())) {
 					e.combinestack(newitem.getStacksize());
+
 					return true;
 				}
 			}
@@ -121,11 +145,12 @@ public class Inventory {
 			this.weight += i.getWeight()*newitem.getStacksize();
 			this.occupiedspace += newitem.getVolume()*newitem.getStacksize();
 			this.itemcount+= stacksize; 
+
 			return true;
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Emptys the inventory of all items, sets the volume to 0 and weight to 0
 	 */
@@ -135,27 +160,40 @@ public class Inventory {
 		this.itemcount = 0; 
 		this.occupiedspace = 0; 
 	}
-	
+
 	public boolean contains(Item i) {
+		verifycontents();
 		for(Item e : this.items) {
 			if(e.getName().equals(i.getName())) return true;
 		}
-		
+
 		return false;
-		
+
 	}
 	public void removeItem(InventoryItems item, int amount) {
 		for(Item e : this.items) {
-			if(e.getTemplate() == item) {
+			if(e.getName().equals(item.getName())) {
 				e.dropItem(amount);
+				verifycontents();
+				break; 
 			}
 		}
 	}
 
 	public float getWeight() {
+		weight = 0;
+		verifycontents();
+		for(Item i : this.items) {
+			weight+= i.getWeight()*i.getStacksize(); 
+		}
 		return weight;
 	}
 	public float getOccupiedspace() {
+		occupiedspace = 0;
+		verifycontents();
+		for(Item i : this.items) {
+			occupiedspace+=i.getVolume()*i.getStacksize(); 
+		}
 		return occupiedspace;
 	}
 	public float getCapacity() {
@@ -165,14 +203,72 @@ public class Inventory {
 		this.capacity = capacity;
 	}
 	public float getItemcount() {
-		int tmpct = 0;
+		int itemcount = 0;
+		verifycontents();
 		for(Item i : this.items) {
-			tmpct+=i.getStacksize(); 
+			itemcount+=i.getStacksize(); 
 		}
-		itemcount = tmpct;
 		return itemcount;
 	}
 	public ArrayList<Item> getItems() {
+		verifycontents();
 		return items;
 	}
-}
+
+	/**
+	 * Returns a list of items that are not present in both inventories. 
+	 * Will only return items in the paramater inventory. Example:
+	 * inv1 = [yeet, yote, yaint]
+	 * inv2 = [yeet, yaint]
+	 * inv1.getDifferences(inv2) >> []
+	 * inv2.getDifferences(inv1) >> [yote]
+	 * @return
+	 */
+	public ArrayList<Item> getDifferences(Inventory comparator){
+		this.verifycontents();
+		comparator.verifycontents();
+		Inventory compcopy = new Inventory(comparator);
+		for(Item i : this.items) {
+			if(compcopy.contains(i))
+				compcopy.removeItem(i.getTemplate(), i.getStacksize());
+		}
+		return compcopy.items;
+	}
+	@Override
+	public String toString() {
+		String str = "max size: "+this.capacity+"\n"; 
+		for(Item i : this.items) {
+			str+=i.toString()+"\n"; 
+		}
+		return str;
+
+	}
+	/**
+	 * Finds a specific stack of items 
+	 * @param i
+	 * @return
+	 */
+	public Item findItemByType(InventoryItems i) {
+		for(Item i2 : this.items) {
+			if(i2.getName().equals(i.getName())) {
+				return new Item(i2); 
+			}
+		}
+		return null; 
+	}
+	/**
+	 * Ensures that all items in the inventory are of positive, non-zero quantity.(and removes any that aren't) 
+	 */
+	private void verifycontents() {
+		ArrayList<Item> removals = new ArrayList<Item>(); 
+		for(int i = 0; i < items.size(); i++) {
+			Item e = items.get(i); 
+			if(e.getStacksize() <= 0) {
+				removals.add(e);
+			}
+		}
+		for(Item i : removals) {
+			items.remove(i); 
+		}//*/
+	}//ends VerifyContents
+}//ends class

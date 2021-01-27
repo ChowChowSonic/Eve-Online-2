@@ -79,7 +79,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
 		
-		materialcensus.additem(InventoryItems.Aluminum, 101);
+		materialcensus.additem(InventoryItems.Gold, 10000);
 		
 		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 				ColorAttribute.createSpecular(1, 1, 1, 1),
@@ -103,7 +103,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
 
 		//add a station & an asteroid
-		EveOnline2.addEntity(new Station(new Vector3(1000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
+		EveOnline2.addEntity(new Station(new Vector3(2000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
 		
 		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 				ColorAttribute.createSpecular(1, 1, 1, 1),
@@ -111,6 +111,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
 		EveOnline2.addEntity(new Debris(new Vector3(600, 0, 0), object, 10) ); 
 
+		//add the background+HUD
 		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));
 
 		textrenderer = Hud.getTextrenderer();
@@ -176,14 +177,17 @@ public class EveOnline2 extends ApplicationAdapter {
 			}
 			
 			//Material Census gathering
-			usedmaterials.empty();
+			
 			if(e.inventory != null) {
 			usedmaterials.additem(e.inventory.getItems()); 
+			//System.out.println(e.getEntityType()+":\n"+e.inventory.toString());
 			}
+			
 			e.update(Gdx.graphics.getDeltaTime());
 		}
 		batch.end();
 		runItemCensus();
+		usedmaterials.empty();
 		
 		cam.translate(player.getVel());
 		cam.update();
@@ -258,18 +262,14 @@ public class EveOnline2 extends ApplicationAdapter {
 	}
 	
 	private void runItemCensus() {
-		if(materialcensus.getItemcount() != usedmaterials.getItemcount()) {
-			for(Item i : materialcensus.getItems()) {
-				for(Item u : usedmaterials.getItems()) {
-					if(i.getName().equals(u.getName())) {
-						vanishedmaterials.additem(i.getTemplate(), i.getStacksize()-u.getStacksize()); 
-					}else if(!usedmaterials.contains(i)) {
-						vanishedmaterials.additem(i); 
-					}
-				}
-			}
-		}
-		System.out.println(usedmaterials.getItems().toString());
+		Inventory underflow = new Inventory(usedmaterials.getDifferences(materialcensus), 999999); 
+		Inventory overflow = new Inventory(materialcensus.getDifferences(usedmaterials),999999);
+		materialcensus.additem(overflow.getItems());
+		vanishedmaterials.additem(underflow.getItems());
+		//debugging
+		Inventory tmpinv = new Inventory(usedmaterials.getDifferences(materialcensus), 9999);
+		System.out.println("Available: "+materialcensus.toString() + "\nUsed: "+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
+		System.out.println("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
 		if(vanishedmaterials.getItemcount() > 100) {
 			addEntity(new Debris( new Vector3(700, 0, 0), 
 					this.builder.createSphere(15, 15, 15, 10, 10, new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
@@ -277,5 +277,6 @@ public class EveOnline2 extends ApplicationAdapter {
 					vanishedmaterials.getItems(),15));
 			vanishedmaterials.empty();
 		}
-	}
-}
+	}//ends runItemCensus()
+	
+}//ends class

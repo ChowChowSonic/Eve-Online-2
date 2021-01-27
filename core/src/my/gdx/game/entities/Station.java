@@ -37,7 +37,7 @@ public class Station extends CelestialObject{
 	@Override
 	public void update(float DeltaTime) {
 		this.instance.transform.set(this.pos, new Quaternion());
-		float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*10), 2)));
+		float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(1000*10), 2)));
 		this.instance.transform.scl(size2, size2, size2);
 		for(Entity bobber : bobbers) {
 			bobber.instance.transform.scl(size2,size2,size2);

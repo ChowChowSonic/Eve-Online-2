@@ -11,7 +11,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = Toolkit.getDefaultToolkit().getScreenSize().width; 
 		config.height = Toolkit.getDefaultToolkit().getScreenSize().height;
-		config.fullscreen = true; 
+		//config.fullscreen = true; 
 		config.vSyncEnabled = true;
 		new LwjglApplication(new EveOnline2(), config);
 	}

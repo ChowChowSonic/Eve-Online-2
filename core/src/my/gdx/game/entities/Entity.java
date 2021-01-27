@@ -14,6 +14,10 @@ import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.Item;
 
 public abstract class Entity{
+	/**
+	 * One meter in length, as defined by me
+	 */
+	public static final float METER = 0.00005f;
 	public Inventory inventory;
 	protected Vector3 pos,vel,accel;
 	protected Model model;
@@ -24,7 +28,7 @@ public abstract class Entity{
 	protected EntityType type; 
 	protected float mass;
 	protected float size;
-	public static final float METER = 0.00005f;
+	
 	public Entity(Model model, EntityType type){
 		this.type = type;
 		this.model = model; 
