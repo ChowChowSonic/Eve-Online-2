@@ -16,6 +16,7 @@ public class Station extends CelestialObject{
 	Model bobbermodel = EveOnline2.builder.createSphere(1f, 1f, 1f, 5, 5,
 			new Material(ColorAttribute.createSpecular(1, 1, 1, 1),
 					FloatAttribute.createShininess(8f)), (long)(Usage.Position | Usage.Normal | Usage.TextureCoordinates));
+
 	public Station(Vector3 pos, Model model, float mass, float innerradius, float outerraidus) {
 		super(pos, model, mass, innerradius);
 		this.tetherradius = outerraidus;
@@ -34,6 +35,7 @@ public class Station extends CelestialObject{
 		}
 		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public void update(float DeltaTime) {
 		this.instance.transform.set(this.pos, new Quaternion());
@@ -57,15 +59,15 @@ public class Station extends CelestialObject{
 				e.setVel(forcetoapply1);
 				return true; 
 			}else {
-				if(e.vel.len() > 100*METER) {
-					if(e instanceof Player) {
+				if(e instanceof Player) {
+					if(e.vel.len() > 100*METER) {
 						Player ent = (Player) e;
 						if(!ent.isBoosting()) {
 							Vector3 tmp = e.vel.cpy().nor();
 							e.setVel(tmp.x*500*METER, tmp.y*500*METER, tmp.z*500*METER);
 						}
 					}
-				}
+				}//instanceof player
 			}
 		}
 		return false;

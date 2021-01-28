@@ -216,11 +216,11 @@ public class Inventory {
 	}
 
 	/**
-	 * Returns a list of items that are not present in both inventories. 
-	 * Will only return items in the paramater inventory. Example:
-	 * inv1 = [yeet, yote, yaint]
-	 * inv2 = [yeet, yaint]
-	 * inv1.getDifferences(inv2) >> []
+	 * Returns a list of items that are not present in both inventories.
+	 * Will only return items in the paramater inventory. Example: <p>
+	 * inv1 = [yeet, yote, yaint]<p>
+	 * inv2 = [yeet, yaint]<p>
+	 * inv1.getDifferences(inv2) >> []<p>
 	 * inv2.getDifferences(inv1) >> [yote]
 	 * @return
 	 */
@@ -257,7 +257,7 @@ public class Inventory {
 		return null; 
 	}
 	/**
-	 * Ensures that all items in the inventory are of positive, non-zero quantity.(and removes any that aren't) 
+	 * Ensures that all items in the inventory are of positive, non-zero quantity. (and removes any that aren't) 
 	 */
 	private void verifycontents() {
 		ArrayList<Item> removals = new ArrayList<Item>(); 

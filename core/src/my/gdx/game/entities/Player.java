@@ -19,7 +19,7 @@ public class Player extends Entity{
 		this.size = 1f;
 		this.setPos(6, 0, 0);
 		inventory = new Inventory(100);
-		inventory.additem(InventoryItems.Platinum, 100);
+		//inventory.additem(InventoryItems.Platinum, 100);
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		// TODO Auto-generated constructor stub
@@ -27,7 +27,7 @@ public class Player extends Entity{
 	private boolean justpressedboost = false;
 	private float totalDeltaTime= 0;
 	private boolean isAccelerating = false;
-	private Vector3 camRot; 
+	private Vector3 camRot = new Vector3(0,0,0); 
 	@Override
 	public void update(float deltaTime) {
 		//Inventory management
@@ -63,7 +63,7 @@ public class Player extends Entity{
 		//Starts up & shuts down the warp drive
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
 			justpressedboost = true;
-			Vector3 accelnorm = this.vel.cpy().nor();
+			Vector3 accelnorm = camRot.cpy().nor();
 			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())), 
 					    (float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())), 
 					    (float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())) );//*/
