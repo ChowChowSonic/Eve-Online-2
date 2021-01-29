@@ -36,8 +36,6 @@ import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 import my.gdx.game.inventory.Inventory;
-import my.gdx.game.inventory.InventoryItems;
-import my.gdx.game.inventory.Item;
 
 public class EveOnline2 extends ApplicationAdapter {
 	public static ModelBuilder builder;
@@ -54,7 +52,7 @@ public class EveOnline2 extends ApplicationAdapter {
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env; 
-	private final int renderDist = 260000, vanishingpoint = 8500;//20100;
+	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	/*
 	 * Reminder:
@@ -93,11 +91,11 @@ public class EveOnline2 extends ApplicationAdapter {
 		env.add(new DirectionalLight().set(0.95f, 0.8f, 0.5f, 0f, 0f, 0f));
 
 		//add the sun
-		player.setPos(551, 0, 0);
+		player.setPos(600, 0, 0);
 		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("2k_sun.jpg"))), 
 				ColorAttribute.createSpecular(1, 1, 1, 1),
 				FloatAttribute.createShininess(100f));
-		object = builder.createSphere(1000f, 1000f, 1000f, 100, 100, material, attributes);
+		object = builder.createSphere(500f, 500f, 500f, 100, 100, material, attributes);
 		EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
 
 		//add a station & an asteroid
@@ -107,7 +105,7 @@ public class EveOnline2 extends ApplicationAdapter {
 				ColorAttribute.createSpecular(1, 1, 1, 1),
 				FloatAttribute.createShininess(100f));		
 		object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
-		EveOnline2.addEntity(new Debris(new Vector3(600, 0, 0), object, 10) ); 
+		EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10) ); 
 
 		//add the background+HUD
 		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));

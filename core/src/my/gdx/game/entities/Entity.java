@@ -1,17 +1,14 @@
 package my.gdx.game.entities;
 
-import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
-import my.gdx.game.inventory.Item;
 
 public abstract class Entity{
 	/**
