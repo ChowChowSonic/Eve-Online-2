@@ -55,11 +55,11 @@ public class EveOnline2 extends ApplicationAdapter {
 	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	/*
-	 * Reminder:
-	 * X = -<------------------>+
-	 * Y = -[down]  	    [up]+
-	 * Z = -[Forward] [Backward]+ 
-	 */
+	* Reminder:
+	* X = -<------------------>+
+	* Y = -[down]  	    [up]+
+	* Z = -[Forward] [Backward]+ 
+	*/
 	@Override
 	public void create() {
 		super.create();
@@ -71,97 +71,102 @@ public class EveOnline2 extends ApplicationAdapter {
 		batch = new ModelBatch();
 		builder = new ModelBuilder();
 		manager = new AssetManager();
-
+		
 		manager.load("spacesphere3.obj", Model.class);
 		manager.load("SpaceStation.obj", Model.class);
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
-
+		
 		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
-				ColorAttribute.createSpecular(1, 1, 1, 1),
-				FloatAttribute.createShininess(8f));
+		ColorAttribute.createSpecular(1, 1, 1, 1),
+		FloatAttribute.createShininess(8f));
 		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
-
+		
 		//add the player
 		EveOnline2.addEntity(new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER));
 		player = this.getPlayer();
-
+		
 		env = new Environment();
 		env.set(new ColorAttribute(ColorAttribute.AmbientLight, Color.YELLOW));
 		env.add(new DirectionalLight().set(0.95f, 0.8f, 0.5f, 0f, 0f, 0f));
-
+		
 		//add the sun
 		player.setPos(600, 0, 0);
 		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("2k_sun.jpg"))), 
-				ColorAttribute.createSpecular(1, 1, 1, 1),
-				FloatAttribute.createShininess(100f));
+		ColorAttribute.createSpecular(1, 1, 1, 1),
+		FloatAttribute.createShininess(100f));
 		object = builder.createSphere(500f, 500f, 500f, 100, 100, material, attributes);
 		EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
-
+		
 		//add a station & an asteroid
 		EveOnline2.addEntity(new Station(new Vector3(2000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
-
+		
 		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
-				ColorAttribute.createSpecular(1, 1, 1, 1),
-				FloatAttribute.createShininess(100f));		
+		ColorAttribute.createSpecular(1, 1, 1, 1),
+		FloatAttribute.createShininess(100f));		
 		object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
 		EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10) ); 
-
+		
 		//add the background+HUD
 		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));
-
+		
 		textrenderer = Hud.getTextrenderer();
-
+		
 		hudrenderer = Hud.getRenderer();
 		hudrenderer.setAutoShapeType(true);
-
+		
 		windows.add(new HealthBar(player));
 		windows.add(new InventoryMenu(player));
+		windows.add(new DockingButton()); 
 	}
-
+	
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 	@Override
 	public void render() {
 		// TODO Auto-generated method stub
 		super.render();
 		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-
-		//camera rotations
-		if(cam.position.dst(player.getPos()) > 3.75 || cam.position.dst(player.getPos()) < 2.75) {
+		
+		//camera distance correction
+		if(cam.position.dst(player.getPos()) > 3.05 || cam.position.dst(player.getPos()) < 2.95) {
 			Vector3 normvec = cam.position.cpy().sub(player.getPos()).nor();
 			cam.position.set(player.getPos().x+(3*normvec.x), player.getPos().y+(3*normvec.y),player.getPos().z+(3*normvec.z));
 			cam.lookAt(player.getPos());
 		}//*/
+		
+		//Camera rotations
 		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
-
+			
 			float deltax = Gdx.input.getDeltaX(); 
 			float deltay = Gdx.input.getDeltaY();
-			float magnitude = (float) Math.sqrt(Math.pow(deltax, 2) + Math.pow(deltay, 2));//Pythagroean Theorem
-			cam.position.set(player.getPos());
-			cam.rotate(magnitude, deltay/magnitude, deltax/magnitude, 0);
-			Vector3 normvec = cam.direction.cpy().nor().cpy();
-			cam.translate(-normvec.x*3, -normvec.y*3, -normvec.z*3);//*/
-			cam.up.set(0, 1, 0);//Keep the camera facing upright
-			//X and Y are reversed here for some reason and I don't know why. //*/ 
-
+			Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
+			cam.translate(direction.x*deltax*0.01f,direction.y*deltax*0.01f,direction.z*deltax*0.01f);
+			
+			direction = cam.up.nor(); 
+			System.out.println(deltay);
+			if((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0,1,0)) && deltay > 0) || (cam.direction.hasSameDirection(new Vector3(0,-1,0)) && deltay < 0)){
+					cam.translate(direction.x*deltay*0.05f,direction.y*deltay*0.05f,direction.z*deltay*0.05f);
+			}
+			cam.up.x = 0; cam.up.z =0;
+			cam.lookAt(player.getPos());
 		}
-		cam.lookAt(player.getPos());
-
+		
+		
 		//entity management
 		for(int i =0; i < entities.size(); i++)
-			for(int e =0; e < entities.size(); e++) {
-				if(i < e) {
-					entities.get(i).touches(entities.get(e));
-				}
+		for(int e =0; e < entities.size(); e++) {
+			if(i < e) {
+				entities.get(i).touches(entities.get(e));
 			}
+		}
 		background.transform.set(player.getPos(), new Quaternion());
-
+		
 		batch.begin(cam);
 		batch.render(background);
 		for(Entity e : entities) {
@@ -171,53 +176,53 @@ public class EveOnline2 extends ApplicationAdapter {
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
 				batch.render(e.getInstance());
 			}
-
+			
 			//Material Census gathering
-
+			
 			if(e.inventory != null) {
 				usedmaterials.additem(e.inventory.getItems()); 
 				//System.out.println(e.getEntityType()+":\n"+e.inventory.toString());
 			}
-
+			
 			e.update(Gdx.graphics.getDeltaTime());
 		}
 		batch.end();
 		runItemCensus();
 		usedmaterials.empty();
-
+		
 		cam.translate(player.getVel());
 		cam.update();
-
+		
 		//Hud rendering
 		for(Hud window : windows) {
 			window.updateShape();
 		}
 		hudrenderer.end();
-
+		
 		for(Hud window : windows) {
 			window.updateText();
 		}
-
+		
 		textrenderer.end();
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
 			this.dispose();
-
+			
 		}
 		System.gc();
 	}
-
+	
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
@@ -229,52 +234,52 @@ public class EveOnline2 extends ApplicationAdapter {
 		System.gc();
 		System.exit(1);
 	}
-
+	
 	public static Vector3 getCamRotation() {
 		return cam.direction;
 	}
-
+	
 	public static Matrix4 getCamMatrix() {
 		return cam.combined;
 	}
-
+	
 	public static void addEntity(Entity e) {
 		if(e instanceof CelestialObject)
-			entities.add(0, e);
+		entities.add(0, e);
 		else if(e instanceof Player) {
 			entities.add(entities.size(), e);
 		}else entities.add(entities.size(), e);
 	}
-
+	
 	public Player getPlayer() {
 		for(Entity e : entities){ {
 			if(e instanceof Player)
-				return (Player) e;
+			return (Player) e;
 		}
-		}
-		Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER);
-		addEntity(p);
-		return p;
 	}
+	Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER);
+	addEntity(p);
+	return p;
+}
 
-	private void runItemCensus() {
-		Inventory underflow = new Inventory(usedmaterials.getDifferences(materialcensus), 999999); 
-		Inventory overflow = new Inventory(materialcensus.getDifferences(usedmaterials),999999);
-
-		materialcensus.additem(overflow.getItems());
-		vanishedmaterials.additem(underflow.getItems());
-
-
-		if(vanishedmaterials.getItemcount() > 100) {
-			addEntity(new Debris( new Vector3(700, 5, 0), 
-					this.builder.createSphere(15, 15, 15, 10, 10, new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
-							ColorAttribute.createSpecular(1, 1, 1, 1),FloatAttribute.createShininess(8f)), attributes), 
-					vanishedmaterials.getItems(),15));
-			vanishedmaterials.empty();
-			System.out.println("Available: "+materialcensus.toString() + "\nUsed: "+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
-			System.out.println("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
-			System.out.println("Asteroid Spawned!");
-		}
-	}//ends runItemCensus()
+private void runItemCensus() {
+	Inventory underflow = new Inventory(usedmaterials.getDifferences(materialcensus), 999999); 
+	Inventory overflow = new Inventory(materialcensus.getDifferences(usedmaterials),999999);
+	
+	materialcensus.additem(overflow.getItems());
+	vanishedmaterials.additem(underflow.getItems());
+	
+	
+	if(vanishedmaterials.getItemcount() > 100) {
+		addEntity(new Debris( new Vector3(700, 5, 0), 
+		builder.createSphere(15, 15, 15, 10, 10, new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
+		ColorAttribute.createSpecular(1, 1, 1, 1),FloatAttribute.createShininess(8f)), attributes), 
+		vanishedmaterials.getItems(),15));
+		vanishedmaterials.empty();
+		//System.out.println("Available: "+materialcensus.toString() + "\nUsed: "+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
+		//System.out.println("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
+		//System.out.println("Asteroid Spawned!");
+	}
+}//ends runItemCensus()
 
 }//ends class

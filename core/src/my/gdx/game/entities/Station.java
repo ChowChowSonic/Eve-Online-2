@@ -60,11 +60,11 @@ public class Station extends CelestialObject{
 				return true; 
 			}else {
 				if(e instanceof Player) {
-					if(e.vel.len() > 100*METER) {
+					if(e.vel.len() > 500*METER) {
 						Player ent = (Player) e;
 						if(!ent.isBoosting()) {
 							Vector3 tmp = e.vel.cpy().nor();
-							e.setVel(tmp.x*500*METER, tmp.y*500*METER, tmp.z*500*METER);
+							e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
 						}
 					}
 				}//instanceof player
