@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
@@ -37,23 +38,27 @@ import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 import my.gdx.game.inventory.Inventory;
 
-public class EveOnline2 extends ApplicationAdapter {
+public class EveOnline2 extends ApplicationAdapter{
+	
 	public static ModelBuilder builder;
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
-	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));
+	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
+	public final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
+	
 	private static Camera cam;
 	private static ArrayList<Entity> entities = new ArrayList<Entity>();
-	private ModelBatch batch;
 	private static AssetManager manager;
+	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
+	private ModelBatch batch;
 	private Model object;
 	private ModelInstance background;
 	private ArrayList<Hud> windows = new ArrayList<Hud>();
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env; 
-	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
-	final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
+	private float cameradist = 3f;
+
 	/*
 	* Reminder:
 	* X = -<------------------>+
@@ -66,7 +71,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		cam = new PerspectiveCamera(80,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		cam.position.set(0f,0f,3f);
 		cam.lookAt(0f,0f,0f);
-		cam.near = 2f;
+		cam.near = 1f;
 		cam.far = renderDist;
 		batch = new ModelBatch();
 		builder = new ModelBuilder();
@@ -76,7 +81,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		manager.load("SpaceStation.obj", Model.class);
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
-		
+
 		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 		ColorAttribute.createSpecular(1, 1, 1, 1),
 		FloatAttribute.createShininess(8f));
@@ -132,26 +137,29 @@ public class EveOnline2 extends ApplicationAdapter {
 		super.render();
 		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-		
+		if(Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2*cam.near){
+			cameradist -=0.01; 
+		}else if(Gdx.input.isButtonPressed(Buttons.FORWARD) && cameradist < 20){
+			cameradist +=0.01; 
+		}
 		//camera distance correction
-		if(cam.position.dst(player.getPos()) > 3.05 || cam.position.dst(player.getPos()) < 2.95) {
+		if(cam.position.dst(player.getPos()) > cameradist || cam.position.dst(player.getPos()) < cameradist) {
 			Vector3 normvec = cam.position.cpy().sub(player.getPos()).nor();
-			cam.position.set(player.getPos().x+(3*normvec.x), player.getPos().y+(3*normvec.y),player.getPos().z+(3*normvec.z));
+			cam.position.set(player.getPos().x+(cameradist*normvec.x), player.getPos().y+(cameradist*normvec.y),player.getPos().z+(cameradist*normvec.z));
 			cam.lookAt(player.getPos());
 		}//*/
-		
 		//Camera rotations
 		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
 			
 			float deltax = Gdx.input.getDeltaX(); 
 			float deltay = Gdx.input.getDeltaY();
 			Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
-			cam.translate(direction.x*deltax*0.01f,direction.y*deltax*0.01f,direction.z*deltax*0.01f);
+			cam.translate(direction.x*deltax*0.025f,0,direction.z*deltax*0.025f);
 			
 			direction = cam.up.nor(); 
-			System.out.println(deltay);
+			
 			if((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0,1,0)) && deltay > 0) || (cam.direction.hasSameDirection(new Vector3(0,-1,0)) && deltay < 0)){
-					cam.translate(direction.x*deltay*0.05f,direction.y*deltay*0.05f,direction.z*deltay*0.05f);
+					cam.translate(direction.x*deltay*0.025f,direction.y*deltay*0.025f,direction.z*deltay*0.025f);
 			}
 			cam.up.x = 0; cam.up.z =0;
 			cam.lookAt(player.getPos());

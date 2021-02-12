@@ -64,9 +64,9 @@ public class Player extends Entity{
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
 			justpressedboost = true;
 			Vector3 accelnorm = this.vel.cpy().nor();
-			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())), 
-					    (float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())), 
-					    (float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((100-Math.sqrt(this.mass))-this.vel.len2())) );//*/
+			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
+					    (float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
+					    (float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())) );//*/
 		}else if(justpressedboost) {
 			this.vel.x/=1.05;
 			this.vel.y/=1.05;

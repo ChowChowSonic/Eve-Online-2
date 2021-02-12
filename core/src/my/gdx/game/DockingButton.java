@@ -37,8 +37,8 @@ public class DockingButton extends Hud {
             super.updateText();
             spriteBatch.begin();
             font.setColor(Color.WHITE);
-            font.getData().setScale((float) 1);
-            font.draw(spriteBatch, "Dock?", (screenwidth-width)/2+width/2, (screenheight-height)/2-350+(height/2));
+            font.getData().setScale((float) 3.8);
+            font.draw(spriteBatch, "Dock?", (screenwidth-width)/2+25, (screenheight-height)/2-352.5f+height);
             spriteBatch.end();
 		}
 	}

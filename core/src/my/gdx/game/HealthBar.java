@@ -1,13 +1,9 @@
 package my.gdx.game;
 
-import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
@@ -47,10 +43,10 @@ public class HealthBar extends Hud{
 		float velocity = p.getVel().len()/Entity.METER;
 		if (velocity < 1000) {
 		health.draw(textrenderer, String.format("%.2f", velocity)+" m/s", Gdx.graphics.getWidth()/2-20, 20);
-		}else if(velocity < AU/100){
+		}else if(velocity < 100000){
 			health.draw(textrenderer, String.format("%.2f", velocity/1000)+" km/s", Gdx.graphics.getWidth()/2-20, 20);
 		}else {
-			health.draw(textrenderer, String.format("%.2f", velocity/AU)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
+			health.draw(textrenderer, String.format("%.2f", velocity/100000)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
 		}
 	}
 
