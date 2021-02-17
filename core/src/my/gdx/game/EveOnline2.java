@@ -29,6 +29,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Disposable;
 
 import my.gdx.game.entities.CelestialObject;
@@ -49,16 +50,16 @@ public class EveOnline2 extends ApplicationAdapter{
 	private static Camera cam;
 	private static ArrayList<Entity> entities = new ArrayList<Entity>();
 	private static AssetManager manager;
+	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	private ModelBatch batch;
 	private Model object;
 	private ModelInstance background;
-	private ArrayList<Hud> windows = new ArrayList<Hud>();
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env; 
 	private float cameradist = 3f;
-
+	
 	/*
 	* Reminder:
 	* X = -<------------------>+
@@ -81,7 +82,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		manager.load("SpaceStation.obj", Model.class);
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
-
+		
 		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 		ColorAttribute.createSpecular(1, 1, 1, 1),
 		FloatAttribute.createShininess(8f));
@@ -121,8 +122,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		hudrenderer.setAutoShapeType(true);
 		
 		windows.add(new HealthBar(player));
-		windows.add(new InventoryMenu(player));
-		windows.add(new DockingButton()); 
 	}
 	
 	@Override
@@ -159,7 +158,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			direction = cam.up.nor(); 
 			
 			if((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0,1,0)) && deltay > 0) || (cam.direction.hasSameDirection(new Vector3(0,-1,0)) && deltay < 0)){
-					cam.translate(direction.x*deltay*0.025f,direction.y*deltay*0.025f,direction.z*deltay*0.025f);
+				cam.translate(direction.x*deltay*0.025f,direction.y*deltay*0.025f,direction.z*deltay*0.025f);
 			}
 			cam.up.x = 0; cam.up.z =0;
 			cam.lookAt(player.getPos());
@@ -200,6 +199,18 @@ public class EveOnline2 extends ApplicationAdapter{
 		
 		cam.translate(player.getVel());
 		cam.update();
+
+		//Inventory Menu stuff
+		if(Gdx.input.isKeyJustPressed(Keys.I)){
+			if(windows.contains(new InventoryMenu(player))) windows.remove(new InventoryMenu(player));
+			else windows.add(new InventoryMenu(player));
+		}
+		if(player.isTethered()){
+			windows.add(new DockingButton());
+		}else{
+			windows.remove(new DockingButton());
+		}
+
 		
 		//Hud rendering
 		for(Hud window : windows) {
@@ -289,5 +300,15 @@ private void runItemCensus() {
 		//System.out.println("Asteroid Spawned!");
 	}
 }//ends runItemCensus()
+
+public static void addHUD(Hud h){
+	if(!windows.contains(h))
+	windows.add(h);
+}
+
+public static void removeHUD(Hud hud){
+	//if(windows.contains(hud))
+	windows.remove(hud);
+}
 
 }//ends class

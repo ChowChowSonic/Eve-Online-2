@@ -16,6 +16,7 @@ public class HealthBar extends Hud{
 	HealthBar(Player player2track) {
 		this.p = player2track;
 		health = new BitmapFont();
+		this.type = Hud.hudtype.HealthBar; 
 		// TODO Auto-generated constructor stub
 	}
 

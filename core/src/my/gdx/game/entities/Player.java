@@ -13,6 +13,7 @@ public class Player extends Entity{
 	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
+	protected Entity tetheringstation = null; 
 	public Player(Model model, EntityType type) {
 		super(model, type);
 		this.mass = basemass;
@@ -62,6 +63,7 @@ public class Player extends Entity{
 		}
 		//Starts up & shuts down the warp drive
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
+			this.tetheringstation = null;
 			justpressedboost = true;
 			Vector3 accelnorm = this.vel.cpy().nor();
 			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
@@ -72,7 +74,7 @@ public class Player extends Entity{
 			this.vel.y/=1.05;
 			this.vel.z/=1.05;
 			this.accel.setZero();
-			if(this.vel.len() <= 10*METER) {
+			if(this.vel.len() <= 100*METER) {
 				justpressedboost = false;
 				this.vel.setZero();
 			}
@@ -150,6 +152,10 @@ public class Player extends Entity{
 
 	public int getMaxhull() {
 		return maxhull;
+	}
+
+	public boolean isTethered(){
+		return this.tetheringstation != null && !this.isBoosting();
 	}
 	
 }

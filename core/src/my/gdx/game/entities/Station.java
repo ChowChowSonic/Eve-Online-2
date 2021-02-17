@@ -8,20 +8,21 @@ import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 
+import my.gdx.game.DockingButton;
 import my.gdx.game.EveOnline2;
 
 public class Station extends CelestialObject{
 	float tetherradius;
 	Entity bobbers[];
 	Model bobbermodel = EveOnline2.builder.createSphere(1f, 1f, 1f, 5, 5,
-			new Material(ColorAttribute.createSpecular(1, 1, 1, 1),
-					FloatAttribute.createShininess(8f)), (long)(Usage.Position | Usage.Normal | Usage.TextureCoordinates));
-
+	new Material(ColorAttribute.createSpecular(1, 1, 1, 1),
+	FloatAttribute.createShininess(8f)), (long)(Usage.Position | Usage.Normal | Usage.TextureCoordinates));
+	
 	public Station(Vector3 pos, Model model, float mass, float innerradius, float outerraidus) {
 		super(pos, model, mass, innerradius);
 		this.tetherradius = outerraidus;
 		bobbers = new Entity[8];
-
+		
 		bobbers[0]= new NPC(new Vector3(this.pos.x+tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
 		bobbers[1]= new NPC(new Vector3(this.pos.x-tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
 		bobbers[2]= new NPC(new Vector3(this.pos.x, this.pos.y, this.pos.z+tetherradius),bobbermodel, EntityType.FRIEND);
@@ -35,7 +36,7 @@ public class Station extends CelestialObject{
 		}
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public void update(float DeltaTime) {
 		this.instance.transform.set(this.pos, new Quaternion());
@@ -45,32 +46,38 @@ public class Station extends CelestialObject{
 			bobber.instance.transform.scl(size2,size2,size2);
 		}
 	}
-
+	
 	@Override
 	public boolean touches(Entity e) {
 		float distance  = this.pos.dst2(e.pos);
 		if(distance < (this.tetherradius*this.tetherradius)+(e.size*e.size)) {
 			if(distance < (this.size*this.size)+(e.size*e.size)) {
 				Vector3 forcetoapply1 = new Vector3(
-						(e.vel.x*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
-						(e.vel.y*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
-						(e.vel.z*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))));
+				(e.vel.x*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
+				(e.vel.y*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
+				(e.vel.z*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))));
 				e.addAccel(forcetoapply1);
 				e.setVel(forcetoapply1);
 				return true; 
 			}else {
 				if(e instanceof Player) {
+					Player ent = (Player) e;
 					if(e.vel.len() > 500*METER) {
-						Player ent = (Player) e;
 						if(!ent.isBoosting()) {
 							Vector3 tmp = e.vel.cpy().nor();
 							e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
+							
 						}
 					}
+					ent.tetheringstation = this; 
 				}//instanceof player
+				return false; 
 			}
+		}else if(e instanceof Player){
+			Player ent = (Player) e;
+			if(ent.tetheringstation !=null && ent.tetheringstation.equals(this)) ent.tetheringstation = null; 
 		}
 		return false;
 	}
-
+	
 }

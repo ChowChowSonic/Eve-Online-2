@@ -15,6 +15,8 @@ public abstract class Hud {
 	private BitmapFont Texts[]; 
 	protected static ShapeRenderer renderer = new ShapeRenderer(); 
 	protected static SpriteBatch textrenderer = new SpriteBatch();
+	public enum hudtype{HealthBar, InventoryMenu, DockingButton}
+	protected hudtype type; 
 	
 	public void updateShape() {
 		if(!renderer.isDrawing())renderer.begin(ShapeType.Filled);
@@ -31,5 +33,12 @@ public abstract class Hud {
 
 	public static ShapeRenderer getRenderer() {
 		return renderer;
+	}
+
+	@Override
+	public boolean equals(Object h){
+		Hud h2 = (Hud) h; 
+		if (h2.type == this.type) return true;
+		return false; 
 	}
 }

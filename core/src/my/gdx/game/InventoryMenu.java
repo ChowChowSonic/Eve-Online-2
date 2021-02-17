@@ -3,17 +3,14 @@ package my.gdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import my.gdx.game.entities.Player;
-import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 
 public class InventoryMenu extends Hud{
 	private Player user; 
-	private boolean isvisible = false;
 	private int width = 400, height = 400; 
 	SpriteBatch spriteBatch;
 	BitmapFont font;
@@ -22,12 +19,11 @@ public class InventoryMenu extends Hud{
 		this.user = user; 
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont();
+		this.type = Hud.hudtype.InventoryMenu; 
 	}
 	@Override
 	public void updateShape() {
 		super.updateShape();
-		if(Gdx.input.isKeyJustPressed(Keys.I)) this.toggle();
-		if(isvisible) {
 			renderer.setColor(Color.GRAY);
 			renderer.rect((screenwidth-width)/2, (screenheight-height)/2, width, height);
 			int slotx =(screenwidth-width)/2 + 3; 
@@ -43,7 +39,6 @@ public class InventoryMenu extends Hud{
 					counter = 0;
 				}
 
-			}
 		}
 	}
 
@@ -54,7 +49,6 @@ public class InventoryMenu extends Hud{
 	}
 	@Override
 	public void updateText() {
-		if(isvisible) {
 			super.updateText();
 			font.setColor(Color.BLACK);
 			int slotx = (screenwidth-width)/2+3; 
@@ -79,9 +73,4 @@ public class InventoryMenu extends Hud{
 				}
 			}
 		}
-	}
-
-	public void toggle() {
-		isvisible = !isvisible; 
-	}
 }
