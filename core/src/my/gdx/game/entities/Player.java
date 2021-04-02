@@ -6,14 +6,15 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Vector3;
 
+import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
-import my.gdx.game.inventory.InventoryItems;
 
 public class Player extends Entity{
 	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
 	protected Entity tetheringstation = null; 
+	protected Vector3 camrotation = EveOnline2.getCamRotation();
 	public Player(Model model, EntityType type) {
 		super(model, type);
 		this.mass = basemass;
@@ -35,7 +36,7 @@ public class Player extends Entity{
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		totalDeltaTime += deltaTime;
-		
+		camrotation = EveOnline2.getCamRotation();
 		
 		//Movement controls
 		if(Gdx.input.isKeyJustPressed(Keys.W) && !justpressedboost) {

@@ -19,7 +19,7 @@ public abstract class Entity{
 	protected Vector3 pos,vel,accel;
 	protected Model model;
 	protected ModelInstance instance; 
-	protected Vector3 camrotation = EveOnline2.getCamRotation();
+	
 
 	public enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ}
 	protected EntityType type; 
@@ -46,7 +46,6 @@ public abstract class Entity{
 	}
 
 	public void update(float deltaTime) {
-		camrotation = EveOnline2.getCamRotation();
 		this.vel = this.vel.add(accel);
 		this.pos = this.pos.add(vel);
 		accel = accel.setZero();

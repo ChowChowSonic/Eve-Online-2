@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ServerLauncher",
+            "request": "launch",
+            "mainClass": "my.gdx.game.desktop.ServerLauncher",
+            "projectName": "my-gdx-game-desktop"
+        },
+        {
+            "type": "java",
             "name": "Launch DesktopLauncher",
             "request": "launch",
             "mainClass": "my.gdx.game.desktop.DesktopLauncher",
