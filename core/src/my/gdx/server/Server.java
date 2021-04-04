@@ -1,5 +1,7 @@
 package my.gdx.server;
 
+import java.io.Console;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -25,11 +27,12 @@ public class Server extends ApplicationAdapter{
     private static ArrayList<Entity> entities = new ArrayList<Entity>();
     private static SpriteBatch textrenderer;
     private static BitmapFont font; 
-    private static int logposition = 0, increment = 0;
+    private static int logposition = 0;
     private static String[] logs = new String[31]; 
     private static final Model VOIDMODEL = new Model();
-
+    
     public void create() {
+        System.out.flush();
         materialcensus = new Inventory((float)Math.pow(3, 38));
         usedmaterials = new Inventory((float)Math.pow(3, 38));
         vanishedmaterials = new Inventory((float)Math.pow(3, 38));
@@ -37,49 +40,52 @@ public class Server extends ApplicationAdapter{
         font = new BitmapFont();
         font.setColor(Color.WHITE);
         materialcensus.additem(new Item(InventoryItems.Gold, 1000));
+        ServerAntenna antenna = new ServerAntenna(26000);
+        antenna.start();
+        
         super.create();
     }
-
+    
     public void render(){
         super.render();
         Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);//clears the screen of text 
-
+        Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);//clears the screen of text 
+        
         //in-game physics & logging
         for(int i =0; i < entities.size(); i++)
-		for(int e =0; e < entities.size(); e++) {
-			if(i < e) {
-				entities.get(i).touches(entities.get(e));
-			}
-		}
+        for(int e =0; e < entities.size(); e++) {
+            if(i < e) {
+                entities.get(i).touches(entities.get(e));
+            }
+        }
         for(Entity e : entities) {
             if(e.inventory != null) {
-				usedmaterials.additem(e.inventory.getItems()); 
-			}
-			e.update(Gdx.graphics.getDeltaTime());
+                usedmaterials.additem(e.inventory.getItems()); 
+            }
+            e.update(Gdx.graphics.getDeltaTime());
         }
         runItemCensus();
-
+        
         //Logging
         textrenderer.begin();
         for(int i = 0; i < logs.length; i++){
             if(logs[i] != null){
-        font.draw(textrenderer, logs[i], 0, Gdx.graphics.getHeight() - 15*(i+1));
+                font.draw(textrenderer, logs[i], 0, Gdx.graphics.getHeight() - 15*(i));
             }
         }
         textrenderer.end();
     }
-
+    
     public static void addEntity(Entity e) {
-		if(e instanceof CelestialObject)
-		entities.add(0, e);
-		else if(e instanceof Player) {
-			entities.add(entities.size(), e);
-		}else entities.add(entities.size(), e);
+        if(e instanceof CelestialObject)
+        entities.add(0, e);
+        else if(e instanceof Player) {
+            entities.add(entities.size(), e);
+        }else entities.add(entities.size(), e);
         sortEntities();
         appendToLogs("Entity Spawned:" + e.getEntityType());
-	}
-
+    }
+    
     public static void sortEntities(){
         ArrayList<Entity> newlist = new ArrayList<Entity>(); 
         int playersinlist = 0;
@@ -91,15 +97,14 @@ public class Server extends ApplicationAdapter{
                 playersinlist++;
             }else{
                 if(newlist.size() > 0){
-                newlist.add(newlist.size()-(playersinlist+1), e);
+                    newlist.add(newlist.size()-(playersinlist+1), e);
                 }else newlist.add(e);
             }
             entities = newlist; 
             appendToLogs("entity list successfully sorted");
-            appendToLogs(entities.toString());
         }
     }
-
+    
     private void runItemCensus() {
         Inventory underflow = new Inventory(usedmaterials.getDifferences(materialcensus), 999999); 
         Inventory overflow = new Inventory(materialcensus.getDifferences(usedmaterials),999999);
@@ -115,7 +120,7 @@ public class Server extends ApplicationAdapter{
             appendToLogs("Asteroid Spawned!");
         }
     }//ends runItemCensus()
-    private static void appendToLogs(String s){
+    public static void appendToLogs(String s){
         if(logposition < logs.length) {
             logs[logposition]= s.replaceAll("\n", " / ");
             logposition++; 
@@ -128,5 +133,5 @@ public class Server extends ApplicationAdapter{
     public boolean connectPlayer(){
         return false; 
     }
-
+    
 }
