@@ -6,11 +6,13 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.inventory.Inventory;
-import my.gdx.server.SerializedEntity;
 
-public abstract class Entity{
+public abstract class Entity implements Serializable{
 	/**
 	 * One meter in length, as defined by me
 	 */
@@ -33,12 +35,6 @@ public abstract class Entity{
 		vel = new Vector3();
 		accel = new Vector3();
 		ID = id;
-	}
-
-	public Entity(SerializedEntity e){
-		this.ID = e.getID();
-		this.pos = e.getpos(); 
-		this.type = e.getType(); 
 	}
 
 	public Entity(Vector3 position, Model model, EntityType type, long id) {
@@ -88,6 +84,17 @@ public abstract class Entity{
 		return false;
 
 	}
+	@Override
+    public void write(Json json) {
+        // TODO Auto-generated method stub
+        json.toJson(this);
+    }
+
+    @Override
+    public void read(Json json, JsonValue jsonData) {
+        // TODO Auto-generated method stub
+        json.readFields(this.getClass(), jsonData);
+    }
 
 	public boolean equals(Entity e){
 		return this.ID == e.ID; 

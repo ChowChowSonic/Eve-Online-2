@@ -31,6 +31,17 @@ public class Debris extends Entity{
 		}
 		// TODO Auto-generated constructor stub
 	}
+
+	public Debris(Vector3 position, Model model, Inventory contents, int radius, long ID) {
+		super(model, EntityType.ASTEROID, ID);
+		this.pos = position; 
+		this.inventory = contents;  
+		this.size = radius; 
+		for(Item i : contents.getItems()) {
+			this.mass+=i.getWeight(); 
+		}
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Debris(Vector3 position, Model model, int radius, long ID) {
 		super(model, EntityType.ASTEROID, ID); 

@@ -3,6 +3,8 @@ package my.gdx.server;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
+
+import my.gdx.game.entities.Entity;
 public class ServerAntenna extends Thread{ 
     ServerSocket socket;
     int port;
@@ -55,6 +57,10 @@ class Servant extends Thread{
     public void run(){
         try{
             ObjectOutputStream outgoing = new ObjectOutputStream();
+            for(Entity e : Server.entities){
+            outgoing.writeObject(e);
+            }
+            outgoing.flush();
             //incoming.readObject(); 
             //System.out.println(incoming.toString());
         }catch(Exception e){

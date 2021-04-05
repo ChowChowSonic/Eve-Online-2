@@ -2,13 +2,17 @@ package my.gdx.game.inventory;
 
 import java.util.ArrayList;
 
-public class Inventory {
+import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+
+public class Inventory implements Serializable{
 	private float weight, occupiedspace, capacity, itemcount;
 	ArrayList<Item> items; 	
 	/**
-	 * create a new, empty inventory of specified size
-	 * @param size
-	 */
+	* create a new, empty inventory of specified size
+	* @param size
+	*/
 	public Inventory(float size) {
 		weight = 0; 
 		this.capacity = size; 
@@ -16,27 +20,27 @@ public class Inventory {
 		items = new ArrayList<Item>();
 		this.itemcount = 0;
 	}
-
+	
 	/**
-	 * Create a new inventory of specified size with specified items in it. 
-	 * @param items
-	 * @param size
-	 */
+	* Create a new inventory of specified size with specified items in it. 
+	* @param items
+	* @param size
+	*/
 	public Inventory(ArrayList<Item> items, float size) {
-		this.items = items; 
+		this.items = new ArrayList<Item>(items); 
 		weight = 0; 
 		this.capacity = size; 
 		occupiedspace = 0; 
-		for(Item item : items) {
-			occupiedspace += (item.getVolume()*item.getStacksize());
-			weight += (item.getWeight()*item.getStacksize());
-			this.itemcount+= item.getStacksize(); 
-		}
+			for(Item item : items) {
+				occupiedspace += (item.getVolume()*item.getStacksize());
+				weight += (item.getWeight()*item.getStacksize());
+				this.itemcount+= item.getStacksize(); 
+			}
 	}
 	/**
-	 * Copies the selected inventory
-	 * @param i
-	 */
+	* Copies the selected inventory
+	* @param i
+	*/
 	public Inventory(Inventory i) {
 		this.items = new ArrayList<Item>();
 		for(Item e : i.getItems()) {
@@ -47,15 +51,15 @@ public class Inventory {
 		occupiedspace = i.getOccupiedspace();
 		this.itemcount = i.getItemcount(); 
 	}
-
+	
 	/**
-	 * Tries to add an item to the inventory. If there isn't enough space it fails and returns false
-	 * True otherwise
-	 * @param i
-	 * @return whether or not the item was added to the inventory. 
-	 */
+	* Tries to add an item to the inventory. If there isn't enough space it fails and returns false
+	* True otherwise
+	* @param i
+	* @return whether or not the item was added to the inventory. 
+	*/
 	public boolean additem(Item i) {
-
+		
 		if(i.getStacksize() <= 0) {
 			return false; 
 		} 
@@ -82,12 +86,12 @@ public class Inventory {
 		}
 		return false;
 	}
-
+	
 	/**
-	 * Tries to add multiple items to the inventory
-	 * @param inv
-	 * @return
-	 */
+	* Tries to add multiple items to the inventory
+	* @param inv
+	* @return
+	*/
 	public void additem(ArrayList<Item> inv) {
 		verifycontents();
 		for(Item i : inv) {
@@ -96,12 +100,12 @@ public class Inventory {
 			} 
 		}
 	}
-
+	
 	/**
-	 * Tries to add one item of specified type to the inventory
-	 * @param i
-	 * @return
-	 */
+	* Tries to add one item of specified type to the inventory
+	* @param i
+	* @return
+	*/
 	public boolean additem(InventoryItems i) {
 		verifycontents();
 		Item newitem = new Item(i);
@@ -120,13 +124,13 @@ public class Inventory {
 		}
 		return false;
 	}
-
+	
 	/**
-	 * Adds a stack of a specified item to the inventory. 
-	 * @param i
-	 * @param stacksize
-	 * @return
-	 */
+	* Adds a stack of a specified item to the inventory. 
+	* @param i
+	* @param stacksize
+	* @return
+	*/
 	public boolean additem(InventoryItems i, int stacksize) {
 		verifycontents();
 		if(stacksize <= 0) {
@@ -137,7 +141,7 @@ public class Inventory {
 			for(Item e : this.items) {
 				if(e.getName().equals(newitem.getName())) {
 					e.combinestack(newitem.getStacksize());
-
+					
 					return true;
 				}
 			}
@@ -145,30 +149,30 @@ public class Inventory {
 			this.weight += i.getWeight()*newitem.getStacksize();
 			this.occupiedspace += newitem.getVolume()*newitem.getStacksize();
 			this.itemcount+= stacksize; 
-
+			
 			return true;
 		}
 		return false;
 	}
-
+	
 	/**
-	 * Emptys the inventory of all items, sets the volume to 0 and weight to 0
-	 */
+	* Emptys the inventory of all items, sets the volume to 0 and weight to 0
+	*/
 	public void empty() {
 		this.items = new ArrayList<Item>();
 		this.weight = 0;
 		this.itemcount = 0; 
 		this.occupiedspace = 0; 
 	}
-
+	
 	public boolean contains(Item i) {
 		verifycontents();
 		for(Item e : this.items) {
 			if(e.getName().equals(i.getName())) return true;
 		}
-
+		
 		return false;
-
+		
 	}
 	public void removeItem(InventoryItems item, int amount) {
 		for(Item e : this.items) {
@@ -179,7 +183,7 @@ public class Inventory {
 			}
 		}
 	}
-
+	
 	public float getWeight() {
 		weight = 0;
 		verifycontents();
@@ -214,23 +218,23 @@ public class Inventory {
 		verifycontents();
 		return items;
 	}
-
+	
 	/**
-	 * Returns a list of items that are not present in both inventories.
-	 * Will only return items in the paramater inventory. Example: <p>
-	 * inv1 = [yeet, yote, yaint]<p>
-	 * inv2 = [yeet, yaint]<p>
-	 * inv1.getDifferences(inv2) >> []<p>
-	 * inv2.getDifferences(inv1) >> [yote]
-	 * @return
-	 */
+	* Returns a list of items that are not present in both inventories.
+	* Will only return items in the paramater inventory. Example: <p>
+	* inv1 = [yeet, yote, yaint]<p>
+	* inv2 = [yeet, yaint]<p>
+	* inv1.getDifferences(inv2) >> []<p>
+	* inv2.getDifferences(inv1) >> [yote]
+	* @return
+	*/
 	public ArrayList<Item> getDifferences(Inventory comparator){
 		this.verifycontents();
 		comparator.verifycontents();
 		Inventory compcopy = new Inventory(comparator);
 		for(Item i : this.items) {
 			if(compcopy.contains(i))
-				compcopy.removeItem(i.getTemplate(), i.getStacksize());
+			compcopy.removeItem(i.getTemplate(), i.getStacksize());
 		}
 		return compcopy.items;
 	}
@@ -241,13 +245,13 @@ public class Inventory {
 			str+=i.toString()+"\n"; 
 		}
 		return str;
-
+		
 	}
 	/**
-	 * Finds a specific stack of items 
-	 * @param i
-	 * @return
-	 */
+	* Finds a specific stack of items 
+	* @param i
+	* @return
+	*/
 	public Item findItemByType(InventoryItems i) {
 		for(Item i2 : this.items) {
 			if(i2.getName().equals(i.getName())) {
@@ -257,8 +261,8 @@ public class Inventory {
 		return null; 
 	}
 	/**
-	 * Ensures that all items in the inventory are of positive, non-zero quantity. (and removes any that aren't) 
-	 */
+	* Ensures that all items in the inventory are of positive, non-zero quantity. (and removes any that aren't) 
+	*/
 	private void verifycontents() {
 		ArrayList<Item> removals = new ArrayList<Item>(); 
 		for(int i = 0; i < items.size(); i++) {
@@ -271,4 +275,16 @@ public class Inventory {
 			items.remove(i); 
 		}//*/
 	}//ends VerifyContents
+
+	@Override
+	public void write(Json json) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		// TODO Auto-generated method stub
+		
+	}
 }//ends class

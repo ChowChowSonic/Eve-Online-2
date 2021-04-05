@@ -3,6 +3,7 @@ package my.gdx.server;
 import java.io.Console;
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -25,8 +26,9 @@ import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 
 public class Server extends ApplicationAdapter{
+    public static ArrayList<Entity> entities = new ArrayList<Entity>();
+    
     private static Inventory materialcensus, usedmaterials, vanishedmaterials;	
-    private static ArrayList<Entity> entities = new ArrayList<Entity>();
     private static SpriteBatch textrenderer;
     private static BitmapFont font; 
     private static int logposition = 0;
@@ -45,7 +47,12 @@ public class Server extends ApplicationAdapter{
         materialcensus.additem(new Item(InventoryItems.Gold, 1000));
         ServerAntenna antenna = new ServerAntenna(26000);
         antenna.start();
+        try{
+        appendToLogs(InetAddress.getLocalHost().toString());
         
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         super.create();
     }
     
