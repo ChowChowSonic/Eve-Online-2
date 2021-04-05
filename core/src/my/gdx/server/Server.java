@@ -2,9 +2,13 @@ package my.gdx.server;
 
 import java.io.Console;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -15,6 +19,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Json;
 
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Debris;
@@ -27,7 +32,10 @@ import my.gdx.game.inventory.Item;
 
 public class Server extends ApplicationAdapter{
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
-    
+    public static final File ENTITYFILE = new File(Gdx.files.internal("Entities.txt").path();
+
+    private static FileOutputStream writer;
+    private static ObjectOutputStream objectwriter; 
     private static Inventory materialcensus, usedmaterials, vanishedmaterials;	
     private static SpriteBatch textrenderer;
     private static BitmapFont font; 
@@ -49,7 +57,8 @@ public class Server extends ApplicationAdapter{
         antenna.start();
         try{
         appendToLogs(InetAddress.getLocalHost().toString());
-        
+        writer = new FileOutputStream(ENTITYFILE);
+        objectwriter = new ObjectOutputStream(writer);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -77,7 +86,12 @@ public class Server extends ApplicationAdapter{
                 usedmaterials.additem(e.inventory.getItems()); 
             }
             e.update(Gdx.graphics.getDeltaTime());
-            
+            try {
+                objectwriter.writeObject(e);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
         }
         runItemCensus();
         

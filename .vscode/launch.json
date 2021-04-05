@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ServerLauncher",
+            "request": "launch",
+            "mainClass": "my.gdx.game.desktop.ServerLauncher",
+            "projectName": "Eve-Online-2"
+        },
+        {
+            "type": "java",
             "name": "Launch MyServer",
             "request": "launch",
             "mainClass": "my.gdx.server.MyServer",

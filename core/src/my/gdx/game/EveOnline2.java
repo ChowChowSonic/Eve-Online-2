@@ -1,5 +1,6 @@
 package my.gdx.game;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -38,11 +39,10 @@ import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 import my.gdx.game.inventory.Inventory;
-import my.gdx.server.SerializedEntity;
-
 public class EveOnline2 extends ApplicationAdapter{
 
 	public static AssetManager manager;
+	
 	public static ModelBuilder builder;
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 

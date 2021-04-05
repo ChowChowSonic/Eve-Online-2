@@ -20,6 +20,7 @@ public abstract class Entity implements Serializable{
 	public static enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ}
 	public Inventory inventory;
 	protected Vector3 pos,vel,accel;
+	private float x, y, z;
 	protected Model model;
 	protected ModelInstance instance; 
 	protected EntityType type; 
@@ -87,6 +88,9 @@ public abstract class Entity implements Serializable{
 	@Override
     public void write(Json json) {
         // TODO Auto-generated method stub
+		x = this.pos.x;
+		y = this.pos.y;
+		z = this.pos.z;
         json.toJson(this);
     }
 
@@ -94,6 +98,7 @@ public abstract class Entity implements Serializable{
     public void read(Json json, JsonValue jsonData) {
         // TODO Auto-generated method stub
         json.readFields(this.getClass(), jsonData);
+		this.pos = new Vector3(x, y, z); 
     }
 
 	public boolean equals(Entity e){
