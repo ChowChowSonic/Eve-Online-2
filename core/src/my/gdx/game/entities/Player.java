@@ -15,8 +15,8 @@ public class Player extends Entity{
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
 	protected Entity tetheringstation = null; 
 	protected Vector3 camrotation = EveOnline2.getCamRotation();
-	public Player(Model model, EntityType type) {
-		super(model, type);
+	public Player(Model model, EntityType type, long ID) {
+		super(model, type, ID);
 		this.mass = basemass;
 		this.size = 1f;
 		this.setPos(6, 0, 0);

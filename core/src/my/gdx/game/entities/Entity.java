@@ -7,35 +7,41 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 
-import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
+import my.gdx.server.SerializedEntity;
 
 public abstract class Entity{
 	/**
 	 * One meter in length, as defined by me
 	 */
 	public static final float METER = 0.00005f;
+	public static enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ}
 	public Inventory inventory;
 	protected Vector3 pos,vel,accel;
 	protected Model model;
 	protected ModelInstance instance; 
-	
-
-	public enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ}
 	protected EntityType type; 
 	protected float mass;
 	protected float size;
-	
-	public Entity(Model model, EntityType type){
+	protected final long ID; 
+
+	public Entity(Model model, EntityType type, long id){
 		this.type = type;
 		this.model = model; 
 		instance = new ModelInstance(model);
 		pos = new Vector3();
 		vel = new Vector3();
 		accel = new Vector3();
+		ID = id;
 	}
 
-	public Entity(Vector3 position, Model model, EntityType type) {
+	public Entity(SerializedEntity e){
+		this.ID = e.getID();
+		this.pos = e.getpos(); 
+		this.type = e.getType(); 
+	}
+
+	public Entity(Vector3 position, Model model, EntityType type, long id) {
 		// TODO Auto-generated constructor stub
 		this.type = type;
 		this.model = model; 
@@ -43,6 +49,7 @@ public abstract class Entity{
 		pos = new Vector3(position);
 		vel = new Vector3();
 		accel = new Vector3();
+		ID = id; 
 	}
 
 	public void update(float deltaTime) {
@@ -80,6 +87,10 @@ public abstract class Entity{
 		}
 		return false;
 
+	}
+
+	public boolean equals(Entity e){
+		return this.ID == e.ID; 
 	}
 
 	//getters, setters and adders
@@ -151,6 +162,10 @@ public abstract class Entity{
 	//Entity Type
 	public EntityType getEntityType() {
 		return this.type; 
+	}
+
+	public long getID(){
+		return ID;
 	}
 	
 }

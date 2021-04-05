@@ -38,9 +38,11 @@ import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 import my.gdx.game.inventory.Inventory;
+import my.gdx.server.SerializedEntity;
 
 public class EveOnline2 extends ApplicationAdapter{
-	
+
+	public static AssetManager manager;
 	public static ModelBuilder builder;
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
@@ -49,7 +51,6 @@ public class EveOnline2 extends ApplicationAdapter{
 	
 	private static Camera cam;
 	private static ArrayList<Entity> entities = new ArrayList<Entity>();
-	private static AssetManager manager;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	private ModelBatch batch;
@@ -59,6 +60,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	private SpriteBatch textrenderer;
 	private Environment env; 
 	private float cameradist = 3f;
+	private ClientAntenna connection; 
 	
 	/*
 	* Reminder:
@@ -82,14 +84,14 @@ public class EveOnline2 extends ApplicationAdapter{
 		manager.load("SpaceStation.obj", Model.class);
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
-		
+		System.out.println(manager.get("SpaceStation.obj", Model.class).toString() + "/" + manager.get("ship.obj", Model.class).toString());
 		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 		ColorAttribute.createSpecular(1, 1, 1, 1),
 		FloatAttribute.createShininess(8f));
 		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
 		
-		//add the player
-		EveOnline2.addEntity(new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER));
+		//Connect to the server & add the player
+		connection = new ClientAntenna("localhost", 26000); 
 		player = this.getPlayer();
 		
 		env = new Environment();
@@ -102,16 +104,16 @@ public class EveOnline2 extends ApplicationAdapter{
 		ColorAttribute.createSpecular(1, 1, 1, 1),
 		FloatAttribute.createShininess(100f));
 		object = builder.createSphere(500f, 500f, 500f, 100, 100, material, attributes);
-		EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
+		//EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
 		
 		//add a station & an asteroid
-		EveOnline2.addEntity(new Station(new Vector3(2000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
+		//EveOnline2.addEntity(new Station(new Vector3(2000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
 		
 		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 		ColorAttribute.createSpecular(1, 1, 1, 1),
 		FloatAttribute.createShininess(100f));		
 		object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
-		EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10) ); 
+		EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10, 1L)); 
 		
 		//add the background+HUD
 		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));
@@ -276,7 +278,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			return (Player) e;
 		}
 	}
-	Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER);
+	Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER, 1L);
 	addEntity(p);
 	return p;
 }
@@ -290,16 +292,26 @@ private void runItemCensus() {
 	
 	
 	if(vanishedmaterials.getItemcount() > 100) {
-		addEntity(new Debris( new Vector3(700, 5, 0), 
+		/*addEntity(new Debris( new Vector3(700, 5, 0), 
 		builder.createSphere(15, 15, 15, 10, 10, new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 		ColorAttribute.createSpecular(1, 1, 1, 1),FloatAttribute.createShininess(8f)), attributes), 
 		vanishedmaterials.getItems(),15));
-		vanishedmaterials.empty();
+		vanishedmaterials.empty();*/
 		//System.out.println("Available: "+materialcensus.toString() + "\nUsed: "+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
 		//System.out.println("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
 		//System.out.println("Asteroid Spawned!");
 	}
 }//ends runItemCensus()
+
+public static void addEntity(SerializedEntity e){
+	for(int i =0; i < entities.size(); i++){
+		Entity c = entities.get(i); 
+		if(e.getID() == c.getID()){
+			c.setPos(e.getpos());
+		}
+	}
+	//addEntity(new Entity(e));
+}
 
 public static void addHUD(Hud h){
 	if(!windows.contains(h))

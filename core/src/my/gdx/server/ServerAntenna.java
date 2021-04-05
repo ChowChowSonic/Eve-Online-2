@@ -2,8 +2,9 @@ package my.gdx.server;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 public class ServerAntenna extends Thread{ 
-    ServerSocket server;
+    ServerSocket socket;
     int port;
     public ServerAntenna(int port){
         this.port = port; 
@@ -12,14 +13,14 @@ public class ServerAntenna extends Thread{
     @Override
     public void run(){
         try{
-        server = new ServerSocket(port); 
-        Server.appendToLogs("Server successfully created on "+server);
+        socket = new ServerSocket(port); 
+        Server.appendToLogs("Server successfully created on "+socket);
         }catch(Exception e){
             e.printStackTrace();
         }
         while(true){
             try {
-                Socket user = server.accept();
+                Socket user = socket.accept();
                 Server.appendToLogs("User successfully connected on port "+user.getPort());
                 Servant usersocket = new Servant(user);
                 usersocket.run();
@@ -35,7 +36,7 @@ public class ServerAntenna extends Thread{
 
     public void close(){
         try {
-            server.close();
+            socket.close();
             System.exit(0);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -53,9 +54,9 @@ class Servant extends Thread{
     @Override
     public void run(){
         try{
-            ObjectInputStream incoming = new ObjectInputStream(user.getInputStream());
+            ObjectOutputStream outgoing = new ObjectOutputStream();
             //incoming.readObject(); 
-            System.out.println(incoming.toString());
+            //System.out.println(incoming.toString());
         }catch(Exception e){
             e.printStackTrace();
         }

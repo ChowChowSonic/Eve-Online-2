@@ -13,8 +13,8 @@ public class CelestialObject extends Entity {
 	protected Material material;
 	protected final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 
-	public CelestialObject(Vector3 position, Model model, float mass, float radius) {
-		super(model, EntityType.CELESTIALOBJ);
+	public CelestialObject(Vector3 position, Model model, float mass, float radius, long ID) {
+		super(model, EntityType.CELESTIALOBJ, ID);
 		material = model.materials.get(0);
 		this.pos = position;
 		this.setMass(mass);
