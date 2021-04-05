@@ -4,9 +4,8 @@ import java.net.*;
 import java.util.ArrayList;
 
 import my.gdx.game.entities.Entity;
-import my.gdx.server.SerializedEntity;
 import my.gdx.game.entities.Player;
-public class ClientAntenna extends Thread{ 
+public class ClientAntenna extends Thread{  
     private Socket clientSocket;
     private DataOutputStream outgoing; 
     private ObjectInputStream incoming; 
@@ -35,6 +34,11 @@ public class ClientAntenna extends Thread{
             e2.printStackTrace();
         }
         return null;
+    }
+
+    public void ping(Key k){
+        outgoing.writeLong(k);
+            outgoing.flush(); +
     }
     
     @Override 

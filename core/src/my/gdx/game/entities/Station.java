@@ -7,11 +7,12 @@ import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.DockingButton;
 import my.gdx.game.EveOnline2;
 
-public class Station extends CelestialObject{
+public class Station extends CelestialObject implements Serializable{
 	float tetherradius;
 	Entity bobbers[];
 	Model bobbermodel = EveOnline2.builder.createSphere(1f, 1f, 1f, 5, 5,

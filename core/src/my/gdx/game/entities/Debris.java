@@ -5,13 +5,17 @@ import java.util.Random;
 
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 
-public class Debris extends Entity{
-	Random RNG = new Random(); 
+public class Debris extends Entity implements Serializable{
+
+	static Random RNG = new Random(); 
 	protected static final InventoryItems[] defaultpossiblecontents =
 			   {InventoryItems.Iron, InventoryItems.Cobalt, InventoryItems.Nickel, InventoryItems.Silver, InventoryItems.Gold, InventoryItems.Platinum,
 				InventoryItems.Palladium, InventoryItems.Copper, InventoryItems.Tantalum, InventoryItems.Aluminum, InventoryItems.Tin, InventoryItems.Zinc, InventoryItems.Neodymium}; 
@@ -58,5 +62,15 @@ public class Debris extends Entity{
 			this.mass+=i.getWeight(); 
 		}
 	}
+
+	@Override
+    public void write(Json json) {
+        super.write(json);
+	}
+
+    @Override
+    public void read(Json json, JsonValue jsonData) {
+        super.read(json, jsonData);
+    }
 	
 }

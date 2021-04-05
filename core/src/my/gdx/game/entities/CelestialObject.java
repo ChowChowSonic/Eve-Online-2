@@ -5,10 +5,11 @@ import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.EveOnline2;
 
-public class CelestialObject extends Entity {
+public class CelestialObject extends Entity implements Serializable{
 
 	protected Material material;
 	protected final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;

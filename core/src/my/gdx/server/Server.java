@@ -1,14 +1,11 @@
 package my.gdx.server;
 
-import java.io.Console;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -32,7 +29,7 @@ import my.gdx.game.inventory.Item;
 
 public class Server extends ApplicationAdapter{
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
-    public static final File ENTITYFILE = new File(Gdx.files.internal("Entities.txt").path();
+    public static File ENTITYFILE;
 
     private static FileOutputStream writer;
     private static ObjectOutputStream objectwriter; 
@@ -57,6 +54,7 @@ public class Server extends ApplicationAdapter{
         antenna.start();
         try{
         appendToLogs(InetAddress.getLocalHost().toString());
+        ENTITYFILE = new File(Gdx.files.internal("Entities.txt").path());
         writer = new FileOutputStream(ENTITYFILE);
         objectwriter = new ObjectOutputStream(writer);
         }catch(Exception e){

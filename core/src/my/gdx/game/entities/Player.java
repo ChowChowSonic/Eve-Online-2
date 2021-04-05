@@ -5,11 +5,12 @@ import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
 
-public class Player extends Entity{
+public class Player extends Entity implements Serializable{
 	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;

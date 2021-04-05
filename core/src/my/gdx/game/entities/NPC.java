@@ -2,9 +2,10 @@ package my.gdx.game.entities;
 
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 
-public class NPC extends Entity{
+public class NPC extends Entity implements Serializable{
 
 	public NPC(Model model, EntityType type, long ID) {
 		super(model, type, ID);

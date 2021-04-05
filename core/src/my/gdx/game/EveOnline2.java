@@ -1,6 +1,5 @@
 package my.gdx.game;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -39,18 +38,19 @@ import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 import my.gdx.game.inventory.Inventory;
-public class EveOnline2 extends ApplicationAdapter{
 
-	public static AssetManager manager;
+public class EveOnline2 extends ApplicationAdapter{
 	
+	public static ArrayList<Entity> entities = new ArrayList<Entity>();
+	public static AssetManager manager;
 	public static ModelBuilder builder;
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
 	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
 	public final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	
+
 	private static Camera cam;
-	private static ArrayList<Entity> entities = new ArrayList<Entity>();
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	private ModelBatch batch;
@@ -91,7 +91,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
 		
 		//Connect to the server & add the player
-		connection = new ClientAntenna("localhost", 26000); 
+		connection = new ClientAntenna("DESKTOP-E2274E2", 26000); 
 		player = this.getPlayer();
 		
 		env = new Environment();
