@@ -22,11 +22,11 @@ public class ClientAntenna extends Thread{
         }
     }
     
-    public SerializedEntity requestEntity(long ID) {
+    public Entity requestEntity(long ID) {
         try {
             outgoing.writeLong(ID);
             outgoing.flush(); 
-            return (SerializedEntity) incoming.readObject(); 
+            return (Entity) incoming.readObject(); 
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -36,9 +36,9 @@ public class ClientAntenna extends Thread{
         return null;
     }
 
-    public void ping(Key k){
-        outgoing.writeLong(k);
-            outgoing.flush(); +
+    public void ping(Long k){
+       // outgoing.writeLong(k);
+       //     outgoing.flush();
     }
     
     @Override 

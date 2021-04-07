@@ -91,7 +91,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
 		
 		//Connect to the server & add the player
-		connection = new ClientAntenna("DESKTOP-E2274E2", 26000); 
+		connection = new ClientAntenna("Server", 26000); 
 		player = this.getPlayer();
 		
 		env = new Environment();
@@ -109,11 +109,11 @@ public class EveOnline2 extends ApplicationAdapter{
 		//add a station & an asteroid
 		//EveOnline2.addEntity(new Station(new Vector3(2000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50, 100));
 		
-		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
-		ColorAttribute.createSpecular(1, 1, 1, 1),
-		FloatAttribute.createShininess(100f));		
-		object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
-		EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10, 1L)); 
+		//material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
+		//ColorAttribute.createSpecular(1, 1, 1, 1),
+		//FloatAttribute.createShininess(100f));		
+		//object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
+		//EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10, 1L)); 
 		
 		//add the background+HUD
 		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));
