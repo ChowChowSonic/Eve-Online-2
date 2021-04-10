@@ -1,10 +1,7 @@
 package my.gdx.game.inventory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-
-import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
 
 public class Inventory implements Serializable{
 	private float weight, occupiedspace, capacity, itemcount;
@@ -276,15 +273,4 @@ public class Inventory implements Serializable{
 		}//*/
 	}//ends VerifyContents
 
-	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void read(Json json, JsonValue jsonData) {
-		// TODO Auto-generated method stub
-		
-	}
 }//ends class

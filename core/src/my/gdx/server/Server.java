@@ -79,7 +79,8 @@ public class Server extends ApplicationAdapter{
                 }*/
             }
         }
-        for(Entity e : entities) {
+        for(int i =0; i < entities.size(); i++) {
+            Entity e = entities.get(i); 
             if(e.inventory != null) {
                 usedmaterials.additem(e.inventory.getItems()); 
             }
@@ -89,6 +90,7 @@ public class Server extends ApplicationAdapter{
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
+                System.exit(1);
             }
         }
         runItemCensus();

@@ -13,64 +13,53 @@ import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 
-public class Debris extends Entity implements Serializable{
-
-	static Random RNG = new Random(); 
-	protected static final InventoryItems[] defaultpossiblecontents =
-			   {InventoryItems.Iron, InventoryItems.Cobalt, InventoryItems.Nickel, InventoryItems.Silver, InventoryItems.Gold, InventoryItems.Platinum,
-				InventoryItems.Palladium, InventoryItems.Copper, InventoryItems.Tantalum, InventoryItems.Aluminum, InventoryItems.Tin, InventoryItems.Zinc, InventoryItems.Neodymium}; 
-
-	/**
-	 * Creates a mineable entity
-	 * @param model
-	 * @param type
-	 */
-	public Debris(Vector3 position, Model model, ArrayList<Item> contents, int radius, long ID) {
-		super(model, EntityType.ASTEROID, ID);
-		this.pos = position; 
-		this.inventory = new Inventory(contents, 999999999);  
-		this.size = radius; 
-		for(Item i : contents) {
-			this.mass+=i.getWeight(); 
-		}
-		// TODO Auto-generated constructor stub
-	}
-
-	public Debris(Vector3 position, Model model, Inventory contents, int radius, long ID) {
-		super(model, EntityType.ASTEROID, ID);
-		this.pos = position; 
-		this.inventory = contents;  
-		this.size = radius; 
-		for(Item i : contents.getItems()) {
-			this.mass+=i.getWeight(); 
-		}
-		// TODO Auto-generated constructor stub
-	}
-	
-	public Debris(Vector3 position, Model model, int radius, long ID) {
-		super(model, EntityType.ASTEROID, ID); 
-		this.size = radius; 
-		this.pos = position;
-		int numberofcontents = RNG.nextInt(defaultpossiblecontents.length-1)+1;
-		this.inventory = new Inventory(999999999);
-		for(int i =0; i < numberofcontents; i++) {
-			int itemtoadd = RNG.nextInt(defaultpossiblecontents.length);
-			this.inventory.additem(defaultpossiblecontents[itemtoadd], RNG.nextInt(1000-1)+1);
+public class Debris extends Entity{
+	static transient Random RNG = new Random(); 
+	protected static final transient InventoryItems[] defaultpossiblecontents =
+	{InventoryItems.Iron, InventoryItems.Cobalt, InventoryItems.Nickel, InventoryItems.Silver, InventoryItems.Gold, InventoryItems.Platinum,
+		InventoryItems.Palladium, InventoryItems.Copper, InventoryItems.Tantalum, InventoryItems.Aluminum, InventoryItems.Tin, InventoryItems.Zinc, InventoryItems.Neodymium}; 
+		
+		/**
+		* Creates a mineable entity
+		* @param model
+		* @param type
+		*/
+		public Debris(Vector3 position, Model model, ArrayList<Item> contents, int radius, long ID) {
+			super(model, EntityType.ASTEROID, ID);
+			this.pos = position; 
+			this.inventory = new Inventory(contents, 999999999);  
+			this.size = radius; 
+			for(Item i : contents) {
+				this.mass+=i.getWeight(); 
+			}
+			// TODO Auto-generated constructor stub
 		}
 		
-		for(Item i : this.inventory.getItems()) {
-			this.mass+=i.getWeight(); 
+		public Debris(Vector3 position, Model model, Inventory contents, int radius, long ID) {
+			super(model, EntityType.ASTEROID, ID);
+			this.pos = position; 
+			this.inventory = contents;  
+			this.size = radius; 
+			for(Item i : contents.getItems()) {
+				this.mass+=i.getWeight(); 
+			}
+			// TODO Auto-generated constructor stub
 		}
+		
+		public Debris(Vector3 position, Model model, int radius, long ID) {
+			super(model, EntityType.ASTEROID, ID); 
+			this.size = radius; 
+			this.pos = position;
+			int numberofcontents = RNG.nextInt(defaultpossiblecontents.length-1)+1;
+			this.inventory = new Inventory(999999999);
+			for(int i =0; i < numberofcontents; i++) {
+				int itemtoadd = RNG.nextInt(defaultpossiblecontents.length);
+				this.inventory.additem(defaultpossiblecontents[itemtoadd], RNG.nextInt(1000-1)+1);
+			}
+			
+			for(Item i : this.inventory.getItems()) {
+				this.mass+=i.getWeight(); 
+			}
+		}
+		
 	}
-
-	@Override
-    public void write(Json json) {
-        super.write(json);
-	}
-
-    @Override
-    public void read(Json json, JsonValue jsonData) {
-        super.read(json, jsonData);
-    }
-	
-}

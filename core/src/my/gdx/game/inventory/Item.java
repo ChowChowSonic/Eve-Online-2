@@ -1,10 +1,8 @@
 package my.gdx.game.inventory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.JsonValue;
 /**
  * A wrapper/utility class for the InventoryItems enum.
  * @author dmcdc
@@ -63,16 +61,6 @@ public class Item implements Serializable{
 	@Override
 	public String toString() {
 		return this.getName() +" x"+ this.getStacksize() +": " +this.getVolume()+" m3, "+this.getWeight()+" kg";
-		
-	}
-	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void read(Json json, JsonValue jsonData) {
-		// TODO Auto-generated method stub
 		
 	}
 }

@@ -1,6 +1,8 @@
 package my.gdx.game.entities;
 
 
+import java.io.Serializable;
+
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Matrix4;
@@ -8,25 +10,28 @@ import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.inventory.Inventory;
 
 public abstract class Entity implements Serializable{
+	private float x, y, z;
+	
+	protected transient Vector3 pos,vel,accel;
+	protected transient Model model;
+	protected transient ModelInstance instance; 
+	protected EntityType type; 
+	protected float mass;
+	protected float size;
+	protected final long ID; 
+	protected static final long serialVersionUID = 1L;
+	
 	/**
 	 * One meter in length, as defined by me
 	 */
 	public static final float METER = 0.00005f;
 	public static enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ}
 	public Inventory inventory;
-	protected Vector3 pos,vel,accel;
-	private float x, y, z;
-	protected Model model;
-	protected ModelInstance instance; 
-	protected EntityType type; 
-	protected float mass;
-	protected float size;
-	protected final long ID; 
+	 
 
 	public Entity(Model model, EntityType type, long id){
 		this.type = type;
@@ -85,22 +90,12 @@ public abstract class Entity implements Serializable{
 		return false;
 
 	}
+
 	@Override
-    public void write(Json json) {
-        // TODO Auto-generated method stub
-		x = this.pos.x;
-		y = this.pos.y;
-		z = this.pos.z;
-        json.toJson(this);
-    }
-
-    @Override
-    public void read(Json json, JsonValue jsonData) {
-        // TODO Auto-generated method stub
-        json.readFields(this.getClass(), jsonData);
-		this.pos = new Vector3(x, y, z); 
-    }
-
+	public String toString(){
+		String str = "";//Do something here later. 
+		return str; 
+	}
 	public boolean equals(Entity e){
 		return this.ID == e.ID; 
 	}
