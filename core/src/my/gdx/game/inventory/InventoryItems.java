@@ -27,6 +27,7 @@ public enum InventoryItems{
 	private float weight;
 	private float size;
 	private ArrayList<InventoryItems> components;
+	private static final long serialVersionUID = 1L;
 	
 	InventoryItems(String name, float MetricTons, float cubicm3) {
 		this.name = name;

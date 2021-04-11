@@ -10,12 +10,13 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
 
-public class Player extends Entity implements Serializable{
+public class Player extends Entity {
 	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
 	protected Entity tetheringstation = null; 
 	protected Vector3 camrotation = EveOnline2.getCamRotation();
+	private static final long serialVersionUID = 1L;
 	public Player(Model model, EntityType type, long ID) {
 		super(model, type, ID);
 		this.mass = basemass;
@@ -38,6 +39,7 @@ public class Player extends Entity implements Serializable{
 		this.mass = basemass+invmass;
 		totalDeltaTime += deltaTime;
 		camrotation = EveOnline2.getCamRotation();
+		
 		
 		//Movement controls
 		if(Gdx.input.isKeyJustPressed(Keys.W) && !justpressedboost) {

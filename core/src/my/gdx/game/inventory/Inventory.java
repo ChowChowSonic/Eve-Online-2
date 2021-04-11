@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Inventory implements Serializable{
 	private float weight, occupiedspace, capacity, itemcount;
+	private static final long serialVersionUID = 1L;
 	ArrayList<Item> items; 	
 	/**
 	* create a new, empty inventory of specified size
