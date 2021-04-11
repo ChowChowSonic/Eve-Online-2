@@ -37,6 +37,7 @@ import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
+import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 
 public class EveOnline2 extends ApplicationAdapter{
@@ -47,6 +48,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
 	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
+	public static Model DEFAULTMODEL; 
 	public final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	
 
@@ -61,7 +63,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	private Environment env; 
 	private float cameradist = 3f;
 	private ClientAntenna connection; 
-	
+	private static final long serialVersionUID = 1L;//I need this for some reason and I don't know why.
 	/*
 	* Reminder:
 	* X = -<------------------>+
@@ -84,14 +86,17 @@ public class EveOnline2 extends ApplicationAdapter{
 		manager.load("SpaceStation.obj", Model.class);
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
-		System.out.println(manager.get("SpaceStation.obj", Model.class).toString() + "/" + manager.get("ship.obj", Model.class).toString());
+		DEFAULTMODEL = manager.get("ship.obj", Model.class); 
+		//System.out.println(manager.get("SpaceStation.obj", Model.class).toString() + "/" + manager.get("ship.obj", Model.class).toString());
 		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
 		ColorAttribute.createSpecular(1, 1, 1, 1),
 		FloatAttribute.createShininess(8f));
 		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
 		
 		//Connect to the server & add the player
-		connection = new ClientAntenna("Server", 26000); 
+		System.out.println("Attempting to connect...");
+		connection = new ClientAntenna(/*"Server"*/ "DESKTOP-E2274E2", 26000); 
+		System.out.println("Connected!");
 		player = this.getPlayer();
 		
 		env = new Environment();
@@ -99,11 +104,10 @@ public class EveOnline2 extends ApplicationAdapter{
 		env.add(new DirectionalLight().set(0.95f, 0.8f, 0.5f, 0f, 0f, 0f));
 		
 		//add the sun
-		player.setPos(600, 0, 0);
-		material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("2k_sun.jpg"))), 
+		/*material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("2k_sun.jpg"))), 
 		ColorAttribute.createSpecular(1, 1, 1, 1),
 		FloatAttribute.createShininess(100f));
-		object = builder.createSphere(500f, 500f, 500f, 100, 100, material, attributes);
+		object = builder.createSphere(500f, 500f, 500f, 100, 100, material, attributes);*/
 		//EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000, 500f));
 		
 		//add a station & an asteroid
@@ -252,6 +256,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		batch.dispose();
 		textrenderer.dispose();
 		hudrenderer.dispose();
+		connection.close();
 		System.gc();
 		System.exit(1);
 	}
@@ -265,11 +270,36 @@ public class EveOnline2 extends ApplicationAdapter{
 	}
 	
 	public static void addEntity(Entity e) {
-		if(e instanceof CelestialObject)
-		entities.add(0, e);
-		else if(e instanceof Player) {
-			entities.add(entities.size(), e);
-		}else entities.add(entities.size(), e);
+		entities.add(e);
+		sortEntities();
+	}
+
+	public static void sortEntities(){
+        ArrayList<Entity> newlist = new ArrayList<Entity>(); 
+        int playersinlist = 0;
+        for(Entity e : entities){
+            if(e.getEntityType() == EntityType.CELESTIALOBJ){
+                newlist.add(0,e); 
+            }else if(e.getEntityType() == EntityType.PLAYER){
+                newlist.add(newlist.size(), e);
+                playersinlist++;
+            }else{
+                if(newlist.size() > 0){
+                    newlist.add(newlist.size()-(playersinlist+1), e);
+                }else newlist.add(e);
+            }
+            entities = newlist; 
+        }
+    }
+
+	public static void updateEntity(Entity e){
+		for(int i = 0; i < entities.size(); i++){
+			if(e.equals(entities.get(i))){
+				entities.set(i, e);
+				return; 
+			}
+		}
+		addEntity(e);
 	}
 	
 	public Player getPlayer() {
@@ -278,9 +308,9 @@ public class EveOnline2 extends ApplicationAdapter{
 			return (Player) e;
 		}
 	}
-	Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER, 1L);
-	addEntity(p);
-	return p;
+	//Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER, 1L);
+	//addEntity(p);
+	return null;
 }
 
 private void runItemCensus() {
@@ -302,16 +332,6 @@ private void runItemCensus() {
 		//System.out.println("Asteroid Spawned!");
 	}
 }//ends runItemCensus()
-
-public static void addEntity(SerializedEntity e){
-	for(int i =0; i < entities.size(); i++){
-		Entity c = entities.get(i); 
-		if(e.getID() == c.getID()){
-			c.setPos(e.getpos());
-		}
-	}
-	//addEntity(new Entity(e));
-}
 
 public static void addHUD(Hud h){
 	if(!windows.contains(h))

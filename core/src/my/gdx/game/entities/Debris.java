@@ -18,7 +18,7 @@ public class Debris extends Entity{
 	protected static final transient InventoryItems[] defaultpossiblecontents =
 	{InventoryItems.Iron, InventoryItems.Cobalt, InventoryItems.Nickel, InventoryItems.Silver, InventoryItems.Gold, InventoryItems.Platinum,
 		InventoryItems.Palladium, InventoryItems.Copper, InventoryItems.Tantalum, InventoryItems.Aluminum, InventoryItems.Tin, InventoryItems.Zinc, InventoryItems.Neodymium}; 
-		
+		private static final long serialVersionUID = 6529685098267757690L;
 		/**
 		* Creates a mineable entity
 		* @param model

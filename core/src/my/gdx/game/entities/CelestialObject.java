@@ -9,10 +9,11 @@ import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.EveOnline2;
 
-public class CelestialObject extends Entity implements Serializable{
+public class CelestialObject extends Entity{
 
 	protected Material material;
 	protected final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
+	private static final long serialVersionUID = 6529685098267757690L;
 
 	public CelestialObject(Vector3 position, Model model, float mass, float radius, long ID) {
 		super(model, EntityType.CELESTIALOBJ, ID);

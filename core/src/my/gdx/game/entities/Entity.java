@@ -11,13 +11,14 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
+import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
 
 public abstract class Entity implements Serializable{
 	private float x, y, z;
 	
 	protected transient Vector3 pos,vel,accel;
-	protected transient Model model;
+	protected transient Model model = EveOnline2.DEFAULTMODEL;
 	protected transient ModelInstance instance; 
 	protected EntityType type; 
 	protected float mass;

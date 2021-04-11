@@ -10,12 +10,19 @@ public class ClientAntenna extends Thread{
     private DataOutputStream outgoing; 
     private ObjectInputStream incoming; 
     private boolean isRunning = false;
+    private static final long serialVersionUID = 1L;
     
     public ClientAntenna(String ip, int port) {
         try{
+            System.out.println("Attempting to create socket...");
             clientSocket = new Socket(ip, port);
+            System.out.println("Socket successfully created");
+            incoming = new ObjectInputStream(clientSocket.getInputStream()); 
+            System.out.println("InputStream successfully created");
             outgoing = new DataOutputStream(clientSocket.getOutputStream());
-            EveOnline2.addEntity(requestEntity(0L));
+            System.out.println("Outputstream successfully created");
+            EveOnline2.addEntity( (Player)requestEntity(0L));
+            
             this.isRunning = true; 
         }catch(Exception e){
             e.printStackTrace();
@@ -40,11 +47,26 @@ public class ClientAntenna extends Thread{
        // outgoing.writeLong(k);
        //     outgoing.flush();
     }
+    public void close(){
+        try {
+            this.clientSocket.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     
     @Override 
     public void run(){
         while(isRunning){
-           // incoming.readObject();
+            try {
+                Object o = incoming.readObject(); 
+                System.out.println(o.toString());
+                EveOnline2.updateEntity( (Entity) o);
+            } catch (ClassNotFoundException | IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 }//ends class

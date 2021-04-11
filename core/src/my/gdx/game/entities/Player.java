@@ -17,6 +17,7 @@ public class Player extends Entity {
 	protected Entity tetheringstation = null; 
 	protected Vector3 camrotation = EveOnline2.getCamRotation();
 	private static final long serialVersionUID = 1L;
+	
 	public Player(Model model, EntityType type, long ID) {
 		super(model, type, ID);
 		this.mass = basemass;
