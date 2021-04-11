@@ -13,29 +13,17 @@ public class ServerAntenna extends Thread{
     public FileOutputStream writer;
     public static ObjectOutputStream objectwriter; 
     private static final long serialVersionUID = 1L; 
-
+    ArrayList<Servant> connections;
     public ServerAntenna(int port){
         this.port = port; 
-        try {
-            writer = new FileOutputStream(Server.ENTITYFILE);
-            objectwriter = new ObjectOutputStream(writer);
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            System.exit(1);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            System.exit(1);
-        }
-        
+        connections = new ArrayList<Servant>();
     }
     
     @Override
     public void run(){
         try{
-        socket = new ServerSocket(port); 
-        Server.appendToLogs("Server successfully created on "+socket);
+            socket = new ServerSocket(port); 
+            Server.appendToLogs("Server successfully created on "+socket);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -44,6 +32,7 @@ public class ServerAntenna extends Thread{
                 Socket user = socket.accept();
                 Server.appendToLogs("User successfully connected on port "+user.getPort());
                 Servant usersocket = new Servant(user);
+                connections.add(usersocket);
                 usersocket.run();
                 
             }catch(UnknownHostException ex) {
@@ -53,8 +42,9 @@ public class ServerAntenna extends Thread{
                 e.printStackTrace();
             }//ends try/catch
         }//ends while
+        
     }//ends run
-
+    
     public void close(){
         try {
             socket.close();
@@ -64,6 +54,16 @@ public class ServerAntenna extends Thread{
             e.printStackTrace();
         }
     }
+    public void sendEntity(Entity e){
+        if(connections.size() == 0) return;
+        for(int i =0; i < connections.size(); i++){
+            try{
+                connections.get(i).sendEntity(e);
+            }catch(Exception e2){
+                connections.remove(i);
+            }
+            }
+        }
 }//ends class
 
 class Servant extends Thread{
@@ -76,27 +76,42 @@ class Servant extends Thread{
     public Servant(Socket s){
         user = s; 
         try{
-        this.din = new DataInputStream(s.getInputStream());
-        this.dout = new ObjectOutputStream(s.getOutputStream());
-        userEntity = (Player) Server.getConnectedUser(din.readLong()); 
-        dout.writeObject((Entity) userEntity);
-        dout.flush();
+            this.dout = new ObjectOutputStream(s.getOutputStream());
+            this.din = new DataInputStream(s.getInputStream());
+            userEntity = (Player) Server.getConnectedUser(din.readLong()); 
+            dout.writeObject((Entity) userEntity);
+            dout.flush();
         }catch(Exception e){
             e.printStackTrace();
             Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
             Server.removeEntity(userEntity);
         }
     }
-    
+    private boolean isrunning = true;
     @Override
     public void run(){
+        while(isrunning)
         try{
-            dout = ServerAntenna.objectwriter; 
-            dout.flush();
-        }catch(Exception e){
-            e.printStackTrace();
+            din.readLong(); 
+        }catch(EOFException e){
+            Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
+            Server.removeEntity(userEntity);
             try {
                 user.close();
+                isrunning = false;
+                this.interrupt();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
+            Server.removeEntity(userEntity);
+            try {
+                user.close();
+                isrunning = false;
+                this.interrupt();
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
@@ -104,4 +119,12 @@ class Servant extends Thread{
         }//ends outer catch
     }//ends run
     
+    public void sendEntity(Entity e) throws Exception{
+            dout.reset();
+            dout.writeObject((Entity) e ); 
+            dout.flush();
+    }
+    public boolean isRunning() {
+        return isrunning; 
+    }
 }//ends class

@@ -86,15 +86,7 @@ public class Server extends ApplicationAdapter{
                 usedmaterials.additem(e.inventory.getItems()); 
             }
             e.update(Gdx.graphics.getDeltaTime());
-            try {
-                antenna.objectwriter.reset();
-                antenna.objectwriter.writeObject(e);
-                antenna.objectwriter.flush();
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-                System.exit(1);
-            }
+            antenna.sendEntity(e); 
         }
         runItemCensus();
         
@@ -180,5 +172,4 @@ public class Server extends ApplicationAdapter{
         }
         return p; 
     }
-    
 }
