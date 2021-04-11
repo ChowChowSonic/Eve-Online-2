@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import my.gdx.game.DockingButton;
 import my.gdx.game.EveOnline2;
 
-public class Station extends CelestialObject implements Serializable{
+public class Station extends CelestialObject{
 	float tetherradius;
 	Entity bobbers[];
 	Model bobbermodel = EveOnline2.builder.createSphere(1f, 1f, 1f, 5, 5,

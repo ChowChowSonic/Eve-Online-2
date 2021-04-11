@@ -15,8 +15,6 @@ import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
 
 public abstract class Entity implements Serializable{
-	private float x, y, z;
-	
 	protected transient Vector3 pos,vel,accel;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
 	protected transient ModelInstance instance; 
@@ -112,7 +110,9 @@ public abstract class Entity implements Serializable{
 	}
 	
 	//Position
-	public Vector3 getPos() { return pos; }
+	public Vector3 getPos() { 
+		return pos; 
+	}
 
 	public void setPos(Vector3 newpos) {
 		this.pos = newpos;

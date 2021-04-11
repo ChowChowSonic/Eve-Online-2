@@ -98,7 +98,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		connection = new ClientAntenna(/*"Server"*/ "DESKTOP-E2274E2", 26000); 
 		System.out.println("Connected!");
 		player = this.getPlayer();
-		
+		connection.start();
 		env = new Environment();
 		env.set(new ColorAttribute(ColorAttribute.AmbientLight, Color.YELLOW));
 		env.add(new DirectionalLight().set(0.95f, 0.8f, 0.5f, 0f, 0f, 0f));
@@ -281,8 +281,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		ColorAttribute.createSpecular(1, 1, 1, 1),
 		FloatAttribute.createShininess(100f));
 			m = builder.createSphere(e.getSize(), e.getSize(), e.getSize(), 10, 10, material, attributes);
-			Debris tmp = (Debris) e; 
-			e2 = new Debris(tmp.getPos(), m, tmp.inventory.getItems(), (int)tmp.getSize(), tmp.getID()); 
+			e2 = new Debris(e.getPos(), m, e.inventory.getItems(), (int)e.getSize(), e.getID()); 
 		}else{
 			m = manager.get("ship.obj", Model.class); 
 			e2 = new Player(m, e.getEntityType(), e.getID()); 
@@ -301,23 +300,13 @@ public class EveOnline2 extends ApplicationAdapter{
                 newlist.add(newlist.size(), e);
                 playersinlist++;
             }else{
-                if(newlist.size() > 0){
+                if(newlist.size() > 1){
                     newlist.add(newlist.size()-(playersinlist+1), e);
                 }else newlist.add(e);
             }
             entities = newlist; 
         }
     }
-
-	public static void updateEntity(Entity e){
-		for(int i = 0; i < entities.size(); i++){
-			if(e.equals(entities.get(i))){
-				entities.set(i, e);
-				return; 
-			}
-		}
-		addEntity(e);
-	}
 	
 	public Player getPlayer() {
 		for(Entity e : entities){ {
