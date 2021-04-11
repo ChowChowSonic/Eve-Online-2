@@ -16,6 +16,7 @@ import my.gdx.game.inventory.Inventory;
 
 public abstract class Entity implements Serializable{
 	protected transient Vector3 pos,vel,accel;
+	
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
 	protected transient ModelInstance instance; 
 	protected EntityType type; 
@@ -24,6 +25,8 @@ public abstract class Entity implements Serializable{
 	protected final long ID; 
 	protected static final long serialVersionUID = 1L;
 	
+	/**Internal, non-transient variables meant to update the position of the entity after serialization */
+	protected float x,y,z; 
 	/**
 	 * One meter in length, as defined by me
 	 */
@@ -57,6 +60,9 @@ public abstract class Entity implements Serializable{
 		this.vel = this.vel.add(accel);
 		this.pos = this.pos.add(vel);
 		accel = accel.setZero();
+		if(this.pos != null){
+		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
+		}else {this.pos = new Vector3(x,y,z);}
 		Quaternion quaternion = new Quaternion();
 		if(this.vel.len2()>0) {
 			Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
@@ -90,9 +96,19 @@ public abstract class Entity implements Serializable{
 
 	}
 
+	public void buildEntity(Model m){
+		this.pos = new Vector3(x, y, z);
+		this.setVel(0, 0, 0);
+		this.setAccel(0, 0, 0);
+		this.model = m; 
+		this.instance = new ModelInstance(m, pos); 
+	}
+
 	@Override
 	public String toString(){
-		String str = "";//Do something here later. 
+		String str = "Pos: ";//Do something here later. 
+		str+= this.getPos() + " ";
+		str+= "Type: " +this.getEntityType() + " ID: "+this.getID();  
 		return str; 
 	}
 	public boolean equals(Entity e){
