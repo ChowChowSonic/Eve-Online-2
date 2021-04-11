@@ -42,19 +42,19 @@ import my.gdx.game.inventory.Inventory;
 
 public class EveOnline2 extends ApplicationAdapter{
 	
+	public static Model DEFAULTMODEL; 
 	public static ArrayList<Entity> entities = new ArrayList<Entity>();
 	public static AssetManager manager;
 	public static ModelBuilder builder;
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
 	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
-	public static Model DEFAULTMODEL; 
-	public final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
+	public static final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	
 
 	private static Camera cam;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;//I need this for some reason and I don't know why.
 	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	private ModelBatch batch;
 	private Model object;
@@ -64,7 +64,6 @@ public class EveOnline2 extends ApplicationAdapter{
 	private Environment env; 
 	private float cameradist = 3f;
 	private ClientAntenna connection; 
-	private static final long serialVersionUID = 1L;//I need this for some reason and I don't know why.
 	/*
 	* Reminder:
 	* X = -<------------------>+
@@ -271,7 +270,24 @@ public class EveOnline2 extends ApplicationAdapter{
 	}
 	
 	public static void addEntity(Entity e) {
-		entities.add(e);
+		Material material = null;
+		Model m = new Model();
+		Entity e2 = null; 
+		if(e.getEntityType() == EntityType.PLAYER){
+			m = manager.get("ship.obj", Model.class); 
+			e2 = new Player(m, e.getEntityType(), e.getID()); 
+		}else if(e.getEntityType() == EntityType.ASTEROID){
+			material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
+		ColorAttribute.createSpecular(1, 1, 1, 1),
+		FloatAttribute.createShininess(100f));
+			m = builder.createSphere(e.getSize(), e.getSize(), e.getSize(), 10, 10, material, attributes);
+			Debris tmp = (Debris) e; 
+			e2 = new Debris(tmp.getPos(), m, tmp.inventory.getItems(), (int)tmp.getSize(), tmp.getID()); 
+		}else{
+			m = manager.get("ship.obj", Model.class); 
+			e2 = new Player(m, e.getEntityType(), e.getID()); 
+		}
+		entities.add(e2);
 		sortEntities();
 	}
 

@@ -113,6 +113,10 @@ public class Server extends ApplicationAdapter{
         sortEntities();
         appendToLogs("Entity Spawned:" + e.getEntityType());
     }
+    public static void removeEntity(Entity e){
+        entities.remove(e); 
+        appendToLogs("Entity removed:" + e.getEntityType());
+    }
     
     public static void sortEntities(){
         ArrayList<Entity> newlist = new ArrayList<Entity>(); 

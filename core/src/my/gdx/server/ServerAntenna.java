@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity;
+import my.gdx.game.entities.Player;
 public class ServerAntenna extends Thread{ 
     ServerSocket socket;
     int port;
@@ -70,17 +71,20 @@ class Servant extends Thread{
     DataInputStream din;
     ObjectOutputStream dout;
     private static final long serialVersionUID = 1L;
+    Player userEntity;
     
     public Servant(Socket s){
         user = s; 
         try{
         this.din = new DataInputStream(s.getInputStream());
         this.dout = new ObjectOutputStream(s.getOutputStream());
-        dout.writeObject(Server.getConnectedUser(din.readLong()));
+        userEntity = (Player) Server.getConnectedUser(din.readLong()); 
+        dout.writeObject((Entity) userEntity);
         dout.flush();
         }catch(Exception e){
             e.printStackTrace();
             Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
+            Server.removeEntity(userEntity);
         }
     }
     
@@ -88,7 +92,7 @@ class Servant extends Thread{
     public void run(){
         try{
             dout = ServerAntenna.objectwriter; 
-
+            dout.flush();
         }catch(Exception e){
             e.printStackTrace();
             try {

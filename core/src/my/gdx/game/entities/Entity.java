@@ -122,7 +122,7 @@ public abstract class Entity implements Serializable{
 		this.pos = new Vector3(x,y,z);
 	}
 	
-	//Velcoity
+	//Velocity
 	public Vector3 getVel() {return vel;}
 
 	public void setVel(Vector3 newvel) {
@@ -174,6 +174,15 @@ public abstract class Entity implements Serializable{
 
 	public long getID(){
 		return ID;
+	}
+
+	//size
+	public float getSize(){
+		return this.size;
+	}
+
+	public void setSize(float f){
+		this.size = f;
 	}
 	
 }
