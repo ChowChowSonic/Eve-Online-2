@@ -24,8 +24,18 @@ public class ClientAntenna extends Thread{
             EveOnline2.addEntity( (Player)requestEntity(0L));
             
             this.isRunning = true; 
-        }catch(Exception e){
+        }catch(ConnectException e){
+			System.out.println("Connenction error:");
+			e.printStackTrace();
+			System.exit(1);
+		}catch(UnknownHostException e){
+            System.out.println("Connenction error:");
+			e.printStackTrace();
+			System.exit(1);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
+            System.exit(1);
         }
     }
     

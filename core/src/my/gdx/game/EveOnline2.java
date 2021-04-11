@@ -54,6 +54,7 @@ public class EveOnline2 extends ApplicationAdapter{
 
 	private static Camera cam;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
+	private static final long serialVersionUID = 1L;
 	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	private ModelBatch batch;
 	private Model object;

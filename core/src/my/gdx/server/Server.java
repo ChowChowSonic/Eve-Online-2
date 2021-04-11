@@ -30,9 +30,7 @@ import my.gdx.game.inventory.Item;
 public class Server extends ApplicationAdapter{
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
     public static File ENTITYFILE;
-
-    private static FileOutputStream writer;
-    private static ObjectOutputStream objectwriter; 
+    
     private static Inventory materialcensus, usedmaterials, vanishedmaterials;	
     private static SpriteBatch textrenderer;
     private static BitmapFont font; 
@@ -40,6 +38,8 @@ public class Server extends ApplicationAdapter{
     private static String[] logs = new String[31]; 
     private static final Model VOIDMODEL = new Model();
     private static long nextID = 0L;
+    private static ServerAntenna antenna;
+    private static final long serialVersionUID = 1L; 
     
     public void create() {
         System.out.flush();
@@ -50,16 +50,17 @@ public class Server extends ApplicationAdapter{
         font = new BitmapFont();
         font.setColor(Color.WHITE);
         materialcensus.additem(new Item(InventoryItems.Gold, 1000));
-        ServerAntenna antenna = new ServerAntenna(26000);
-        antenna.start();
         try{
-        appendToLogs(InetAddress.getLocalHost().toString());
-        ENTITYFILE = new File(Gdx.files.internal("Entities.txt").path());
-        writer = new FileOutputStream(ENTITYFILE);
-        objectwriter = new ObjectOutputStream(writer);
+            appendToLogs(InetAddress.getLocalHost().toString());
+            ENTITYFILE = new File(Gdx.files.internal("Entities.txt").path());
+            
         }catch(Exception e){
             e.printStackTrace();
         }
+        
+        antenna = new ServerAntenna(26000);
+        antenna.start();
+        
         super.create();
     }
     
@@ -86,7 +87,9 @@ public class Server extends ApplicationAdapter{
             }
             e.update(Gdx.graphics.getDeltaTime());
             try {
-                objectwriter.writeObject(e);
+                antenna.objectwriter.reset();
+                antenna.objectwriter.writeObject(e);
+                antenna.objectwriter.flush();
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
@@ -106,11 +109,7 @@ public class Server extends ApplicationAdapter{
     }
     
     public static void addEntity(Entity e) {
-        if(e instanceof CelestialObject)
-        entities.add(0, e);
-        else if(e instanceof Player) {
-            entities.add(entities.size(), e);
-        }else entities.add(entities.size(), e);
+        entities.add(e);
         sortEntities();
         appendToLogs("Entity Spawned:" + e.getEntityType());
     }
@@ -130,8 +129,8 @@ public class Server extends ApplicationAdapter{
                 }else newlist.add(e);
             }
             entities = newlist; 
-            appendToLogs("entity list successfully sorted");
         }
+        appendToLogs("entity list successfully sorted");
     }
     
     private void runItemCensus() {
@@ -159,13 +158,23 @@ public class Server extends ApplicationAdapter{
         }
         
     }
-    public boolean connectPlayer(){
-        return false; 
-    }
     
-    private long assignID(){
+    private static long assignID(){
         nextID++;
         return nextID; 
+    }
+    public static Entity getConnectedUser(long ID){
+        if(ID > 0){
+            for(Entity e : entities){
+                if(e!= null && e.getID() == ID) return e;
+            }
+        }
+        Player p = new Player(VOIDMODEL, EntityType.PLAYER, assignID());
+        addEntity(p);
+        for(Entity e : entities){
+            if(e.equals(p)) return e;
+        }
+        return p; 
     }
     
 }

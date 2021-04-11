@@ -4,12 +4,30 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
+import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity;
 public class ServerAntenna extends Thread{ 
     ServerSocket socket;
     int port;
+    public FileOutputStream writer;
+    public static ObjectOutputStream objectwriter; 
+    private static final long serialVersionUID = 1L; 
+
     public ServerAntenna(int port){
         this.port = port; 
+        try {
+            writer = new FileOutputStream(Server.ENTITYFILE);
+            objectwriter = new ObjectOutputStream(writer);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.exit(1);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.exit(1);
+        }
+        
     }
     
     @Override
@@ -49,23 +67,37 @@ public class ServerAntenna extends Thread{
 
 class Servant extends Thread{
     Socket user;
+    DataInputStream din;
+    ObjectOutputStream dout;
+    private static final long serialVersionUID = 1L;
+    
     public Servant(Socket s){
         user = s; 
+        try{
+        this.din = new DataInputStream(s.getInputStream());
+        this.dout = new ObjectOutputStream(s.getOutputStream());
+        dout.writeObject(Server.getConnectedUser(din.readLong()));
+        dout.flush();
+        }catch(Exception e){
+            e.printStackTrace();
+            Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
+        }
     }
     
     @Override
     public void run(){
         try{
-            ObjectOutputStream outgoing = new ObjectOutputStream();
-            for(Entity e : Server.entities){
-            outgoing.writeObject(e);
-            }
-            outgoing.flush();
-            //incoming.readObject(); 
-            //System.out.println(incoming.toString());
+            dout = ServerAntenna.objectwriter; 
+
         }catch(Exception e){
             e.printStackTrace();
-        }
+            try {
+                user.close();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }//ends outer catch
     }//ends run
     
 }//ends class
