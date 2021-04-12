@@ -26,7 +26,7 @@ public abstract class Entity implements Serializable{
 	protected static final long serialVersionUID = 1L;
 	
 	/**Internal, non-transient variables meant to update the position of the entity after serialization */
-	protected float x,y,z; 
+	protected float x, dx, y, dy, z, dz; 
 	/**
 	 * One meter in length, as defined by me
 	 */
@@ -63,6 +63,7 @@ public abstract class Entity implements Serializable{
 		accel = accel.setZero();
 		if(this.pos != null){
 		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
+		dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
 		}
 		Quaternion quaternion = new Quaternion();
 		if(this.vel.len2()>0) {
@@ -99,7 +100,7 @@ public abstract class Entity implements Serializable{
 
 	public void buildEntity(Model m){
 		this.pos = new Vector3(x, y, z);
-		this.setVel(0, 0, 0);
+		this.setVel(dx, dy, dz);
 		this.setAccel(0, 0, 0);
 		this.model = m; 
 		this.instance = new ModelInstance(m, pos); 

@@ -321,7 +321,10 @@ public class EveOnline2 extends ApplicationAdapter{
 	public static void updateEnitity(Entity e){
 		e.buildEntity(new Model());
 		for(int i = 0; i < entities.size(); i++){
-			if(e.equals(entities.get(i))) entities.get(i).setPos(e.getPos());
+			if(e.equals(entities.get(i))) {
+				entities.get(i).setPos(e.getPos());
+				entities.get(i).setVel(e.getVel());
+			}
 		}
 	}
 
