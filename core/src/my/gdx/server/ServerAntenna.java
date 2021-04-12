@@ -62,69 +62,6 @@ public class ServerAntenna extends Thread{
             }catch(Exception e2){
                 connections.remove(i);
             }
-            }
         }
-}//ends class
-
-class Servant extends Thread{
-    Socket user;
-    DataInputStream din;
-    ObjectOutputStream dout;
-    private static final long serialVersionUID = 1L;
-    Player userEntity;
-    
-    public Servant(Socket s){
-        user = s; 
-        try{
-            this.dout = new ObjectOutputStream(s.getOutputStream());
-            this.din = new DataInputStream(s.getInputStream());
-            userEntity = (Player) Server.getConnectedUser(din.readLong()); 
-            dout.writeObject((Entity) userEntity);
-            dout.flush();
-        }catch(Exception e){
-            e.printStackTrace();
-            Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
-            Server.removeEntity(userEntity);
-        }
-    }
-    private boolean isrunning = true;
-    @Override
-    public void run(){
-        while(isrunning)
-        try{
-            din.readLong(); 
-        }catch(EOFException e){
-            Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
-            Server.removeEntity(userEntity);
-            try {
-                user.close();
-                isrunning = false;
-                this.interrupt();
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-            Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
-            Server.removeEntity(userEntity);
-            try {
-                user.close();
-                isrunning = false;
-                this.interrupt();
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-        }//ends outer catch
-    }//ends run
-    
-    public void sendEntity(Entity e) throws Exception{
-            dout.reset();
-            dout.writeObject((Entity) e ); 
-            dout.flush();
-    }
-    public boolean isRunning() {
-        return isrunning; 
     }
 }//ends class

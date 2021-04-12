@@ -159,7 +159,26 @@ public class Server extends ApplicationAdapter{
         nextID++;
         return nextID; 
     }
-    public static Entity getConnectedUser(long ID){
+
+    /**
+     * Returns the entity's location in memory, enabling it to be modified or commanded to do something in some way.
+     * @param id - the ID of the entity in question
+     * @return the entity's location in memory for modifying purposes
+     */
+    public static Entity getModifiableEntity(long id){
+        Entity ret = null;
+        for(Entity e : entities){
+            if(e.getID() == id) ret = e;
+        }
+        return ret; 
+    }
+
+    /**
+     * Returns a copy of an entity, likely a player, to send to a client.
+     * @param ID - the ID of the entity in question 
+     * @return a copy of a player
+     */
+    public static Entity getEntityCopy(long ID){
         if(ID > 0){
             for(Entity e : entities){
                 if(e!= null && e.getID() == ID) return e;

@@ -15,9 +15,11 @@ public class Player extends Entity {
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
 	protected Entity tetheringstation = null; 
-	protected Vector3 camrotation = EveOnline2.getCamRotation();
 	private static final long serialVersionUID = 1L;
-	
+	private boolean justpressedboost = false;
+	private float totalDeltaTime= 0;
+	private boolean isAccelerating = false;
+	private Vector3 direction = new Vector3(0,0,0);
 	public Player(Model model, EntityType type, long ID) {
 		super(model, type, ID);
 		this.mass = basemass;
@@ -29,33 +31,30 @@ public class Player extends Entity {
 		this.mass = basemass+invmass;
 		// TODO Auto-generated constructor stub
 	}
-	private boolean justpressedboost = false;
-	private float totalDeltaTime= 0;
-	private boolean isAccelerating = false;
-	private Vector3 camRot = new Vector3(0,0,0); 
+	
+	
 	@Override
 	public void update(float deltaTime) {
 		//Inventory management
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		totalDeltaTime += deltaTime;
-		camrotation = EveOnline2.getCamRotation();
-		
 		
 		//Movement controls
-		if(Gdx.input.isKeyJustPressed(Keys.W) && !justpressedboost) {
+		/*if(Gdx.input.isKeyJustPressed(Keys.W) && !justpressedboost) {
 			this.isAccelerating = true;
 			camRot = new Vector3(basemass*METER*camrotation.x/this.mass, basemass*METER*camrotation.y/this.mass, basemass*METER*camrotation.z/this.mass);
 		}else if(Gdx.input.isKeyPressed(Keys.S)) {
 			this.isAccelerating = false;
 			camRot = new Vector3(basemass*METER*camrotation.x/this.mass, basemass*METER*camrotation.y/this.mass, basemass*METER*camrotation.z/this.mass);
 			this.accel.add(-camRot.x, -camRot.y, -camRot.z);
-		}
+		}*/
 		
 		if(this.isAccelerating) {
-			this.accel.add(camRot);
+			if(direction.len2() != 1.0) direction.nor();
+			this.accel.add(direction);
 		}
-
+		
 		//Stop the player
 		if(Gdx.input.isKeyPressed(Keys.SPACE) && !justpressedboost) {
 			this.isAccelerating = false;
@@ -72,8 +71,8 @@ public class Player extends Entity {
 			justpressedboost = true;
 			Vector3 accelnorm = this.vel.cpy().nor();
 			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
-					    (float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
-					    (float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())) );//*/
+			(float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
+			(float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())) );//*/
 		}else if(justpressedboost) {
 			this.vel.x/=1.05;
 			this.vel.y/=1.05;
@@ -96,20 +95,20 @@ public class Player extends Entity {
 	
 	public void dealDamage(int damage) {
 		if(!justpressedboost) {
-		if(damage > this.shields) {
-			damage-=shields;
-			shields=0;
-		}else {
-			shields -=damage;
-			return;
-		}
-		if(damage > this.armor) {
-			damage-=armor;
-			armor=0;
-		}else {
-			armor -=damage;
-			return;
-		}
+			if(damage > this.shields) {
+				damage-=shields;
+				shields=0;
+			}else {
+				shields -=damage;
+				return;
+			}
+			if(damage > this.armor) {
+				damage-=armor;
+				armor=0;
+			}else {
+				armor -=damage;
+				return;
+			}
 		}
 		//Most people: Implements a way to die
 		//Me, an intellectual:
@@ -120,47 +119,69 @@ public class Player extends Entity {
 			return;
 		}
 	}
+	
+	public boolean isAccelerating(){
+		return isAccelerating;
+	}
+	public void setAccelerating(boolean ac){
+		this.isAccelerating = ac; 
+	}
 	public boolean isBoosting() {
 		return justpressedboost;
+	}
+	public boolean justpressedboost() {
+		return this.justpressedboost;
 	}
 	public int getShields() {
 		return shields;
 	}
-
+	
 	public void setShields(int shields) {
 		this.shields = shields;
 	}
-
+	
 	public int getArmor() {
 		return armor;
 	}
-
+	
 	public void setArmor(int armor) {
 		this.armor = armor;
 	}
-
+	
 	public int getHull() {
 		return hull;
 	}
-
+	
 	public void setHull(int hull) {
 		this.hull = hull;
 	}
-
+	
 	public int getMaxshields() {
 		return maxshields;
 	}
-
+	
 	public int getMaxarmor() {
 		return maxarmor;
 	}
-
+	
 	public int getMaxhull() {
 		return maxhull;
 	}
-
+	
 	public boolean isTethered(){
 		return this.tetheringstation != null && !this.isBoosting();
+	}
+
+	public void rotate(float x, float y, float z){
+		this.direction.set(x, y, z);
+	}
+
+	public void rotate(Vector3 vec){
+		this.direction.set(vec);
+	}
+
+	public Vector3 getRotation(){
+		return this.direction; 
 	}
 	
 }

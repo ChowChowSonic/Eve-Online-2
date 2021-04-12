@@ -7,7 +7,9 @@ import com.badlogic.gdx.Gdx;
 
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
+import my.gdx.server.Command;
 public class ClientAntenna extends Thread{  
+
     private Socket clientSocket;
     private DataOutputStream outgoing; 
     private ObjectInputStream incoming; 
@@ -43,6 +45,7 @@ public class ClientAntenna extends Thread{
     
     public Entity requestEntity(long ID) {
         try {
+            outgoing.writeByte(0);
             outgoing.writeLong(ID);
             outgoing.flush(); 
             return (Entity) incoming.readObject(); 
@@ -55,9 +58,18 @@ public class ClientAntenna extends Thread{
         return null;
     }
     
-    public void ping(Long k){
-        // outgoing.writeLong(k);
-        //     outgoing.flush();
+    public void accelPlayer(Long k, float dirx, float diry, float dirz){
+        try {
+            outgoing.writeByte(1);
+            outgoing.writeLong(k);
+            outgoing.writeFloat(dirx);
+            outgoing.writeFloat(diry);
+            outgoing.writeFloat(dirz);
+            outgoing.flush();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
     public void close(){
