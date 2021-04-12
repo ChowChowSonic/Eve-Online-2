@@ -43,7 +43,7 @@ import my.gdx.game.inventory.Inventory;
 public class EveOnline2 extends ApplicationAdapter{
 	
 	public static Model DEFAULTMODEL; 
-	public static ArrayList<Entity> entities = new ArrayList<Entity>();
+	public static ArrayList<Entity> unbuiltentities = new ArrayList<Entity>(), entities = new ArrayList<Entity>();
 	public static AssetManager manager;
 	public static ModelBuilder builder;
 	public static Player player; 
@@ -51,7 +51,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
 	public static final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	
-
+	
 	private static Camera cam;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private static final long serialVersionUID = 1L;//I need this for some reason and I don't know why.
@@ -97,8 +97,10 @@ public class EveOnline2 extends ApplicationAdapter{
 		System.out.println("Attempting to connect...");
 		connection = new ClientAntenna(/*"Server"*/ "DESKTOP-E2274E2", 26000); 
 		System.out.println("Connected!");
-		player = this.getPlayer();
+		player = (Player) buildEntity(unbuiltentities.get(0));
 		connection.start();
+		
+		
 		env = new Environment();
 		env.set(new ColorAttribute(ColorAttribute.AmbientLight, Color.YELLOW));
 		env.add(new DirectionalLight().set(0.95f, 0.8f, 0.5f, 0f, 0f, 0f));
@@ -142,6 +144,17 @@ public class EveOnline2 extends ApplicationAdapter{
 		super.render();
 		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+		
+		//build all unbuilt entities
+		if(unbuiltentities.size()>0){
+			for(int i = 0; i < unbuiltentities.size(); i++){
+				Entity e = unbuiltentities.get(i); 
+				e = buildEntity(e); 
+			}
+			unbuiltentities.clear();
+		}
+		
+		//Camera movement
 		if(Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2*cam.near){
 			cameradist -=0.01; 
 		}else if(Gdx.input.isButtonPressed(Buttons.FORWARD) && cameradist < 20){
@@ -172,9 +185,9 @@ public class EveOnline2 extends ApplicationAdapter{
 		
 		
 		//entity management
-		for(int i =0; i < entities.size(); i++)
-		for(int e =0; e < entities.size(); e++) {
-			if(i < e) {
+		for(int i =0; i < entities.size()-1; i++)
+		for(int e =i+1; e < entities.size(); e++) {
+			if(entities.get(i) != null && entities.get(e) !=null) {
 				entities.get(i).touches(entities.get(e));
 			}
 		}
@@ -189,7 +202,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
 				batch.render(e.getInstance());
 			}
-			
+			System.out.println(e.toString());
 			//Material Census gathering
 			
 			if(e.inventory != null) {
@@ -205,7 +218,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		
 		cam.translate(player.getVel());
 		cam.update();
-
+		
 		//Inventory Menu stuff
 		if(Gdx.input.isKeyJustPressed(Keys.I)){
 			if(windows.contains(new InventoryMenu(player))) windows.remove(new InventoryMenu(player));
@@ -216,7 +229,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		}else{
 			windows.remove(new DockingButton());
 		}
-
+		
 		
 		//Hud rendering
 		for(Hud window : windows) {
@@ -256,7 +269,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		batch.dispose();
 		textrenderer.dispose();
 		hudrenderer.dispose();
-		connection.close();
+		//connection.close();
 		System.gc();
 		System.exit(1);
 	}
@@ -270,43 +283,64 @@ public class EveOnline2 extends ApplicationAdapter{
 	}
 	
 	public static void addEntity(Entity e) {
+		unbuiltentities.add(e);
+	}
+	
+	public static Entity buildEntity(Entity e){
 		Material material = null;
 		Model m = new Model();
-		Entity e2 = null; 
 		if(e.getEntityType() == EntityType.PLAYER){
+			System.out.println("Player path taken");
 			m = manager.get("ship.obj", Model.class); 
-			e2 = new Player(m, e.getEntityType(), e.getID()); 
+			e.buildEntity(m); 
+			entities.add(e);
+			//sortEntities();
+			return new Player(e.getModel(), e.getEntityType(), e.getID()); 
 		}else if(e.getEntityType() == EntityType.ASTEROID){
-			material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
-		ColorAttribute.createSpecular(1, 1, 1, 1),
-		FloatAttribute.createShininess(100f));
-			m = builder.createSphere(e.getSize(), e.getSize(), e.getSize(), 10, 10, material, attributes);
-			e2 = new Debris(e.getPos(), m, e.inventory.getItems(), (int)e.getSize(), e.getID()); 
+			System.out.println("Debris path taken");
+			/*material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
+			ColorAttribute.createSpecular(1, 1, 1, 1),
+			FloatAttribute.createShininess(100f));
+			m = builder.createSphere(e.getSize(), e.getSize(), e.getSize(), 10, 10, material, attributes);*/
+			e.buildEntity(manager.get("SpaceStation.obj", Model.class)); 
+			entities.add(e);
+			//sortEntities();
+			return new Debris(e.getPos(), e.getModel(), e.inventory, (int) e.getSize(), e.getID()); 
 		}else{
+			System.out.println("Default path taken");
 			m = manager.get("ship.obj", Model.class); 
-			e2 = new Player(m, e.getEntityType(), e.getID()); 
+			e.buildEntity(m);
+			entities.add(e);
+			//sortEntities();
+			return new Player(m, e.getEntityType(), e.getID()); 
 		}
-		entities.add(e2);
-		sortEntities();
 	}
-
+	
+	public static void updateEnitity(Entity e){
+		for(int i = 0; i < entities.size(); i++){
+			e.buildEntity(new Model());
+			if(e.equals(entities.get(i))) entities.get(i).setPos(e.getPos());
+			//System.out.println("Updated: ");
+		}
+	}
+	
 	public static void sortEntities(){
-        ArrayList<Entity> newlist = new ArrayList<Entity>(); 
-        int playersinlist = 0;
-        for(Entity e : entities){
-            if(e.getEntityType() == EntityType.CELESTIALOBJ){
-                newlist.add(0,e); 
-            }else if(e.getEntityType() == EntityType.PLAYER){
-                newlist.add(newlist.size(), e);
-                playersinlist++;
-            }else{
-                if(newlist.size() > 1){
-                    newlist.add(newlist.size()-(playersinlist+1), e);
-                }else newlist.add(e);
-            }
-            entities = newlist; 
-        }
-    }
+		ArrayList<Entity> newlist = new ArrayList<Entity>(); 
+		int playersinlist = 0;
+		for(Entity e : entities){
+			if(e.getEntityType() == EntityType.CELESTIALOBJ){
+				newlist.add(0,e); 
+			}else if(e.getEntityType() == EntityType.PLAYER){
+				newlist.add(newlist.size(), e);
+				playersinlist++;
+			}else{
+				if(newlist.size() > 1 || playersinlist < newlist.size()-1){
+					newlist.add(newlist.size()-(playersinlist+1), e);
+				}else newlist.add(e);
+			}
+			entities = newlist; 
+		}
+	}
 	
 	public Player getPlayer() {
 		for(Entity e : entities){ {

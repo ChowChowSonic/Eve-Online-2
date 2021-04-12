@@ -22,7 +22,7 @@ public class Player extends Entity {
 		super(model, type, ID);
 		this.mass = basemass;
 		this.size = 1f;
-		this.setPos(6, 0, 0);
+		this.setPos(0, 0, 0);
 		inventory = new Inventory(100);
 		//inventory.additem(InventoryItems.Platinum, 100);
 		invmass = inventory.getWeight();

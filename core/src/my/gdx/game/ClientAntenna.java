@@ -27,13 +27,13 @@ public class ClientAntenna extends Thread{
             
             this.isRunning = true; 
         }catch(ConnectException e){
-			System.out.println("Connenction error:");
-			e.printStackTrace();
-			System.exit(1);
-		}catch(UnknownHostException e){
             System.out.println("Connenction error:");
-			e.printStackTrace();
-			System.exit(1);
+            e.printStackTrace();
+            System.exit(1);
+        }catch(UnknownHostException e){
+            System.out.println("Connenction error:");
+            e.printStackTrace();
+            System.exit(1);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -54,15 +54,17 @@ public class ClientAntenna extends Thread{
         }
         return null;
     }
-
+    
     public void ping(Long k){
-       // outgoing.writeLong(k);
-       //     outgoing.flush();
+        // outgoing.writeLong(k);
+        //     outgoing.flush();
     }
-
+    
     public void close(){
         try {
             this.clientSocket.close();
+            this.incoming.close();
+            this.outgoing.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -77,18 +79,27 @@ public class ClientAntenna extends Thread{
                 boolean alreadyfound = false; 
                 for(int i = 0; i < EveOnline2.entities.size(); i++){
                     if(o.equals(EveOnline2.entities.get(i))){
-                        EveOnline2.entities.set(i, o);
+                        EveOnline2.updateEnitity(o);
+                        alreadyfound = true; 
+                        break; 
+                    }
+                }
+                for(int i = 0; i < EveOnline2.unbuiltentities.size(); i++){
+                    if(o.equals(EveOnline2.unbuiltentities.get(i))){
                         alreadyfound = true; 
                         break; 
                     }
                 }
                 if(!alreadyfound){
-                EveOnline2.addEntity(o);
-                System.out.println("Entity added!");
+                    EveOnline2.addEntity(o);
+                    System.out.println("Entity added!");
                 }
             } catch (ClassNotFoundException | IOException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                //e.printStackTrace();
+                System.out.println("Error");
+            }catch(Exception e){
+                e.printStackTrace(); 
             }
         }
     }
