@@ -214,13 +214,13 @@ public class EveOnline2 extends ApplicationAdapter{
 			if(e.inventory != null) {
 				usedmaterials.additem(e.inventory.getItems()); 
 			}
-			
+			//e.setVel(5,6,7);
 			e.update(Gdx.graphics.getDeltaTime());
 		}
 		batch.end();
 		runItemCensus();
 		usedmaterials.empty();
-		
+		//System.out.println(player.toString());
 		cam.translate(player.getVel());
 		cam.update();
 		
@@ -319,12 +319,12 @@ public class EveOnline2 extends ApplicationAdapter{
 	}
 	
 	public static void updateEnitity(Entity e){
+		e.buildEntity(new Model());
 		for(int i = 0; i < entities.size(); i++){
-			e.buildEntity(new Model());
 			if(e.equals(entities.get(i))) entities.get(i).setPos(e.getPos());
 		}
 	}
-	
+
 	public static void sortEntities(){
 		ArrayList<Entity> newlist = new ArrayList<Entity>(); 
 		int playersinlist = 0;

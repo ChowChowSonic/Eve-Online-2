@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
-import my.gdx.server.Command;
 public class ClientAntenna extends Thread{  
 
     private Socket clientSocket;
@@ -25,27 +24,31 @@ public class ClientAntenna extends Thread{
             System.out.println("Outputstream successfully created");
             incoming = new ObjectInputStream(clientSocket.getInputStream()); 
             System.out.println("InputStream successfully created");
-            EveOnline2.addEntity( (Player)requestEntity(0L));
-            
+            Player p = (Player)requestEntity(0L); 
+            EveOnline2.addEntity(p);
+            //outgoing = (DataOutputStream) DataOutputStream.nullOutputStream();
             this.isRunning = true; 
         }catch(ConnectException e){
             System.out.println("Connenction error:");
             e.printStackTrace();
+            this.close();
             System.exit(1);
         }catch(UnknownHostException e){
             System.out.println("Connenction error:");
             e.printStackTrace();
+            this.close(); 
             System.exit(1);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            this.close();
             System.exit(1);
         }
     }
     
     public Entity requestEntity(long ID) {
         try {
-            outgoing.writeByte(0);
+            outgoing.writeShort(0); 
             outgoing.writeLong(ID);
             outgoing.flush(); 
             return (Entity) incoming.readObject(); 
@@ -60,7 +63,7 @@ public class ClientAntenna extends Thread{
     
     public void accelPlayer(Long k, float dirx, float diry, float dirz){
         try {
-            outgoing.writeByte(1);
+            outgoing.writeShort(1);
             outgoing.writeLong(k);
             outgoing.writeFloat(dirx);
             outgoing.writeFloat(diry);
@@ -74,9 +77,11 @@ public class ClientAntenna extends Thread{
     
     public void close(){
         try {
+            this.isRunning = false;
             this.clientSocket.close();
             this.incoming.close();
             this.outgoing.close();
+            
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -87,7 +92,7 @@ public class ClientAntenna extends Thread{
     public void run(){
         while(isRunning){
             try {
-                Entity o = (Entity) incoming.readObject(); 
+                Entity o = (Entity) incoming.readObject();
                 boolean alreadyfound = false; 
                 for(int i = 0; i < EveOnline2.entities.size(); i++){
                     if(o.equals(EveOnline2.entities.get(i))){
@@ -108,10 +113,13 @@ public class ClientAntenna extends Thread{
                 }
             } catch (ClassNotFoundException | IOException e) {
                 // TODO Auto-generated catch block
-                //e.printStackTrace();
-                System.out.println("Error");
+                e.printStackTrace();
+                this.isRunning = false; 
+                System.exit(1);
             }catch(Exception e){
                 e.printStackTrace(); 
+                this.isRunning = false; 
+                System.exit(1);
             }
         }
     }

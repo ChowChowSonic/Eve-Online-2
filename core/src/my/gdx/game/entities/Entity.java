@@ -112,8 +112,10 @@ public abstract class Entity implements Serializable{
 		str+= "Type: " +this.getEntityType() + " ID: "+this.getID();  
 		return str; 
 	}
-	public boolean equals(Entity e){
-		return this.ID == e.ID; 
+	@Override
+	public boolean equals(Object e){
+		Entity e2 = (Entity) e; 
+		return this.ID == e2.ID; 
 	}
 
 	//getters, setters and adders

@@ -31,7 +31,7 @@ public class ServerAntenna extends Thread{
                 Server.appendToLogs("User successfully connected on port "+user.getPort());
                 Servant usersocket = new Servant(user);
                 connections.add(usersocket);
-                usersocket.run();
+                usersocket.start();
                 
             }catch(UnknownHostException ex) {
                 ex.printStackTrace();
