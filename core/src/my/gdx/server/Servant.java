@@ -17,79 +17,77 @@ class Servant extends Thread{
     ObjectOutputStream dout;
     private static final long serialVersionUID = 1L;
     Player userEntity;
-    
+    private boolean isrunning = false;
+
     public Servant(Socket s){
         user = s; 
         try{
             this.dout = new ObjectOutputStream(s.getOutputStream());
             this.din = new DataInputStream(s.getInputStream());
+            short cmd = din.readShort();
+            if(cmd==0)
             userEntity = (Player) Server.getEntityCopy(din.readLong()); 
             dout.writeObject((Entity) userEntity);
             dout.flush();
+            isrunning = true; 
         }catch(Exception e){
             e.printStackTrace();
             Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
             Server.removeEntity(userEntity);
         }
     }
-    private boolean isrunning = true;
     @Override
     public void run(){
-        while(isrunning)
-        try{
-            Short cmd = din.readShort();
-            switch(cmd){
-                case 0:{
-                    long ID = din.readLong(); 
-                    Entity e = Server.getEntityCopy(ID); 
-                    dout.reset();
-                    dout.writeObject(e);
-                    dout.flush();
-                    break;
-                }
-                case 1:{
-                    long ID = din.readLong();
-                    float x = din.readFloat(), y=din.readFloat(), z=din.readFloat(); 
-                    Player mod = (Player) Server.getModifiableEntity(ID); 
-                    if(mod.getRotation().hasOppositeDirection(new Vector3(x,y,z))){
-                    mod.rotate(x, y, z);
-                    mod.setAccelerating(false);
-                    }else{
-                    mod.setAccelerating(true);
+        while(isrunning){
+            try{
+                short cmd = din.readShort();
+                System.out.println(cmd+"");
+                if(cmd == (short) 0){
+                    long ID1 = din.readLong(); 
+                    System.out.println(ID1+" Entity copy requested");
+                    Entity e = Server.getEntityCopy(ID1); 
+                    if(e !=null){
+                    sendEntity(e);
                     }
-                    break;
+                }else if(cmd == (short) 1){
+                    long ID2 = din.readLong();
+                    System.out.println(ID2+" Entity Movement requested");
+                    float x = din.readFloat(), y=din.readFloat(), z=din.readFloat(); 
+                    //Server.appendToLogs(x+" "+y+" "+z);
+                    Server.AcceleratePlayer(ID2,x,y,z); 
+                    
                 }
-            }
-        }catch(EOFException e){
-            Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
-            Server.removeEntity(userEntity);
-            try {
-                user.close();
-                isrunning = false;
-                this.interrupt();
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-            Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
-            Server.removeEntity(userEntity);
-            try {
-                user.close();
-                isrunning = false;
-                this.interrupt();
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-        }//ends outer catch
+            }catch(EOFException e){
+                Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
+                Server.removeEntity(userEntity);
+                try {
+                    user.close();
+                    isrunning = false;
+                    this.interrupt();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+                Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
+                Server.removeEntity(userEntity);
+                try {
+                    user.close();
+                    isrunning = false;
+                    this.interrupt();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }//ends outer catch
+        }//ends while
     }//ends run
     
     public void sendEntity(Entity e) throws Exception{
-        dout.reset();
-        dout.writeObject((Entity) e ); 
+        dout.writeObject(e); 
         dout.flush();
+        dout.reset();
     }
     public boolean isRunning() {
         return isrunning; 

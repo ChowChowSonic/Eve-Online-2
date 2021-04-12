@@ -10,23 +10,21 @@ import my.gdx.game.entities.Player;
 public class ServerAntenna extends Thread{ 
     ServerSocket socket;
     int port;
-    public FileOutputStream writer;
-    public static ObjectOutputStream objectwriter; 
     private static final long serialVersionUID = 1L; 
     ArrayList<Servant> connections;
     public ServerAntenna(int port){
         this.port = port; 
         connections = new ArrayList<Servant>();
-    }
-    
-    @Override
-    public void run(){
         try{
             socket = new ServerSocket(port); 
             Server.appendToLogs("Server successfully created on "+socket);
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    @Override
+    public void run(){
         while(true){
             try {
                 Socket user = socket.accept();

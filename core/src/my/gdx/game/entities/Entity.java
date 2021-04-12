@@ -57,12 +57,13 @@ public abstract class Entity implements Serializable{
 	}
 
 	public void update(float deltaTime) {
+		//System.out.println("Entity.update called" + this.toString());
 		this.vel = this.vel.add(accel);
 		this.pos = this.pos.add(vel);
 		accel = accel.setZero();
 		if(this.pos != null){
 		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
-		}else {this.pos = new Vector3(x,y,z);}
+		}
 		Quaternion quaternion = new Quaternion();
 		if(this.vel.len2()>0) {
 			Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);

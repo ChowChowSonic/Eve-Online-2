@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
+//import my.gdx.server.Server;
 
 public class Player extends Entity {
 	float invmass, basemass = 10;
@@ -52,7 +53,10 @@ public class Player extends Entity {
 		
 		if(this.isAccelerating) {
 			if(direction.len2() != 1.0) direction.nor();
-			this.accel.add(direction);
+			this.accel.set(this.basemass*METER*direction.x/this.getMass(), 
+			this.basemass*METER*direction.y/this.getMass(),  
+			this.basemass*METER*direction.z/this.getMass());
+			//Server.appendToLogs("player at "+this.pos+" is now accelerating");
 		}
 		
 		//Stop the player
@@ -90,6 +94,7 @@ public class Player extends Entity {
 			this.shields+=20;
 			else this.shields = maxshields;
 		}
+		//System.out.println("Player.update called "+this.toString());
 		super.update(deltaTime);
 	}
 	
@@ -123,7 +128,12 @@ public class Player extends Entity {
 	public boolean isAccelerating(){
 		return isAccelerating;
 	}
+
 	public void setAccelerating(boolean ac){
+		this.isAccelerating = ac; 
+	}
+	public void setAccelerating(boolean ac, float x, float y, float z){
+		this.direction.set(x, y, z); 
 		this.isAccelerating = ac; 
 	}
 	public boolean isBoosting() {

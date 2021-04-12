@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -40,9 +41,11 @@ public class Server extends ApplicationAdapter{
     private static long nextID = 0L;
     private static ServerAntenna antenna;
     private static final long serialVersionUID = 1L; 
+    private static Random r;
     
     public void create() {
         System.out.flush();
+        r = new Random();
         materialcensus = new Inventory((float)Math.pow(3, 38));
         usedmaterials = new Inventory((float)Math.pow(3, 38));
         vanishedmaterials = new Inventory((float)Math.pow(3, 38));
@@ -79,13 +82,14 @@ public class Server extends ApplicationAdapter{
                     FileHandle playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID()));
                 }*/
             }
+            entities.get(i).update(Gdx.graphics.getDeltaTime());
         }
+
         for(int i =0; i < entities.size(); i++) {
             Entity e = entities.get(i); 
             if(e.inventory != null) {
                 usedmaterials.additem(e.inventory.getItems()); 
             }
-            e.update(Gdx.graphics.getDeltaTime());
             antenna.sendEntity(e); 
         }
         runItemCensus();
@@ -99,11 +103,15 @@ public class Server extends ApplicationAdapter{
         }
         textrenderer.end();
     }
-    
+    @Override
+    public void dispose(){
+        antenna.close();
+
+    }
     public static void addEntity(Entity e) {
         entities.add(e);
         sortEntities();
-        appendToLogs("Entity Spawned:" + e.getEntityType());
+        appendToLogs("Entity Spawned:" + e.toString());
     }
     public static void removeEntity(Entity e){
         entities.remove(e); 
@@ -165,12 +173,16 @@ public class Server extends ApplicationAdapter{
      * @param id - the ID of the entity in question
      * @return the entity's location in memory for modifying purposes
      */
-    public static Entity getModifiableEntity(long id){
-        Entity ret = null;
-        for(Entity e : entities){
-            if(e.getID() == id) ret = e;
+    public static void AcceleratePlayer(long id, float x, float y, float z){
+        for(int i = 0; i < entities.size(); i++){
+            Entity e2 = entities.get(i); 
+            if(e2.getID() == id && e2.getEntityType().equals(EntityType.PLAYER)) {
+                Player e = (Player) e2;
+                float dt = Gdx.graphics.getDeltaTime();
+                e.setAccelerating(!e.getRotation().hasOppositeDirection(new Vector3(x,y,z)), x,y,z);
+
+            }
         }
-        return ret; 
     }
 
     /**
@@ -185,6 +197,7 @@ public class Server extends ApplicationAdapter{
             }
         }
         Player p = new Player(VOIDMODEL, EntityType.PLAYER, assignID());
+        p.setPos(r.nextFloat(),r.nextFloat(),r.nextFloat());
         addEntity(p);
         for(Entity e : entities){
             if(e.equals(p)) return e;
