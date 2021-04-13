@@ -26,7 +26,7 @@ public abstract class Entity implements Serializable{
 	protected static final long serialVersionUID = 1L;
 	
 	/**Internal, non-transient variables meant to update the position of the entity after serialization */
-	protected float x, dx, y, dy, z, dz; 
+	protected float x, dx, ddx, y, dy, ddy, z, dz, ddz; 
 	/**
 	 * One meter in length, as defined by me
 	 */
@@ -61,6 +61,26 @@ public abstract class Entity implements Serializable{
 		this.vel = this.vel.add(accel);
 		this.pos = this.pos.add(vel);
 		accel = accel.setZero();
+		if(this.pos != null){
+		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
+		dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
+		ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
+		}
+		Quaternion quaternion = new Quaternion();
+		if(this.vel.len2()>0) {
+			Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
+			instanceRotation.setToLookAt(
+					new Vector3(-(this.pos.x+this.vel.x),-(this.pos.y+this.vel.y),-(this.pos.z+this.vel.z)), 
+					new Vector3(0,-1,0));
+			instanceRotation.rotate(0, 0, 1, 180);
+			instanceRotation.getRotation(quaternion);
+		}else {
+			this.instance.transform.getRotation(quaternion);
+		}
+		this.instance.transform.set(this.pos, quaternion);
+	}
+
+	public void clientSideUpdate() {
 		if(this.pos != null){
 		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
 		dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
@@ -99,9 +119,13 @@ public abstract class Entity implements Serializable{
 	}
 
 	public void buildEntity(Model m){
+		if(this.pos == null) this.pos = new Vector3(); 
+		if(this.vel == null) this.vel = new Vector3();
+		if(this.accel == null) this.accel = new Vector3();
 		this.pos = new Vector3(x, y, z);
-		this.setVel(dx, dy, dz);
-		this.setAccel(0, 0, 0);
+		//System.out.println(this.vel);
+		this.vel.add(new Vector3(dx,dy,dz));
+		this.setAccel(ddx, ddy, ddz);
 		this.model = m; 
 		this.instance = new ModelInstance(m, pos); 
 	}

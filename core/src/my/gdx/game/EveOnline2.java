@@ -98,6 +98,8 @@ public class EveOnline2 extends ApplicationAdapter{
 		connection = new ClientAntenna(/*"Server"*/ "DESKTOP-E2274E2", 26000); 
 		System.out.println("Connected!");
 		player = (Player) buildEntity(unbuiltentities.get(0));
+		unbuiltentities.remove(0); 
+		entities.add(player); 
 		connection.start();
 		
 		
@@ -148,8 +150,8 @@ public class EveOnline2 extends ApplicationAdapter{
 		//build all unbuilt entities
 		if(unbuiltentities.size()>0){
 			for(int i = 0; i < unbuiltentities.size(); i++){
-				Entity e = unbuiltentities.get(i); 
-				e = buildEntity(e); 
+				Entity e = buildEntity(unbuiltentities.get(i)); 
+				entities.add(e); 
 			}
 			unbuiltentities.clear();
 		}
@@ -168,7 +170,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		}//*/
 		//Camera rotations
 		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
-			
 			float deltax = Gdx.input.getDeltaX(); 
 			float deltay = Gdx.input.getDeltaY();
 			Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
@@ -200,6 +201,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		}
 		background.transform.set(player.getPos(), new Quaternion());
 		
+		System.out.println("Pos "+player.getPos());
 		batch.begin(cam);
 		batch.render(background);
 		for(Entity e : entities) {
@@ -215,7 +217,7 @@ public class EveOnline2 extends ApplicationAdapter{
 				usedmaterials.additem(e.inventory.getItems()); 
 			}
 			//e.setVel(5,6,7);
-			e.update(Gdx.graphics.getDeltaTime());
+			e.update(0);
 		}
 		batch.end();
 		runItemCensus();
@@ -297,8 +299,8 @@ public class EveOnline2 extends ApplicationAdapter{
 		if(e.getEntityType() == EntityType.PLAYER){
 			m = manager.get("ship.obj", Model.class); 
 			e.buildEntity(m); 
-			entities.add(e);
-			//sortEntities();
+			//entities.add(e);
+			sortEntities();
 			return new Player(e.getModel(), e.getEntityType(), e.getID()); 
 		}else if(e.getEntityType() == EntityType.ASTEROID){
 			/*material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
@@ -322,8 +324,11 @@ public class EveOnline2 extends ApplicationAdapter{
 		e.buildEntity(new Model());
 		for(int i = 0; i < entities.size(); i++){
 			if(e.equals(entities.get(i))) {
+				//System.out.println("pos: "+e.getVel());
 				entities.get(i).setPos(e.getPos());
 				entities.get(i).setVel(e.getVel());
+				//System.out.println(e.getVel());
+				entities.get(i).clientSideUpdate();
 			}
 		}
 	}

@@ -21,12 +21,11 @@ public class Player extends Entity {
 	private float totalDeltaTime= 0;
 	private boolean isAccelerating = false;
 	private Vector3 direction = new Vector3(0,0,0);
-	
+
 	public Player(Model model, EntityType type, long ID) {
 		super(model, type, ID);
 		this.mass = basemass;
 		this.size = 1f;
-		this.setPos(0, 0, 0);
 		inventory = new Inventory(100);
 		//inventory.additem(InventoryItems.Platinum, 100);
 		invmass = inventory.getWeight();
@@ -71,13 +70,13 @@ public class Player extends Entity {
 			}
 		}
 		//Starts up & shuts down the warp drive
-		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
+		/*if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
 			this.tetheringstation = null;
 			justpressedboost = true;
 			Vector3 accelnorm = this.vel.cpy().nor();
 			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
 			(float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
-			(float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())) );//*/
+			(float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())) );
 		}else if(justpressedboost) {
 			this.vel.x/=1.05;
 			this.vel.y/=1.05;
@@ -88,7 +87,7 @@ public class Player extends Entity {
 				this.vel.setZero();
 			}
 			
-		}
+		}//*/
 		if(totalDeltaTime > 5.0f) {
 			totalDeltaTime -= 5;
 			if(this.shields < this.maxshields-20)
