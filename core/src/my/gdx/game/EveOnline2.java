@@ -56,13 +56,13 @@ public class EveOnline2 extends ApplicationAdapter{
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private static final long serialVersionUID = 1L;//I need this for some reason and I don't know why.
 	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
+	private static float cameradist = 3f;
 	private ModelBatch batch;
 	private Model object;
 	private ModelInstance background;
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env; 
-	private float cameradist = 3f;
 	private ClientAntenna connection; 
 	/*
 	* Reminder:
@@ -156,33 +156,13 @@ public class EveOnline2 extends ApplicationAdapter{
 			unbuiltentities.clear();
 		}
 		
-		//Camera movement
+		//Camera rotation
 		if(Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2*cam.near){
 			cameradist -=0.01; 
 		}else if(Gdx.input.isButtonPressed(Buttons.FORWARD) && cameradist < 20){
 			cameradist +=0.01; 
 		}
-		//camera distance correction
-		if(cam.position.dst(player.getPos()) > cameradist || cam.position.dst(player.getPos()) < cameradist) {
-			Vector3 normvec = cam.position.cpy().sub(player.getPos()).nor();
-			cam.position.set(player.getPos().x+(cameradist*normvec.x), player.getPos().y+(cameradist*normvec.y),player.getPos().z+(cameradist*normvec.z));
-			cam.lookAt(player.getPos());
-		}//*/
-		//Camera rotations
-		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
-			float deltax = Gdx.input.getDeltaX(); 
-			float deltay = Gdx.input.getDeltaY();
-			Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
-			cam.translate(direction.x*deltax*0.025f,0,direction.z*deltax*0.025f);
-			
-			direction = cam.up.nor(); 
-			
-			if((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0,1,0)) && deltay > 0) || (cam.direction.hasSameDirection(new Vector3(0,-1,0)) && deltay < 0)){
-				cam.translate(direction.x*deltay*0.025f,direction.y*deltay*0.025f,direction.z*deltay*0.025f);
-			}
-			cam.up.x = 0; cam.up.z =0;
-			cam.lookAt(player.getPos());
-		}
+		
 		
 		if(Gdx.input.isKeyJustPressed(Keys.W) && !player.justpressedboost()){
 			Vector3 dir =cam.direction.cpy().nor();
@@ -200,12 +180,13 @@ public class EveOnline2 extends ApplicationAdapter{
 			}
 		}
 		background.transform.set(player.getPos(), new Quaternion());
+		//for(Entity e : entities) {}
 		
-		System.out.println("Pos "+player.getPos());
 		batch.begin(cam);
 		batch.render(background);
 		for(Entity e : entities) {
 			float distance = e.getPos().dst(player.getPos());
+			e.update(Gdx.graphics.getDeltaTime());
 			if(e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
 				batch.render(e.getInstance());
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
@@ -216,15 +197,32 @@ public class EveOnline2 extends ApplicationAdapter{
 			if(e.inventory != null) {
 				usedmaterials.additem(e.inventory.getItems()); 
 			}
-			//e.setVel(5,6,7);
-			e.update(0);
+			
 		}
 		batch.end();
 		runItemCensus();
 		usedmaterials.empty();
-		//System.out.println(player.toString());
-		cam.translate(player.getVel());
+		
+		//camera rotations, distance correction & Movement
+		Vector3 normvec = cam.direction.cpy(); 
+		cam.position.set(player.getPos().x-(cameradist*normvec.x), player.getPos().y-(cameradist*normvec.y),player.getPos().z-(cameradist*normvec.z));
+		cam.lookAt(player.getPos());
 		cam.update();
+		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
+			float deltax = Gdx.input.getDeltaX(); 
+			float deltay = Gdx.input.getDeltaY();
+			Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
+			cam.translate(direction.x*deltax*0.025f,0,direction.z*deltax*0.025f);
+			
+			direction = cam.up.nor(); 
+			
+			if((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0,1,0)) && deltay > 0) || (cam.direction.hasSameDirection(new Vector3(0,-1,0)) && deltay < 0)){
+				cam.translate(direction.x*deltay*0.025f,direction.y*deltay*0.025f,direction.z*deltay*0.025f);
+			}
+			cam.lookAt(player.getPos());
+		}
+		cam.up.x = 0; cam.up.z =0;
+		
 		
 		//Inventory Menu stuff
 		if(Gdx.input.isKeyJustPressed(Keys.I)){
@@ -327,12 +325,12 @@ public class EveOnline2 extends ApplicationAdapter{
 				//System.out.println("pos: "+e.getVel());
 				entities.get(i).setPos(e.getPos());
 				entities.get(i).setVel(e.getVel());
+				entities.get(i).setAccel(e.getAccel());
 				//System.out.println(e.getVel());
-				entities.get(i).clientSideUpdate();
 			}
 		}
 	}
-
+	
 	public static void sortEntities(){
 		ArrayList<Entity> newlist = new ArrayList<Entity>(); 
 		int playersinlist = 0;

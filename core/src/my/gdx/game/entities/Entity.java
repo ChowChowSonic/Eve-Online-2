@@ -79,25 +79,6 @@ public abstract class Entity implements Serializable{
 		}
 		this.instance.transform.set(this.pos, quaternion);
 	}
-
-	public void clientSideUpdate() {
-		if(this.pos != null){
-		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
-		dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
-		}
-		Quaternion quaternion = new Quaternion();
-		if(this.vel.len2()>0) {
-			Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
-			instanceRotation.setToLookAt(
-					new Vector3(-(this.pos.x+this.vel.x),-(this.pos.y+this.vel.y),-(this.pos.z+this.vel.z)), 
-					new Vector3(0,-1,0));
-			instanceRotation.rotate(0, 0, 1, 180);
-			instanceRotation.getRotation(quaternion);
-		}else {
-			this.instance.transform.getRotation(quaternion);
-		}
-		this.instance.transform.set(this.pos, quaternion);
-	}
 	
 	public boolean touches(Entity e) {
 		float distance  = this.pos.dst2(e.pos);
