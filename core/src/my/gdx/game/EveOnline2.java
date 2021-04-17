@@ -55,9 +55,9 @@ public class EveOnline2 extends ApplicationAdapter{
 	private static Camera cam;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private static final long serialVersionUID = 1L;//I need this for some reason and I don't know why.
-	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	private static float cameradist = 3f;
-	private ModelBatch batch;
+	private static ModelBatch batch;
+	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	private Model object;
 	private ModelInstance background;
 	private ShapeRenderer hudrenderer;
@@ -180,13 +180,16 @@ public class EveOnline2 extends ApplicationAdapter{
 			}
 		}
 		background.transform.set(player.getPos(), new Quaternion());
-		//for(Entity e : entities) {}
-		
+		//updateEnitity(connection.requestEntity(player.getID())); 
+		for(Entity e : entities) {
+			updateEnitity(connection.requestEntity(e.getID()));
+			e.update(Gdx.graphics.getDeltaTime());
+		}
+
 		batch.begin(cam);
 		batch.render(background);
 		for(Entity e : entities) {
 			float distance = e.getPos().dst(player.getPos());
-			e.update(Gdx.graphics.getDeltaTime());
 			if(e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
 				batch.render(e.getInstance());
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
@@ -199,15 +202,15 @@ public class EveOnline2 extends ApplicationAdapter{
 			}
 			
 		}
-		batch.end();
-		runItemCensus();
-		usedmaterials.empty();
-		
 		//camera rotations, distance correction & Movement
 		Vector3 normvec = cam.direction.cpy(); 
 		cam.position.set(player.getPos().x-(cameradist*normvec.x), player.getPos().y-(cameradist*normvec.y),player.getPos().z-(cameradist*normvec.z));
 		cam.lookAt(player.getPos());
 		cam.update();
+		runItemCensus();
+		usedmaterials.empty();
+		
+
 		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
 			float deltax = Gdx.input.getDeltaX(); 
 			float deltay = Gdx.input.getDeltaY();
@@ -222,7 +225,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			cam.lookAt(player.getPos());
 		}
 		cam.up.x = 0; cam.up.z =0;
-		
+		batch.end();
 		
 		//Inventory Menu stuff
 		if(Gdx.input.isKeyJustPressed(Keys.I)){
@@ -319,6 +322,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	}
 	
 	public static void updateEnitity(Entity e){
+		if(e==null)System.out.print("entity not recieved!");
 		e.buildEntity(new Model());
 		for(int i = 0; i < entities.size(); i++){
 			if(e.equals(entities.get(i))) {
@@ -327,6 +331,10 @@ public class EveOnline2 extends ApplicationAdapter{
 				entities.get(i).setVel(e.getVel());
 				entities.get(i).setAccel(e.getAccel());
 				//System.out.println(e.getVel());
+				Vector3 normvec = cam.direction.cpy(); 
+				cam.position.set(player.getPos().x-(cameradist*normvec.x), player.getPos().y-(cameradist*normvec.y),player.getPos().z-(cameradist*normvec.z));
+				cam.lookAt(player.getPos());
+				cam.update();
 			}
 		}
 	}

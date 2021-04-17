@@ -90,7 +90,7 @@ public class Server extends ApplicationAdapter{
             if(e.inventory != null) {
                 usedmaterials.additem(e.inventory.getItems()); 
             }
-            antenna.sendEntity(e); 
+            //antenna.sendEntity(e); 
         }
         runItemCensus();
         
@@ -110,6 +110,7 @@ public class Server extends ApplicationAdapter{
     }
     public static void addEntity(Entity e) {
         entities.add(e);
+        antenna.sendNewEntity(e);
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
     }

@@ -52,14 +52,10 @@ public class ServerAntenna extends Thread{
             e.printStackTrace();
         }
     }
-    public void sendEntity(Entity e){
+    public void sendNewEntity(Entity e){
         if(connections.size() == 0) return;
         for(int i =0; i < connections.size(); i++){
-            try{
-                connections.get(i).sendEntity(e);
-            }catch(Exception e2){
-                connections.remove(i);
+                connections.get(i).addNewEntity(e);
             }
-        }
     }
 }//ends class
