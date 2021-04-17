@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.math.Vector3;
 
+import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 
@@ -50,8 +51,13 @@ class Servant extends Thread{
                     System.out.println(ID1+" Entity copy requested");
                     Entity e = Server.getEntityCopy(ID1); 
                     sendEntity(e);
+                    if(newEntities.size() > 0){
                     sendEntity(newEntities.get(0));
                     newEntities.remove(0); 
+                    }else {
+                        Entity e2 = new Debris(0L);
+                        sendEntity(e2);
+                    }
                     break; 
                 case 1:
                     long ID2 = din.readLong();

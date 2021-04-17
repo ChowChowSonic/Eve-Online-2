@@ -55,6 +55,9 @@ public abstract class Entity implements Serializable{
 		accel = new Vector3();
 		ID = id; 
 	}
+	public Entity(long ID){
+		this.ID = ID;
+	}
 
 	public void update(float deltaTime) {
 		//System.out.println("Entity.update called" + this.toString());

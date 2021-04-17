@@ -61,5 +61,7 @@ public class Debris extends Entity{
 				this.mass+=i.getWeight(); 
 			}
 		}
-		
+		public Debris(long ID){
+			super(ID);
+		}		
 	}

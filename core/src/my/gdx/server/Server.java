@@ -113,6 +113,7 @@ public class Server extends ApplicationAdapter{
         antenna.sendNewEntity(e);
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
+        antenna.sendNewEntity(e);
     }
     public static void removeEntity(Entity e){
         entities.remove(e); 
@@ -198,11 +199,8 @@ public class Server extends ApplicationAdapter{
             }
         }
         Player p = new Player(VOIDMODEL, EntityType.PLAYER, assignID());
-        p.setPos(r.nextFloat(),r.nextFloat(),r.nextFloat());
+        //p.setPos(r.nextFloat(),r.nextFloat(),r.nextFloat());
         addEntity(p);
-        for(Entity e : entities){
-            if(e.equals(p)) return e;
-        }
         return p; 
     }
 }
