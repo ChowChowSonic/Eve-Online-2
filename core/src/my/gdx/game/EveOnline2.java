@@ -325,7 +325,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		if(e==null)System.out.print("entity not recieved!");
 		e.buildEntity(new Model());
 		for(int i = 0; i < entities.size(); i++){
-<<<<<<< HEAD
 			if(e.equals(entities.get(i))) {
 				//System.out.println("pos: "+e.getVel());
 				entities.get(i).setPos(e.getPos());
@@ -337,9 +336,7 @@ public class EveOnline2 extends ApplicationAdapter{
 				cam.lookAt(player.getPos());
 				cam.update();
 			}
-=======
 			if(e.equals(entities.get(i))) entities.get(i).setPos(e.getPos());
->>>>>>> parent of 0a8a21f (velocity is now transferred between client and server)
 		}
 	}
 	
