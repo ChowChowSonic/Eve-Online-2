@@ -55,12 +55,11 @@ public class ServerAntenna extends Thread{
     public void sendEntity(Entity e){
         if(connections.size() == 0) return;
         for(int i =0; i < connections.size(); i++){
-                try {
-                    connections.get(i).sendEntity(e);
-                } catch (Exception e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+            try{
+                connections.get(i).sendEntity(e);
+            }catch(Exception e2){
+                connections.remove(i);
             }
+        }
     }
 }//ends class
