@@ -26,7 +26,11 @@ public abstract class Entity implements Serializable{
 	protected static final long serialVersionUID = 1L;
 	
 	/**Internal, non-transient variables meant to update the position of the entity after serialization */
+<<<<<<< HEAD
 	protected float x, dx, ddx, y, dy, ddy, z, dz, ddz; 
+=======
+	protected float x,y,z; 
+>>>>>>> parent of 0a8a21f (velocity is now transferred between client and server)
 	/**
 	 * One meter in length, as defined by me
 	 */
@@ -66,8 +70,11 @@ public abstract class Entity implements Serializable{
 		accel = accel.setZero();
 		if(this.pos != null){
 		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
+<<<<<<< HEAD
 		dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
 		ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
+=======
+>>>>>>> parent of 0a8a21f (velocity is now transferred between client and server)
 		}
 		Quaternion quaternion = new Quaternion();
 		if(this.vel.len2()>0) {
@@ -107,9 +114,14 @@ public abstract class Entity implements Serializable{
 		if(this.vel == null) this.vel = new Vector3();
 		if(this.accel == null) this.accel = new Vector3();
 		this.pos = new Vector3(x, y, z);
+<<<<<<< HEAD
 		//System.out.println(this.vel);
 		this.vel.add(new Vector3(dx,dy,dz));
 		this.setAccel(ddx, ddy, ddz);
+=======
+		this.setVel(0, 0, 0);
+		this.setAccel(0, 0, 0);
+>>>>>>> parent of 0a8a21f (velocity is now transferred between client and server)
 		this.model = m; 
 		this.instance = new ModelInstance(m, pos); 
 	}

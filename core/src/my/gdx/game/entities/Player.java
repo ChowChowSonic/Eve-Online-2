@@ -21,7 +21,10 @@ public class Player extends Entity {
 	private float totalDeltaTime= 0;
 	private boolean isAccelerating = false;
 	private Vector3 direction = new Vector3(0,0,0);
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 0a8a21f (velocity is now transferred between client and server)
 	public Player(Model model, EntityType type, long ID) {
 		super(model, type, ID);
 		this.mass = basemass;
