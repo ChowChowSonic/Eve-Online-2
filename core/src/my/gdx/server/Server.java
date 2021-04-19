@@ -23,6 +23,7 @@ import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
+import my.gdx.game.entities.removedEntity;
 import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
@@ -42,6 +43,7 @@ public class Server extends ApplicationAdapter{
     private static ServerAntenna antenna;
     private static final long serialVersionUID = 1L; 
     private static Random r;
+    private static ArrayList<Long> openIDs = new ArrayList<Long>();
     
     public void create() {
         System.out.flush();
@@ -114,6 +116,8 @@ public class Server extends ApplicationAdapter{
         appendToLogs("Entity Spawned:" + e.toString());
     }
     public static void removeEntity(Entity e){
+        openIDs.add(e.getID());
+        antenna.sendEntity(new removedEntity(e.getID()));
         entities.remove(e); 
         appendToLogs("Entity removed:" + e.getEntityType());
     }
@@ -147,7 +151,7 @@ public class Server extends ApplicationAdapter{
         if(vanishedmaterials.getItemcount() > 100) {
             appendToLogs("Available: \n"+materialcensus.toString() + "\nUsed: \n"+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
             appendToLogs("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
-            addEntity(new Debris(new Vector3(5, 5, 0), VOIDMODEL, vanishedmaterials.getItems(),15, this.assignID()));
+            addEntity(new Debris(new Vector3(20, 20, 0), VOIDMODEL, vanishedmaterials.getItems(),15, assignID()));
             vanishedmaterials.empty();
             appendToLogs("Asteroid Spawned!");
         }
@@ -164,6 +168,11 @@ public class Server extends ApplicationAdapter{
     }
     
     private static long assignID(){
+        if(openIDs.size() > 0) {
+            long l = openIDs.get(0);
+            openIDs.remove(0); 
+            return l; 
+        }
         nextID++;
         return nextID; 
     }
@@ -205,17 +214,17 @@ public class Server extends ApplicationAdapter{
         return p; 
     }
     
-    public static void stopEntity(long readLong) {
+    public static void stopEntity(long ID) {
         Entity e = null;
         for(Entity ent : entities){
-            if(e.equals(ent)) e = ent; 
+            if(ent.getID() == ID) e = ent; 
         } 
         if(e !=null && e.getEntityType() == EntityType.PLAYER){
             Player p = (Player) e;
             p.setAccelerating(false);
             Vector3 vel = p.getVel(); 
             
-            p.setVel((vel.len2()  > 0.06)? new Vector3(vel.x/1.15f, vel.y/1.15f, vel.z/1.15f): new Vector3());  
+            p.setVel((vel.len2()  > 0.06*Entity.METER)? new Vector3(vel.x/1.15f, vel.y/1.15f, vel.z/1.15f): new Vector3());  
             if(vel.len() < Entity.METER/(100*p.getMass())) {
                 p.setVel(0, 0, 0);
             }

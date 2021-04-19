@@ -37,6 +37,7 @@ import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
+import my.gdx.game.entities.removedEntity;
 import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 
@@ -218,7 +219,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		cam.up.x = 0; cam.up.z =0;
 
 		if(Gdx.input.isKeyPressed(Keys.SPACE) && !player.justpressedboost()) {
-			
+			connection.decelplayer(player.getID());     
 		}
 		
 		batch.begin(cam);
@@ -309,6 +310,13 @@ public class EveOnline2 extends ApplicationAdapter{
 		if(e == null) {
 			System.out.println("Null entity recieved!");
 			return;
+		}else if(e instanceof removedEntity){
+			for(int i = 0; i < entities.size(); i++){
+				if(e.equals(entities.get(i))){
+					entities.remove(i);
+					return;
+				}
+			}
 		}
 		unbuiltentities.add(e);
 		//System.out.println(e.toString());
