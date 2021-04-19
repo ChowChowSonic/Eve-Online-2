@@ -78,7 +78,8 @@ public class Player extends Entity {
 			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
 			(float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
 			(float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())) );
-		}else//*/ if(justpressedboost) {
+		}else//*/ 
+		if(justpressedboost) {
 			this.vel.x/=1.05;
 			this.vel.y/=1.05;
 			this.vel.z/=1.05;

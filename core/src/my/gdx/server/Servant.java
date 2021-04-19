@@ -65,6 +65,7 @@ class Servant extends Thread{
                     case 3:
                     ID = din.readLong();
                     x = din.readFloat(); y = din.readFloat(); z = din.readFloat(); 
+                    Server.boostPlayer(ID,x,y,z); 
                     break; 
                 }
             }catch(EOFException e){

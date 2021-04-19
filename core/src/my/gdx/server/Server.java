@@ -214,7 +214,8 @@ public class Server extends ApplicationAdapter{
             }
         }        
     }
-    public void boostPlayer(long ID, float x, float y, float z){
+
+    public static void boostPlayer(long ID, float x, float y, float z){
         Player e = null;
         for(Entity ent : entities){
             if(ent.getID() == ID) try{
@@ -223,6 +224,7 @@ public class Server extends ApplicationAdapter{
         } 
         e.rotate(x, y, z);
         e.setTetheringStation(null);
+        e.setAccelerating(false);
         e.setBoosting(true);
         Vector3 accelnorm = e.getVel().cpy().nor();
         float deltaTime = Gdx.graphics.getDeltaTime(); 

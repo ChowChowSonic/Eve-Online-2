@@ -87,7 +87,7 @@ public class ClientAntenna extends Thread{
     
     public void boostPlayer(long id, float x, float y, float z) {
         try {
-            outgoing.writeShort(2);
+            outgoing.writeShort(3);
             outgoing.writeLong(id);
             outgoing.writeFloat(x);
             outgoing.writeFloat(y);

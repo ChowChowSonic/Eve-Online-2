@@ -58,7 +58,9 @@ public class ServerAntenna extends Thread{
             try{
                 connections.get(i).sendEntity(e);
             }catch(Exception e2){
+                if(connections.size() > 0)
                 connections.remove(i);
+                else connections.clear();
             }
         }
     }

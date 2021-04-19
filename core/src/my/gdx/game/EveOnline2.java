@@ -188,15 +188,26 @@ public class EveOnline2 extends ApplicationAdapter{
 		}
 		
 		//entity management
+		if(Gdx.input.isKeyPressed(Keys.SPACE) && !player.isBoosting()) {
+			connection.decelplayer(player.getID());     
+		}
+		
+		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
+			Vector3 dir =cam.direction.cpy().nor();
+			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
+		}
+		
 		for(int i =0; i < entities.size()-1; i++)
 		for(int e =i+1; e < entities.size(); e++) {
 			if(entities.get(i) != null && entities.get(e) !=null) {
 				entities.get(i).touches(entities.get(e));
 			}
 		}
+		
+		for(Entity e : entities) {e.update(Gdx.graphics.getDeltaTime());}
 		background.transform.set(player.getPos(), new Quaternion());
-		//for(Entity e : entities) {}
-
+		
+		
 		//camera rotations, distance correction & Movement
 		Vector3 normvec = cam.direction.cpy(); 
 		cam.position.set(player.getPos().x-(cameradist*normvec.x), player.getPos().y-(cameradist*normvec.y),player.getPos().z-(cameradist*normvec.z));
@@ -217,21 +228,13 @@ public class EveOnline2 extends ApplicationAdapter{
 			cam.lookAt(player.getPos());
 		}
 		cam.up.x = 0; cam.up.z =0;
-
-		if(Gdx.input.isKeyPressed(Keys.SPACE) && !player.isBoosting()) {
-			connection.decelplayer(player.getID());     
-		}
-
-		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
-			Vector3 dir =cam.direction.cpy().nor();
-			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
-		}
+		
+		
 		
 		batch.begin(cam);
 		batch.render(background);
 		for(Entity e : entities) {
 			float distance = e.getPos().dst(player.getPos());
-			e.update(Gdx.graphics.getDeltaTime());
 			if(e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
 				batch.render(e.getInstance());
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
