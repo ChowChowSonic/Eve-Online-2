@@ -178,8 +178,10 @@ public class Server extends ApplicationAdapter{
     }
     
     public static void AccelerateEntity(long id, float x, float y, float z){
+        Entity e2 = null;
         for(int i = 0; i < entities.size(); i++){
-            Entity e2 = entities.get(i); 
+            if(entities.get(i).getID() == id) e2 = entities.get(i); 
+        }if(e2==null)return; 
             if(e2.getID() == id && e2.getEntityType().equals(EntityType.PLAYER)) {
                 Player e = (Player) e2;
                 float dt = Gdx.graphics.getDeltaTime();
@@ -188,7 +190,7 @@ public class Server extends ApplicationAdapter{
             }else if(e2.getEntityType() != EntityType.CELESTIALOBJ){
                 e2.addAccel(x, y, z);
             }
-        }
+        
     }
     
     public static void stopEntity(long ID) {
