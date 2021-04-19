@@ -177,12 +177,7 @@ public class Server extends ApplicationAdapter{
         return nextID; 
     }
     
-    /**
-    * Returns the entity's location in memory, enabling it to be modified or commanded to do something in some way.
-    * @param id - the ID of the entity in question
-    * @return the entity's location in memory for modifying purposes
-    */
-    public static void AcceleratePlayer(long id, float x, float y, float z){
+    public static void AccelerateEntity(long id, float x, float y, float z){
         for(int i = 0; i < entities.size(); i++){
             Entity e2 = entities.get(i); 
             if(e2.getID() == id && e2.getEntityType().equals(EntityType.PLAYER)) {
@@ -190,10 +185,53 @@ public class Server extends ApplicationAdapter{
                 float dt = Gdx.graphics.getDeltaTime();
                 e.setAccelerating(!e.getRotation().hasOppositeDirection(new Vector3(x,y,z)), x,y,z);
                 
+            }else if(e2.getEntityType() != EntityType.CELESTIALOBJ){
+                e2.addAccel(x, y, z);
             }
         }
     }
     
+    public static void stopEntity(long ID) {
+        Entity e = null;
+        for(Entity ent : entities){
+            if(ent.getID() == ID) e = ent; 
+        } 
+        if(e !=null && e.getEntityType() == EntityType.PLAYER){
+            Player p = (Player) e;
+            p.setAccelerating(false);
+            Vector3 vel = p.getVel(); 
+            
+            p.setVel((vel.len2()  > 0.06*Entity.METER)? new Vector3(vel.x/1.15f, vel.y/1.15f, vel.z/1.15f): new Vector3());  
+            if(vel.len() < Entity.METER/(100*p.getMass())) {
+                p.setVel(0, 0, 0);
+            }
+        }else if(e !=null){
+            Vector3 vel = e.getVel(); 
+            
+            e.setVel((vel.len2()  > 0.06*Entity.METER)? new Vector3(vel.x/1.15f, vel.y/1.15f, vel.z/1.15f): new Vector3());  
+            if(vel.len() < Entity.METER/(100*e.getMass())) {
+                e.setVel(0, 0, 0);
+            }
+        }        
+    }
+    public void boostPlayer(long ID, float x, float y, float z){
+        Player e = null;
+        for(Entity ent : entities){
+            if(ent.getID() == ID) try{
+             e = (Player) ent; 
+            }catch(Exception yeet) {return;} 
+        } 
+        e.rotate(x, y, z);
+        e.setTetheringStation(null);
+        e.setBoosting(true);
+        Vector3 accelnorm = e.getVel().cpy().nor();
+        float deltaTime = Gdx.graphics.getDeltaTime(); 
+        e.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())), 
+			(float)(accelnorm.y*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())), 
+			(float)(accelnorm.z*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())) );
+        
+    }
+
     /**
     * Returns a copy of an entity, likely a player, to send to a client.
     * @param ID - the ID of the entity in question 
@@ -214,22 +252,5 @@ public class Server extends ApplicationAdapter{
         return p; 
     }
     
-    public static void stopEntity(long ID) {
-        Entity e = null;
-        for(Entity ent : entities){
-            if(ent.getID() == ID) e = ent; 
-        } 
-        if(e !=null && e.getEntityType() == EntityType.PLAYER){
-            Player p = (Player) e;
-            p.setAccelerating(false);
-            Vector3 vel = p.getVel(); 
-            
-            p.setVel((vel.len2()  > 0.06*Entity.METER)? new Vector3(vel.x/1.15f, vel.y/1.15f, vel.z/1.15f): new Vector3());  
-            if(vel.len() < Entity.METER/(100*p.getMass())) {
-                p.setVel(0, 0, 0);
-            }
-        }
-
-        
-    }
+    
 }

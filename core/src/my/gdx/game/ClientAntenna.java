@@ -8,7 +8,7 @@ import com.badlogic.gdx.Gdx;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 public class ClientAntenna extends Thread{  
-
+    
     private Socket clientSocket;
     private DataOutputStream outgoing; 
     private ObjectInputStream incoming; 
@@ -74,11 +74,24 @@ public class ClientAntenna extends Thread{
             e.printStackTrace();
         }
     }
-
+    
     public void decelplayer(Long k){
         try {
             outgoing.writeShort(2);
             outgoing.writeLong(k);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    public void boostPlayer(long id, float x, float y, float z) {
+        try {
+            outgoing.writeShort(2);
+            outgoing.writeLong(id);
+            outgoing.writeFloat(x);
+            outgoing.writeFloat(y);
+            outgoing.writeFloat(z);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

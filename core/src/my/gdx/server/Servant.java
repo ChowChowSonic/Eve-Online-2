@@ -42,22 +42,30 @@ class Servant extends Thread{
             try{
                 short cmd = din.readShort();
                 System.out.println(cmd+"");
-                if(cmd == (short) 0){
-                    long ID1 = din.readLong(); 
-                    System.out.println(ID1+" Entity copy requested");
-                    Entity e = Server.getEntityCopy(ID1); 
+                
+                switch(cmd){
+                    case 0:
+                    long ID = din.readLong(); 
+                    //System.out.println(ID+" Entity copy requested");
+                    Entity e = Server.getEntityCopy(ID); 
                     if(e !=null){
                         sendEntity(e);
                     }
-                }else if(cmd == (short) 1){
-                    long ID2 = din.readLong();
-                    System.out.println(ID2+" Entity Movement requested");
+                    break;
+                    case 1:
+                    ID = din.readLong();
+                    //System.out.println(ID+" Entity Movement requested");
                     float x = din.readFloat(), y=din.readFloat(), z=din.readFloat(); 
                     //Server.appendToLogs(x+" "+y+" "+z);
-                    Server.AcceleratePlayer(ID2,x,y,z); 
-                    
-                }else if(cmd == (short)2){
+                    Server.AccelerateEntity(ID,x,y,z); 
+                    break;
+                    case 2:
                     Server.stopEntity(din.readLong()); 
+                    break;
+                    case 3:
+                    ID = din.readLong();
+                    x = din.readFloat(); y = din.readFloat(); z = din.readFloat(); 
+                    break; 
                 }
             }catch(EOFException e){
                 Server.appendToLogs("user forced to disconnect from port: "+user.getPort());

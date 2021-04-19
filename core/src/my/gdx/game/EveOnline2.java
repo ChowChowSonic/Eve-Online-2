@@ -179,10 +179,10 @@ public class EveOnline2 extends ApplicationAdapter{
 		}
 		
 		
-		if(Gdx.input.isKeyJustPressed(Keys.W) && !player.justpressedboost()){
+		if(Gdx.input.isKeyJustPressed(Keys.W) && !player.isBoosting()){
 			Vector3 dir =cam.direction.cpy().nor();
 			connection.accelPlayer(player.getID(), dir.x, dir.y, dir.z);
-		}else if(Gdx.input.isKeyJustPressed(Keys.S) && !player.justpressedboost()){
+		}else if(Gdx.input.isKeyJustPressed(Keys.S) && !player.isBoosting()){
 			Vector3 dir =cam.direction.cpy().nor();
 			connection.accelPlayer(player.getID(), -dir.x, -dir.y, -dir.z);
 		}
@@ -218,8 +218,13 @@ public class EveOnline2 extends ApplicationAdapter{
 		}
 		cam.up.x = 0; cam.up.z =0;
 
-		if(Gdx.input.isKeyPressed(Keys.SPACE) && !player.justpressedboost()) {
+		if(Gdx.input.isKeyPressed(Keys.SPACE) && !player.isBoosting()) {
 			connection.decelplayer(player.getID());     
+		}
+
+		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
+			Vector3 dir =cam.direction.cpy().nor();
+			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
 		}
 		
 		batch.begin(cam);

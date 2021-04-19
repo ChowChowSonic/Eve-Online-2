@@ -21,7 +21,7 @@ public class Player extends Entity {
 	private float totalDeltaTime= 0;
 	private boolean isAccelerating = false;
 	private Vector3 direction = new Vector3(0,0,0);
-
+	
 	public Player(Model model, EntityType type, long ID) {
 		super(model, type, ID);
 		this.mass = basemass;
@@ -78,7 +78,7 @@ public class Player extends Entity {
 			this.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
 			(float)(accelnorm.y*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())), 
 			(float)(accelnorm.z*(deltaTime/Math.sqrt(this.mass+1))*((1000-(METER*this.mass))-this.vel.len2())) );
-		}else if(justpressedboost) {
+		}else//*/ if(justpressedboost) {
 			this.vel.x/=1.05;
 			this.vel.y/=1.05;
 			this.vel.z/=1.05;
@@ -87,8 +87,8 @@ public class Player extends Entity {
 				justpressedboost = false;
 				this.vel.setZero();
 			}
-			
-		}//*/
+		}
+
 		if(totalDeltaTime > 5.0f) {
 			totalDeltaTime -= 5;
 			if(this.shields < this.maxshields-20)
@@ -129,7 +129,7 @@ public class Player extends Entity {
 	public boolean isAccelerating(){
 		return isAccelerating;
 	}
-
+	
 	public void setAccelerating(boolean ac){
 		this.isAccelerating = ac; 
 	}
@@ -137,12 +137,15 @@ public class Player extends Entity {
 		this.direction.set(x, y, z); 
 		this.isAccelerating = ac; 
 	}
+	
 	public boolean isBoosting() {
 		return justpressedboost;
 	}
-	public boolean justpressedboost() {
-		return this.justpressedboost;
+	
+	public void setBoosting(boolean b){
+		this.justpressedboost = b;
 	}
+	
 	public int getShields() {
 		return shields;
 	}
@@ -179,18 +182,26 @@ public class Player extends Entity {
 		return maxhull;
 	}
 	
+	public void setTetheringStation(Station s){
+		this.tetheringstation = s; 
+	}
+	
+	public Entity getTetheringStation() {
+		return this.tetheringstation; 
+	}
+	
 	public boolean isTethered(){
 		return this.tetheringstation != null && !this.isBoosting();
 	}
-
+	
 	public void rotate(float x, float y, float z){
 		this.direction.set(x, y, z);
 	}
-
+	
 	public void rotate(Vector3 vec){
 		this.direction.set(vec);
 	}
-
+	
 	public Vector3 getRotation(){
 		return this.direction; 
 	}
