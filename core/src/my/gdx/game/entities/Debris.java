@@ -30,10 +30,10 @@ public class Debris extends Entity{
 			this.inventory = new Inventory(contents, 999999999);  
 			this.size = 0; 
 			for(Item i : contents){
-				size+=i.getVolume(); 
+				size+=i.getVolume()/100; 
 				this.mass+=i.getWeight(); 
 			}
-			this.instance.transform.scale(size/10000, size/10000, size/10000);
+			this.instance.transform.scale(size/100000000, size/100000000, size/100000000);
 			// TODO Auto-generated constructor stub
 		}
 		
@@ -42,10 +42,10 @@ public class Debris extends Entity{
 			this.pos = position; 
 			this.inventory = contents;  
 			for(Item i : contents.getItems()){
-				size+=i.getVolume(); 
+				size+=i.getVolume()/100; 
 				this.mass+=i.getWeight();
 			}
-			this.instance.transform.scale(size/10000, size/10000, size/10000);
+			this.instance.transform.scale(size/10000000, size/10000000, size/10000000);
 			// TODO Auto-generated constructor stub
 		}
 		
