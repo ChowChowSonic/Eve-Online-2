@@ -150,8 +150,21 @@ public class EveOnline2 extends ApplicationAdapter{
 		//build all unbuilt entities
 		if(unbuiltentities.size()>0){
 			for(int i = 0; i < unbuiltentities.size(); i++){
-				Entity e = buildEntity(unbuiltentities.get(i)); 
-				entities.add(e); 
+				boolean entityfound = false;
+				Entity e2 = unbuiltentities.get(i);
+				if(e2== null) continue; 
+				for(Entity e : entities){
+					if(e.equals(e2)){
+						updateEntity(e2); 
+						entityfound = true;
+						break;
+					}
+					
+				}
+				if(!entityfound){
+					Entity e = buildEntity(unbuiltentities.get(i)); 
+					entities.add(e);
+				} 
 			}
 			unbuiltentities.clear();
 		}
@@ -181,6 +194,27 @@ public class EveOnline2 extends ApplicationAdapter{
 		}
 		background.transform.set(player.getPos(), new Quaternion());
 		//for(Entity e : entities) {}
+
+		//camera rotations, distance correction & Movement
+		Vector3 normvec = cam.direction.cpy(); 
+		cam.position.set(player.getPos().x-(cameradist*normvec.x), player.getPos().y-(cameradist*normvec.y),player.getPos().z-(cameradist*normvec.z));
+		cam.lookAt(player.getPos());
+		cam.update();
+		
+		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
+			float deltax = Gdx.input.getDeltaX(); 
+			float deltay = Gdx.input.getDeltaY();
+			Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
+			cam.translate(direction.x*deltax*0.025f,0,direction.z*deltax*0.025f);
+			
+			direction = cam.up.nor(); 
+			
+			if((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0,1,0)) && deltay > 0) || (cam.direction.hasSameDirection(new Vector3(0,-1,0)) && deltay < 0)){
+				cam.translate(direction.x*deltay*0.025f,direction.y*deltay*0.025f,direction.z*deltay*0.025f);
+			}
+			cam.lookAt(player.getPos());
+		}
+		cam.up.x = 0; cam.up.z =0;
 		
 		batch.begin(cam);
 		batch.render(background);
@@ -202,27 +236,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		batch.end();
 		runItemCensus();
 		usedmaterials.empty();
-		
-		//camera rotations, distance correction & Movement
-		Vector3 normvec = cam.direction.cpy(); 
-		cam.position.set(player.getPos().x-(cameradist*normvec.x), player.getPos().y-(cameradist*normvec.y),player.getPos().z-(cameradist*normvec.z));
-		cam.lookAt(player.getPos());
-		cam.update();
-		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
-			float deltax = Gdx.input.getDeltaX(); 
-			float deltay = Gdx.input.getDeltaY();
-			Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
-			cam.translate(direction.x*deltax*0.025f,0,direction.z*deltax*0.025f);
-			
-			direction = cam.up.nor(); 
-			
-			if((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0,1,0)) && deltay > 0) || (cam.direction.hasSameDirection(new Vector3(0,-1,0)) && deltay < 0)){
-				cam.translate(direction.x*deltay*0.025f,direction.y*deltay*0.025f,direction.z*deltay*0.025f);
-			}
-			cam.lookAt(player.getPos());
-		}
-		cam.up.x = 0; cam.up.z =0;
-		
 		
 		//Inventory Menu stuff
 		if(Gdx.input.isKeyJustPressed(Keys.I)){
@@ -288,7 +301,12 @@ public class EveOnline2 extends ApplicationAdapter{
 	}
 	
 	public static void addEntity(Entity e) {
+		if(e == null) {
+			System.out.println("Null entity recieved!");
+			return;
+		}
 		unbuiltentities.add(e);
+		//System.out.println(e.toString());
 	}
 	
 	public static Entity buildEntity(Entity e){
@@ -297,8 +315,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		if(e.getEntityType() == EntityType.PLAYER){
 			m = manager.get("ship.obj", Model.class); 
 			e.buildEntity(m); 
-			//entities.add(e);
-			sortEntities();
 			return new Player(e.getModel(), e.getEntityType(), e.getID()); 
 		}else if(e.getEntityType() == EntityType.ASTEROID){
 			/*material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
@@ -306,19 +322,16 @@ public class EveOnline2 extends ApplicationAdapter{
 			FloatAttribute.createShininess(100f));
 			m = builder.createSphere(e.getSize(), e.getSize(), e.getSize(), 10, 10, material, attributes);*/
 			e.buildEntity(manager.get("SpaceStation.obj", Model.class)); 
-			entities.add(e);
-			//sortEntities();
 			return new Debris(e.getPos(), e.getModel(), e.inventory, (int) e.getSize(), e.getID()); 
 		}else{
 			m = manager.get("ship.obj", Model.class); 
 			e.buildEntity(m);
-			entities.add(e);
-			//sortEntities();
+			
 			return new Player(m, e.getEntityType(), e.getID()); 
 		}
 	}
 	
-	public static void updateEnitity(Entity e){
+	public static void updateEntity(Entity e){
 		e.buildEntity(new Model());
 		for(int i = 0; i < entities.size(); i++){
 			if(e.equals(entities.get(i))) {

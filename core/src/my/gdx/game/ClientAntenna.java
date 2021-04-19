@@ -96,13 +96,7 @@ public class ClientAntenna extends Thread{
                 boolean alreadyfound = false; 
                 for(int i = 0; i < EveOnline2.entities.size(); i++){
                     if(o.equals(EveOnline2.entities.get(i))){
-                        EveOnline2.updateEnitity(o);
-                        alreadyfound = true; 
-                        break; 
-                    }
-                }
-                for(int i = 0; i < EveOnline2.unbuiltentities.size(); i++){
-                    if(o.equals(EveOnline2.unbuiltentities.get(i))){
+                        EveOnline2.addEntity(o);
                         alreadyfound = true; 
                         break; 
                     }
