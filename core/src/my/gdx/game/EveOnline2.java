@@ -229,8 +229,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		}
 		cam.up.x = 0; cam.up.z =0;
 		
-		
-		
 		batch.begin(cam);
 		batch.render(background);
 		for(Entity e : entities) {
@@ -303,7 +301,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		hudrenderer.dispose();
 		//connection.close();
 		System.gc();
-		System.exit(1);
+		System.exit(0);
 	}
 	
 	public static Vector3 getCamRotation() {

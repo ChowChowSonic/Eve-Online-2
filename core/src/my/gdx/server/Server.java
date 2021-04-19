@@ -151,7 +151,7 @@ public class Server extends ApplicationAdapter{
         if(vanishedmaterials.getItemcount() > 100) {
             appendToLogs("Available: \n"+materialcensus.toString() + "\nUsed: \n"+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
             appendToLogs("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
-            addEntity(new Debris(new Vector3(20, 20, 0), VOIDMODEL, vanishedmaterials.getItems(),15, assignID()));
+            addEntity(new Debris(new Vector3(20, 20, 0), VOIDMODEL, vanishedmaterials.getItems(),assignID()));
             vanishedmaterials.empty();
             appendToLogs("Asteroid Spawned!");
         }

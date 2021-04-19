@@ -24,12 +24,16 @@ public class Debris extends Entity{
 		* @param model
 		* @param type
 		*/
-		public Debris(Vector3 position, Model model, ArrayList<Item> contents, int radius, long ID) {
+		public Debris(Vector3 position, Model model, ArrayList<Item> contents, long ID) {
 			super(model, EntityType.ASTEROID, ID);
 			this.pos = position; 
 			this.inventory = new Inventory(contents, 999999999);  
-			this.size = radius; 
-			this.instance.transform.scl(radius);
+			this.size = 0; 
+			for(Item i : contents){
+				size+=i.getVolume(); 
+			}
+			this.size = this.size; 
+			this.instance.transform.scl(size);
 			for(Item i : contents) {
 				this.mass+=i.getWeight(); 
 			}
