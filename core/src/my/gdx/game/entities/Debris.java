@@ -31,12 +31,9 @@ public class Debris extends Entity{
 			this.size = 0; 
 			for(Item i : contents){
 				size+=i.getVolume(); 
-			}
-			this.size = this.size; 
-			this.instance.transform.scl(size);
-			for(Item i : contents) {
 				this.mass+=i.getWeight(); 
 			}
+			this.instance.transform.scale(size/10000, size/10000, size/10000);
 			// TODO Auto-generated constructor stub
 		}
 		
@@ -44,11 +41,11 @@ public class Debris extends Entity{
 			super(model, EntityType.ASTEROID, ID);
 			this.pos = position; 
 			this.inventory = contents;  
-			this.size = radius; 
-			this.instance.transform.scl(radius);
-			for(Item i : contents.getItems()) {
-				this.mass+=i.getWeight(); 
+			for(Item i : contents.getItems()){
+				size+=i.getVolume(); 
+				this.mass+=i.getWeight();
 			}
+			this.instance.transform.scale(size/10000, size/10000, size/10000);
 			// TODO Auto-generated constructor stub
 		}
 		
