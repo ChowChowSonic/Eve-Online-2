@@ -18,7 +18,7 @@ class Servant extends Thread{
     private static final long serialVersionUID = 1L;
     Player userEntity;
     private boolean isrunning = false;
-
+    
     public Servant(Socket s){
         user = s; 
         try{
@@ -47,7 +47,7 @@ class Servant extends Thread{
                     System.out.println(ID1+" Entity copy requested");
                     Entity e = Server.getEntityCopy(ID1); 
                     if(e !=null){
-                    sendEntity(e);
+                        sendEntity(e);
                     }
                 }else if(cmd == (short) 1){
                     long ID2 = din.readLong();
@@ -56,6 +56,8 @@ class Servant extends Thread{
                     //Server.appendToLogs(x+" "+y+" "+z);
                     Server.AcceleratePlayer(ID2,x,y,z); 
                     
+                }else if(cmd == (short)2){
+                    Server.stopEntity(din.readLong()); 
                 }
             }catch(EOFException e){
                 Server.appendToLogs("user forced to disconnect from port: "+user.getPort());

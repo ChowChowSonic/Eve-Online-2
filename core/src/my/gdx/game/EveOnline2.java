@@ -84,6 +84,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		
 		manager.load("spacesphere3.obj", Model.class);
 		manager.load("SpaceStation.obj", Model.class);
+		manager.load("Asteroid.obj", Model.class);
 		manager.load("ship.obj", Model.class);
 		manager.finishLoading();
 		DEFAULTMODEL = manager.get("ship.obj", Model.class); 
@@ -215,6 +216,10 @@ public class EveOnline2 extends ApplicationAdapter{
 			cam.lookAt(player.getPos());
 		}
 		cam.up.x = 0; cam.up.z =0;
+
+		if(Gdx.input.isKeyPressed(Keys.SPACE) && !player.justpressedboost()) {
+			
+		}
 		
 		batch.begin(cam);
 		batch.render(background);
@@ -317,11 +322,8 @@ public class EveOnline2 extends ApplicationAdapter{
 			e.buildEntity(m); 
 			return new Player(e.getModel(), e.getEntityType(), e.getID()); 
 		}else if(e.getEntityType() == EntityType.ASTEROID){
-			/*material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
-			ColorAttribute.createSpecular(1, 1, 1, 1),
-			FloatAttribute.createShininess(100f));
-			m = builder.createSphere(e.getSize(), e.getSize(), e.getSize(), 10, 10, material, attributes);*/
-			e.buildEntity(manager.get("SpaceStation.obj", Model.class)); 
+			
+			e.buildEntity(manager.get("Asteroid.obj", Model.class)); 
 			return new Debris(e.getPos(), e.getModel(), e.inventory, (int) e.getSize(), e.getID()); 
 		}else{
 			m = manager.get("ship.obj", Model.class); 

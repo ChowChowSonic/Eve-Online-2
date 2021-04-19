@@ -74,6 +74,16 @@ public class ClientAntenna extends Thread{
             e.printStackTrace();
         }
     }
+
+    public void decelplayer(Long k){
+        try {
+            outgoing.writeShort(2);
+            outgoing.writeLong(k);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     
     public void close(){
         try {

@@ -29,6 +29,7 @@ public class Debris extends Entity{
 			this.pos = position; 
 			this.inventory = new Inventory(contents, 999999999);  
 			this.size = radius; 
+			this.instance.transform.scl(radius);
 			for(Item i : contents) {
 				this.mass+=i.getWeight(); 
 			}
@@ -40,6 +41,7 @@ public class Debris extends Entity{
 			this.pos = position; 
 			this.inventory = contents;  
 			this.size = radius; 
+			this.instance.transform.scl(radius);
 			for(Item i : contents.getItems()) {
 				this.mass+=i.getWeight(); 
 			}
@@ -60,6 +62,7 @@ public class Debris extends Entity{
 			for(Item i : this.inventory.getItems()) {
 				this.mass+=i.getWeight(); 
 			}
+			this.instance.transform.scl(radius);
 		}
 		public Debris(long ID){
 			super(ID);

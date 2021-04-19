@@ -84,7 +84,7 @@ public class Server extends ApplicationAdapter{
             }
             entities.get(i).update(Gdx.graphics.getDeltaTime());
         }
-
+        
         for(int i =0; i < entities.size(); i++) {
             Entity e = entities.get(i); 
             if(e.inventory != null) {
@@ -106,7 +106,7 @@ public class Server extends ApplicationAdapter{
     @Override
     public void dispose(){
         antenna.close();
-
+        
     }
     public static void addEntity(Entity e) {
         entities.add(e);
@@ -147,7 +147,7 @@ public class Server extends ApplicationAdapter{
         if(vanishedmaterials.getItemcount() > 100) {
             appendToLogs("Available: \n"+materialcensus.toString() + "\nUsed: \n"+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
             appendToLogs("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
-            addEntity(new Debris(new Vector3(700, 5, 0), VOIDMODEL, vanishedmaterials.getItems(),15, this.assignID()));
+            addEntity(new Debris(new Vector3(5, 5, 0), VOIDMODEL, vanishedmaterials.getItems(),15, this.assignID()));
             vanishedmaterials.empty();
             appendToLogs("Asteroid Spawned!");
         }
@@ -167,12 +167,12 @@ public class Server extends ApplicationAdapter{
         nextID++;
         return nextID; 
     }
-
+    
     /**
-     * Returns the entity's location in memory, enabling it to be modified or commanded to do something in some way.
-     * @param id - the ID of the entity in question
-     * @return the entity's location in memory for modifying purposes
-     */
+    * Returns the entity's location in memory, enabling it to be modified or commanded to do something in some way.
+    * @param id - the ID of the entity in question
+    * @return the entity's location in memory for modifying purposes
+    */
     public static void AcceleratePlayer(long id, float x, float y, float z){
         for(int i = 0; i < entities.size(); i++){
             Entity e2 = entities.get(i); 
@@ -180,16 +180,16 @@ public class Server extends ApplicationAdapter{
                 Player e = (Player) e2;
                 float dt = Gdx.graphics.getDeltaTime();
                 e.setAccelerating(!e.getRotation().hasOppositeDirection(new Vector3(x,y,z)), x,y,z);
-
+                
             }
         }
     }
-
+    
     /**
-     * Returns a copy of an entity, likely a player, to send to a client.
-     * @param ID - the ID of the entity in question 
-     * @return a copy of a player
-     */
+    * Returns a copy of an entity, likely a player, to send to a client.
+    * @param ID - the ID of the entity in question 
+    * @return a copy of a player
+    */
     public static Entity getEntityCopy(long ID){
         if(ID > 0){
             for(Entity e : entities){
@@ -203,5 +203,24 @@ public class Server extends ApplicationAdapter{
             if(e.equals(p)) return e;
         }
         return p; 
+    }
+    
+    public static void stopEntity(long readLong) {
+        Entity e = null;
+        for(Entity ent : entities){
+            if(e.equals(ent)) e = ent; 
+        } 
+        if(e !=null && e.getEntityType() == EntityType.PLAYER){
+            Player p = (Player) e;
+            p.setAccelerating(false);
+            Vector3 vel = p.getVel(); 
+            
+            p.setVel((vel.len2()  > 0.06)? new Vector3(vel.x/1.15f, vel.y/1.15f, vel.z/1.15f): new Vector3());  
+            if(vel.len() < Entity.METER/(100*p.getMass())) {
+                p.setVel(0, 0, 0);
+            }
+        }
+
+        
     }
 }

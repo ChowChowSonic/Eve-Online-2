@@ -60,7 +60,7 @@ public class Player extends Entity {
 		}
 		
 		//Stop the player
-		if(Gdx.input.isKeyPressed(Keys.SPACE) && !justpressedboost) {
+		/*if(Gdx.input.isKeyPressed(Keys.SPACE) && !justpressedboost) {
 			this.isAccelerating = false;
 			this.vel.x -= (Math.abs(this.vel.x) > 0.06) ? this.vel.x/100: this.vel.x/10;
 			this.vel.y -= (Math.abs(this.vel.y) > 0.06) ? this.vel.y/100: this.vel.y/10;
@@ -68,7 +68,8 @@ public class Player extends Entity {
 			if(this.vel.len() < METER/(100*this.mass)) {
 				this.vel.setZero();
 			}
-		}
+		}*/
+		
 		//Starts up & shuts down the warp drive
 		/*if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
 			this.tetheringstation = null;
