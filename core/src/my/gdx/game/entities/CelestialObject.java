@@ -15,8 +15,8 @@ public class CelestialObject extends Entity{
 	protected final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	private static final long serialVersionUID = 1L;
 
-	public CelestialObject(Vector3 position, Model model, float mass, float radius, long ID) {
-		super(model, EntityType.CELESTIALOBJ, ID);
+	public CelestialObject(Vector3 position, String modelname, float mass, float radius, long ID) {
+		super(modelname, EntityType.CELESTIALOBJ, ID);
 		material = model.materials.get(0);
 		this.pos = position;
 		this.setMass(mass);

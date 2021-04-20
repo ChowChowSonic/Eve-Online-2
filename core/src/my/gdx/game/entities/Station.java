@@ -15,14 +15,14 @@ import my.gdx.game.EveOnline2;
 public class Station extends CelestialObject{
 	float tetherradius;
 	Entity bobbers[];
-	Model bobbermodel = EveOnline2.builder.createSphere(1f, 1f, 1f, 5, 5,
+	/*Model bobbermodel = EveOnline2.builder.createSphere(1f, 1f, 1f, 5, 5,
 	new Material(ColorAttribute.createSpecular(1, 1, 1, 1),
-	FloatAttribute.createShininess(8f)), (long)(Usage.Position | Usage.Normal | Usage.TextureCoordinates));
+	FloatAttribute.createShininess(8f)), (long)(Usage.Position | Usage.Normal | Usage.TextureCoordinates));*/
 	
-	public Station(Vector3 pos, Model model, float mass, float innerradius, float outerraidus, long ID) {
-		super(pos, model, mass, innerradius, ID);
+	public Station(Vector3 pos, String modelname, float mass, float innerradius, float outerraidus, long ID) {
+		super(pos, modelname, mass, innerradius, ID);
 		this.tetherradius = outerraidus;
-		bobbers = new Entity[8];
+		//bobbers = new Entity[8];
 		
 		/*bobbers[0]= new NPC(new Vector3(this.pos.x+tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
 		bobbers[1]= new NPC(new Vector3(this.pos.x-tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
@@ -32,9 +32,9 @@ public class Station extends CelestialObject{
 		bobbers[5]= new NPC(new Vector3(this.pos.x+(tetherradius*0.707f), this.pos.y, this.pos.z-(tetherradius*0.707f)),bobbermodel, EntityType.FRIEND);
 		bobbers[6]= new NPC(new Vector3(this.pos.x-(tetherradius*0.707f), this.pos.y, this.pos.z+(tetherradius*0.707f)),bobbermodel, EntityType.FRIEND);
 		bobbers[7]= new NPC(new Vector3(this.pos.x-(tetherradius*0.707f), this.pos.y, this.pos.z-(tetherradius*0.707f)),bobbermodel, EntityType.FRIEND);*/
-		for(Entity bobber : bobbers) {
-			EveOnline2.addEntity(bobber);
-		}
+		//for(Entity bobber : bobbers) {
+		//	EveOnline2.addEntity(bobber);
+		//}
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -43,9 +43,9 @@ public class Station extends CelestialObject{
 		this.instance.transform.set(this.pos, new Quaternion());
 		float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*this.size), 2)));
 		this.instance.transform.scl(size2);
-		for(Entity bobber : bobbers) {
-			bobber.instance.transform.scl(size2,size2,size2);
-		}
+		//for(Entity bobber : bobbers) {
+		//	bobber.instance.transform.scl(size2,size2,size2);
+		//}
 	}
 	
 	@Override

@@ -22,8 +22,8 @@ public class Player extends Entity {
 	private boolean isAccelerating = false;
 	private Vector3 direction = new Vector3(0,0,0);
 	
-	public Player(Model model, EntityType type, long ID) {
-		super(model, type, ID);
+	public Player(String modelname, EntityType type, long ID) {
+		super(modelname, type, ID);
 		this.mass = basemass;
 		this.size = 1f;
 		inventory = new Inventory(100);

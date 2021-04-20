@@ -45,6 +45,7 @@ public class Server extends ApplicationAdapter{
     private static Random r;
     private static ArrayList<Long> openIDs = new ArrayList<Long>();
     
+    
     public void create() {
         System.out.flush();
         r = new Random();
@@ -151,7 +152,7 @@ public class Server extends ApplicationAdapter{
         if(vanishedmaterials.getItemcount() > 100) {
             appendToLogs("Available: \n"+materialcensus.toString() + "\nUsed: \n"+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
             appendToLogs("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
-            addEntity(new Debris(new Vector3(20, 20, 0), VOIDMODEL, vanishedmaterials.getItems(),assignID()));
+            addEntity(new Debris(new Vector3(20, 20, 0), "Asteroid.obj", vanishedmaterials.getItems(),assignID()));
             vanishedmaterials.empty();
             appendToLogs("Asteroid Spawned!");
         }
@@ -247,7 +248,7 @@ public class Server extends ApplicationAdapter{
                 if(e!= null && e.getID() == ID) return e;
             }
         }
-        Player p = new Player(VOIDMODEL, EntityType.PLAYER, assignID());
+        Player p = new Player("ship.obj", EntityType.PLAYER, assignID());
         p.setPos(r.nextFloat(),r.nextFloat(),r.nextFloat());
         addEntity(p);
         for(Entity e : entities){

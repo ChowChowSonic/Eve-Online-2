@@ -3,8 +3,10 @@ package my.gdx.game.entities;
 
 import java.io.Serializable;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
@@ -15,6 +17,8 @@ import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
 
 public abstract class Entity implements Serializable{
+	public static AssetManager manager;
+
 	protected static final long serialVersionUID = 1L;
 	protected transient Vector3 pos,vel,accel;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
@@ -23,6 +27,7 @@ public abstract class Entity implements Serializable{
 	protected final long ID; 
 	protected EntityType type; 
 	protected String modelname; 
+	
 	
 	/**Internal, non-transient variables meant to update the position of the entity after serialization */
 	protected float x, dx, ddx, y, dy, ddy, z, dz, ddz; 
@@ -34,9 +39,13 @@ public abstract class Entity implements Serializable{
 	public Inventory inventory;
 	
 	
-	public Entity(Model model, EntityType type, long id){
+	public Entity(String modelname, EntityType type, long id){
 		this.type = type;
-		this.model = model; 
+		this.modelname = modelname; 
+		if(!manager.contains(modelname, Model.class)){
+			manager.load(modelname, Model.class);
+		}
+		this.model = manager.get(modelname); 
 		instance = new ModelInstance(model);
 		pos = new Vector3();
 		vel = new Vector3();
@@ -44,10 +53,14 @@ public abstract class Entity implements Serializable{
 		ID = id;
 	}
 	
-	public Entity(Vector3 position, Model model, EntityType type, long id) {
+	public Entity(Vector3 position, String modelname, EntityType type, long id) {
 		// TODO Auto-generated constructor stub
 		this.type = type;
-		this.model = model; 
+		this.modelname = modelname; 
+		if(!manager.contains(modelname, Model.class)){
+			manager.load(modelname, Model.class);
+		}
+		this.model = manager.get(modelname); 
 		instance = new ModelInstance(model);
 		pos = new Vector3(position);
 		vel = new Vector3();
@@ -101,15 +114,15 @@ public abstract class Entity implements Serializable{
 		
 	}
 	
-	public void buildEntity(Model m){
+	public void buildEntity(){
 		if(this.pos == null) this.pos = new Vector3(); 
 		if(this.vel == null) this.vel = new Vector3();
 		if(this.accel == null) this.accel = new Vector3();
 		this.pos = new Vector3(x, y, z);
 		this.setVel(new Vector3(dx,dy,dz));
 		this.setAccel(ddx, ddy, ddz);
-		this.model = m; 
-		this.instance = new ModelInstance(m, pos); 
+		this.model = manager.get(this.getModelName(), Model.class); 
+		this.instance = new ModelInstance(this.model, pos); 
 	}
 	
 	@Override
@@ -209,6 +222,10 @@ public abstract class Entity implements Serializable{
 	
 	public void setSize(float f){
 		this.size = f;
+	}
+
+	public String getModelName() {
+		return modelname;
 	}
 	
 }

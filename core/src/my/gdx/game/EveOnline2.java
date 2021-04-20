@@ -45,8 +45,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	
 	public static Model DEFAULTMODEL; 
 	public static ArrayList<Entity> unbuiltentities = new ArrayList<Entity>(), entities = new ArrayList<Entity>();
-	public static AssetManager manager;
-	public static ModelBuilder builder;
+	
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
 	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
@@ -80,20 +79,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		cam.near = 1f;
 		cam.far = renderDist;
 		batch = new ModelBatch();
-		builder = new ModelBuilder();
-		manager = new AssetManager();
-		
-		manager.load("spacesphere3.obj", Model.class);
-		manager.load("SpaceStation.obj", Model.class);
-		manager.load("Asteroid.obj", Model.class);
-		manager.load("ship.obj", Model.class);
-		manager.finishLoading();
-		DEFAULTMODEL = manager.get("ship.obj", Model.class); 
-		//System.out.println(manager.get("SpaceStation.obj", Model.class).toString() + "/" + manager.get("ship.obj", Model.class).toString());
-		Material material = new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
-		ColorAttribute.createSpecular(1, 1, 1, 1),
-		FloatAttribute.createShininess(8f));
-		object = builder.createSphere(1f, 1f, 1f, 24, 24, material, attributes);
 		
 		//Connect to the server & add the player
 		System.out.println("Attempting to connect...");
@@ -126,7 +111,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		//EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10, 1L)); 
 		
 		//add the background+HUD
-		background = new ModelInstance(manager.get("spacesphere3.obj", Model.class));
+		background = new ModelInstance(Entity.manager.get("spacesphere3.obj", Model.class));
 		
 		textrenderer = Hud.getTextrenderer();
 		
@@ -195,13 +180,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
 			Vector3 dir =cam.direction.cpy().nor();
 			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
-		}
-		
-		for(int i =0; i < entities.size()-1; i++)
-		for(int e =i+1; e < entities.size(); e++) {
-			if(entities.get(i) != null && entities.get(e) !=null) {
-				entities.get(i).touches(entities.get(e));
-			}
 		}
 		
 		for(Entity e : entities) {e.update(Gdx.graphics.getDeltaTime());}
@@ -295,7 +273,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	public void dispose() {
 		// TODO Auto-generated method stub
 		super.dispose();
-		manager.dispose();
+		Entity.manager.dispose();
 		batch.dispose();
 		textrenderer.dispose();
 		hudrenderer.dispose();
@@ -330,25 +308,19 @@ public class EveOnline2 extends ApplicationAdapter{
 	
 	public static Entity buildEntity(Entity e){
 		Material material = null;
-		Model m = new Model();
+		if(e == null) return new removedEntity(0L); 
+		e.buildEntity(); 
 		if(e.getEntityType() == EntityType.PLAYER){
-			m = manager.get("ship.obj", Model.class); 
-			e.buildEntity(m); 
-			return new Player(e.getModel(), e.getEntityType(), e.getID()); 
+			return new Player(e.getModelName(), e.getEntityType(), e.getID()); 
 		}else if(e.getEntityType() == EntityType.ASTEROID){
-			
-			e.buildEntity(manager.get("Asteroid.obj", Model.class)); 
-			return new Debris(e.getPos(), e.getModel(), e.inventory, (int) e.getSize(), e.getID()); 
+			return new Debris(e.getPos(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
 		}else{
-			m = manager.get("ship.obj", Model.class); 
-			e.buildEntity(m);
-			
-			return new Player(m, e.getEntityType(), e.getID()); 
+			return new Player(e.getModelName(), e.getEntityType(), e.getID()); 
 		}
 	}
 	
 	public static void updateEntity(Entity e){
-		e.buildEntity(new Model());
+		e.buildEntity();
 		for(int i = 0; i < entities.size(); i++){
 			if(e.equals(entities.get(i))) {
 				//System.out.println("pos: "+e.getVel());

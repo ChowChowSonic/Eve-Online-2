@@ -24,8 +24,8 @@ public class Debris extends Entity{
 		* @param model
 		* @param type
 		*/
-		public Debris(Vector3 position, Model model, ArrayList<Item> contents, long ID) {
-			super(model, EntityType.ASTEROID, ID);
+		public Debris(Vector3 position, String modelname, ArrayList<Item> contents, long ID) {
+			super(modelname, EntityType.ASTEROID, ID);
 			this.pos = position; 
 			this.inventory = new Inventory(contents, 999999999);  
 			this.size = 0; 
@@ -37,8 +37,8 @@ public class Debris extends Entity{
 			// TODO Auto-generated constructor stub
 		}
 		
-		public Debris(Vector3 position, Model model, Inventory contents, int radius, long ID) {
-			super(model, EntityType.ASTEROID, ID);
+		public Debris(Vector3 position, String modelname, Inventory contents, int radius, long ID) {
+			super(modelname, EntityType.ASTEROID, ID);
 			this.pos = position; 
 			this.inventory = contents;  
 			for(Item i : contents.getItems()){
@@ -49,8 +49,8 @@ public class Debris extends Entity{
 			// TODO Auto-generated constructor stub
 		}
 		
-		public Debris(Vector3 position, Model model, int radius, long ID) {
-			super(model, EntityType.ASTEROID, ID); 
+		public Debris(Vector3 position, String modelname, int radius, long ID) {
+			super(modelname, EntityType.ASTEROID, ID); 
 			this.size = radius; 
 			this.pos = position;
 			int numberofcontents = RNG.nextInt(defaultpossiblecontents.length-1)+1;
@@ -67,5 +67,6 @@ public class Debris extends Entity{
 		}
 		public Debris(long ID){
 			super(ID);
-		}		
+		}
+		
 	}
