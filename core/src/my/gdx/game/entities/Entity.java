@@ -71,18 +71,20 @@ public abstract class Entity implements Serializable{
 			dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
 			ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
 		}
-		Quaternion quaternion = new Quaternion();
-		if(this.vel.len2()>0) {
-			Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
-			instanceRotation.setToLookAt(
-			new Vector3(-(this.vel.x),-(this.vel.y),-(this.vel.z)), 
-			new Vector3(0,-1,0));
-			instanceRotation.rotate(0, 0, 1, 180);
-			instanceRotation.getRotation(quaternion);
-		}else {
-			this.instance.transform.getRotation(quaternion);
+		if(this.instance !=null){
+			Quaternion quaternion = new Quaternion();
+			if(this.vel.len2()>0) {
+				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
+				instanceRotation.setToLookAt(
+				new Vector3(-(this.vel.x),-(this.vel.y),-(this.vel.z)), 
+				new Vector3(0,-1,0));
+				instanceRotation.rotate(0, 0, 1, 180);
+				instanceRotation.getRotation(quaternion);
+			}else {
+				this.instance.transform.getRotation(quaternion);
+			}
+			this.instance.transform.set(this.pos, quaternion);
 		}
-		this.instance.transform.set(this.pos, quaternion);
 	}
 	
 	public void serverSideUpdate(float deltaTime) {

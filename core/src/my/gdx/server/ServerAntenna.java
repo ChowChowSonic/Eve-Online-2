@@ -35,10 +35,11 @@ public class ServerAntenna extends Thread{
                 
             }catch(UnknownHostException ex) {
                 ex.printStackTrace();
-            }
-            catch(IOException e){
+            }catch(SocketException sock){
+                
+            }catch(IOException e){
                 e.printStackTrace();
-            }//ends try/catch
+            }
         }//ends while
         
     }//ends run

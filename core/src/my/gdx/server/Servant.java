@@ -5,6 +5,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 import com.badlogic.gdx.math.Vector3;
 
@@ -52,6 +53,7 @@ class Servant extends Thread{
                         sendEntity(e);
                     }
                     break;
+
                     case 1:
                     ID = din.readLong();
                     //System.out.println(ID+" Entity Movement requested");
@@ -59,16 +61,18 @@ class Servant extends Thread{
                     //Server.appendToLogs(x+" "+y+" "+z);
                     Server.AccelerateEntity(ID,x,y,z); 
                     break;
+
                     case 2:
                     Server.stopEntity(din.readLong()); 
                     break;
+                    
                     case 3:
                     ID = din.readLong();
                     x = din.readFloat(); y = din.readFloat(); z = din.readFloat(); 
                     Server.boostPlayer(ID,x,y,z); 
                     break; 
                 }
-            }catch(EOFException e){
+            }catch(SocketException e){
                 Server.appendToLogs("user forced to disconnect from port: "+user.getPort());
                 Server.removeEntity(userEntity);
                 try {

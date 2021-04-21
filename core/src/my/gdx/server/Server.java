@@ -83,8 +83,7 @@ public class Server extends ApplicationAdapter{
                     FileHandle playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID()));
                 }*/
             }
-            
-            entities.get(i).serverSideUpdate(Gdx.graphics.getDeltaTime());
+            entities.get(i).update(Gdx.graphics.getDeltaTime());
         }
         for(int i =0; i < entities.size(); i++) {
             Entity e = entities.get(i); 
@@ -179,12 +178,14 @@ public class Server extends ApplicationAdapter{
         Entity e2 = null;
         for(int i = 0; i < entities.size(); i++){
             if(entities.get(i).getID() == id) e2 = entities.get(i); 
-        }if(e2==null)return; 
+        }if(e2==null){
+            appendToLogs("Failed to accelerate entity!");
+            return;
+        } 
         if(e2.getID() == id && e2.getEntityType().equals(EntityType.PLAYER)) {
             Player e = (Player) e2;
             float dt = Gdx.graphics.getDeltaTime();
             e.setAccelerating(!e.getRotation().hasOppositeDirection(new Vector3(x,y,z)), x,y,z);
-            
         }else if(e2.getEntityType() != EntityType.CELESTIALOBJ){
             e2.addAccel(x, y, z);
         }
