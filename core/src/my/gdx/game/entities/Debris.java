@@ -34,7 +34,6 @@ public class Debris extends Entity{
 				this.mass+=i.getWeight(); 
 			}
 			if(this.instance !=null){
-			this.instance.transform.scale(size/100000000, size/100000000, size/100000000);
 			}
 			// TODO Auto-generated constructor stub
 		}
@@ -47,7 +46,7 @@ public class Debris extends Entity{
 				size+=i.getVolume()/100; 
 				this.mass+=i.getWeight();
 			}
-			this.instance.transform.scale(size/10000000, size/10000000, size/10000000);
+
 			// TODO Auto-generated constructor stub
 		}
 		
@@ -70,5 +69,11 @@ public class Debris extends Entity{
 		public Debris(long ID){
 			super(ID);
 		}
-		
+
+		@Override
+		public void buildEntity(){
+			super.buildEntity();
+			this.instance.transform.scale(size/100000000, size/100000000, size/100000000);
+		}
+
 	}

@@ -117,17 +117,17 @@ public class ClientAntenna extends Thread{
             try {
                 Entity o = (Entity) incoming.readObject();
                 boolean alreadyfound = false; 
-                for(int i = 0; i < EveOnline2.entities.size(); i++){
+                /*for(int i = 0; i < EveOnline2.entities.size(); i++){
                     if(o.equals(EveOnline2.entities.get(i))){
                         EveOnline2.addEntity(o);
                         alreadyfound = true; 
                         break; 
                     }
                 }
-                if(!alreadyfound){
+                if(!alreadyfound){*/
                     EveOnline2.addEntity(o);
-                    System.out.println("Entity added!");
-                }
+                    //System.out.println("Entity added!");
+                //}
             } catch (ClassNotFoundException | IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

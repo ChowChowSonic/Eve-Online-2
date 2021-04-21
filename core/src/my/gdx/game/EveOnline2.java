@@ -84,7 +84,13 @@ public class EveOnline2 extends ApplicationAdapter{
 		System.out.println("Attempting to connect...");
 		connection = new ClientAntenna(/*"Server"*/ "DESKTOP-E2274E2", 26000); 
 		System.out.println("Connected!");
+		if(unbuiltentities.size() > 0){
 		player = (Player) buildEntity(unbuiltentities.get(0));
+		}else{
+			do{
+				player = (Player)buildEntity(connection.requestEntity(0));
+			}while(player == null);
+		}
 		unbuiltentities.remove(0); 
 		entities.add(player); 
 		connection.start();
@@ -111,6 +117,8 @@ public class EveOnline2 extends ApplicationAdapter{
 		//EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10, 1L)); 
 		
 		//add the background+HUD
+		Entity.manager.load("spacesphere3.obj", Model.class);
+		Entity.manager.finishLoading();
 		background = new ModelInstance(Entity.manager.get("spacesphere3.obj", Model.class));
 		
 		textrenderer = Hud.getTextrenderer();
@@ -209,8 +217,14 @@ public class EveOnline2 extends ApplicationAdapter{
 		
 		batch.begin(cam);
 		batch.render(background);
-		for(Entity e : entities) {
+		for(int i = 0; i < entities.size(); i++) {
+			Entity e = entities.get(i); 
 			float distance = e.getPos().dst(player.getPos());
+			if(e.getInstance() == null) {
+				//System.out.println(e.getInstance().toString());
+				e = buildEntity(e); 
+				System.out.println(e.getInstance().toString());
+			}
 			if(e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
 				batch.render(e.getInstance());
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
@@ -298,6 +312,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			for(int i = 0; i < entities.size(); i++){
 				if(e.equals(entities.get(i))){
 					entities.remove(i);
+					System.out.print("entity removed!");
 					return;
 				}
 			}
@@ -307,15 +322,21 @@ public class EveOnline2 extends ApplicationAdapter{
 	}
 	
 	public static Entity buildEntity(Entity e){
-		Material material = null;
 		if(e == null) return new removedEntity(0L); 
 		e.buildEntity(); 
 		if(e.getEntityType() == EntityType.PLAYER){
-			return new Player(e.getModelName(), e.getEntityType(), e.getID()); 
+			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
+			p.buildEntity();
+			return p;
 		}else if(e.getEntityType() == EntityType.ASTEROID){
-			return new Debris(e.getPos(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
+			Debris d = new Debris(e.getPos(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
+			d.buildEntity();
+			return d;
 		}else{
-			return new Player(e.getModelName(), e.getEntityType(), e.getID()); 
+			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
+			p.buildEntity();
+			System.out.println("Entity not recognised!");
+			return p; 
 		}
 	}
 	

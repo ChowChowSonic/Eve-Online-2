@@ -121,6 +121,10 @@ public abstract class Entity implements Serializable{
 		this.pos = new Vector3(x, y, z);
 		this.setVel(new Vector3(dx,dy,dz));
 		this.setAccel(ddx, ddy, ddz);
+		if(!manager.contains(this.modelname)){
+			manager.load(this.modelname, Model.class);
+			manager.finishLoadingAsset(this.modelname);
+		}
 		this.model = manager.get(this.getModelName(), Model.class); 
 		this.instance = new ModelInstance(this.model, pos); 
 	}
