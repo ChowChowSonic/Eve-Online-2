@@ -69,12 +69,10 @@ public class Server extends ApplicationAdapter{
         
         super.create();
     }
-    
     public void render(){
         super.render();
         Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);//clears the screen of text 
-        
         //in-game physics & logging
         for(int i =0; i < entities.size(); i++){
             for(int e =0; e < entities.size(); e++) {
@@ -85,9 +83,9 @@ public class Server extends ApplicationAdapter{
                     FileHandle playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID()));
                 }*/
             }
-            entities.get(i).update(Gdx.graphics.getDeltaTime());
+            
+            entities.get(i).serverSideUpdate(Gdx.graphics.getDeltaTime());
         }
-        
         for(int i =0; i < entities.size(); i++) {
             Entity e = entities.get(i); 
             if(e.inventory != null) {
@@ -96,7 +94,6 @@ public class Server extends ApplicationAdapter{
             antenna.sendEntity(e); 
         }
         runItemCensus();
-        
         //Logging
         textrenderer.begin();
         for(int i = 0; i < logs.length; i++){
@@ -183,14 +180,14 @@ public class Server extends ApplicationAdapter{
         for(int i = 0; i < entities.size(); i++){
             if(entities.get(i).getID() == id) e2 = entities.get(i); 
         }if(e2==null)return; 
-            if(e2.getID() == id && e2.getEntityType().equals(EntityType.PLAYER)) {
-                Player e = (Player) e2;
-                float dt = Gdx.graphics.getDeltaTime();
-                e.setAccelerating(!e.getRotation().hasOppositeDirection(new Vector3(x,y,z)), x,y,z);
-                
-            }else if(e2.getEntityType() != EntityType.CELESTIALOBJ){
-                e2.addAccel(x, y, z);
-            }
+        if(e2.getID() == id && e2.getEntityType().equals(EntityType.PLAYER)) {
+            Player e = (Player) e2;
+            float dt = Gdx.graphics.getDeltaTime();
+            e.setAccelerating(!e.getRotation().hasOppositeDirection(new Vector3(x,y,z)), x,y,z);
+            
+        }else if(e2.getEntityType() != EntityType.CELESTIALOBJ){
+            e2.addAccel(x, y, z);
+        }
         
     }
     
@@ -217,12 +214,12 @@ public class Server extends ApplicationAdapter{
             }
         }        
     }
-
+    
     public static void boostPlayer(long ID, float x, float y, float z){
         Player e = null;
         for(Entity ent : entities){
             if(ent.getID() == ID) try{
-             e = (Player) ent; 
+                e = (Player) ent; 
             }catch(Exception yeet) {return;} 
         } 
         e.rotate(x, y, z);
@@ -232,11 +229,11 @@ public class Server extends ApplicationAdapter{
         Vector3 accelnorm = e.getVel().cpy().nor();
         float deltaTime = Gdx.graphics.getDeltaTime(); 
         e.addVel((float)(accelnorm.x*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())), 
-			(float)(accelnorm.y*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())), 
-			(float)(accelnorm.z*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())) );
+        (float)(accelnorm.y*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())), 
+        (float)(accelnorm.z*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())) );
         
     }
-
+    
     /**
     * Returns a copy of an entity, likely a player, to send to a client.
     * @param ID - the ID of the entity in question 

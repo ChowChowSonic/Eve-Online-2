@@ -103,4 +103,7 @@ class Servant extends Thread{
     public boolean isRunning() {
         return isrunning; 
     }
+    public int getPort(){
+        return user.getPort();
+    }
 }//ends class

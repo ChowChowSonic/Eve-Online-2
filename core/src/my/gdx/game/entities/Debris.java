@@ -33,7 +33,9 @@ public class Debris extends Entity{
 				size+=i.getVolume()/100; 
 				this.mass+=i.getWeight(); 
 			}
+			if(this.instance !=null){
 			this.instance.transform.scale(size/100000000, size/100000000, size/100000000);
+			}
 			// TODO Auto-generated constructor stub
 		}
 		

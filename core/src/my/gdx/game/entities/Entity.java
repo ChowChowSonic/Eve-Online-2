@@ -17,8 +17,8 @@ import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
 
 public abstract class Entity implements Serializable{
-	public static AssetManager manager;
-
+	public static AssetManager manager = new AssetManager();
+	
 	protected static final long serialVersionUID = 1L;
 	protected transient Vector3 pos,vel,accel;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
@@ -42,11 +42,6 @@ public abstract class Entity implements Serializable{
 	public Entity(String modelname, EntityType type, long id){
 		this.type = type;
 		this.modelname = modelname; 
-		if(!manager.contains(modelname, Model.class)){
-			manager.load(modelname, Model.class);
-		}
-		this.model = manager.get(modelname); 
-		instance = new ModelInstance(model);
 		pos = new Vector3();
 		vel = new Vector3();
 		accel = new Vector3();
@@ -57,11 +52,6 @@ public abstract class Entity implements Serializable{
 		// TODO Auto-generated constructor stub
 		this.type = type;
 		this.modelname = modelname; 
-		if(!manager.contains(modelname, Model.class)){
-			manager.load(modelname, Model.class);
-		}
-		this.model = manager.get(modelname); 
-		instance = new ModelInstance(model);
 		pos = new Vector3(position);
 		vel = new Vector3();
 		accel = new Vector3();
@@ -93,6 +83,16 @@ public abstract class Entity implements Serializable{
 			this.instance.transform.getRotation(quaternion);
 		}
 		this.instance.transform.set(this.pos, quaternion);
+	}
+	
+	public void serverSideUpdate(float deltaTime) {
+		//System.out.println("Entity.update called" + this.toString());
+		this.vel = this.vel.add(accel);
+		this.pos = this.pos.add(vel);
+		accel = accel.setZero();
+		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
+		dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
+		ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
 	}
 	
 	public boolean touches(Entity e) {
@@ -223,7 +223,7 @@ public abstract class Entity implements Serializable{
 	public void setSize(float f){
 		this.size = f;
 	}
-
+	
 	public String getModelName() {
 		return modelname;
 	}
