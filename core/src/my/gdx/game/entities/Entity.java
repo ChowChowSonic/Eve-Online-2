@@ -35,7 +35,7 @@ public abstract class Entity implements Serializable{
 	* One meter in length, as defined by me
 	*/
 	public static final float METER = 0.00005f;
-	public static enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ}
+	public static enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ, STATION}
 	public Inventory inventory;
 	
 	

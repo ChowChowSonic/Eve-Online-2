@@ -2,11 +2,15 @@ package my.gdx.server;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;  
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -23,6 +27,7 @@ import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
+import my.gdx.game.entities.Station;
 import my.gdx.game.entities.removedEntity;
 import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
@@ -31,14 +36,13 @@ import my.gdx.game.inventory.Item;
 
 public class Server extends ApplicationAdapter{
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
-    public static File ENTITYFILE;
+    public static File ENTITYFILE, LOGFILE; 
     
     private static Inventory materialcensus, usedmaterials, vanishedmaterials;	
     private static SpriteBatch textrenderer;
     private static BitmapFont font; 
     private static int logposition = 0;
     private static String[] logs = new String[31]; 
-    private static final Model VOIDMODEL = new Model();
     private static long nextID = 0L;
     private static ServerAntenna antenna;
     private static final long serialVersionUID = 1L; 
@@ -57,12 +61,16 @@ public class Server extends ApplicationAdapter{
         font.setColor(Color.WHITE);
         materialcensus.additem(new Item(InventoryItems.Gold, 1000));
         try{
+            LOGFILE = new File(Gdx.files.internal("Logs.txt").path());
             appendToLogs(InetAddress.getLocalHost().toString());
             ENTITYFILE = new File(Gdx.files.internal("Entities.txt").path());
             
         }catch(Exception e){
             e.printStackTrace();
         }
+
+        entities.add(new CelestialObject(new Vector3(0,0,0), "Sun.obj", 500000000, 300, assignID()));
+        addEntity(new Station(new Vector3(), "SpaceStation.obj", 1000000, 20, 40, assignID())); 
         
         antenna = new ServerAntenna(26000);
         antenna.start();
@@ -109,9 +117,13 @@ public class Server extends ApplicationAdapter{
     }
     public static void addEntity(Entity e) {
         entities.add(e);
+        int radius = 1000;
+        float angle = (float) (r.nextFloat()*2*Math.PI); 
+        e.setPos(radius*(float)Math.cos(angle), radius*(float)Math.sin(angle), 0f);
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
     }
+
     public static void removeEntity(Entity e){
         openIDs.add(e.getID());
         antenna.sendEntity(new removedEntity(e.getID()));
@@ -161,6 +173,12 @@ public class Server extends ApplicationAdapter{
             logposition = 0;
             logs[0]= s.replaceAll("\n", " / ");
         }
+        try(FileWriter logger = new FileWriter(LOGFILE)){
+        logger.append("["+LocalDateTime.now()+"] "+s);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
     }
     
@@ -184,7 +202,6 @@ public class Server extends ApplicationAdapter{
         } 
         if(e2.getID() == id && e2.getEntityType().equals(EntityType.PLAYER)) {
             Player e = (Player) e2;
-            float dt = Gdx.graphics.getDeltaTime();
             e.setAccelerating(!e.getRotation().hasOppositeDirection(new Vector3(x,y,z)), x,y,z);
         }else if(e2.getEntityType() != EntityType.CELESTIALOBJ){
             e2.addAccel(x, y, z);
@@ -249,9 +266,6 @@ public class Server extends ApplicationAdapter{
         Player p = new Player("ship.obj", EntityType.PLAYER, assignID());
         p.setPos(r.nextFloat(),r.nextFloat(),r.nextFloat());
         addEntity(p);
-        for(Entity e : entities){
-            if(e.equals(p)) return e;
-        }
         return p; 
     }
     

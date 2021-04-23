@@ -252,7 +252,6 @@ public class EveOnline2 extends ApplicationAdapter{
 			windows.remove(new DockingButton());
 		}
 		
-		
 		//Hud rendering
 		for(Hud window : windows) {
 			window.updateShape();
@@ -332,6 +331,15 @@ public class EveOnline2 extends ApplicationAdapter{
 			Debris d = new Debris(e.getPos(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
 			d.buildEntity();
 			return d;
+		}else if (e.getEntityType() == EntityType.CELESTIALOBJ){
+			CelestialObject o = new CelestialObject(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e.getID()); 
+			o.buildEntity();
+			return o; 
+		}else if (e.getEntityType() == EntityType.STATION){
+			Station e2 = (Station) e;
+			Station o = new Station(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(), e.getID()); 
+			o.buildEntity();
+			return o; 
 		}else{
 			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
 			p.buildEntity();

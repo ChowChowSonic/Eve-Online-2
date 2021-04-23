@@ -22,6 +22,7 @@ public class Station extends CelestialObject{
 	public Station(Vector3 pos, String modelname, float mass, float innerradius, float outerraidus, long ID) {
 		super(pos, modelname, mass, innerradius, ID);
 		this.tetherradius = outerraidus;
+		this.type = EntityType.STATION; 
 		//bobbers = new Entity[8];
 		
 		/*bobbers[0]= new NPC(new Vector3(this.pos.x+tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
@@ -31,10 +32,10 @@ public class Station extends CelestialObject{
 		bobbers[4]= new NPC(new Vector3(this.pos.x+(tetherradius*0.707f), this.pos.y, this.pos.z+(tetherradius*0.707f)),bobbermodel, EntityType.FRIEND);
 		bobbers[5]= new NPC(new Vector3(this.pos.x+(tetherradius*0.707f), this.pos.y, this.pos.z-(tetherradius*0.707f)),bobbermodel, EntityType.FRIEND);
 		bobbers[6]= new NPC(new Vector3(this.pos.x-(tetherradius*0.707f), this.pos.y, this.pos.z+(tetherradius*0.707f)),bobbermodel, EntityType.FRIEND);
-		bobbers[7]= new NPC(new Vector3(this.pos.x-(tetherradius*0.707f), this.pos.y, this.pos.z-(tetherradius*0.707f)),bobbermodel, EntityType.FRIEND);*/
-		//for(Entity bobber : bobbers) {
-		//	EveOnline2.addEntity(bobber);
-		//}
+		bobbers[7]= new NPC(new Vector3(this.pos.x-(tetherradius*0.707f), this.pos.y, this.pos.z-(tetherradius*0.707f)),bobbermodel, EntityType.FRIEND);
+		for(Entity bobber : bobbers) {
+			EveOnline2.addEntity(bobber);
+		}*/
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -80,5 +81,9 @@ public class Station extends CelestialObject{
 		}
 		return false;
 	}
+
+    public float getouterRadius() {
+        return this.tetherradius;
+    }
 	
 }
