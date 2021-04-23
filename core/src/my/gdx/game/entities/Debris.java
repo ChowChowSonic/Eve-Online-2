@@ -64,8 +64,9 @@ public class Debris extends Entity{
 			for(Item i : this.inventory.getItems()) {
 				this.mass+=i.getWeight(); 
 			}
-			this.instance.transform.scl(radius);
+			//this.instance.transform.scl(radius);
 		}
+
 		public Debris(long ID){
 			super(ID);
 		}

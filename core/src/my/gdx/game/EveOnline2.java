@@ -151,6 +151,7 @@ public class EveOnline2 extends ApplicationAdapter{
 				for(Entity e : entities){
 					if(e.equals(e2)){
 						updateEntity(e2); 
+						System.out.println(e.getPos().toString());
 						entityfound = true;
 						break;
 					}

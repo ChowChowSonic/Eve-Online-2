@@ -72,6 +72,7 @@ public abstract class Entity implements Serializable{
 			ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
 		}
 		if(this.instance !=null){
+			this.instance.transform.scl(this.size);
 			Quaternion quaternion = new Quaternion();
 			if(this.vel.len2()>0) {
 				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);

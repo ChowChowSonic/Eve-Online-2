@@ -70,8 +70,8 @@ public class Server extends ApplicationAdapter{
             e.printStackTrace();
         }
         
-        entities.add(new CelestialObject(new Vector3(0,0,0), "Sun.obj", 500000000, 300, assignID()));
-        addEntity(new Station(new Vector3(), "SpaceStation.obj", 1000000, 20, 40, assignID())); 
+        addEntity(new CelestialObject(new Vector3(0,0,0), "Sun.obj", 500000000, 1000, assignID()), new Vector3());
+        addEntity(new Station(new Vector3(), "SpaceStation.obj", 1000000, 20, 40, assignID()), new Vector3(1100, 0, 0)); 
         
         antenna = new ServerAntenna(26000);
         antenna.start();
@@ -117,13 +117,26 @@ public class Server extends ApplicationAdapter{
         antenna.close();
         
     }
-    public static void addEntity(Entity e) {
+    /**
+     * adds an entity at a random point around a radius
+     * @param e
+     */
+    public static void spawnEntity(Entity e) {
         entities.add(e);
-        if(e.getEntityType() != EntityType.CELESTIALOBJ){
-            int radius = 1000;
-            float angle = (float) (r.nextFloat()*2*Math.PI); 
-            e.setPos(radius*(float)Math.cos(angle), radius*(float)Math.sin(angle), 0f);
-        }
+        int radius = 1100;
+        float angle = (float) (r.nextFloat()*2*Math.PI); 
+        e.setPos(radius*(float)Math.cos(angle), radius*(float)Math.sin(angle), 0f);
+        sortEntities();
+        appendToLogs("Entity Spawned:" + e.toString());
+    }
+    /**
+     * Adds an entity at a fixed point in the world
+     * @param e
+     * @param pos
+     */
+    public static void addEntity(Entity e, Vector3 pos){
+        e.setPos(pos);
+        entities.add(e);
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
     }
@@ -164,7 +177,7 @@ public class Server extends ApplicationAdapter{
         if(vanishedmaterials.getItemcount() > 100) {
             appendToLogs("Available: \n"+materialcensus.toString() + "\nUsed: \n"+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
             appendToLogs("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
-            addEntity(new Debris(new Vector3(20, 20, 0), "Asteroid.obj", vanishedmaterials.getItems(),assignID()));
+            spawnEntity(new Debris(new Vector3(20, 20, 0), "Asteroid.obj", vanishedmaterials.getItems(),assignID()));
             vanishedmaterials.empty();
             appendToLogs("Asteroid Spawned!");
         }
@@ -270,7 +283,7 @@ public class Server extends ApplicationAdapter{
         }
         Player p = new Player("ship.obj", EntityType.PLAYER, assignID());
         p.setPos(r.nextFloat(),r.nextFloat(),r.nextFloat());
-        addEntity(p);
+        spawnEntity(p);
         return p; 
     }
     

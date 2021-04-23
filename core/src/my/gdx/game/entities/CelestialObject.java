@@ -1,23 +1,18 @@
 package my.gdx.game.entities;
 
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
-import com.badlogic.gdx.graphics.g3d.Material;
-import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.EveOnline2;
 
 public class CelestialObject extends Entity{
 	
-	protected Material material;
 	protected final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	private static final long serialVersionUID = 1L;
 	
 	public CelestialObject(Vector3 position, String modelname, float mass, float radius, long ID) {
 		super(modelname, EntityType.CELESTIALOBJ, ID);
-		//material = model.materials.get(0);
 		this.pos = position;
 		this.setMass(mass);
 		this.size = radius;
@@ -28,8 +23,9 @@ public class CelestialObject extends Entity{
 	public void update(float deltaTime) {
 		if(this.instance !=null){
 			this.instance.transform.set(this.pos, new Quaternion());
-			float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos) / (this.size * 10), 2)));
-			this.instance.transform.scl(size2);
+			this.instance.transform.scl(0.5f); 
+			//float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos) / (this.size *1), 2)));
+			//this.instance.transform.scl(size2);
 		}
 	}
 	

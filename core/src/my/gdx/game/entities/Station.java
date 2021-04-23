@@ -1,15 +1,8 @@
 package my.gdx.game.entities;
 
-import com.badlogic.gdx.graphics.VertexAttributes.Usage;
-import com.badlogic.gdx.graphics.g3d.Material;
-import com.badlogic.gdx.graphics.g3d.Model;
-import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Json.Serializable;
 
-import my.gdx.game.DockingButton;
 import my.gdx.game.EveOnline2;
 
 public class Station extends CelestialObject{
@@ -43,8 +36,8 @@ public class Station extends CelestialObject{
 	public void update(float DeltaTime) {
 		if(this.instance !=null){
 		this.instance.transform.set(this.pos, new Quaternion());
-		float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*this.size), 2)));
-		this.instance.transform.scl(size2);
+		//float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*this.size), 2)));
+		//this.instance.transform.scl(size2);
 		}
 		//for(Entity bobber : bobbers) {
 		//	bobber.instance.transform.scl(size2,size2,size2);
