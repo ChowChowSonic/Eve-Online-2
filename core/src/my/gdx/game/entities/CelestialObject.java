@@ -16,6 +16,7 @@ public class CelestialObject extends Entity{
 		this.pos = position;
 		this.setMass(mass);
 		this.size = radius;
+		x = this.pos.x; y = this.pos.y; z = this.pos.z; 
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -23,7 +24,7 @@ public class CelestialObject extends Entity{
 	public void update(float deltaTime) {
 		if(this.instance !=null){
 			this.instance.transform.set(this.pos, new Quaternion());
-			this.instance.transform.scl(0.5f); 
+			this.instance.transform.scl(0.75f); 
 			//float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos) / (this.size *1), 2)));
 			//this.instance.transform.scl(size2);
 		}
