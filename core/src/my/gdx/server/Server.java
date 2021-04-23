@@ -35,7 +35,7 @@ import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 
 public class Server extends ApplicationAdapter{
-    public static ArrayList<Entity> entities = new ArrayList<Entity>();
+    public static ArrayList<Entity> entities; 
     public static File ENTITYFILE, LOGFILE; 
     
     private static Inventory materialcensus, usedmaterials, vanishedmaterials;	
@@ -56,6 +56,7 @@ public class Server extends ApplicationAdapter{
         materialcensus = new Inventory((float)Math.pow(3, 38));
         usedmaterials = new Inventory((float)Math.pow(3, 38));
         vanishedmaterials = new Inventory((float)Math.pow(3, 38));
+        entities = new ArrayList<Entity>();
         textrenderer = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.WHITE);
@@ -117,9 +118,11 @@ public class Server extends ApplicationAdapter{
     }
     public static void addEntity(Entity e) {
         entities.add(e);
+        if(e.getEntityType() != EntityType.CELESTIALOBJ){
         int radius = 1000;
         float angle = (float) (r.nextFloat()*2*Math.PI); 
         e.setPos(radius*(float)Math.cos(angle), radius*(float)Math.sin(angle), 0f);
+        }
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
     }
