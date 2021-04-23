@@ -1,1 +1,1 @@
-[2021-04-23T10:29:11.304320200] Entity removed:PLAYER
+[2021-04-23T10:46:32.768986300] Asteroid Spawned!

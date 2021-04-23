@@ -62,14 +62,14 @@ public class Server extends ApplicationAdapter{
         font.setColor(Color.WHITE);
         materialcensus.additem(new Item(InventoryItems.Gold, 1000));
         try{
-            LOGFILE = new File(Gdx.files.internal("Logs.txt").path());
+            LOGFILE = new File("C:\\Users\\dmcdc\\Documents\\GitHub\\Eve-Online-2\\core\\assets\\Logs.txt");
             appendToLogs(InetAddress.getLocalHost().toString());
             ENTITYFILE = new File(Gdx.files.internal("Entities.txt").path());
             
         }catch(Exception e){
             e.printStackTrace();
         }
-
+        
         entities.add(new CelestialObject(new Vector3(0,0,0), "Sun.obj", 500000000, 300, assignID()));
         addEntity(new Station(new Vector3(), "SpaceStation.obj", 1000000, 20, 40, assignID())); 
         
@@ -113,20 +113,21 @@ public class Server extends ApplicationAdapter{
     }
     @Override
     public void dispose(){
+        appendToLogs("------END OF SERVER LOGS UNTIL NEXT RESTART------");
         antenna.close();
         
     }
     public static void addEntity(Entity e) {
         entities.add(e);
         if(e.getEntityType() != EntityType.CELESTIALOBJ){
-        int radius = 1000;
-        float angle = (float) (r.nextFloat()*2*Math.PI); 
-        e.setPos(radius*(float)Math.cos(angle), radius*(float)Math.sin(angle), 0f);
+            int radius = 1000;
+            float angle = (float) (r.nextFloat()*2*Math.PI); 
+            e.setPos(radius*(float)Math.cos(angle), radius*(float)Math.sin(angle), 0f);
         }
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
     }
-
+    
     public static void removeEntity(Entity e){
         openIDs.add(e.getID());
         antenna.sendEntity(new removedEntity(e.getID()));
@@ -176,9 +177,10 @@ public class Server extends ApplicationAdapter{
             logposition = 0;
             logs[0]= s.replaceAll("\n", " / ");
         }
-        try(FileWriter logger = new FileWriter(LOGFILE)){
-        logger.append("["+LocalDateTime.now()+"] "+s);
-        } catch (IOException e) {
+        try(FileWriter logger = new FileWriter(LOGFILE, true);){
+            logger.append("[ "+LocalDateTime.now()+" ] "+s+"\n");
+            logger.flush();
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
