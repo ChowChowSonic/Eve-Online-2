@@ -12,6 +12,7 @@ public class ServerAntenna extends Thread{
     int port;
     private static final long serialVersionUID = 1L; 
     ArrayList<Servant> connections;
+
     public ServerAntenna(int port){
         this.port = port; 
         connections = new ArrayList<Servant>();
@@ -53,6 +54,7 @@ public class ServerAntenna extends Thread{
             e.printStackTrace();
         }
     }
+    
     public void sendEntity(Entity e){
         if(connections.size() == 0) return;
         for(int i =0; i < connections.size(); i++){

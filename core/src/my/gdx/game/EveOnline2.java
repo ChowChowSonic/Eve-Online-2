@@ -85,7 +85,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		connection = new ClientAntenna(/*"Server"*/ "DESKTOP-E2274E2", 26000); 
 		System.out.println("Connected!");
 		if(unbuiltentities.size() > 0){
-		player = (Player) buildEntity(unbuiltentities.get(0));
+			player = (Player) buildEntity(unbuiltentities.get(0));
 		}else{
 			do{
 				player = (Player)buildEntity(connection.requestEntity(0));
@@ -127,13 +127,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		hudrenderer.setAutoShapeType(true);
 		
 		windows.add(new HealthBar(player));
-	}
-	
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
-	}
+	}//ends create()
 	
 	@Override
 	public void render() {
@@ -150,21 +144,21 @@ public class EveOnline2 extends ApplicationAdapter{
 				if(e2== null) continue; 
 				for(Entity e : entities){
 					if(e.equals(e2)){
-						updateEntity(e2); 
-						System.out.println(e.getPos().toString());
+						updateEntityFromSerialized(e, e2); 
+						
 						entityfound = true;
 						break;
 					}
 					
 				}
 				if(!entityfound){
-					Entity e = buildEntity(unbuiltentities.get(i)); 
+					Entity e = buildEntity(unbuiltentities.get(i));
 					entities.add(e);
 				} 
 			}
 			unbuiltentities.clear();
 		}
-		
+		if(player.getTetheringStation() !=null )System.out.println(player.getTetheringStation().toString());
 		//Camera rotation
 		if(Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2*cam.near){
 			cameradist -=0.01; 
@@ -221,25 +215,13 @@ public class EveOnline2 extends ApplicationAdapter{
 		for(int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i); 
 			float distance = e.getPos().dst(player.getPos());
-			if(e.getInstance() == null) {
-				//System.out.println(e.getInstance().toString());
-				e = buildEntity(e); 
-				System.out.println(e.getInstance().toString());
-			}
 			if(e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
 				batch.render(e.getInstance());
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
 				batch.render(e.getInstance());
 			}
-			//Material Census gathering
-			
-			if(e.inventory != null) {
-				usedmaterials.additem(e.inventory.getItems()); 
-			}
-			
 		}
 		batch.end();
-		runItemCensus();
 		usedmaterials.empty();
 		
 		//Inventory Menu stuff
@@ -271,6 +253,122 @@ public class EveOnline2 extends ApplicationAdapter{
 		System.gc();
 	}
 	
+	/**
+	* Takes two equivalent entities: one outdated entity, and an "updated" yet unbuilt one from the server. 
+	* It builds the updated one, and sets all outdated info on the old one to the more recent info. Namely, the position, velocity and accel. 
+	* @param alreadyPresentEntity
+	* @param serializedEntity
+	*/
+	public static void updateEntityFromSerialized(Entity alreadyPresentEntity, Entity serializedEntity){
+		serializedEntity.buildSerializedEntity();
+		//System.out.println("pos: "+e.getVel());
+		alreadyPresentEntity.setPos(serializedEntity.getPos());
+		alreadyPresentEntity.setVel(serializedEntity.getVel());
+		alreadyPresentEntity.setAccel(serializedEntity.getAccel());
+		//System.out.println(e.getVel());
+	}
+	/**
+	* I mean, it adds an entity. What did you expect? The spanish inquisition?
+	*/
+	public static void addEntity(Entity e) {
+		if(e == null) {
+			System.out.println("Null entity recieved!");
+			return;
+		}else if(e instanceof removedEntity){
+			for(int i = 0; i < entities.size(); i++){
+				if(e.equals(entities.get(i))){
+					entities.remove(i);
+					System.out.print("entity removed!");
+					return;
+				}
+			}
+		}
+		unbuiltentities.add(e);
+		//System.out.println(e.toString());
+	}
+	
+	/** 
+	* "Builds" the entity, loading and giving it a model from the Entity's assetmanager, then copies the entity's properties, applies it to an appropriate class and returns said class. 
+	*/
+	public static Entity buildEntity(Entity e){
+		if(e == null) return new removedEntity(0L); 
+		e.buildSerializedEntity(); 
+		if(e.getEntityType() == EntityType.PLAYER){
+			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
+			p.buildSerializedEntity();
+			return p;
+		}else if(e.getEntityType() == EntityType.ASTEROID){
+			Debris d = new Debris(e.getPos(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
+			d.buildSerializedEntity();
+			return d;
+		}else if (e.getEntityType() == EntityType.CELESTIALOBJ){
+			CelestialObject o = new CelestialObject(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e.getID()); 
+			o.buildSerializedEntity();
+			return o; 
+		}else if (e.getEntityType() == EntityType.STATION){
+			Station e2 = (Station) e;
+			Station o = new Station(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(), e.getID()); 
+			o.buildSerializedEntity();
+			return o; 
+		}else{
+			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
+			p.buildSerializedEntity();
+			System.out.println("Entity not recognised!");
+			return p; 
+		}
+	}
+	
+	/**
+	* Sorts the entity list by entity type such that all entities go in the following order:
+	* Celestial Object, Station, <Literally anything that's not a player>, players. 
+	*/
+	public static void sortEntities(){
+		ArrayList<Entity> newlist = new ArrayList<Entity>(); 
+		for(Entity e : entities){
+			if(e.getEntityType() == EntityType.CELESTIALOBJ) newlist.add(e);
+		}
+		
+		for(Entity e : entities){
+			if(e.getEntityType() == EntityType.STATION) newlist.add(e); 
+		}
+		
+		for(Entity e : entities){
+			if(e.getEntityType() != EntityType.PLAYER || e.getEntityType() != EntityType.CELESTIALOBJ || e.getEntityType() != EntityType.STATION){
+				newlist.add(e);
+			}
+		}
+		
+		for(Entity e : entities){
+			if(e.getEntityType() == EntityType.PLAYER) newlist.add(e); 
+		}
+		
+		entities = newlist; 
+	}
+	
+	/**
+	* Adds a HUD to the screen
+	* @param h
+	*/
+	public static void addHUD(Hud h){
+		if(!windows.contains(h))
+		windows.add(h);
+	}
+	
+	/**
+	* Removes a HUD from the screen
+	* @param hud
+	*/
+	public static void removeHUD(Hud hud){
+		//if(windows.contains(hud))
+		windows.remove(hud);
+	}
+	
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
@@ -291,134 +389,8 @@ public class EveOnline2 extends ApplicationAdapter{
 		batch.dispose();
 		textrenderer.dispose();
 		hudrenderer.dispose();
-		//connection.close();
+		connection.close();
 		System.gc();
 		System.exit(0);
 	}
-	
-	public static Vector3 getCamRotation() {
-		return cam.direction;
-	}
-	
-	public static Matrix4 getCamMatrix() {
-		return cam.combined;
-	}
-	
-	public static void addEntity(Entity e) {
-		if(e == null) {
-			System.out.println("Null entity recieved!");
-			return;
-		}else if(e instanceof removedEntity){
-			for(int i = 0; i < entities.size(); i++){
-				if(e.equals(entities.get(i))){
-					entities.remove(i);
-					System.out.print("entity removed!");
-					return;
-				}
-			}
-		}
-		unbuiltentities.add(e);
-		//System.out.println(e.toString());
-	}
-	
-	public static Entity buildEntity(Entity e){
-		if(e == null) return new removedEntity(0L); 
-		e.buildEntity(); 
-		if(e.getEntityType() == EntityType.PLAYER){
-			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
-			p.buildEntity();
-			return p;
-		}else if(e.getEntityType() == EntityType.ASTEROID){
-			Debris d = new Debris(e.getPos(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
-			d.buildEntity();
-			return d;
-		}else if (e.getEntityType() == EntityType.CELESTIALOBJ){
-			CelestialObject o = new CelestialObject(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e.getID()); 
-			o.buildEntity();
-			return o; 
-		}else if (e.getEntityType() == EntityType.STATION){
-			Station e2 = (Station) e;
-			Station o = new Station(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(), e.getID()); 
-			o.buildEntity();
-			return o; 
-		}else{
-			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
-			p.buildEntity();
-			System.out.println("Entity not recognised!");
-			return p; 
-		}
-	}
-	
-	public static void updateEntity(Entity e){
-		e.buildEntity();
-		for(int i = 0; i < entities.size(); i++){
-			if(e.equals(entities.get(i))) {
-				//System.out.println("pos: "+e.getVel());
-				entities.get(i).setPos(e.getPos());
-				entities.get(i).setVel(e.getVel());
-				entities.get(i).setAccel(e.getAccel());
-				//System.out.println(e.getVel());
-			}
-		}
-	}
-	
-	public static void sortEntities(){
-		ArrayList<Entity> newlist = new ArrayList<Entity>(); 
-		int playersinlist = 0;
-		for(Entity e : entities){
-			if(e.getEntityType() == EntityType.CELESTIALOBJ){
-				newlist.add(0,e); 
-			}else if(e.getEntityType() == EntityType.PLAYER){
-				newlist.add(newlist.size(), e);
-				playersinlist++;
-			}else{
-				if(newlist.size() > 1 || playersinlist < newlist.size()-1){
-					newlist.add(newlist.size()-(playersinlist+1), e);
-				}else newlist.add(e);
-			}
-			entities = newlist; 
-		}
-	}
-	
-	public Player getPlayer() {
-		for(Entity e : entities){ {
-			if(e instanceof Player)
-			return (Player) e;
-		}
-	}
-	//Player p = new Player(manager.get("ship.obj", Model.class), Entity.EntityType.PLAYER, 1L);
-	//addEntity(p);
-	return null;
-}
-
-private void runItemCensus() {
-	Inventory underflow = new Inventory(usedmaterials.getDifferences(materialcensus), 999999); 
-	Inventory overflow = new Inventory(materialcensus.getDifferences(usedmaterials),999999);
-	
-	materialcensus.additem(overflow.getItems());
-	vanishedmaterials.additem(underflow.getItems());
-	
-	
-	if(vanishedmaterials.getItemcount() > 100) {
-		/*addEntity(new Debris( new Vector3(700, 5, 0), 
-		builder.createSphere(15, 15, 15, 10, 10, new Material(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("badlogic.jpg"))), 
-		ColorAttribute.createSpecular(1, 1, 1, 1),FloatAttribute.createShininess(8f)), attributes), 
-		vanishedmaterials.getItems(),15));
-		vanishedmaterials.empty();*/
-		//System.out.println("Available: "+materialcensus.toString() + "\nUsed: "+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
-		//System.out.println("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
-		//System.out.println("Asteroid Spawned!");
-	}
-}//ends runItemCensus()
-
-public static void addHUD(Hud h){
-	if(!windows.contains(h))
-	windows.add(h);
-}
-
-public static void removeHUD(Hud hud){
-	//if(windows.contains(hud))
-	windows.remove(hud);
-}
-
 }//ends class

@@ -117,9 +117,9 @@ public class Server extends ApplicationAdapter{
         
     }
     /**
-     * adds an entity at a random point around the perimiter of a radius
-     * @param e
-     */
+    * adds an entity at a random point around the perimiter of a radius
+    * @param e
+    */
     public static void spawnEntity(Entity e, int radius) {
         entities.add(e);
         float angle = (float) (r.nextFloat()*2*Math.PI); 
@@ -127,7 +127,7 @@ public class Server extends ApplicationAdapter{
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
     }
-
+    
     public static void spawnEntity(Entity e, int radius, int maxOffset) {
         entities.add(e);
         radius += r.nextInt(maxOffset);
@@ -137,12 +137,12 @@ public class Server extends ApplicationAdapter{
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
     }
-
+    
     /**
-     * Adds an entity at a fixed point in the world
-     * @param e
-     * @param pos
-     */
+    * Adds an entity at a fixed point in the world
+    * @param e
+    * @param pos
+    */
     public static void spawnEntity(Entity e, Vector3 pos){
         e.setPos(pos);
         entities.add(e);
@@ -159,20 +159,25 @@ public class Server extends ApplicationAdapter{
     
     public static void sortEntities(){
         ArrayList<Entity> newlist = new ArrayList<Entity>(); 
-        int playersinlist = 0;
         for(Entity e : entities){
-            if(e.getEntityType() == EntityType.CELESTIALOBJ){
-                newlist.add(0,e); 
-            }else if(e.getEntityType() == EntityType.PLAYER){
-                newlist.add(newlist.size(), e);
-                playersinlist++;
-            }else{
-                if(newlist.size() > 0){
-                    newlist.add(newlist.size()-(playersinlist+1), e);
-                }else newlist.add(e);
-            }
-            entities = newlist; 
+            if(e.getEntityType() == EntityType.CELESTIALOBJ) newlist.add(e);
         }
+        
+        for(Entity e : entities){
+            if(e.getEntityType() == EntityType.STATION) newlist.add(e); 
+        }
+        
+        for(Entity e : entities){
+            if(e.getEntityType() != EntityType.PLAYER || e.getEntityType() != EntityType.CELESTIALOBJ || e.getEntityType() != EntityType.STATION){
+                newlist.add(e);
+            }
+        }
+        
+        for(Entity e : entities){
+            if(e.getEntityType() == EntityType.PLAYER) newlist.add(e); 
+        }
+        
+        entities = newlist; 
         appendToLogs("entity list successfully sorted");
     }
     

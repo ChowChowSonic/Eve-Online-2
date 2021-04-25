@@ -18,7 +18,7 @@ import my.gdx.game.inventory.Inventory;
 
 public abstract class Entity implements Serializable{
 	public static AssetManager manager = new AssetManager();
-	
+
 	protected static final long serialVersionUID = 1L;
 	protected transient Vector3 pos,vel,accel;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
@@ -117,7 +117,7 @@ public abstract class Entity implements Serializable{
 		
 	}
 	
-	public void buildEntity(){
+	public void buildSerializedEntity(){
 		if(this.pos == null) this.pos = new Vector3(); 
 		if(this.vel == null) this.vel = new Vector3();
 		if(this.accel == null) this.accel = new Vector3();

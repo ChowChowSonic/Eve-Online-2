@@ -35,50 +35,51 @@ public class Station extends CelestialObject{
 	@Override
 	public void update(float DeltaTime) {
 		if(this.instance !=null){
-		this.instance.transform.set(this.pos, new Quaternion());
-		//float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*this.size), 2)));
-		//this.instance.transform.scl(size2);
+			this.instance.transform.set(this.pos, new Quaternion());
+			this.instance.transform.scl(0.5f);
+			//float size2 = (float) (Math.pow(Math.E, -Math.pow(EveOnline2.player.pos.dst(this.pos)/(this.size*this.size), 2)));
+			//this.instance.transform.scl(size2);
 		}
 		//for(Entity bobber : bobbers) {
-		//	bobber.instance.transform.scl(size2,size2,size2);
-		//}
-	}
-	
-	@Override
-	public boolean touches(Entity e) {
-		float distance  = this.pos.dst2(e.pos);
-		if(distance < (this.tetherradius*this.tetherradius)+(e.size*e.size)) {
-			if(distance < (this.size*this.size)+(e.size*e.size)) {
-				Vector3 forcetoapply1 = new Vector3(
-				(e.vel.x*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
-				(e.vel.y*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
-				(e.vel.z*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))));
-				e.addAccel(forcetoapply1);
-				e.setVel(forcetoapply1);
-				return true; 
-			}else {
-				if(e instanceof Player) {
-					Player ent = (Player) e;
-					if(e.vel.len() > 500*METER) {
-						if(!ent.isBoosting()) {
-							Vector3 tmp = e.vel.cpy().nor();
-							e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
-							
-						}
-					}
-					ent.tetheringstation = this; 
-				}//instanceof player
-				return false; 
-			}
-		}else if(e instanceof Player){
-			Player ent = (Player) e;
-			if(ent.tetheringstation !=null && ent.tetheringstation.equals(this)) ent.tetheringstation = null; 
+			//	bobber.instance.transform.scl(size2,size2,size2);
+			//}
 		}
-		return false;
+		
+		@Override
+		public boolean touches(Entity e) {
+			float distance  = this.pos.dst2(e.pos);
+			if(distance < (this.tetherradius*this.tetherradius)+(e.size*e.size)) {
+				if(distance < (this.size*this.size)+(e.size*e.size)) {
+					Vector3 forcetoapply1 = new Vector3(
+					(e.vel.x*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
+					(e.vel.y*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
+					(e.vel.z*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))));
+					e.addAccel(forcetoapply1);
+					e.setVel(forcetoapply1);
+					return true; 
+				}else {
+					if(e.getEntityType() == EntityType.PLAYER) {
+						Player ent = (Player) e;
+						if(e.vel.len() > 500*METER) {
+							if(!ent.isBoosting()) {
+								Vector3 tmp = e.vel.cpy().nor();
+								e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
+							}
+						}
+						ent.tetheringstation = this; 
+					}//instanceof player
+					return false; 
+				}
+			}else if(e instanceof Player){
+				Player ent = (Player) e;
+				if(ent.tetheringstation !=null && ent.tetheringstation.equals(this)) ent.tetheringstation = null; 
+			}
+			return false;
+		}
+		
+		public float getouterRadius() {
+			return this.tetherradius;
+		}
+		
 	}
-
-    public float getouterRadius() {
-        return this.tetherradius;
-    }
 	
-}
