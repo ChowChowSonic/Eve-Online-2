@@ -66,13 +66,13 @@ public class Station extends CelestialObject{
 								e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
 							}
 						}
-						ent.tetheringstation = this; 
+						ent.tetheringstationID = this.ID; 
 					}//instanceof player
 					return false; 
 				}
 			}else if(e instanceof Player){
 				Player ent = (Player) e;
-				if(ent.tetheringstation !=null && ent.tetheringstation.equals(this)) ent.tetheringstation = null; 
+				if(ent.tetheringstationID !=0 && ent.tetheringstationID == this.ID) ent.tetheringstationID = 0; 
 			}
 			return false;
 		}

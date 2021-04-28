@@ -273,7 +273,7 @@ public class Server extends ApplicationAdapter{
             }catch(Exception yeet) {return;} 
         } 
         e.rotate(x, y, z);
-        e.setTetheringStation(null);
+        e.setTetheringStationID(0);
         e.setAccelerating(false);
         e.setBoosting(true);
         Vector3 accelnorm = e.getVel().cpy().nor();

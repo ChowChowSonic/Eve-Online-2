@@ -158,7 +158,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			}
 			unbuiltentities.clear();
 		}
-		if(player.getTetheringStation() !=null )System.out.println(player.getTetheringStation().toString());
+		if(player.getTetheringStationID() !=0  )System.out.println(player.getTetheringStationID());
 		//Camera rotation
 		if(Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2*cam.near){
 			cameradist -=0.01; 

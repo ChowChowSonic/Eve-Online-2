@@ -15,7 +15,7 @@ public class Player extends Entity {
 	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
-	protected Entity tetheringstation = null; 
+	protected long tetheringstationID = 0; 
 	private static final long serialVersionUID = 1L;
 	private boolean justpressedboost = false;
 	private float totalDeltaTime= 0;
@@ -184,15 +184,19 @@ public class Player extends Entity {
 	}
 	
 	public void setTetheringStation(Station s){
-		this.tetheringstation = s; 
+		this.tetheringstationID = s.ID; 
+	}
+
+	public void setTetheringStationID(long l){
+		this.tetheringstationID = l; 
 	}
 	
-	public Entity getTetheringStation() {
-		return this.tetheringstation; 
+	public long getTetheringStationID() {
+		return this.tetheringstationID; 
 	}
 	
 	public boolean isTethered(){
-		return this.tetheringstation != null && !this.isBoosting();
+		return this.tetheringstationID != 0 && !this.isBoosting();
 	}
 	
 	public void rotate(float x, float y, float z){
