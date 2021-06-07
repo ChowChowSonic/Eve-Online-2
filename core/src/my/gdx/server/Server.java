@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;  
@@ -38,16 +39,17 @@ public class Server extends ApplicationAdapter{
     public static ArrayList<Entity> entities; 
     public static File ENTITYFILE, LOGFILE; 
     
+    private static final long serialVersionUID = 1L;
     private static Inventory materialcensus, usedmaterials, vanishedmaterials;	
     private static SpriteBatch textrenderer;
     private static BitmapFont font; 
-    private static int logposition = 0;
     private static String[] logs = new String[31]; 
-    private static long nextID = 0L;
     private static ServerAntenna antenna;
-    private static final long serialVersionUID = 1L; 
     private static Random r;
     private static ArrayList<Long> openIDs = new ArrayList<Long>();
+    private static long nextID = 0L;
+    private static float cumDeltaTime = 0f;
+    private static int logposition = 0;
     
     
     public void create() {
@@ -77,13 +79,21 @@ public class Server extends ApplicationAdapter{
         
         super.create();
     }
+    
+    /** 
+    * Public Void Render() in this case serves as both an updater for the ingame world 
+    * AND the makeshift terminal that shows its running. 
+    */
     public void render(){
         super.render();
         Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);//clears the screen of text 
-        //in-game physics & logging
+        //Cumulative Delta Time - used for sending the entities to the clients
+        cumDeltaTime += Gdx.graphics.getDeltaTime(); 
+        
+        //In-game Physics
         for(int i =0; i < entities.size(); i++){
-            for(int e =0; e < entities.size(); e++) {
+            for(int e =i; e < entities.size(); e++) {
                 if(i < e) {
                     entities.get(i).touches(entities.get(e));
                 }
@@ -93,14 +103,25 @@ public class Server extends ApplicationAdapter{
             }
             entities.get(i).update(Gdx.graphics.getDeltaTime());
         }
+        
+        //Logs all items in existance and tries to regulate them with the item census
         for(int i =0; i < entities.size(); i++) {
             Entity e = entities.get(i); 
             if(e.inventory != null) {
                 usedmaterials.additem(e.inventory.getItems()); 
             }
-            antenna.sendEntity(e); 
         }
         runItemCensus();
+        
+        //sends all entities to all clients if CumDeltaTime > 0.2 seconds
+        if(cumDeltaTime >= 0.1){
+            for(int i = 0; i < entities.size(); i++){
+                Entity e = entities.get(i);
+                antenna.sendEntity(e); 
+            }
+            cumDeltaTime =0; 
+        }
+        
         //Logging
         textrenderer.begin();
         for(int i = 0; i < logs.length; i++){
@@ -110,6 +131,9 @@ public class Server extends ApplicationAdapter{
         }
         textrenderer.end();
     }
+    
+    
+    
     @Override
     public void dispose(){
         appendToLogs("------END OF SERVER LOGS UNTIL NEXT RESTART------");
@@ -151,24 +175,31 @@ public class Server extends ApplicationAdapter{
     }
     
     public static void removeEntity(Entity e){
-        openIDs.add(e.getID());
-        antenna.sendEntity(new removedEntity(e.getID()));
-        entities.remove(e); 
-        appendToLogs("Entity removed:" + e.getEntityType());
+        for(Iterator<Entity> ents = entities.iterator(); ents.hasNext();){
+            Entity e2 = ents.next();
+            if(e.equals(e2)) {
+                ents.remove();
+            }
+        }
+        
+        if(!entities.contains(e)){
+            openIDs.add(e.getID());
+            antenna.sendEntity(new removedEntity(e.getID()));
+            appendToLogs("Entity removed:" + e.getEntityType() + ", ID: " + e.getID());
+        }else{
+            appendToLogs("Entity unable to be removed!"); 
+        }
     }
     
     public static void sortEntities(){
         ArrayList<Entity> newlist = new ArrayList<Entity>(); 
         for(Entity e : entities){
-            if(e.getEntityType() == EntityType.CELESTIALOBJ) newlist.add(e);
+            if(e.getEntityType() == EntityType.CELESTIALOBJ || 
+            e.getEntityType() == EntityType.STATION) newlist.add(e);
         }
         
         for(Entity e : entities){
-            if(e.getEntityType() == EntityType.STATION) newlist.add(e); 
-        }
-        
-        for(Entity e : entities){
-            if(e.getEntityType() != EntityType.PLAYER || e.getEntityType() != EntityType.CELESTIALOBJ || e.getEntityType() != EntityType.STATION){
+            if(!newlist.contains(e) && e.getEntityType() != EntityType.PLAYER){
                 newlist.add(e);
             }
         }
@@ -179,7 +210,7 @@ public class Server extends ApplicationAdapter{
         
         entities = newlist; 
         appendToLogs("entity list successfully sorted");
-    }
+    }//ends sortEntities()
     
     private void runItemCensus() {
         Inventory underflow = new Inventory(usedmaterials.getDifferences(materialcensus), 999999); 
@@ -196,6 +227,7 @@ public class Server extends ApplicationAdapter{
             appendToLogs("Asteroid Spawned!");
         }
     }//ends runItemCensus()
+    
     public static void appendToLogs(String s){
         if(logposition < logs.length) {
             logs[logposition]= s.replaceAll("\n", " / ");
