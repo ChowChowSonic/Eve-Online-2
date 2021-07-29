@@ -134,7 +134,7 @@ public class ClientAntenna extends Thread{
                 this.isRunning = false; 
                 System.exit(1);
             }catch(SocketException e){
-                System.out.println("I'm going to assume that was an \"intentional disconnect\" and/or the Server getting shut down, and not a massive architectural failure");
+                System.out.println("I'm going to assume that was an intentional disconnect/Server getting shut down and not a massive architectural failure");
                 this.isRunning = false; 
                 System.exit(0);
             }catch(Exception e){
