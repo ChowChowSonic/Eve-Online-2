@@ -2,6 +2,7 @@ package my.gdx.game.entities;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g3d.Model;
@@ -15,6 +16,7 @@ import com.badlogic.gdx.utils.JsonValue;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
+import my.gdx.game.inventory.Item;
 
 public abstract class Entity implements Serializable{
 	public static AssetManager manager = new AssetManager();
@@ -36,7 +38,7 @@ public abstract class Entity implements Serializable{
 	*/
 	public static final float METER = 0.00005f;
 	public static enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ, STATION}
-	public Inventory inventory;
+	public transient Inventory inventory = new Inventory(new ArrayList<Item>(), 0);
 	
 	
 	public Entity(String modelname, EntityType type, long id){
@@ -65,12 +67,16 @@ public abstract class Entity implements Serializable{
 		//System.out.println("Entity.update called" + this.toString());
 		this.vel = this.vel.add(accel);
 		this.pos = this.pos.add(vel);
-		accel = accel.setZero();
+		if(this.instance == null)accel = accel.setZero();
 		if(this.pos != null){
 			x = this.pos.x; y= this.pos.y; z = this.pos.z; 
 			dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
 			ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
 		}
+
+	}
+
+	public void render(){
 		if(this.instance !=null){
 			this.instance.transform.scl(this.size);
 			Quaternion quaternion = new Quaternion();
@@ -87,17 +93,6 @@ public abstract class Entity implements Serializable{
 			this.instance.transform.set(this.pos, quaternion);
 		}
 	}
-	
-	public void serverSideUpdate(float deltaTime) {
-		//System.out.println("Entity.update called" + this.toString());
-		this.vel = this.vel.add(accel);
-		this.pos = this.pos.add(vel);
-		accel = accel.setZero();
-		x = this.pos.x; y= this.pos.y; z = this.pos.z; 
-		dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
-		ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
-	}
-	
 	public boolean touches(Entity e) {
 		float distance  = this.pos.dst2(e.pos);
 		if(distance < (this.size*this.size)+(e.size*e.size)) {
