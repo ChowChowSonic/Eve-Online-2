@@ -70,6 +70,9 @@ public class EveOnline2 extends ApplicationAdapter{
 	* Y = -[down]  	    [up]+
 	* Z = -[Forward] [Backward]+ 
 	*/
+	/**
+	 * I need this in here to create the game for some reason.
+	 */
 	@Override
 	public void create() {
 		super.create();
@@ -129,6 +132,9 @@ public class EveOnline2 extends ApplicationAdapter{
 		windows.add(new HealthBar(player));
 	}//ends create()
 	
+	/** 
+    * Here, Public Void Render() serves as an updater for the ingame world, AS WELL AS image rendering.  
+    */
 	@Override
 	public void render() {
 		// TODO Auto-generated method stub
@@ -185,7 +191,10 @@ public class EveOnline2 extends ApplicationAdapter{
 			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
 		}
 		
-		for(Entity e : entities) {e.update(Gdx.graphics.getDeltaTime());}
+		for(Entity e : entities) {
+			e.update(Gdx.graphics.getDeltaTime());
+			e.render();
+		}
 		background.transform.set(player.getPos(), new Quaternion());
 		
 		
@@ -267,6 +276,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		alreadyPresentEntity.setAccel(serializedEntity.getAccel());
 		//System.out.println(e.getVel());
 	}
+	
 	/**
 	* I mean, it adds an entity. What did you expect? The spanish inquisition?
 	*/

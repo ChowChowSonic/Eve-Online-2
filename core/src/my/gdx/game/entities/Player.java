@@ -20,6 +20,7 @@ public class Player extends Entity {
 	private boolean justpressedboost = false;
 	private float totalDeltaTime= 0;
 	private boolean isAccelerating = false;
+	/** NOT THE PLAYER'S ACTUAL DIRECTION. THIS IS FOR BOOSTING/ACCELERATING PURPOSES ONLY.*/
 	private Vector3 direction = new Vector3(0,0,0);
 	
 	public Player(String modelname, EntityType type, long ID) {

@@ -4,9 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
-import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity;
-import my.gdx.game.entities.Player;
 public class ServerAntenna extends Thread{ 
     ServerSocket socket;
     int port;

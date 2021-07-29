@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
 
+import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
@@ -42,11 +43,13 @@ public class Debris extends Entity{
 			super(modelname, EntityType.ASTEROID, ID);
 			this.pos = position; 
 			this.inventory = contents;  
-			for(Item i : contents.getItems()){
-				size+=i.getVolume()/100; 
-				this.mass+=i.getWeight();
+			if(contents != null){
+				for(Item i : contents.getItems()){
+					size+=i.getVolume()/100; 
+					this.mass+=i.getWeight();
+				}
 			}
-
+			
 			// TODO Auto-generated constructor stub
 		}
 		
@@ -66,15 +69,17 @@ public class Debris extends Entity{
 			}
 			//this.instance.transform.scl(radius);
 		}
-
-		public Debris(long ID){
-			super(ID);
+		
+		public Debris(String modelname, int radius, long ID){
+			super(modelname, EntityType.ASTEROID, ID);
+			this.inventory = new Inventory(999999999);
+			this.size = radius; 
 		}
-
+		
 		@Override
 		public void buildSerializedEntity(){
 			super.buildSerializedEntity();
 			this.instance.transform.scale(size/100000000, size/100000000, size/100000000);
 		}
-
+		
 	}
