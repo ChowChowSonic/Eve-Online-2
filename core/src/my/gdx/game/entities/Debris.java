@@ -75,10 +75,4 @@ public class Debris extends Entity{
 			this.size = radius; 
 		}
 		
-		@Override
-		public void buildSerializedEntity(){
-			super.buildSerializedEntity();
-			this.instance.transform.scale(size/100000000, size/100000000, size/100000000);
-		}
-		
 	}

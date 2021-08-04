@@ -14,7 +14,6 @@ public class CelestialObject extends Entity{
 		this.pos = position;
 		this.setMass(mass);
 		this.size = radius;
-		x = this.pos.x; y = this.pos.y; z = this.pos.z; 
 		// TODO Auto-generated constructor stub
 	}
 	

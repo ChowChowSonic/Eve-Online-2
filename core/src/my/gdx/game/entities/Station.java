@@ -48,7 +48,7 @@ public class Station extends CelestialObject{
 		@Override
 		public boolean touches(Entity e) {
 			float distance  = this.pos.dst(e.pos);
-			System.out.println("Station.touches(player) called");
+			//System.out.println("Station.touches(player) called");
 			//If the object is within Tethering radius...
 			if(distance < this.tetherradius+e.size) {
 				//If the object is physically touching the station:
