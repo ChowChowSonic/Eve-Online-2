@@ -4,47 +4,38 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
-import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Disposable;
 
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
+import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 import my.gdx.game.entities.removedEntity;
-import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 
 public class EveOnline2 extends ApplicationAdapter{
 	
 	public static Model DEFAULTMODEL; 
-	public static ArrayList<Entity> unbuiltentities = new ArrayList<Entity>(), entities = new ArrayList<Entity>();
+	public static ArrayList<Entity> entities = new ArrayList<Entity>();
 	
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
@@ -71,8 +62,8 @@ public class EveOnline2 extends ApplicationAdapter{
 	* Z = -[Forward] [Backward]+ 
 	*/
 	/**
-	 * I need this in here to create the game for some reason.
-	 */
+	* I need this in here to create the game for some reason.
+	*/
 	@Override
 	public void create() {
 		super.create();
@@ -87,14 +78,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		System.out.println("Attempting to connect...");
 		connection = new ClientAntenna(/*"Server"*/ "DESKTOP-E2274E2", 26000); 
 		System.out.println("Connected!");
-		if(unbuiltentities.size() > 0){
-			player = (Player) buildEntity(unbuiltentities.get(0));
-		}else{
-			do{
-				player = (Player)buildEntity(connection.requestEntity(0));
-			}while(player == null);
-		}
-		unbuiltentities.remove(0); 
+		player = (Player) entities.get(0);
 		entities.add(player); 
 		connection.start();
 		
@@ -133,8 +117,8 @@ public class EveOnline2 extends ApplicationAdapter{
 	}//ends create()
 	
 	/** 
-    * Here, Public Void Render() serves as an updater for the ingame world, AS WELL AS image rendering.  
-    */
+	* Here, Public Void Render() serves as an updater for the ingame world, AS WELL AS image rendering.  
+	*/
 	@Override
 	public void render() {
 		// TODO Auto-generated method stub
@@ -143,27 +127,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 		
 		//build all unbuilt entities
-		if(unbuiltentities.size()>0){
-			for(int i = 0; i < unbuiltentities.size(); i++){
-				boolean entityfound = false;
-				Entity e2 = unbuiltentities.get(i);
-				if(e2== null) continue; 
-				for(Entity e : entities){
-					if(e.equals(e2)){
-						updateEntityFromSerialized(e, e2); 
-						
-						entityfound = true;
-						break;
-					}
-					
-				}
-				if(!entityfound){
-					Entity e = buildEntity(unbuiltentities.get(i));
-					entities.add(e);
-				} 
-			}
-			unbuiltentities.clear();
-		}
 		if(player.getTetheringStationID() !=0  )System.out.println(player.getTetheringStationID());
 		//Camera rotation
 		if(Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2*cam.near){
@@ -191,12 +154,24 @@ public class EveOnline2 extends ApplicationAdapter{
 			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
 		}
 		
-		for(Entity e : entities) {
+		/*for(Entity e : entities) {
 			e.update(Gdx.graphics.getDeltaTime());
 			e.render();
+		}*/
+		
+		for(int i =0; i < entities.size(); i++){
+			for(int e =i; e < entities.size(); e++) {
+				if(i < e) {
+					entities.get(i).touches(entities.get(e));
+				}
+				/*if(entities.get(i) instanceof Player && entities.get(e).getPos().dst2(entities.get(i).getPos()) < 9000){
+					FileHandle playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID()));
+				}*/
+			}
+			entities.get(i).update(Gdx.graphics.getDeltaTime());
+			entities.get(i).render();
 		}
 		background.transform.set(player.getPos(), new Quaternion());
-		
 		
 		//camera rotations, distance correction & Movement
 		Vector3 normvec = cam.direction.cpy(); 
@@ -293,7 +268,14 @@ public class EveOnline2 extends ApplicationAdapter{
 				}
 			}
 		}
-		unbuiltentities.add(e);
+		if(entities.contains(e)){
+			int index = entities.indexOf(e);
+			entities.remove(index);
+			entities.add(index, e);
+		}else{
+			entities.add(e);
+			sortEntities();
+		}
 		//System.out.println(e.toString());
 	}
 	

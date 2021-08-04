@@ -11,6 +11,7 @@ import my.gdx.game.entities.Player;
 public class HealthBar extends Hud{
 	private Player p;
 	BitmapFont health;
+	/** One Astronomical Unit - The distance between Earth & The Sun. */
 	private final float AU = (float) (Math.pow(10, 11)*1.4960);
 
 	HealthBar(Player player2track) {
