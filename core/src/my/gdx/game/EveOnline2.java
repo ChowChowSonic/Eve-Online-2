@@ -238,21 +238,6 @@ public class EveOnline2 extends ApplicationAdapter{
 	}
 	
 	/**
-	* Takes two equivalent entities: one outdated entity, and an "updated" yet unbuilt one from the server. 
-	* It builds the updated one, and sets all outdated info on the old one to the more recent info. Namely, the position, velocity and accel. 
-	* @param alreadyPresentEntity
-	* @param serializedEntity
-	*/
-	public static void updateEntityFromSerialized(Entity alreadyPresentEntity, Entity serializedEntity){
-		serializedEntity.buildSerializedEntity();
-		//System.out.println("pos: "+e.getVel());
-		alreadyPresentEntity.setPos(serializedEntity.getPos());
-		alreadyPresentEntity.setVel(serializedEntity.getVel());
-		alreadyPresentEntity.setAccel(serializedEntity.getAccel());
-		//System.out.println(e.getVel());
-	}
-	
-	/**
 	* I mean, it adds an entity. What did you expect? The spanish inquisition?
 	*/
 	public static void addEntity(Entity e) {
@@ -282,33 +267,27 @@ public class EveOnline2 extends ApplicationAdapter{
 	/** 
 	* "Builds" the entity, loading and giving it a model from the Entity's assetmanager, then copies the entity's properties, applies it to an appropriate class and returns said class. 
 	*/
-	public static Entity buildEntity(Entity e){
+	/*public static Entity buildEntity(Entity e){
 		if(e == null) return new removedEntity(0L); 
-		e.buildSerializedEntity(); 
 		if(e.getEntityType() == EntityType.PLAYER){
 			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
-			p.buildSerializedEntity();
 			return p;
 		}else if(e.getEntityType() == EntityType.ASTEROID){
 			Debris d = new Debris(e.getPos(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
-			d.buildSerializedEntity();
 			return d;
 		}else if (e.getEntityType() == EntityType.CELESTIALOBJ){
 			CelestialObject o = new CelestialObject(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e.getID()); 
-			o.buildSerializedEntity();
 			return o; 
 		}else if (e.getEntityType() == EntityType.STATION){
 			Station e2 = (Station) e;
 			Station o = new Station(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(), e.getID()); 
-			o.buildSerializedEntity();
 			return o; 
 		}else{
 			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
-			p.buildSerializedEntity();
 			System.out.println("Entity not recognised!");
 			return p; 
 		}
-	}
+	}*/
 	
 	/**
 	* Sorts the entity list by entity type such that all entities go in the following order:

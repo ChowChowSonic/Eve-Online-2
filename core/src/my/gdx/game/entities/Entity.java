@@ -19,17 +19,14 @@ public abstract class Entity implements Serializable{
 	public static AssetManager manager = new AssetManager();
 
 	protected static final long serialVersionUID = 1L;
-	protected transient Vector3 pos,vel,accel;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
 	protected transient ModelInstance instance; 
+	protected Vector3 pos,vel,accel;
 	protected transient float mass, size;
 	protected final long ID; 
 	protected EntityType type; 
 	protected String modelname; 
 	
-	
-	/**Internal, non-transient variables meant to update the position of the entity after serialization */
-	protected float x, dx, ddx, y, dy, ddy, z, dz, ddz; 
 	/**
 	* One meter in length, as defined by me
 	*/
@@ -66,9 +63,6 @@ public abstract class Entity implements Serializable{
 		this.pos = this.pos.add(vel);
 		if(this.instance == null)accel = accel.setZero();
 		if(this.pos != null){
-			x = this.pos.x; y= this.pos.y; z = this.pos.z; 
-			dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
-			ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
 		}
 
 	}
@@ -107,21 +101,6 @@ public abstract class Entity implements Serializable{
 		}
 		return false;
 		
-	}
-	
-	public void buildSerializedEntity(){
-		if(this.pos == null) this.pos = new Vector3(); 
-		if(this.vel == null) this.vel = new Vector3();
-		if(this.accel == null) this.accel = new Vector3();
-		this.pos = new Vector3(x, y, z);
-		this.setVel(new Vector3(dx,dy,dz));
-		this.setAccel(ddx, ddy, ddz);
-		if(!manager.contains(this.modelname)){
-			manager.load(this.modelname, Model.class);
-			manager.finishLoadingAsset(this.modelname);
-		}
-		this.model = manager.get(this.getModelName(), Model.class); 
-		this.instance = new ModelInstance(this.model, pos); 
 	}
 	
 	@Override
