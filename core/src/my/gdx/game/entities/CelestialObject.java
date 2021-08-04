@@ -2,9 +2,7 @@ package my.gdx.game.entities;
 
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.math.Quaternion;
-import com.badlogic.gdx.math.Vector3;
-
-import my.gdx.game.EveOnline2;
+import my.gdx.game.entities.Vector3; 
 
 public class CelestialObject extends Entity{
 	
@@ -49,7 +47,7 @@ public class CelestialObject extends Entity{
 				e.setVel(forcetoapply1);
 				return true;
 			} else {
-				Vector3 difference = this.pos.cpy().sub(e.pos).nor();
+				Vector3 difference = (Vector3) this.pos.cpy().sub(e.pos).nor();
 				e.addAccel(-difference.x * METER / e.mass, -difference.y * METER / e.mass,
 				-difference.z * METER / e.mass);
 			}
