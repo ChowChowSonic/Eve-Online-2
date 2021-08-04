@@ -128,11 +128,15 @@ public class ClientAntenna extends Thread{
                     EveOnline2.addEntity(o);
                     //System.out.println("Entity added!");
                 //}
-            } catch (ClassNotFoundException | IOException e) {
+            } catch (ClassNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
                 this.isRunning = false; 
                 System.exit(1);
+            }catch(SocketException e){
+                System.out.println("I'm going to assume that was an \"intentional disconnect\" and/or the Server getting shut down, and not a massive architectural failure");
+                this.isRunning = false; 
+                System.exit(0);
             }catch(Exception e){
                 e.printStackTrace(); 
                 this.isRunning = false; 

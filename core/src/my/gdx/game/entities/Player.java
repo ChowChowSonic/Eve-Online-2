@@ -1,14 +1,7 @@
 package my.gdx.game.entities;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g3d.Model;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Json.Serializable;
-
-import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
+import my.gdx.game.entities.Vector3; 
 //import my.gdx.server.Server;
 
 public class Player extends Entity {
@@ -89,7 +82,7 @@ public class Player extends Entity {
 				this.vel.setZero();
 			}
 		}
-
+		
 		if(totalDeltaTime > 5.0f) {
 			totalDeltaTime -= 5;
 			if(this.shields < this.maxshields-20)
@@ -186,7 +179,7 @@ public class Player extends Entity {
 	public void setTetheringStation(Station s){
 		this.tetheringstationID = s.ID; 
 	}
-
+	
 	public void setTetheringStationID(long l){
 		this.tetheringstationID = l; 
 	}

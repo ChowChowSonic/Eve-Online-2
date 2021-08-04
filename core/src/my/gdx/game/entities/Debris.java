@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.g3d.Model;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Json.Serializable;
@@ -12,7 +11,7 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
-
+import my.gdx.game.entities.Vector3; 
 public class Debris extends Entity{
 	static transient Random RNG = new Random(); 
 	protected static final transient InventoryItems[] defaultpossiblecontents =
