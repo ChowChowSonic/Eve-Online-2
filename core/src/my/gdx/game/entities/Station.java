@@ -15,7 +15,7 @@ public class Station extends CelestialObject{
 		super(pos, modelname, mass, innerradius, ID);
 		this.tetherradius = outerraidus;
 		this.type = EntityType.STATION; 
-		System.out.println(tetherradius + " "+ mass + " "+innerradius+ " "+outerraidus+" "+ID);
+		//System.out.println(tetherradius + " "+ mass + " "+innerradius+ " "+outerraidus+" "+ID);
 		//bobbers = new Entity[8];
 		
 		/*bobbers[0]= new NPC(new Vector3(this.pos.x+tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
@@ -48,7 +48,7 @@ public class Station extends CelestialObject{
 		@Override
 		public boolean touches(Entity e) {
 			float distance  = this.pos.dst(e.pos);
-			//System.out.println("Station.touches(player) called");
+			//System.out.println("Station.touches(player) called");wwwwwwwww
 			//If the object is within Tethering radius...
 			if(distance < this.tetherradius+e.size) {
 				//If the object is physically touching the station:
@@ -80,7 +80,7 @@ public class Station extends CelestialObject{
 			}else if(e.getEntityType() == EntityType.PLAYER){
 				Player ent = (Player) e;
 				if(ent.tetheringstationID == this.ID) ent.tetheringstationID = 0; 
-				System.out.println("Tether Removed");
+				//System.out.println("Tether Removed");
 			}
 			return false;
 		}

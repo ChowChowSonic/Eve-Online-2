@@ -1,11 +1,14 @@
 package my.gdx.game;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -33,15 +36,13 @@ import my.gdx.game.entities.removedEntity;
 import my.gdx.game.inventory.Inventory;
 
 public class EveOnline2 extends ApplicationAdapter{
-	
-	public static Model DEFAULTMODEL; 
-	public static ArrayList<Entity> entities = new ArrayList<Entity>();
-	
-	public static Player player; 
-	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
 	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
 	public static final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
-	
+	public static Model DEFAULTMODEL; 
+	public static ArrayList<Entity> entities = new ArrayList<Entity>();
+	public static ArrayList<String> assets = new ArrayList<String>();
+	public static Player player; 
+	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
 	
 	private static Camera cam;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
@@ -55,6 +56,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	private SpriteBatch textrenderer;
 	private Environment env; 
 	private ClientAntenna connection; 
+	private static boolean isRendering = false;
 	/*
 	* Reminder:
 	* X = -<------------------>+
@@ -67,6 +69,17 @@ public class EveOnline2 extends ApplicationAdapter{
 	@Override
 	public void create() {
 		super.create();
+		FileHandle assetFolder = Gdx.files.local("\\core\\assets\\"); 
+		
+		for(FileHandle entry : assetFolder.list()){
+			if(entry.extension().equals("obj")){
+				Entity.manager.load(entry.name(), Model.class);
+				Entity.manager.finishLoadingAsset(entry.name());
+				System.out.println(entry.name()+" Loaded");
+			}
+		}
+		Entity.manager.finishLoading();
+
 		cam = new PerspectiveCamera(80,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		cam.position.set(0f,0f,3f);
 		cam.lookAt(0f,0f,0f);
@@ -159,25 +172,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			e.render();
 		}*/
 		
-		for(int i =0; i < entities.size(); i++){
-			for(int e =i; e < entities.size(); e++) {
-				if(i < e) {
-					entities.get(i).touches(entities.get(e));
-				}
-				/*if(entities.get(i) instanceof Player && entities.get(e).getPos().dst2(entities.get(i).getPos()) < 9000){
-					FileHandle playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID()));
-				}*/
-			}
-			entities.get(i).update(Gdx.graphics.getDeltaTime());
-			entities.get(i).render();
-		}
-		background.transform.set(player.getPos(), new Quaternion());
 		
-		//camera rotations, distance correction & Movement
-		Vector3 normvec = cam.direction.cpy(); 
-		cam.position.set(player.getPos().x-(cameradist*normvec.x), player.getPos().y-(cameradist*normvec.y),player.getPos().z-(cameradist*normvec.z));
-		cam.lookAt(player.getPos());
-		cam.update();
 		
 		if(Gdx.input.isButtonPressed(Buttons.RIGHT)) {
 			float deltax = Gdx.input.getDeltaX(); 
@@ -193,7 +188,28 @@ public class EveOnline2 extends ApplicationAdapter{
 			cam.lookAt(player.getPos());
 		}
 		cam.up.x = 0; cam.up.z =0;
+
+		//Entity Collisions, physics & rendering
+		for(int i =0; i < entities.size(); i++){
+			for(int e =i; e < entities.size(); e++) {
+				if(i < e) {
+					entities.get(i).touches(entities.get(e));
+				}
+				/*if(entities.get(i) instanceof Player && entities.get(e).getPos().dst2(entities.get(i).getPos()) < 9000){
+					FileHandle playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID()));
+				}*/
+			}
+			entities.get(i).update(Gdx.graphics.getDeltaTime());
+		}
+		background.transform.set(player.getPos(), new Quaternion());
+		isRendering = true;
+		for(Entity e : entities) e.render(); 
 		
+		//camera rotations, distance correction & Movement
+		Vector3 normvec = cam.direction.cpy(); 
+		cam.position.set(player.getPos().x-(cameradist*normvec.x), player.getPos().y-(cameradist*normvec.y),player.getPos().z-(cameradist*normvec.z));
+		cam.lookAt(player.getPos());
+		cam.update();
 		batch.begin(cam);
 		batch.render(background);
 		for(int i = 0; i < entities.size(); i++) {
@@ -207,7 +223,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		}
 		batch.end();
 		usedmaterials.empty();
-		
+		isRendering = false;
 		//Inventory Menu stuff
 		if(Gdx.input.isKeyJustPressed(Keys.I)){
 			if(windows.contains(new InventoryMenu(player))) windows.remove(new InventoryMenu(player));
@@ -254,11 +270,15 @@ public class EveOnline2 extends ApplicationAdapter{
 			}
 		}
 		if(entities.contains(e)){
-			int index = entities.indexOf(e);
-			entities.remove(index);
-			entities.add(index, e);
+			for(Iterator<Entity> ents = entities.iterator(); ents.hasNext();){
+				Entity e2 = ents.next();
+				if(e.equals(e2)) {
+					e2.replace(e);
+					System.out.println(e2.toString());
+				}
+			}
 		}else{
-			entities.add(e);
+			entities.add(buildEntity(e));
 			sortEntities();
 		}
 		//System.out.println(e.toString());
@@ -267,7 +287,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	/** 
 	* "Builds" the entity, loading and giving it a model from the Entity's assetmanager, then copies the entity's properties, applies it to an appropriate class and returns said class. 
 	*/
-	/*public static Entity buildEntity(Entity e){
+	public static Entity buildEntity(Entity e){
 		if(e == null) return new removedEntity(0L); 
 		if(e.getEntityType() == EntityType.PLAYER){
 			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
@@ -287,7 +307,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			System.out.println("Entity not recognised!");
 			return p; 
 		}
-	}*/
+	}//*/
 	
 	/**
 	* Sorts the entity list by entity type such that all entities go in the following order:
