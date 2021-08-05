@@ -27,6 +27,12 @@ public class CelestialObject extends Entity{
 		}
 	}
 	
+	public void render(){
+		super.render();
+		this.instance.transform.set(this.pos, new Quaternion());
+		this.instance.transform.scl(0.5f);
+	}
+	
 	/**
 	* The CelectialObject.touches() method overrides the Enitty.touches() method.
 	* Most celestial objects are going to be too big for players to have any real
