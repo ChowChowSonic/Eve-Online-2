@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
+import com.badlogic.gdx.Gdx;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
@@ -17,7 +18,7 @@ import my.gdx.game.entities.Vector3;
 
 public abstract class Entity implements Serializable{
 	public static AssetManager manager = new AssetManager();
-
+	
 	protected static final long serialVersionUID = 1L;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
 	protected transient ModelInstance instance; 
@@ -53,6 +54,7 @@ public abstract class Entity implements Serializable{
 		accel = new Vector3();
 		ID = id; 
 	}
+	
 	public Entity(long ID){
 		this.ID = ID;
 	}
@@ -64,26 +66,29 @@ public abstract class Entity implements Serializable{
 		if(this.instance == null)accel = accel.setZero();
 		if(this.pos != null){
 		}
-
+		
 	}
-
+	
 	public void render(){
-		if(this.instance !=null){
-			this.instance.transform.scl(this.size);
-			Quaternion quaternion = new Quaternion();
-			if(this.vel.len2()>0) {
-				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
-				instanceRotation.setToLookAt(
-				new Vector3(-(this.vel.x),-(this.vel.y),-(this.vel.z)), 
-				new Vector3(0,-1,0));
-				instanceRotation.rotate(0, 0, 1, 180);
-				instanceRotation.getRotation(quaternion);
-			}else {
-				this.instance.transform.getRotation(quaternion);
-			}
-			this.instance.transform.set(this.pos, quaternion);
+		if(this.instance == null){
+			this.model = manager.get(modelname); 
+			this.instance = new ModelInstance(model, pos);
 		}
+		this.instance.transform.scl(this.size);
+		Quaternion quaternion = new Quaternion();
+		if(this.vel.len2()>0) {
+			Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
+			instanceRotation.setToLookAt(
+			new Vector3(-(this.vel.x),-(this.vel.y),-(this.vel.z)), 
+			new Vector3(0,-1,0));
+			instanceRotation.rotate(0, 0, 1, 180);
+			instanceRotation.getRotation(quaternion);
+		}else {
+			this.instance.transform.getRotation(quaternion);
+		}
+		this.instance.transform.set(this.pos, quaternion);
 	}
+
 	public boolean touches(Entity e) {
 		float distance  = this.pos.dst2(e.pos);
 		if(distance < (this.size*this.size)+(e.size*e.size)) {
@@ -101,6 +106,20 @@ public abstract class Entity implements Serializable{
 		}
 		return false;
 		
+	}
+
+	/**
+	 * Replaces this entity with the info of another. Hopefully will be useful for updating entities clientside. 
+	 * @param e
+	 */
+	public void replace(Entity e){
+		this.pos = e.pos.cpy(); 
+		this.vel = e.vel.cpy(); 
+		this.accel = e.accel.cpy(); 
+		this.mass = e.mass; 
+		this.size = e.size; 
+		this.type = e.type;
+		this.modelname = e.modelname; 
 	}
 	
 	@Override
@@ -123,7 +142,8 @@ public abstract class Entity implements Serializable{
 		return this.model;
 	}
 	public ModelInstance getInstance() {
-		return this.instance;
+		if(this.instance== null) this.render();
+		return this.instance; 
 	}
 	
 	//Position

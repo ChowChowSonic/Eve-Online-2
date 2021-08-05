@@ -30,8 +30,10 @@ public class Player extends Entity {
 	@Override
 	public void update(float deltaTime) {
 		//Inventory management
+		if(this.inventory !=null){
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
+		}else this.mass = basemass;
 		totalDeltaTime += deltaTime;
 		
 		//Movement controls
@@ -91,6 +93,20 @@ public class Player extends Entity {
 		}
 		//System.out.println("Player.update called "+this.toString());
 		super.update(deltaTime);
+	}
+
+	public void replace(Entity e){
+		if(e instanceof Player){
+			Player p = (Player) e;
+			super.replace(e);
+			 //ADD IN SHIELDS/HULL/ARMOR REPLACEMENT LATER
+			 this.tetheringstationID = p.tetheringstationID;
+			 this.justpressedboost = p.justpressedboost;
+			 this.totalDeltaTime = p.totalDeltaTime; 
+			 this.isAccelerating = p.isAccelerating; 
+			 this.direction = p.direction.cpy(); 
+
+		}
 	}
 	
 	public void dealDamage(int damage) {
