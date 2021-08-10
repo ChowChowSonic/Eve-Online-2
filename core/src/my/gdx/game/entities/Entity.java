@@ -7,27 +7,32 @@ import java.util.ArrayList;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonValue;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.Item;
-import my.gdx.game.entities.Vector3; 
 
 public abstract class Entity implements Serializable{
 	public static AssetManager manager = new AssetManager();
-	
+
 	protected static final long serialVersionUID = 1L;
+	protected transient Vector3 pos,vel,accel;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
 	protected transient ModelInstance instance; 
-	protected Vector3 pos,vel,accel;
 	protected transient float mass, size;
 	protected final long ID; 
 	protected EntityType type; 
 	protected String modelname; 
 	
+	
+	/**Internal, non-transient variables meant to update the position of the entity after serialization */
+	protected float x, dx, ddx, y, dy, ddy, z, dz, ddz; 
 	/**
 	* One meter in length, as defined by me
 	*/
@@ -54,7 +59,6 @@ public abstract class Entity implements Serializable{
 		accel = new Vector3();
 		ID = id; 
 	}
-	
 	public Entity(long ID){
 		this.ID = ID;
 	}
@@ -65,30 +69,30 @@ public abstract class Entity implements Serializable{
 		this.pos = this.pos.add(vel);
 		if(this.instance == null)accel = accel.setZero();
 		if(this.pos != null){
+			x = this.pos.x; y= this.pos.y; z = this.pos.z; 
+			dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
+			ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
 		}
-		
-	}
-	
-	public void render(){
-		if(this.instance == null){
-			this.model = manager.get(modelname); 
-			this.instance = new ModelInstance(model, pos);
-		}
-		this.instance.transform.scl(this.size);
-		Quaternion quaternion = new Quaternion();
-		if(this.vel.len2()>0) {
-			Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
-			instanceRotation.setToLookAt(
-			new Vector3(-(this.vel.x),-(this.vel.y),-(this.vel.z)), 
-			new Vector3(0,-1,0));
-			instanceRotation.rotate(0, 0, 1, 180);
-			instanceRotation.getRotation(quaternion);
-		}else {
-			this.instance.transform.getRotation(quaternion);
-		}
-		this.instance.transform.set(this.pos, quaternion);
+
 	}
 
+	public void render(){
+		if(this.instance !=null){
+			this.instance.transform.scl(this.size);
+			Quaternion quaternion = new Quaternion();
+			if(this.vel.len2()>0) {
+				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
+				instanceRotation.setToLookAt(
+				new Vector3(-(this.vel.x),-(this.vel.y),-(this.vel.z)), 
+				new Vector3(0,-1,0));
+				instanceRotation.rotate(0, 0, 1, 180);
+				instanceRotation.getRotation(quaternion);
+			}else {
+				this.instance.transform.getRotation(quaternion);
+			}
+			this.instance.transform.set(this.pos, quaternion);
+		}
+	}
 	public boolean touches(Entity e) {
 		float distance  = this.pos.dst2(e.pos);
 		if(distance < (this.size*this.size)+(e.size*e.size)) {
@@ -107,19 +111,20 @@ public abstract class Entity implements Serializable{
 		return false;
 		
 	}
-
-	/**
-	 * Replaces this entity with the info of another. Hopefully will be useful for updating entities clientside. 
-	 * @param e
-	 */
-	public void replace(Entity e){
-		this.pos = e.pos.cpy(); 
-		this.vel = e.vel.cpy(); 
-		this.accel = e.accel.cpy(); 
-		this.mass = e.mass; 
-		this.size = e.size; 
-		this.type = e.type;
-		this.modelname = e.modelname; 
+	
+	public void buildSerializedEntity(){
+		if(this.pos == null) this.pos = new Vector3(); 
+		if(this.vel == null) this.vel = new Vector3();
+		if(this.accel == null) this.accel = new Vector3();
+		this.pos = new Vector3(x, y, z);
+		this.setVel(new Vector3(dx,dy,dz));
+		this.setAccel(ddx, ddy, ddz);
+		if(!manager.contains(this.modelname)){
+			manager.load(this.modelname, Model.class);
+			manager.finishLoadingAsset(this.modelname);
+		}
+		this.model = manager.get(this.getModelName(), Model.class); 
+		this.instance = new ModelInstance(this.model, pos); 
 	}
 	
 	@Override
@@ -142,8 +147,7 @@ public abstract class Entity implements Serializable{
 		return this.model;
 	}
 	public ModelInstance getInstance() {
-		if(this.instance== null) this.render();
-		return this.instance; 
+		return this.instance;
 	}
 	
 	//Position
