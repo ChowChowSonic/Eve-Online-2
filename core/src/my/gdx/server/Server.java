@@ -21,6 +21,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 
 import my.gdx.game.entities.CelestialObject;
@@ -33,7 +34,7 @@ import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
-import my.gdx.game.entities.Vector3; 
+
 public class Server extends ApplicationAdapter{
     public static ArrayList<Entity> entities; 
     public static File ENTITYFILE, LOGFILE; 

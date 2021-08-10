@@ -1,9 +1,10 @@
 package my.gdx.game.entities;
 
 import com.badlogic.gdx.math.Quaternion;
+import com.badlogic.gdx.math.Vector3;
 
 import my.gdx.game.EveOnline2;
-import my.gdx.game.entities.Vector3; 
+
 public class Station extends CelestialObject{
 	float tetherradius;
 	Entity bobbers[];
@@ -15,7 +16,6 @@ public class Station extends CelestialObject{
 		super(pos, modelname, mass, innerradius, ID);
 		this.tetherradius = outerraidus;
 		this.type = EntityType.STATION; 
-		//System.out.println(tetherradius + " "+ mass + " "+innerradius+ " "+outerraidus+" "+ID);
 		//bobbers = new Entity[8];
 		
 		/*bobbers[0]= new NPC(new Vector3(this.pos.x+tetherradius, this.pos.y, this.pos.z),bobbermodel, EntityType.FRIEND);
@@ -47,12 +47,9 @@ public class Station extends CelestialObject{
 		
 		@Override
 		public boolean touches(Entity e) {
-			float distance  = this.pos.dst(e.pos);
-			//System.out.println("Station.touches(player) called");wwwwwwwww
-			//If the object is within Tethering radius...
-			if(distance < this.tetherradius+e.size) {
-				//If the object is physically touching the station:
-				if(distance < this.size+(e.size)) {
+			float distance  = this.pos.dst2(e.pos);
+			if(distance < (this.tetherradius*this.tetherradius)+(e.size*e.size)) {
+				if(distance < (this.size*this.size)+(e.size*e.size)) {
 					Vector3 forcetoapply1 = new Vector3(
 					(e.vel.x*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
 					(e.vel.y*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
@@ -60,27 +57,22 @@ public class Station extends CelestialObject{
 					e.addAccel(forcetoapply1);
 					e.setVel(forcetoapply1);
 					return true; 
-				}
-				if(e.getEntityType() == EntityType.PLAYER) {
-					Player ent = (Player) e;
-					if(!ent.isBoosting()) {//if the player is not boosting currently
-						if(e.vel.len() > 500*METER) {//If they're going too fast, limit their speed
-
-							Vector3 tmp = e.vel.cpy().nor();
-							e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
+				}else {
+					if(e.getEntityType() == EntityType.PLAYER) {
+						Player ent = (Player) e;
+						if(e.vel.len() > 500*METER) {
+							if(!ent.isBoosting()) {
+								Vector3 tmp = e.vel.cpy().nor();
+								e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
+							}
 						}
-						System.out.println("Tethering SHOULD BE WORKING");
-						//put a tether on the player
 						ent.tetheringstationID = this.ID; 
-					}
-					
-				}//instanceof player
-				return false; 
-				//...If not break the tether
-			}else if(e.getEntityType() == EntityType.PLAYER){
+					}//instanceof player
+					return false; 
+				}
+			}else if(e instanceof Player){
 				Player ent = (Player) e;
-				if(ent.tetheringstationID == this.ID) ent.tetheringstationID = 0; 
-				//System.out.println("Tether Removed");
+				if(ent.tetheringstationID !=0 && ent.tetheringstationID == this.ID) ent.tetheringstationID = 0; 
 			}
 			return false;
 		}

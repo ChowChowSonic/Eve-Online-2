@@ -1,9 +1,13 @@
 package my.gdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import my.gdx.game.entities.Player;
+import my.gdx.game.inventory.Item;
 
 public class DockingButton extends Hud {
 	private int width = 200, height = 50; 

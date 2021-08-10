@@ -1,7 +1,7 @@
 package my.gdx.game.entities;
 
 import com.badlogic.gdx.graphics.g3d.Model;
-import my.gdx.game.entities.Vector3; 
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 
