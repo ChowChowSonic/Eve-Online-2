@@ -15,7 +15,6 @@ public class Player extends Entity {
 	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500; 
 	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
-	protected long tetheringstationID = 0; 
 	private static final long serialVersionUID = 1L;
 	private boolean justpressedboost = false;
 	private float totalDeltaTime= 0;
@@ -23,6 +22,9 @@ public class Player extends Entity {
 	/** NOT THE PLAYER'S ACTUAL DIRECTION. THIS IS FOR BOOSTING/ACCELERATING PURPOSES ONLY.*/
 	private Vector3 direction = new Vector3(0,0,0);
 	
+	protected long tetheringstationID = 0; 
+
+
 	public Player(String modelname, EntityType type, long ID) {
 		super(modelname, type, ID);
 		this.mass = basemass;
@@ -195,7 +197,9 @@ public class Player extends Entity {
 	public long getTetheringStationID() {
 		return this.tetheringstationID; 
 	}
-	
+	/**
+	 * @return this.tetheringstationID != 0 && !this.isBoosting();
+	 */
 	public boolean isTethered(){
 		return this.tetheringstationID != 0 && !this.isBoosting();
 	}

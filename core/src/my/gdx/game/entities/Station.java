@@ -47,34 +47,39 @@ public class Station extends CelestialObject{
 		
 		@Override
 		public boolean touches(Entity e) {
-			float distance  = this.pos.dst2(e.pos);
-			if(distance < (this.tetherradius*this.tetherradius)+(e.size*e.size)) {
-				if(distance < (this.size*this.size)+(e.size*e.size)) {
-					Vector3 forcetoapply1 = new Vector3(
-					(e.vel.x*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
-					(e.vel.y*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
-					(e.vel.z*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))));
-					e.addAccel(forcetoapply1);
-					e.setVel(forcetoapply1);
-					return true; 
-				}else {
-					if(e.getEntityType() == EntityType.PLAYER) {
-						Player ent = (Player) e;
-						if(e.vel.len() > 500*METER) {
-							if(!ent.isBoosting()) {
-								Vector3 tmp = e.vel.cpy().nor();
-								e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
-							}
+			float distance  = this.pos.dst(e.pos);
+			
+			this.interactWith(e, distance);
+			
+			if(distance < (this.size)+(e.size)) {
+				Vector3 forcetoapply1 = new Vector3(
+				(e.vel.x*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
+				(e.vel.y*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))),
+				(e.vel.z*((e.getMass()-this.getMass())/(e.getMass()+this.getMass()))));
+				e.addAccel(forcetoapply1);
+				e.setVel(forcetoapply1);
+				return true; 
+			}else {
+				if(e.getEntityType() == EntityType.PLAYER) {
+					Player ent = (Player) e;
+					if(e.vel.len() > 500*METER) {
+						if(!ent.isBoosting()) {
+							Vector3 tmp = e.vel.cpy().nor();
+							e.addVel(-tmp.x*METER, -tmp.y*METER, -tmp.z*METER);
 						}
-						ent.tetheringstationID = this.ID; 
-					}//instanceof player
-					return false; 
-				}
-			}else if(e instanceof Player){
-				Player ent = (Player) e;
-				if(ent.tetheringstationID !=0 && ent.tetheringstationID == this.ID) ent.tetheringstationID = 0; 
+					}
+				}//instanceof player
+				return false; 
 			}
-			return false;
+		}
+		
+		private void interactWith(Entity e, float distance){
+			if(distance < this.tetherradius && e.getEntityType() == EntityType.PLAYER){
+				Player p = (Player) e; 
+				if(!p.isBoosting() && p.getTetheringStationID() == 0){
+					p.tetheringstationID = this.ID;
+				}
+			}
 		}
 		
 		public float getouterRadius() {
