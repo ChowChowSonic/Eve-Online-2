@@ -60,6 +60,10 @@ public class Station extends CelestialObject {
 	public boolean touches(Entity e) {
 		float distance = this.pos.dst(e.pos);
 
+		if (e.getEntityType() == EntityType.PLAYER) {
+			this.interactWith((Player) e, distance);
+		}
+
 		if (distance < (this.size) + (e.size)) {
 			Vector3 forcetoapply1 = new Vector3(
 					(e.vel.x * ((e.getMass() - this.getMass()) / (e.getMass() + this.getMass()))),
@@ -68,7 +72,7 @@ public class Station extends CelestialObject {
 			e.addAccel(forcetoapply1);
 			e.setVel(forcetoapply1);
 			return true;
-		} else if (distance < this.tetherradius) {
+		} else if (distance < this.tetherradius+this.size) {
 			if (e.getEntityType() == EntityType.PLAYER) {
 				Player ent = (Player) e;
 				this.interactWith(ent, distance);

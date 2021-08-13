@@ -129,7 +129,19 @@ public class Player extends Entity {
 			return;
 		}
 	}
-	
+	public void updateEntityFromSerialized(Entity serializedEntity){
+		super.updateEntityFromSerialized(serializedEntity);
+		if(serializedEntity.getEntityType() == this.type){
+			Player p = (Player) serializedEntity; 
+			this.shields = p.shields;
+			this.armor = p.armor;
+			this.hull = p.hull; 
+			this.isAccelerating = p.isAccelerating; 
+			this.justpressedboost = p.justpressedboost; 
+			this.tetheringstationID = p.tetheringstationID; 
+		}
+	}
+
 	public boolean isAccelerating(){
 		return isAccelerating;
 	}

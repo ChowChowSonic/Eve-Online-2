@@ -4,41 +4,32 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
-import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Disposable;
 
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Debris;
 import my.gdx.game.entities.Entity;
+import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 import my.gdx.game.entities.removedEntity;
-import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 
 public class EveOnline2 extends ApplicationAdapter{
@@ -51,14 +42,12 @@ public class EveOnline2 extends ApplicationAdapter{
 	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
 	public static final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	
-	
 	private static Camera cam;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private static final long serialVersionUID = 1L;//I need this for some reason and I don't know why.
 	private final int renderDist = 260000, vanishingpoint = 9000;//20100;
 	private static float cameradist = 3f;
 	private ModelBatch batch;
-	private Model object;
 	private ModelInstance background;
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
@@ -70,6 +59,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	* Y = -[down]  	    [up]+
 	* Z = -[Forward] [Backward]+ 
 	*/
+
 	/**
 	 * I need this in here to create the game for some reason.
 	 */
@@ -150,7 +140,7 @@ public class EveOnline2 extends ApplicationAdapter{
 				if(e2== null) continue; 
 				for(Entity e : entities){
 					if(e.equals(e2)){
-						updateEntityFromSerialized(e, e2); 
+						e.updateEntityFromSerialized(e2); 
 						
 						entityfound = true;
 						break;
@@ -164,7 +154,15 @@ public class EveOnline2 extends ApplicationAdapter{
 			}
 			unbuiltentities.clear();
 		}
-		if(player.getTetheringStationID() !=0  )System.out.println(player.getTetheringStationID());
+
+		/*for(int i =0; i < entities.size(); i++){
+			Entity e1 = entities.get(i);
+			for(int i2 = i; i2 < entities.size(); i2++){
+				Entity e2 = entities.get(i2); 
+				e1.touches(e2); 
+			}
+		}*/
+
 		//Camera rotation
 		if(Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2*cam.near){
 			cameradist -=0.01; 
@@ -238,9 +236,9 @@ public class EveOnline2 extends ApplicationAdapter{
 			if(windows.contains(new InventoryMenu(player))) windows.remove(new InventoryMenu(player));
 			else windows.add(new InventoryMenu(player));
 		}
-		if(player.isTethered()){
+		if(player.isTethered() && !windows.contains(new DockingButton())){
 			windows.add(new DockingButton());
-		}else{
+		}else if(!player.isTethered()){
 			windows.remove(new DockingButton());
 		}
 		
@@ -260,21 +258,6 @@ public class EveOnline2 extends ApplicationAdapter{
 			
 		}
 		System.gc();
-	}
-	
-	/**
-	* Takes two equivalent entities: one outdated entity, and an "updated" yet unbuilt one from the server. 
-	* It builds the updated one, and sets all outdated info on the old one to the more recent info. Namely, the position, velocity and accel. 
-	* @param alreadyPresentEntity
-	* @param serializedEntity
-	*/
-	public static void updateEntityFromSerialized(Entity alreadyPresentEntity, Entity serializedEntity){
-		serializedEntity.buildSerializedEntity();
-		//System.out.println("pos: "+e.getVel());
-		alreadyPresentEntity.setPos(serializedEntity.getPos());
-		alreadyPresentEntity.setVel(serializedEntity.getVel());
-		alreadyPresentEntity.setAccel(serializedEntity.getAccel());
-		//System.out.println(e.getVel());
 	}
 	
 	/**

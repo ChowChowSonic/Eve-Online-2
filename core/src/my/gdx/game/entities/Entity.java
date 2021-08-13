@@ -112,6 +112,10 @@ public abstract class Entity implements Serializable{
 		
 	}
 	
+	/**
+	 * Takes an entity, compiles all the info contained in it and applies it to the proper variables. 
+	 * THIS MUST BE DONE OR ELSE THE POSITION, VELOCITY, ACCELERATION & OTHER TRANSIENT VARIABLES WILL BE REGISTERED AS NULL
+	 */
 	public void buildSerializedEntity(){
 		if(this.pos == null) this.pos = new Vector3(); 
 		if(this.vel == null) this.vel = new Vector3();
@@ -125,6 +129,25 @@ public abstract class Entity implements Serializable{
 		}
 		this.model = manager.get(this.getModelName(), Model.class); 
 		this.instance = new ModelInstance(this.model, pos); 
+	}
+
+	/**
+	* Takes two equivalent entities: one outdated entity, and an "updated" yet unbuilt one from the server. 
+	* It builds the updated one, and sets all outdated info on the old one to the more recent info. Namely, the position, velocity and accel. 
+	* All entities MUST have their own copy of UpdateEntityFromSerialIzed in order to update properly; if not, some variables WILL NOT BE UPDATED CLIENTSIDE
+	* @param serializedEntity The entity to update from
+	*/
+	public void updateEntityFromSerialized(Entity serializedEntity){
+		serializedEntity.buildSerializedEntity();
+		//System.out.println("pos: "+e.getVel());
+		this.setPos(serializedEntity.getPos());
+		this.setVel(serializedEntity.getVel());
+		this.setAccel(serializedEntity.getAccel());
+		this.instance = serializedEntity.instance; 
+		this.model = serializedEntity.model;
+		this.mass = serializedEntity.mass; 
+		this.size = serializedEntity.size; 
+		//System.out.println(e.getVel());
 	}
 	
 	@Override
