@@ -329,7 +329,7 @@ public class Server extends ApplicationAdapter{
         }
         Player p = new Player("ship.obj", EntityType.PLAYER, assignID());
         p.setPos(r.nextFloat(),r.nextFloat(),r.nextFloat());
-        spawnEntity(p, 1050);
+        spawnEntity(p, 1500);
         return p; 
     }
     

@@ -6,6 +6,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -59,10 +60,10 @@ public class EveOnline2 extends ApplicationAdapter{
 	* Y = -[down]  	    [up]+
 	* Z = -[Forward] [Backward]+ 
 	*/
-
+	
 	/**
-	 * I need this in here to create the game for some reason.
-	 */
+	* I need this in here to create the game for some reason.
+	*/
 	@Override
 	public void create() {
 		super.create();
@@ -72,6 +73,18 @@ public class EveOnline2 extends ApplicationAdapter{
 		cam.near = 1f;
 		cam.far = renderDist;
 		batch = new ModelBatch();
+		
+		//Load in all assets from the assets folder
+		FileHandle assetFolder = Gdx.files.local("\\core\\assets\\"); 
+		
+		for(FileHandle entry : assetFolder.list()){
+			if(entry.extension().equals("obj")){
+				Entity.manager.load(entry.name(), Model.class);
+				Entity.manager.finishLoadingAsset(entry.name());
+				System.out.println(entry.name()+" Loaded");
+			}
+		}
+		Entity.manager.finishLoading();
 		
 		//Connect to the server & add the player
 		System.out.println("Attempting to connect...");
@@ -87,7 +100,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		unbuiltentities.remove(0); 
 		entities.add(player); 
 		connection.start();
-		
 		
 		env = new Environment();
 		env.set(new ColorAttribute(ColorAttribute.AmbientLight, Color.YELLOW));
@@ -123,8 +135,8 @@ public class EveOnline2 extends ApplicationAdapter{
 	}//ends create()
 	
 	/** 
-    * Here, Public Void Render() serves as an updater for the ingame world, AS WELL AS image rendering.  
-    */
+	* Here, Public Void Render() serves as an updater for the ingame world, AS WELL AS image rendering.  
+	*/
 	@Override
 	public void render() {
 		// TODO Auto-generated method stub
@@ -162,7 +174,7 @@ public class EveOnline2 extends ApplicationAdapter{
 				e1.touches(e2); 
 			}
 		}*/
-
+		
 		//Camera rotation
 		if(Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2*cam.near){
 			cameradist -=0.01; 
@@ -219,12 +231,12 @@ public class EveOnline2 extends ApplicationAdapter{
 		
 		batch.begin(cam);
 		batch.render(background);
-		for(int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i); 
+		for(Entity e : entities){
 			float distance = e.getPos().dst(player.getPos());
 			if(e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
 				batch.render(e.getInstance());
-			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ &&distance < renderDist) {
+				
+			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ && distance < renderDist) {
 				batch.render(e.getInstance());
 			}
 		}
@@ -285,27 +297,21 @@ public class EveOnline2 extends ApplicationAdapter{
 	*/
 	public static Entity buildEntity(Entity e){
 		if(e == null) return new removedEntity(0L); 
-		e.buildSerializedEntity(); 
 		if(e.getEntityType() == EntityType.PLAYER){
 			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
-			p.buildSerializedEntity();
 			return p;
 		}else if(e.getEntityType() == EntityType.ASTEROID){
-			Debris d = new Debris(e.getPos(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
-			d.buildSerializedEntity();
+			Debris d = new Debris(new Vector3(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
 			return d;
 		}else if (e.getEntityType() == EntityType.CELESTIALOBJ){
 			CelestialObject o = new CelestialObject(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e.getID()); 
-			o.buildSerializedEntity();
 			return o; 
 		}else if (e.getEntityType() == EntityType.STATION){
 			Station e2 = (Station) e;
-			Station o = new Station(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(), e.getID()); 
-			o.buildSerializedEntity();
+			Station o = new Station(new Vector3(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(), e.getID()); 
 			return o; 
 		}else{
 			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
-			p.buildSerializedEntity();
 			System.out.println("Entity not recognised!");
 			return p; 
 		}

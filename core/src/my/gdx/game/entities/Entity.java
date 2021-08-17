@@ -77,11 +77,15 @@ public abstract class Entity implements Serializable{
 	}
 
 	public void render(){
+		if(this.instance == null){
+			this.model = manager.get(this.modelname, Model.class);
+			this.instance = new ModelInstance(this.model, pos); 
+		}
 		if(this.instance !=null){
-			this.instance.transform.scl(this.size);
+			this.instance.transform.scl(this.size, this.size, this.size);
 			Quaternion quaternion = new Quaternion();
 			if(this.vel.len2()>0) {
-				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform);
+				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform.cpy());
 				instanceRotation.setToLookAt(
 				new Vector3(-(this.vel.x),-(this.vel.y),-(this.vel.z)), 
 				new Vector3(0,-1,0));
@@ -111,25 +115,6 @@ public abstract class Entity implements Serializable{
 		return false;
 		
 	}
-	
-	/**
-	 * Takes an entity, compiles all the info contained in it and applies it to the proper variables. 
-	 * THIS MUST BE DONE OR ELSE THE POSITION, VELOCITY, ACCELERATION & OTHER TRANSIENT VARIABLES WILL BE REGISTERED AS NULL
-	 */
-	public void buildSerializedEntity(){
-		if(this.pos == null) this.pos = new Vector3(); 
-		if(this.vel == null) this.vel = new Vector3();
-		if(this.accel == null) this.accel = new Vector3();
-		this.pos = new Vector3(x, y, z);
-		this.setVel(new Vector3(dx,dy,dz));
-		this.setAccel(ddx, ddy, ddz);
-		if(!manager.contains(this.modelname)){
-			manager.load(this.modelname, Model.class);
-			manager.finishLoadingAsset(this.modelname);
-		}
-		this.model = manager.get(this.getModelName(), Model.class); 
-		this.instance = new ModelInstance(this.model, pos); 
-	}
 
 	/**
 	* Takes two equivalent entities: one outdated entity, and an "updated" yet unbuilt one from the server. 
@@ -138,16 +123,14 @@ public abstract class Entity implements Serializable{
 	* @param serializedEntity The entity to update from
 	*/
 	public void updateEntityFromSerialized(Entity serializedEntity){
-		serializedEntity.buildSerializedEntity();
-		//System.out.println("pos: "+e.getVel());
-		this.setPos(serializedEntity.getPos());
-		this.setVel(serializedEntity.getVel());
-		this.setAccel(serializedEntity.getAccel());
-		this.instance = serializedEntity.instance; 
-		this.model = serializedEntity.model;
-		this.mass = serializedEntity.mass; 
-		this.size = serializedEntity.size; 
-		//System.out.println(e.getVel());
+		this.setPos(serializedEntity.x,serializedEntity.y,serializedEntity.z);
+		this.setVel(serializedEntity.dx,serializedEntity.dy,serializedEntity.dz);
+		this.setAccel(serializedEntity.ddx,serializedEntity.ddy,serializedEntity.ddz);
+		//this.modelname = serializedEntity.modelname;
+		//if(this.mass != serializedEntity.mass) System.out.println(this.mass + " (Mass) "+ serializedEntity.mass);
+		//this.mass = serializedEntity.mass; 
+		//if(this.size != serializedEntity.size) System.out.println(this.size + " (Size) "+ serializedEntity.size);
+		//this.size = serializedEntity.size; 
 	}
 	
 	@Override

@@ -41,5 +41,17 @@ public class DockingButton extends Hud {
 			spriteBatch.end();
 			//}
 		}
+
+	@Override
+	public boolean isInBounds(float x, float y) {
+		boolean xisgood = false, yisgood = false; 
+		if(x < (screenwidth+width)/2 && x > (screenwidth-width)/2){
+			xisgood = true; 
+		}
+		if(y < (screenheight+height)/2 && y > (screenheight-height)/2){
+			yisgood = true; 
+		}
+		return xisgood && yisgood; 
+	}
 	}
 	

@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json.Serializable;
 
-import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
 //import my.gdx.server.Server;
 
@@ -40,8 +39,8 @@ public class Player extends Entity {
 	@Override
 	public void update(float deltaTime) {
 		//Inventory management
-		invmass = inventory.getWeight();
-		this.mass = basemass+invmass;
+		//invmass = inventory.getWeight();
+		//this.mass = basemass+invmass;
 		totalDeltaTime += deltaTime;
 		
 		//Movement controls

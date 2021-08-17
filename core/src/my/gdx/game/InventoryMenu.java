@@ -42,6 +42,17 @@ public class InventoryMenu extends Hud{
 		}
 	}
 
+	public boolean isInBounds(float x, float y){
+		boolean xisgood = false, yisgood = false; 
+		if(x < (screenwidth+width)/2 && x > (screenwidth-width)/2){
+			xisgood = true; 
+		}
+		if(y < (screenheight+height)/2 && y > (screenheight-height)/2){
+			yisgood = true; 
+		}
+		return xisgood && yisgood; 
+	}
+
 	private void generateinvslot(int x, int y, Item i) {
 		renderer.setColor(Color.WHITE);
 		renderer.rect(x, y, 95, 142);

@@ -3,8 +3,6 @@ package my.gdx.game.entities;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 
-import my.gdx.game.EveOnline2;
-
 public class Station extends CelestialObject {
 	float tetherradius;
 	Entity bobbers[];
@@ -88,7 +86,7 @@ public class Station extends CelestialObject {
 	}
 
 	private void interactWith(Player p, float distance) {
-		if (distance < this.tetherradius) {
+		if (distance < this.tetherradius+this.size) {
 			if (!p.isBoosting() && p.getTetheringStationID() == 0) {
 				p.tetheringstationID = this.ID;
 				System.out.println("Player is now tethered");

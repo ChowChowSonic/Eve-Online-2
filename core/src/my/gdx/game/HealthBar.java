@@ -51,4 +51,11 @@ public class HealthBar extends Hud{
 		}
 	}
 
+	@Override
+	public boolean isInBounds(float x, float y) {
+		float dx = Gdx.graphics.getWidth()/2 - x; 
+		float dy = Gdx.graphics.getHeight() - y; 
+		return Math.sqrt((dx*dx)+(dy*dy)) <= 100; 
+	}
+
 }

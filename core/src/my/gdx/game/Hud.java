@@ -27,6 +27,14 @@ public abstract class Hud {
 		}
 	}
 
+	/**
+	 * Returns true if a specified pixel on the screen is located "on top" of the HUD
+	 * @param x The x position of the pixel you want to check
+	 * @param y The y position of the pixel you want to check
+	 * @return
+	 */
+	public abstract boolean isInBounds(float x, float y);
+
 	public static SpriteBatch getTextrenderer() {
 		return textrenderer;
 	}
