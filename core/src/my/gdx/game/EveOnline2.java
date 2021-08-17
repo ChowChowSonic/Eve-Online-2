@@ -36,7 +36,7 @@ import my.gdx.game.inventory.Inventory;
 public class EveOnline2 extends ApplicationAdapter{
 	
 	public static Model DEFAULTMODEL; 
-	public static ArrayList<Entity> unbuiltentities = new ArrayList<Entity>(), entities = new ArrayList<Entity>();
+	public static ArrayList<Entity> entities = new ArrayList<Entity>();
 	
 	public static Player player; 
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>(); 
@@ -90,15 +90,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		System.out.println("Attempting to connect...");
 		connection = new ClientAntenna(/*"Server"*/ "DESKTOP-E2274E2", 26000); 
 		System.out.println("Connected!");
-		if(unbuiltentities.size() > 0){
-			player = (Player) buildEntity(unbuiltentities.get(0));
-		}else{
-			do{
-				player = (Player)buildEntity(connection.requestEntity(0));
-			}while(player == null);
-		}
-		unbuiltentities.remove(0); 
-		entities.add(player); 
+		player = (Player) entities.get(0);
 		connection.start();
 		
 		env = new Environment();
@@ -144,29 +136,6 @@ public class EveOnline2 extends ApplicationAdapter{
 		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 		
-		//build all unbuilt entities
-		if(unbuiltentities.size()>0){
-			for(int i = 0; i < unbuiltentities.size(); i++){
-				boolean entityfound = false;
-				Entity e2 = unbuiltentities.get(i);
-				if(e2== null) continue; 
-				for(Entity e : entities){
-					if(e.equals(e2)){
-						e.updateEntityFromSerialized(e2); 
-						
-						entityfound = true;
-						break;
-					}
-					
-				}
-				if(!entityfound){
-					Entity e = buildEntity(unbuiltentities.get(i));
-					entities.add(e);
-				} 
-			}
-			unbuiltentities.clear();
-		}
-
 		/*for(int i =0; i < entities.size(); i++){
 			Entity e1 = entities.get(i);
 			for(int i2 = i; i2 < entities.size(); i2++){
@@ -201,9 +170,10 @@ public class EveOnline2 extends ApplicationAdapter{
 			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
 		}
 		
-		for(Entity e : entities) {
+		for(int i = 0; i < entities.size(); i++){
+			Entity e = entities.get(i); 
 			e.update(Gdx.graphics.getDeltaTime());
-			e.render();
+			
 		}
 		background.transform.set(player.getPos(), new Quaternion());
 		
@@ -231,12 +201,15 @@ public class EveOnline2 extends ApplicationAdapter{
 		
 		batch.begin(cam);
 		batch.render(background);
-		for(Entity e : entities){
+		for(int i = 0; i < entities.size(); i++){
+			Entity e = entities.get(i); 
 			float distance = e.getPos().dst(player.getPos());
 			if(e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
+				e.render();
 				batch.render(e.getInstance());
 				
 			}else if(e.getEntityType() != Entity.EntityType.CELESTIALOBJ && distance < renderDist) {
+				e.render();
 				batch.render(e.getInstance());
 			}
 		}
@@ -288,7 +261,15 @@ public class EveOnline2 extends ApplicationAdapter{
 				}
 			}
 		}
-		unbuiltentities.add(e);
+		for(Entity e2 : entities){
+			if(e.equals(e2)){
+				e2.updateEntityFromSerialized(e); 
+				return;
+			}
+			
+		}
+		Entity e3 = buildEntity(e);
+		entities.add(e3);
 		//System.out.println(e.toString());
 	}
 	
@@ -304,7 +285,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			Debris d = new Debris(new Vector3(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
 			return d;
 		}else if (e.getEntityType() == EntityType.CELESTIALOBJ){
-			CelestialObject o = new CelestialObject(e.getPos(), e.getModelName(), e.getMass(), e.getSize(), e.getID()); 
+			CelestialObject o = new CelestialObject(new Vector3(), e.getModelName(), e.getMass(), e.getSize(), e.getID()); 
 			return o; 
 		}else if (e.getEntityType() == EntityType.STATION){
 			Station e2 = (Station) e;
@@ -323,21 +304,25 @@ public class EveOnline2 extends ApplicationAdapter{
 	*/
 	public static void sortEntities(){
 		ArrayList<Entity> newlist = new ArrayList<Entity>(); 
-		for(Entity e : entities){
+		for(int i = 0; i < entities.size(); i++){
+			Entity e = entities.get(i); 
 			if(e.getEntityType() == EntityType.CELESTIALOBJ) newlist.add(e);
 		}
 		
-		for(Entity e : entities){
+		for(int i = 0; i < entities.size(); i++){
+			Entity e = entities.get(i); 
 			if(e.getEntityType() == EntityType.STATION) newlist.add(e); 
 		}
 		
-		for(Entity e : entities){
+		for(int i = 0; i < entities.size(); i++){
+			Entity e = entities.get(i); 
 			if(e.getEntityType() != EntityType.PLAYER || e.getEntityType() != EntityType.CELESTIALOBJ || e.getEntityType() != EntityType.STATION){
 				newlist.add(e);
 			}
 		}
 		
-		for(Entity e : entities){
+		for(int i = 0; i < entities.size(); i++){
+			Entity e = entities.get(i); 
 			if(e.getEntityType() == EntityType.PLAYER) newlist.add(e); 
 		}
 		
