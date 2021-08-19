@@ -11,32 +11,31 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import my.gdx.game.entities.Player;
 import my.gdx.game.inventory.Item;
 
-public class InventoryMenu extends Hud{
-	private Player user; 
-	private int width = 400, height = 400; 
+public class InventoryMenu extends Hud {
+	private Player user;
+	private int width = 400, height = 400;
 	SpriteBatch spriteBatch;
 	BitmapFont font;
-	private static int screenwidth = Gdx.graphics.getWidth(), screenheight = Gdx.graphics.getHeight();
-	ArrayList<Button> buttons; 
-	
+	ArrayList<Button> buttons;
+
 	public InventoryMenu(Player user) {
-		this.user = user; 
+		this.user = user;
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont();
-		this.type = Hud.hudtype.InventoryMenu; 
-		buttons = new ArrayList<Button>(); 
+		this.type = Hud.hudtype.InventoryMenu;
+		buttons = new ArrayList<Button>();
 
-		int slotx =(screenwidth)/2-width/3; 
-		int sloty = (screenheight)/2+height/5;
-		//y++ = up; x-- = left
+		int slotx = (screenwidth) / 2 - width / 3;
+		int sloty = (screenheight) / 2 + height / 5;
+		// y++ = up; x-- = left
 		int counter = 0;
-		for(Item i : user.inventory.getItems()){
-			buttons.add(new InventoryButton(slotx, sloty, i)); 
-			slotx+= 100;
-			counter +=1;
-			if(counter == 4) {
-				slotx-=400;
-				sloty-=145;
+		for (Item i : user.inventory.getItems()) {
+			buttons.add(new InventoryButton(slotx, sloty, i));
+			slotx += 100;
+			counter += 1;
+			if (counter == 4) {
+				slotx -= 400;
+				sloty -= 145;
 				counter = 0;
 			}
 		}
@@ -46,40 +45,38 @@ public class InventoryMenu extends Hud{
 	public void updateShape() {
 		super.updateShape();
 		renderer.setColor(Color.GRAY);
-		renderer.rect((screenwidth-width)/2, (screenheight-height)/2, width, height);
-		for(Button b : buttons){
+		renderer.rect((screenwidth - width) / 2, (screenheight - height) / 2, width, height);
+		for (Button b : buttons) {
 			b.updateShape();
 		}
 	}
-	
+
 	@Override
 	public void updateText() {
 		super.updateText();
-		for(Button b : buttons){
+		for (Button b : buttons) {
 			b.updateText();
 		}
 	}
-	private void generateinvslot(int x, int y, Item i) {
-		renderer.setColor(Color.WHITE);
-		renderer.rect(x, y, 95, 142);
-		
+
+	public boolean isInBounds(float x, float y) {
+		boolean xisgood = false, yisgood = false;
+		if (x < (screenwidth + width) / 2 && x > (screenwidth - width) / 2) {
+			xisgood = true;
+		}
+		if (y < (screenheight + height) / 2 && y > (screenheight - height) / 2) {
+			yisgood = true;
+		}
+		return xisgood && yisgood;
 	}
 
-	public boolean isInBounds(float x, float y){
-		boolean xisgood = false, yisgood = false; 
-		if(x < (screenwidth+width)/2 && x > (screenwidth-width)/2){
-			xisgood = true; 
+	public void interact(float x, float y) {
+		// Do something
+		for (Button b : buttons) {
+			if (b.isInBounds(x, y)) {
+				b.interact(x, y);
+				break;
+			}
 		}
-		if(y < (screenheight+height)/2 && y > (screenheight-height)/2){
-			yisgood = true; 
-		}
-		for(Button b : buttons){
-			if(b.isInBounds(x, y)) return false; 
-		}
-		return xisgood && yisgood; 
-	}
-	
-	public void interact(float x, float y){
-		//Do something
 	}
 }
