@@ -165,9 +165,21 @@ public class EveOnline2 extends ApplicationAdapter{
 			connection.decelplayer(player.getID());     
 		}
 		
+		//Player boosting, HUD interaction
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
+			boolean isonHud = false;
+			for(Hud window : windows){
+				int x = Gdx.input.getX(), y = Gdx.input.getY(); 
+				if(window.isInBounds(x, y)){
+					isonHud = true;
+					window.interact(x, y);
+					break; 
+				}
+			}
+			if(!isonHud){
 			Vector3 dir =cam.direction.cpy().nor();
 			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
+			}
 		}
 		
 		for(int i = 0; i < entities.size(); i++){

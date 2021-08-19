@@ -1,5 +1,7 @@
 package my.gdx.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -14,32 +16,53 @@ public class InventoryMenu extends Hud{
 	private int width = 400, height = 400; 
 	SpriteBatch spriteBatch;
 	BitmapFont font;
-	private int screenwidth = Gdx.graphics.getWidth(), screenheight = Gdx.graphics.getHeight();
+	private static int screenwidth = Gdx.graphics.getWidth(), screenheight = Gdx.graphics.getHeight();
+	ArrayList<Button> buttons; 
+	
 	public InventoryMenu(Player user) {
 		this.user = user; 
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont();
 		this.type = Hud.hudtype.InventoryMenu; 
+		buttons = new ArrayList<Button>(); 
+
+		int slotx =(screenwidth)/2-width/3; 
+		int sloty = (screenheight)/2+height/5;
+		//y++ = up; x-- = left
+		int counter = 0;
+		for(Item i : user.inventory.getItems()){
+			buttons.add(new InventoryButton(slotx, sloty, i)); 
+			slotx+= 100;
+			counter +=1;
+			if(counter == 4) {
+				slotx-=400;
+				sloty-=145;
+				counter = 0;
+			}
+		}
 	}
+
 	@Override
 	public void updateShape() {
 		super.updateShape();
-			renderer.setColor(Color.GRAY);
-			renderer.rect((screenwidth-width)/2, (screenheight-height)/2, width, height);
-			int slotx =(screenwidth-width)/2 + 3; 
-			int sloty = (screenheight)/2;
-			int counter = 0;
-			for(Item i : user.inventory.getItems()) {
-				generateinvslot(slotx, sloty, i);
-				slotx+= 100;
-				counter +=1;
-				if(counter == 4) {
-					slotx-=400;
-					sloty-=145;
-					counter = 0;
-				}
-
+		renderer.setColor(Color.GRAY);
+		renderer.rect((screenwidth-width)/2, (screenheight-height)/2, width, height);
+		for(Button b : buttons){
+			b.updateShape();
 		}
+	}
+	
+	@Override
+	public void updateText() {
+		super.updateText();
+		for(Button b : buttons){
+			b.updateText();
+		}
+	}
+	private void generateinvslot(int x, int y, Item i) {
+		renderer.setColor(Color.WHITE);
+		renderer.rect(x, y, 95, 142);
+		
 	}
 
 	public boolean isInBounds(float x, float y){
@@ -50,38 +73,13 @@ public class InventoryMenu extends Hud{
 		if(y < (screenheight+height)/2 && y > (screenheight-height)/2){
 			yisgood = true; 
 		}
+		for(Button b : buttons){
+			if(b.isInBounds(x, y)) return false; 
+		}
 		return xisgood && yisgood; 
 	}
-
-	private void generateinvslot(int x, int y, Item i) {
-		renderer.setColor(Color.WHITE);
-		renderer.rect(x, y, 95, 142);
-
+	
+	public void interact(float x, float y){
+		//Do something
 	}
-	@Override
-	public void updateText() {
-			super.updateText();
-			font.setColor(Color.BLACK);
-			int slotx = (screenwidth-width)/2+3; 
-			int sloty = (screenheight)/2;
-			int counter =0; CharSequence str = "";
-			for(Item i : user.inventory.getItems()) {
-				if(i.getStacksize() == 1) {
-					str = i.getName().replaceAll(" ", "\n") +"\n"+ (int)i.getVolume() +"m3, "+(int)i.getWeight()+"T";			
-				}else {
-					str = i.getName().replaceAll(" ", "\n") + " x"+i.getStacksize() +"\n"+ (int)i.getVolume()*i.getStacksize() +"m3, "+(int)i.getWeight()*i.getStacksize()+"T";
-				}
-				spriteBatch.begin();
-				font.getData().setScale((float) 1);
-				font.draw(spriteBatch, str, slotx, sloty+70, 0, -1, false);
-				slotx+=100;
-				spriteBatch.end();
-				counter +=1;
-				if(counter == 4) {
-					slotx-=400;
-					sloty-=145;
-					counter = 0;
-				}
-			}
-		}
 }

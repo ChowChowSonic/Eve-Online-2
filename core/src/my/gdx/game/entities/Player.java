@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.inventory.Inventory;
 //import my.gdx.server.Server;
+import my.gdx.game.inventory.InventoryItems;
 
 public class Player extends Entity {
 	float invmass, basemass = 10;
@@ -29,7 +30,7 @@ public class Player extends Entity {
 		this.mass = basemass;
 		this.size = 1f;
 		inventory = new Inventory(100);
-		//inventory.additem(InventoryItems.Platinum, 100);
+		inventory.additem(InventoryItems.Platinum, 100);
 		invmass = inventory.getWeight();
 		this.mass = basemass+invmass;
 		// TODO Auto-generated constructor stub

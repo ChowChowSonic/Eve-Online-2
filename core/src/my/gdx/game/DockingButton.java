@@ -48,10 +48,14 @@ public class DockingButton extends Hud {
 		if(x < (screenwidth+width)/2 && x > (screenwidth-width)/2){
 			xisgood = true; 
 		}
-		if(y < (screenheight+height)/2 && y > (screenheight-height)/2){
+		if(y < (screenheight+height)/2+350 && y > (screenheight-height)/2+350){
 			yisgood = true; 
 		}
 		return xisgood && yisgood; 
+	}
+
+	public void interact(float x, float y){
+		System.exit(0);
 	}
 	}
 	

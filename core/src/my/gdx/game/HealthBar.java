@@ -58,4 +58,7 @@ public class HealthBar extends Hud{
 		return Math.sqrt((dx*dx)+(dy*dy)) <= 100; 
 	}
 
+	public void interact(float x, float y){
+		
+	}
 }

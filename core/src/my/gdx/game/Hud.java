@@ -35,6 +35,13 @@ public abstract class Hud {
 	 */
 	public abstract boolean isInBounds(float x, float y);
 
+	/**
+	 * Allows the player to interact with the HUD via the mouse
+	 * @param x - The X position of the mouse
+	 * @param y - The Y position of the mouse
+	 */
+	public abstract void interact(float x, float y);
+
 	public static SpriteBatch getTextrenderer() {
 		return textrenderer;
 	}
