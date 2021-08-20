@@ -58,6 +58,7 @@ public class EveOnline2 extends ApplicationAdapter {
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env;
+	private boolean justboosted = false; 
 	
 	/*
 	* Reminder: X = -<------------------>+ Y = -[down] [up]+ Z = -[Forward]
@@ -167,9 +168,11 @@ public class EveOnline2 extends ApplicationAdapter {
 				} else if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && Gdx.input.isKeyPressed(Keys.W)) {
 					dir = player.getRotation();
 					connection.boostPlayer(dir.x, dir.y, dir.z, true);
-				} else if (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.W)) {
+					justboosted = true; 
+				} else if (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.W) && justboosted) {
 					dir = player.getRotation();
 					connection.boostPlayer(dir.x, dir.y, dir.z, false);
+					justboosted = false;
 				}
 				
 				// entity management

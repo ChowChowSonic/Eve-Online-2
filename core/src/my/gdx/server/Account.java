@@ -61,7 +61,7 @@ class Account extends Thread {
                            // System.out.println(ID+" Entity Movement requested");
                         float x = din.readFloat(), y = din.readFloat(), z = din.readFloat();
                         // Server.appendToLogs(x+" "+y+" "+z);
-                        userEntity.setAccelerating(!userEntity.getRotation().hasOppositeDirection(new Vector3(x, y, z)),
+                        userEntity.setAccelerating(!userEntity.getAccel().hasOppositeDirection(new Vector3(x, y, z)),
                                 x, y, z);
                         break;
 
