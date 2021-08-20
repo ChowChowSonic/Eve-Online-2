@@ -16,6 +16,7 @@ public abstract class Hud {
 	protected static ShapeRenderer renderer = new ShapeRenderer();
 	protected static SpriteBatch textrenderer = new SpriteBatch();
 	public static final int screenheight = Gdx.graphics.getHeight(), screenwidth = Gdx.graphics.getWidth();
+	ArrayList<Button> buttons;
 
 	public enum hudtype {
 		HealthBar, InventoryMenu, DockingButton
@@ -66,5 +67,9 @@ public abstract class Hud {
 		if (h2.type == this.type)
 			return true;
 		return false;
+	}
+
+	public ArrayList<Button> getButtons(){
+		return buttons; 
 	}
 }

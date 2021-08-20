@@ -11,8 +11,10 @@ import com.badlogic.gdx.math.Vector3;
 
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
+import my.gdx.game.inventory.InventoryItems;
+import my.gdx.game.inventory.Item;
 
-class Servant extends Thread{
+class Account extends Thread{
     Socket user;
     DataInputStream din;
     ObjectOutputStream dout;
@@ -20,7 +22,7 @@ class Servant extends Thread{
     Player userEntity;
     private boolean isrunning = false;
     
-    public Servant(Socket s){
+    public Account(Socket s){
         user = s; 
         try{
             this.dout = new ObjectOutputStream(s.getOutputStream());
@@ -70,6 +72,11 @@ class Servant extends Thread{
                     ID = din.readLong();
                     x = din.readFloat(); y = din.readFloat(); z = din.readFloat(); 
                     Server.boostPlayer(ID,x,y,z); 
+                    break; 
+                    case 4:
+                    InventoryItems template = InventoryItems.values()[din.readInt()]; //Deserialize the item template -- It's an Enum, so I just get the Enum.ordinal() value
+                    Item i = new Item(template, din.readInt()); 
+                    Server.DropItem(this.userEntity, i);
                     break; 
                 }
             }catch(SocketException e){

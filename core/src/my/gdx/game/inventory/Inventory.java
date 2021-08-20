@@ -181,6 +181,17 @@ public class Inventory implements Serializable{
 			}
 		}
 	}
+
+	public void removeItem(Item i){
+		for(int g = 0; g < items.size(); g++){
+			Item e = items.get(g);
+			if(e.equals(i)){
+				e.dropItem(i.getStacksize());
+				verifycontents();
+				break;
+			}
+		}
+	}
 	
 	public float getWeight() {
 		weight = 0;

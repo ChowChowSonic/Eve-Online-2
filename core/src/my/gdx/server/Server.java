@@ -21,6 +21,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 
@@ -191,7 +192,7 @@ public class Server extends ApplicationAdapter{
         }
     }
     
-    public static void sortEntities(){
+    private static void sortEntities(){
         ArrayList<Entity> newlist = new ArrayList<Entity>(); 
         for(Entity e : entities){
             if(e.getEntityType() == EntityType.CELESTIALOBJ || 
@@ -228,7 +229,7 @@ public class Server extends ApplicationAdapter{
         }
     }//ends runItemCensus()
     
-    public static void appendToLogs(String s){
+    protected static void appendToLogs(String s){
         if(logposition < logs.length) {
             logs[logposition]= s.replaceAll("\n", " / ");
             logposition++; 
@@ -256,7 +257,7 @@ public class Server extends ApplicationAdapter{
         return nextID; 
     }
     
-    public static void AccelerateEntity(long id, float x, float y, float z){
+    protected static void AccelerateEntity(long id, float x, float y, float z){
         Entity e2 = null;
         for(int i = 0; i < entities.size(); i++){
             if(entities.get(i).getID() == id) e2 = entities.get(i); 
@@ -273,7 +274,7 @@ public class Server extends ApplicationAdapter{
         
     }
     
-    public static void stopEntity(long ID) {
+    protected static void stopEntity(long ID) {
         Entity e = null;
         for(Entity ent : entities){
             if(ent.getID() == ID) e = ent; 
@@ -297,7 +298,7 @@ public class Server extends ApplicationAdapter{
         }        
     }
     
-    public static void boostPlayer(long ID, float x, float y, float z){
+    protected static void boostPlayer(long ID, float x, float y, float z){
         Player e = null;
         for(Entity ent : entities){
             if(ent.getID() == ID) try{
@@ -314,6 +315,17 @@ public class Server extends ApplicationAdapter{
         (float)(accelnorm.y*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())), 
         (float)(accelnorm.z*(deltaTime/Math.sqrt(e.getMass()+1))*((1000-(Entity.METER*e.getMass()))-e.getVel().len2())) );
         
+    }
+
+    protected static void DropItem(Entity e, Item i){
+        Vector3 chestpos = e.getPos().cpy();
+        Quaternion rotation = e.getInstance().transform.getRotation(new Quaternion());
+        float sz = e.getSize();  
+        chestpos.sub(rotation.x*sz, rotation.y*sz, rotation.z*sz); 
+        ArrayList<Item> wrapper = new ArrayList<Item>(); 
+        wrapper.add(i); 
+        e.inventory.removeItem(i);
+        spawnEntity(new Debris(chestpos, "Asteroid.obj", wrapper, assignID()), chestpos);
     }
     
     /**

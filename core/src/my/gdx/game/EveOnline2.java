@@ -43,6 +43,8 @@ public class EveOnline2 extends ApplicationAdapter{
 	public static final Inventory materialcensus = new Inventory((float)Math.pow(3, 38)), usedmaterials = new Inventory((float)Math.pow(3, 38)), vanishedmaterials = new Inventory((float)Math.pow(3, 38));	
 	public static final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	
+	protected static ClientAntenna connection;
+	
 	private static Camera cam;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private static final long serialVersionUID = 1L;//I need this for some reason and I don't know why.
@@ -53,7 +55,7 @@ public class EveOnline2 extends ApplicationAdapter{
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env; 
-	private ClientAntenna connection; 
+	 
 	/*
 	* Reminder:
 	* X = -<------------------>+
@@ -151,13 +153,13 @@ public class EveOnline2 extends ApplicationAdapter{
 			cameradist +=0.01; 
 		}
 		
-		
+		Vector3 dir =cam.direction.cpy().nor();
 		if(Gdx.input.isKeyJustPressed(Keys.W) && !player.isBoosting()){
-			Vector3 dir =cam.direction.cpy().nor();
 			connection.accelPlayer(player.getID(), dir.x, dir.y, dir.z);
 		}else if(Gdx.input.isKeyJustPressed(Keys.S) && !player.isBoosting()){
-			Vector3 dir =cam.direction.cpy().nor();
 			connection.accelPlayer(player.getID(), -dir.x, -dir.y, -dir.z);
+		}else if(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && Gdx.input.isKeyPressed(Keys.W)){
+			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
 		}
 		
 		//entity management
@@ -166,7 +168,7 @@ public class EveOnline2 extends ApplicationAdapter{
 		}
 		
 		//Player boosting, HUD interaction
-		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
+		if(Gdx.input.isButtonJustPressed(Buttons.LEFT)) {
 			boolean isonHud = false;
 			for(Hud window : windows){
 				int x = Gdx.input.getX(), y = Gdx.input.getY(); 
@@ -175,10 +177,6 @@ public class EveOnline2 extends ApplicationAdapter{
 					window.interact(x, y);
 					break; 
 				}
-			}
-			if(!isonHud){
-			Vector3 dir =cam.direction.cpy().nor();
-			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
 			}
 		}
 		
@@ -350,12 +348,18 @@ public class EveOnline2 extends ApplicationAdapter{
 		windows.add(h);
 	}
 	
-	/**
+	/**i
 	* Removes a HUD from the screen
 	* @param hud
 	*/
 	public static void removeHUD(Hud hud){
 		//if(windows.contains(hud))
+		ArrayList<Button> b = hud.getButtons();
+		if(b!=null)
+		for(int i = 0; i < b.size(); i++){
+			Button button = b.get(i);
+			windows.remove(button); 
+		}
 		windows.remove(hud);
 	}
 	

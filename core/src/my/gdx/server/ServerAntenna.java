@@ -9,11 +9,11 @@ public class ServerAntenna extends Thread{
     ServerSocket socket;
     int port;
     private static final long serialVersionUID = 1L; 
-    ArrayList<Servant> connections;
+    ArrayList<Account> connections;
 
     public ServerAntenna(int port){
         this.port = port; 
-        connections = new ArrayList<Servant>();
+        connections = new ArrayList<Account>();
         try{
             socket = new ServerSocket(port); 
             Server.appendToLogs("Server successfully created on "+socket);
@@ -28,7 +28,7 @@ public class ServerAntenna extends Thread{
             try {
                 Socket user = socket.accept();
                 Server.appendToLogs("User successfully connected on port "+user.getPort());
-                Servant usersocket = new Servant(user);
+                Account usersocket = new Account(user);
                 connections.add(usersocket);
                 usersocket.start();
                 

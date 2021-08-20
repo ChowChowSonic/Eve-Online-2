@@ -30,7 +30,7 @@ public class InventoryMenu extends Hud {
 		// y++ = up; x-- = left
 		int counter = 0;
 		for (Item i : user.inventory.getItems()) {
-			buttons.add(new InventoryButton(slotx, sloty, i));
+			buttons.add(new InventoryButton(slotx, sloty, i, this));
 			slotx += 100;
 			counter += 1;
 			if (counter == 4) {
@@ -46,7 +46,8 @@ public class InventoryMenu extends Hud {
 		super.updateShape();
 		renderer.setColor(Color.GRAY);
 		renderer.rect((screenwidth - width) / 2, (screenheight - height) / 2, width, height);
-		for (Button b : buttons) {
+		for (int i = 0; i < buttons.size(); i++) {
+			Button b = buttons.get(i); 
 			b.updateShape();
 		}
 	}
@@ -78,5 +79,9 @@ public class InventoryMenu extends Hud {
 				break;
 			}
 		}
+	}
+
+	public void removeButton(Button b){
+		buttons.remove(b); 
 	}
 }

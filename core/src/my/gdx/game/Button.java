@@ -23,7 +23,6 @@ public abstract class Button extends Hud {
         if (mousey < y + (height / 2) && mousey > y - (height / 2)) {
             yisgood = true;
         }
-        System.out.println("Is in bounds: " + (xisgood && yisgood));
         return xisgood && yisgood;
     }
 

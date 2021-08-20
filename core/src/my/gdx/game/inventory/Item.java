@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * A wrapper/utility class for the InventoryItems enum.
- * @author dmcdc
- *
- */
+* A wrapper/utility class for the InventoryItems enum.
+* @author dmcdc
+*
+*/
 public class Item implements Serializable{
 	private InventoryItems blueprint;
 	private int stacksize = 1; 
@@ -59,9 +59,19 @@ public class Item implements Serializable{
 	public ArrayList<InventoryItems> getComponents() {
 		return blueprint.getComponents();
 	}
+	
 	@Override
 	public String toString() {
 		return this.getName() +" x"+ this.getStacksize() +": " +this.getVolume()+" m3, "+this.getWeight()+" kg";
 		
+	}
+
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Item){
+			Item i = (Item)o;
+			return i.toString().equals(this.toString()); 
+		}
+		return false; 
 	}
 }

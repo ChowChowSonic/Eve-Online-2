@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
+import my.gdx.game.inventory.Item;
 public class ClientAntenna extends Thread{  
     
     private Socket clientSocket;
@@ -93,6 +94,18 @@ public class ClientAntenna extends Thread{
             outgoing.writeFloat(y);
             outgoing.writeFloat(z);
         } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void dropInventoryItem(Item i){
+        try{
+        outgoing.writeShort(4);
+        outgoing.writeInt(i.getTemplate().ordinal()); //I basically turn the template Enum into an integer determined by where its declared; then I send it
+        //see i.getTemplate().ordinal() documentation for more info
+        outgoing.writeInt(i.getStacksize());
+        }catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
