@@ -56,24 +56,24 @@ class Account extends Thread{
                     }
                     break;
 
-                    case 1:
-                    ID = din.readLong();
+                    case 1://accelPlayer
                     //System.out.println(ID+" Entity Movement requested");
                     float x = din.readFloat(), y=din.readFloat(), z=din.readFloat(); 
                     //Server.appendToLogs(x+" "+y+" "+z);
-                    Server.AccelerateEntity(ID,x,y,z); 
+                    Server.AccelerateEntity(this.userEntity.getID(),x,y,z); 
                     break;
 
-                    case 2:
+                    case 2://decelPlayer
                     Server.stopEntity(din.readLong()); 
                     break;
                     
-                    case 3:
-                    ID = din.readLong();
+                    case 3://Boostplayer
                     x = din.readFloat(); y = din.readFloat(); z = din.readFloat(); 
-                    Server.boostPlayer(ID,x,y,z); 
+                    boolean isBoosting = din.readBoolean(); 
+                    Server.boostPlayer(this.userEntity.getID(),x,y,z); 
                     break; 
-                    case 4:
+
+                    case 4://DropinventoryItem
                     InventoryItems template = InventoryItems.values()[din.readInt()]; //Deserialize the item template -- It's an Enum, so I just get the Enum.ordinal() value
                     Item i = new Item(template, din.readInt()); 
                     Server.DropItem(this.userEntity, i);

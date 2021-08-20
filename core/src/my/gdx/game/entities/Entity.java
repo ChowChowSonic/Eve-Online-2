@@ -38,12 +38,13 @@ public abstract class Entity implements Serializable{
 	* One meter in length, as defined by me
 	*/
 	public static final float METER = 0.00005f;
-	public static enum EntityType{PLAYER,ASTEROID,FRIEND,FOE,CELESTIALOBJ, STATION}
+	public static enum EntityType{PLAYER,ASTEROID,DEBRIS,FRIEND,FOE,CELESTIALOBJ,STATION}
 	public transient Inventory inventory = new Inventory(new ArrayList<Item>(), 0);
 	
 	
-	public Entity(String modelname, EntityType type, long id){
+	public Entity(String modelname, EntityType type, float size, long id){
 		this.type = type;
+		this.size = size; 
 		this.modelname = modelname; 
 		pos = new Vector3();
 		vel = new Vector3();
@@ -51,9 +52,10 @@ public abstract class Entity implements Serializable{
 		ID = id;
 	}
 	
-	public Entity(Vector3 position, String modelname, EntityType type, long id) {
+	public Entity(Vector3 position, String modelname, EntityType type, float size, long id) {
 		// TODO Auto-generated constructor stub
 		this.type = type;
+		this.size = size; 
 		this.modelname = modelname; 
 		pos = new Vector3(position);
 		vel = new Vector3();

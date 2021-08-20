@@ -26,7 +26,8 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 
 import my.gdx.game.entities.CelestialObject;
-import my.gdx.game.entities.Debris;
+import my.gdx.game.entities.Crate;
+import my.gdx.game.entities.Asteroid;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
@@ -223,7 +224,7 @@ public class Server extends ApplicationAdapter{
         if(vanishedmaterials.getItemcount() > 100) {
             appendToLogs("Available: \n"+materialcensus.toString() + "\nUsed: \n"+usedmaterials.toString()+ "\nUnaccounted for: "+vanishedmaterials.toString());
             appendToLogs("Excess:\n"+overflow.toString() +"Lacking:\n"+ underflow.toString());
-            spawnEntity(new Debris(new Vector3(20, 20, 0), "Asteroid.obj", vanishedmaterials.getItems(),assignID()), 2000);
+            spawnEntity(new Asteroid("Asteroid.obj", vanishedmaterials.getItems(),assignID()), 2000);
             vanishedmaterials.empty();
             appendToLogs("Asteroid Spawned!");
         }
@@ -325,7 +326,7 @@ public class Server extends ApplicationAdapter{
         ArrayList<Item> wrapper = new ArrayList<Item>(); 
         wrapper.add(i); 
         e.inventory.removeItem(i);
-        spawnEntity(new Debris(chestpos, "Asteroid.obj", wrapper, assignID()), chestpos);
+        spawnEntity(new Crate("Asteroid.obj", wrapper, assignID()), chestpos);
     }
     
     /**
@@ -339,7 +340,7 @@ public class Server extends ApplicationAdapter{
                 if(e!= null && e.getID() == ID) return e;
             }
         }
-        Player p = new Player("ship.obj", EntityType.PLAYER, assignID());
+        Player p = new Player("ship.obj", assignID());
         p.setPos(r.nextFloat(),r.nextFloat(),r.nextFloat());
         spawnEntity(p, 1500);
         return p; 

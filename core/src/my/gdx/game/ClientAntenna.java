@@ -62,10 +62,9 @@ public class ClientAntenna extends Thread{
         return null;
     }
     
-    public void accelPlayer(Long k, float dirx, float diry, float dirz){
+    public void accelPlayer(float dirx, float diry, float dirz){
         try {
             outgoing.writeShort(1);
-            outgoing.writeLong(k);
             outgoing.writeFloat(dirx);
             outgoing.writeFloat(diry);
             outgoing.writeFloat(dirz);
@@ -76,23 +75,24 @@ public class ClientAntenna extends Thread{
         }
     }
     
-    public void decelplayer(Long k){
+    public void decelplayer(){
         try {
             outgoing.writeShort(2);
-            outgoing.writeLong(k);
+            outgoing.flush();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
     
-    public void boostPlayer(long id, float x, float y, float z) {
+    public void boostPlayer(float x, float y, float z, boolean isBoosting) {
         try {
             outgoing.writeShort(3);
-            outgoing.writeLong(id);
             outgoing.writeFloat(x);
             outgoing.writeFloat(y);
             outgoing.writeFloat(z);
+            outgoing.writeBoolean(isBoosting);
+            outgoing.flush();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -105,6 +105,7 @@ public class ClientAntenna extends Thread{
         outgoing.writeInt(i.getTemplate().ordinal()); //I basically turn the template Enum into an integer determined by where its declared; then I send it
         //see i.getTemplate().ordinal() documentation for more info
         outgoing.writeInt(i.getStacksize());
+        outgoing.flush();
         }catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

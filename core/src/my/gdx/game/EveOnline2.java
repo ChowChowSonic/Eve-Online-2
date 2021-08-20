@@ -25,7 +25,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
 
 import my.gdx.game.entities.CelestialObject;
-import my.gdx.game.entities.Debris;
+import my.gdx.game.entities.Asteroid;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.entities.Player;
@@ -155,11 +155,13 @@ public class EveOnline2 extends ApplicationAdapter{
 		
 		Vector3 dir =cam.direction.cpy().nor();
 		if(Gdx.input.isKeyJustPressed(Keys.W) && !player.isBoosting()){
-			connection.accelPlayer(player.getID(), dir.x, dir.y, dir.z);
+			connection.accelPlayer(dir.x, dir.y, dir.z);
 		}else if(Gdx.input.isKeyJustPressed(Keys.S) && !player.isBoosting()){
-			connection.accelPlayer(player.getID(), -dir.x, -dir.y, -dir.z);
+			connection.accelPlayer(-dir.x, -dir.y, -dir.z);
 		}else if(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && Gdx.input.isKeyPressed(Keys.W)){
-			connection.boostPlayer(player.getID(), dir.x, dir.y, dir.z);
+			connection.boostPlayer(dir.x, dir.y, dir.z, true);
+		}else if(!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.W)){
+			connection.boostPlayer(dir.x, dir.y, dir.z, false);
 		}
 		
 		//entity management
@@ -289,10 +291,10 @@ public class EveOnline2 extends ApplicationAdapter{
 	public static Entity buildEntity(Entity e){
 		if(e == null) return new removedEntity(0L); 
 		if(e.getEntityType() == EntityType.PLAYER){
-			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
+			Player p = new Player(e.getModelName(), e.getID()); 
 			return p;
 		}else if(e.getEntityType() == EntityType.ASTEROID){
-			Debris d = new Debris(new Vector3(), e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
+			Asteroid d = new Asteroid(e.getModelName(), e.inventory, (int) e.getSize(), e.getID()); 
 			return d;
 		}else if (e.getEntityType() == EntityType.CELESTIALOBJ){
 			CelestialObject o = new CelestialObject(new Vector3(), e.getModelName(), e.getMass(), e.getSize(), e.getID()); 
@@ -302,7 +304,7 @@ public class EveOnline2 extends ApplicationAdapter{
 			Station o = new Station(new Vector3(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(), e.getID()); 
 			return o; 
 		}else{
-			Player p = new Player(e.getModelName(), e.getEntityType(), e.getID()); 
+			Player p = new Player(e.getModelName(), e.getID()); 
 			System.out.println("Entity not recognised!");
 			return p; 
 		}

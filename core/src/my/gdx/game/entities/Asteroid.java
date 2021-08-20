@@ -14,7 +14,7 @@ import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 
-public class Debris extends Entity{
+public class Asteroid extends Entity{
 	static transient Random RNG = new Random(); 
 	protected static final transient InventoryItems[] defaultpossiblecontents =
 	{InventoryItems.Iron, InventoryItems.Cobalt, InventoryItems.Nickel, InventoryItems.Silver, InventoryItems.Gold, InventoryItems.Platinum,
@@ -25,9 +25,8 @@ public class Debris extends Entity{
 		* @param model
 		* @param type
 		*/
-		public Debris(Vector3 position, String modelname, ArrayList<Item> contents, long ID) {
-			super(modelname, EntityType.ASTEROID, ID);
-			this.pos = position; 
+		public Asteroid(String modelname, ArrayList<Item> contents, long ID) {
+			super(modelname, EntityType.ASTEROID, 0, ID);
 			this.inventory = new Inventory(contents, 999999999);  
 			this.size = 0; 
 			for(Item i : contents){
@@ -39,9 +38,8 @@ public class Debris extends Entity{
 			// TODO Auto-generated constructor stub
 		}
 		
-		public Debris(Vector3 position, String modelname, Inventory contents, int radius, long ID) {
-			super(modelname, EntityType.ASTEROID, ID);
-			this.pos = position; 
+		public Asteroid(String modelname, Inventory contents, int radius, long ID) {
+			super(modelname, EntityType.ASTEROID, 0,ID);
 			this.inventory = contents;  
 			if(contents != null){
 				for(Item i : contents.getItems()){
@@ -53,10 +51,8 @@ public class Debris extends Entity{
 			// TODO Auto-generated constructor stub
 		}
 		
-		public Debris(Vector3 position, String modelname, int radius, long ID) {
-			super(modelname, EntityType.ASTEROID, ID); 
-			this.size = radius; 
-			this.pos = position;
+		public Asteroid(String modelname, float radius, long ID) {
+			super(modelname, EntityType.ASTEROID, radius, ID); 
 			int numberofcontents = RNG.nextInt(defaultpossiblecontents.length-1)+1;
 			this.inventory = new Inventory(999999999);
 			for(int i =0; i < numberofcontents; i++) {
@@ -68,12 +64,6 @@ public class Debris extends Entity{
 				this.mass+=i.getWeight(); 
 			}
 			//this.instance.transform.scl(radius);
-		}
-		
-		public Debris(String modelname, int radius, long ID){
-			super(modelname, EntityType.ASTEROID, ID);
-			this.inventory = new Inventory(999999999);
-			this.size = radius; 
 		}
 		
 	}

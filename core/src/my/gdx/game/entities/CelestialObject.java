@@ -12,10 +12,9 @@ public class CelestialObject extends Entity{
 	private static final long serialVersionUID = 1L;
 	
 	public CelestialObject(Vector3 position, String modelname, float mass, float radius, long ID) {
-		super(modelname, EntityType.CELESTIALOBJ, ID);
+		super(modelname, EntityType.CELESTIALOBJ, radius, ID);
 		this.pos = position;
 		this.setMass(mass);
-		this.size = radius;
 		x = this.pos.x; y = this.pos.y; z = this.pos.z; 
 		// TODO Auto-generated constructor stub
 	}

@@ -23,10 +23,9 @@ public class Player extends Entity {
 	protected long tetheringstationID = 0; 
 
 
-	public Player(String modelname, EntityType type, long ID) {
-		super(modelname, type, ID);
+	public Player(String modelname, long ID) {
+		super(modelname, EntityType.PLAYER, 1, ID);
 		this.mass = basemass;
-		this.size = 1f;
 		inventory = new Inventory(100);
 		inventory.additem(InventoryItems.Platinum, 100);
 		invmass = inventory.getWeight();
@@ -38,8 +37,10 @@ public class Player extends Entity {
 	@Override
 	public void update(float deltaTime) {
 		//Inventory management
-		//invmass = inventory.getWeight();
-		//this.mass = basemass+invmass;
+		if(this.instance == null){
+		invmass = inventory.getWeight();
+		this.mass = basemass+invmass;
+		}
 		totalDeltaTime += deltaTime;
 		
 		//Movement controls
