@@ -716,3 +716,533 @@ Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
 [ 2021-08-19T17:29:37.189184400 ] Entity Spawned:Pos: (1295.8113,0.0,755.5614) Type: PLAYER ID: 4
 [ 2021-08-19T17:30:04.491438800 ] user forced to disconnect from port: 63072
 [ 2021-08-19T17:30:04.497471900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T22:36:37.985143900 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T22:36:38.034244 ] entity list successfully sorted
+[ 2021-08-19T22:36:38.036248400 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T22:36:38.039243600 ] entity list successfully sorted
+[ 2021-08-19T22:36:38.044229 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T22:36:38.050224300 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T22:36:38.055227700 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T22:36:38.059685500 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T22:36:38.062679900 ] entity list successfully sorted
+[ 2021-08-19T22:36:38.065673900 ] Entity Spawned:Pos: (-1709.2617,0.0,1038.472) Type: ASTEROID ID: 3
+[ 2021-08-19T22:36:38.067674300 ] Asteroid Spawned!
+[ 2021-08-19T22:37:00.252242900 ] User successfully connected on port 50462
+[ 2021-08-19T22:37:00.355669100 ] entity list successfully sorted
+[ 2021-08-19T22:37:00.362698900 ] Entity Spawned:Pos: (867.1338,0.0,1223.9603) Type: PLAYER ID: 4
+[ 2021-08-19T22:37:04.823215900 ] user forced to disconnect from port: 50462
+[ 2021-08-19T22:37:04.829212 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T22:37:18.961822800 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T22:56:56.757127800 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T22:56:56.850345500 ] entity list successfully sorted
+[ 2021-08-19T22:56:56.854055700 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T22:56:56.863641800 ] entity list successfully sorted
+[ 2021-08-19T22:56:56.870825100 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T22:56:56.891159200 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T22:56:56.905530100 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T22:56:56.915789600 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T22:56:56.923351300 ] entity list successfully sorted
+[ 2021-08-19T22:56:56.932979300 ] Entity Spawned:Pos: (-1772.1537,0.0,927.07666) Type: ASTEROID ID: 3
+[ 2021-08-19T22:56:56.943178600 ] Asteroid Spawned!
+[ 2021-08-19T22:57:00.770526300 ] User successfully connected on port 49837
+[ 2021-08-19T22:57:00.840507900 ] entity list successfully sorted
+[ 2021-08-19T22:57:00.850445400 ] Entity Spawned:Pos: (-1227.9609,0.0,-861.4593) Type: PLAYER ID: 4
+[ 2021-08-19T22:57:05.126099100 ] entity list successfully sorted
+[ 2021-08-19T22:57:05.142264 ] Entity Spawned:Pos: (-1227.9609,0.0,-861.4593) Type: ASTEROID ID: 5
+[ 2021-08-19T22:57:16.330115800 ] user forced to disconnect from port: 49837
+[ 2021-08-19T22:57:16.345199500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T22:57:24.722517900 ] User successfully connected on port 59342
+[ 2021-08-19T22:57:24.788521900 ] entity list successfully sorted
+[ 2021-08-19T22:57:24.803170500 ] Entity Spawned:Pos: (739.5716,0.0,1305.0034) Type: PLAYER ID: 4
+[ 2021-08-19T22:57:39.453962200 ] entity list successfully sorted
+[ 2021-08-19T22:57:39.460962 ] Entity Spawned:Pos: (895.5824,0.8158953,1520.9359) Type: ASTEROID ID: 6
+[ 2021-08-19T22:58:19.637497800 ] user forced to disconnect from port: 59342
+[ 2021-08-19T22:58:19.653547100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T22:58:36.922893 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:00:38.181685 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:00:38.320467800 ] entity list successfully sorted
+[ 2021-08-19T23:00:38.329823500 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:00:38.337961 ] entity list successfully sorted
+[ 2021-08-19T23:00:38.349793300 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:00:38.370396300 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:00:38.383721600 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:00:38.389809100 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:00:38.399387100 ] entity list successfully sorted
+[ 2021-08-19T23:00:38.409402 ] Entity Spawned:Pos: (1856.5852,0.0,743.7011) Type: ASTEROID ID: 3
+[ 2021-08-19T23:00:38.420348500 ] Asteroid Spawned!
+[ 2021-08-19T23:05:24.053325900 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:05:24.154843800 ] entity list successfully sorted
+[ 2021-08-19T23:05:24.162316700 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:05:24.165838500 ] entity list successfully sorted
+[ 2021-08-19T23:05:24.177413300 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:05:24.192545200 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:05:24.202228900 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:05:24.207741600 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:05:24.211819600 ] entity list successfully sorted
+[ 2021-08-19T23:05:24.215845500 ] Entity Spawned:Pos: (-1049.2518,0.0,-1702.6656) Type: ASTEROID ID: 3
+[ 2021-08-19T23:05:24.224209600 ] Asteroid Spawned!
+[ 2021-08-19T23:05:57.642527700 ] User successfully connected on port 53926
+[ 2021-08-19T23:05:57.719072600 ] entity list successfully sorted
+[ 2021-08-19T23:05:57.731166700 ] Entity Spawned:Pos: (129.73363,0.0,1494.3792) Type: PLAYER ID: 4
+[ 2021-08-19T23:06:22.096323600 ] entity list successfully sorted
+[ 2021-08-19T23:06:22.111513400 ] Entity Spawned:Pos: (129.73363,-1.5861674E-6,1494.3792) Type: ASTEROID ID: 5
+[ 2021-08-19T23:07:09.211543900 ] user forced to disconnect from port: 53926
+[ 2021-08-19T23:07:09.228364500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:07:12.364316400 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:19:36.073537900 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:19:36.220119700 ] entity list successfully sorted
+[ 2021-08-19T23:19:36.226503200 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:19:36.235176200 ] entity list successfully sorted
+[ 2021-08-19T23:19:36.249569700 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:19:36.270586300 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:19:36.284255 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:19:36.290549500 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:19:36.296487500 ] entity list successfully sorted
+[ 2021-08-19T23:19:36.306417500 ] Entity Spawned:Pos: (-1214.3242,0.0,1589.156) Type: ASTEROID ID: 3
+[ 2021-08-19T23:19:36.315531600 ] Asteroid Spawned!
+[ 2021-08-19T23:19:44.527782600 ] User successfully connected on port 54579
+[ 2021-08-19T23:19:44.621787 ] entity list successfully sorted
+[ 2021-08-19T23:19:44.632473300 ] Entity Spawned:Pos: (576.307,0.0,1384.872) Type: PLAYER ID: 4
+[ 2021-08-19T23:19:45.485927600 ] user forced to disconnect from port: 54579
+[ 2021-08-19T23:19:45.512669600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:22:55.977828100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:35:05.116313100 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:35:05.211651400 ] entity list successfully sorted
+[ 2021-08-19T23:35:05.219344500 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:35:05.224249800 ] entity list successfully sorted
+[ 2021-08-19T23:35:05.233283600 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:35:05.248277100 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:35:05.255013800 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:35:05.258558200 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:35:05.268675200 ] entity list successfully sorted
+[ 2021-08-19T23:35:05.274085500 ] Entity Spawned:Pos: (-1861.9764,0.0,-730.0985) Type: ASTEROID ID: 3
+[ 2021-08-19T23:35:05.278790500 ] Asteroid Spawned!
+[ 2021-08-19T23:35:09.114484300 ] User successfully connected on port 63402
+[ 2021-08-19T23:35:09.197830700 ] entity list successfully sorted
+[ 2021-08-19T23:35:09.207951800 ] Entity Spawned:Pos: (-549.9099,0.0,-1395.5641) Type: PLAYER ID: 4
+[ 2021-08-19T23:35:40.680946900 ] user forced to disconnect from port: 63402
+[ 2021-08-19T23:35:40.695678800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:35:48.014550200 ] User successfully connected on port 56083
+[ 2021-08-19T23:35:48.095809100 ] entity list successfully sorted
+[ 2021-08-19T23:35:48.105836100 ] Entity Spawned:Pos: (663.998,0.0,1345.0304) Type: PLAYER ID: 4
+[ 2021-08-19T23:36:07.184489200 ] user forced to disconnect from port: 56083
+[ 2021-08-19T23:36:07.201424500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:36:22.820794300 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:37:01.582262700 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:37:01.675715600 ] entity list successfully sorted
+[ 2021-08-19T23:37:01.677673800 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:37:01.685827400 ] entity list successfully sorted
+[ 2021-08-19T23:37:01.694402600 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:37:01.707420200 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:37:01.715540300 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:37:01.719173200 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:37:01.726450900 ] entity list successfully sorted
+[ 2021-08-19T23:37:01.728203400 ] Entity Spawned:Pos: (-1339.8096,0.0,-1484.894) Type: ASTEROID ID: 3
+[ 2021-08-19T23:37:01.735434700 ] Asteroid Spawned!
+[ 2021-08-19T23:37:09.031492700 ] User successfully connected on port 56088
+[ 2021-08-19T23:37:09.168263900 ] entity list successfully sorted
+[ 2021-08-19T23:37:09.178772800 ] Entity Spawned:Pos: (1159.9094,0.0,951.11) Type: PLAYER ID: 4
+[ 2021-08-19T23:37:17.603828900 ] entity list successfully sorted
+[ 2021-08-19T23:37:17.618029500 ] Entity Spawned:Pos: (Infinity,Infinity,Infinity) Type: DEBRIS ID: 5
+[ 2021-08-19T23:37:42.489899 ] user forced to disconnect from port: 56088
+[ 2021-08-19T23:37:42.520873800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:37:46.797173100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:46:35.768231900 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:46:35.868994700 ] entity list successfully sorted
+[ 2021-08-19T23:46:35.876056400 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:46:35.876056400 ] entity list successfully sorted
+[ 2021-08-19T23:46:35.890170300 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:46:35.905065500 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:46:35.912486300 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:46:35.918451300 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:46:35.922598200 ] entity list successfully sorted
+[ 2021-08-19T23:46:35.934874800 ] Entity Spawned:Pos: (-1942.8234,0.0,-474.80237) Type: ASTEROID ID: 3
+[ 2021-08-19T23:46:35.944949300 ] Asteroid Spawned!
+[ 2021-08-19T23:46:46.984872700 ] User successfully connected on port 59489
+[ 2021-08-19T23:46:47.080893100 ] entity list successfully sorted
+[ 2021-08-19T23:46:47.084560500 ] Entity Spawned:Pos: (-1497.5354,0.0,85.95118) Type: PLAYER ID: 4
+[ 2021-08-19T23:47:09.337004300 ] user forced to disconnect from port: 59489
+[ 2021-08-19T23:47:09.354257100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:47:51.071196100 ] User successfully connected on port 59493
+[ 2021-08-19T23:47:51.147171500 ] entity list successfully sorted
+[ 2021-08-19T23:47:51.158801900 ] Entity Spawned:Pos: (1488.6802,0.0,183.93268) Type: PLAYER ID: 4
+[ 2021-08-19T23:48:20.049288600 ] user forced to disconnect from port: 59493
+[ 2021-08-19T23:48:20.061055900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:48:23.050415 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:48:51.586835200 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:48:51.685859300 ] entity list successfully sorted
+[ 2021-08-19T23:48:51.687708600 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:48:51.697739200 ] entity list successfully sorted
+[ 2021-08-19T23:48:51.706248800 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:48:51.720984300 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:48:51.733546900 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:48:51.737018100 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:48:51.746529600 ] entity list successfully sorted
+[ 2021-08-19T23:48:51.747929900 ] Entity Spawned:Pos: (-1288.1632,0.0,1529.9136) Type: ASTEROID ID: 3
+[ 2021-08-19T23:48:51.759680600 ] Asteroid Spawned!
+[ 2021-08-19T23:49:00.304403900 ] User successfully connected on port 51813
+[ 2021-08-19T23:49:00.419211600 ] entity list successfully sorted
+[ 2021-08-19T23:49:00.430262700 ] Entity Spawned:Pos: (292.3017,0.0,-1471.2443) Type: PLAYER ID: 4
+[ 2021-08-19T23:49:11.691424200 ] user forced to disconnect from port: 51813
+[ 2021-08-19T23:49:11.708621400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:49:33.996976800 ] User successfully connected on port 56897
+[ 2021-08-19T23:49:34.072790100 ] entity list successfully sorted
+[ 2021-08-19T23:49:34.082787400 ] Entity Spawned:Pos: (1439.8551,0.0,420.49643) Type: PLAYER ID: 4
+[ 2021-08-19T23:50:05.062816200 ] user forced to disconnect from port: 56897
+[ 2021-08-19T23:50:05.079799 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:50:50.176803600 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:51:03.393485200 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:51:03.483636200 ] entity list successfully sorted
+[ 2021-08-19T23:51:03.489567700 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:51:03.493121300 ] entity list successfully sorted
+[ 2021-08-19T23:51:03.502241900 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:51:03.515211200 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:51:03.524652 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:51:03.529510900 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:51:03.534597900 ] entity list successfully sorted
+[ 2021-08-19T23:51:03.544540800 ] Entity Spawned:Pos: (10.305384,0.0,-1999.9734) Type: ASTEROID ID: 3
+[ 2021-08-19T23:51:03.549703600 ] Asteroid Spawned!
+[ 2021-08-19T23:51:06.741521300 ] User successfully connected on port 53075
+[ 2021-08-19T23:51:06.835503300 ] entity list successfully sorted
+[ 2021-08-19T23:51:06.845690900 ] Entity Spawned:Pos: (1081.1337,0.0,-1039.7836) Type: PLAYER ID: 4
+[ 2021-08-19T23:51:15.429752900 ] entity list successfully sorted
+[ 2021-08-19T23:51:15.444691800 ] Entity Spawned:Pos: (Infinity,-Infinity,-Infinity) Type: DEBRIS ID: 5
+[ 2021-08-19T23:51:25.313760700 ] user forced to disconnect from port: 53075
+[ 2021-08-19T23:51:25.330890400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:51:41.133690400 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:53:21.660572 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:53:21.806565900 ] entity list successfully sorted
+[ 2021-08-19T23:53:21.818083100 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:53:21.830170 ] entity list successfully sorted
+[ 2021-08-19T23:53:21.845244 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:53:21.871217500 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:53:21.890946300 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:53:21.901542900 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:53:21.911366900 ] entity list successfully sorted
+[ 2021-08-19T23:53:21.921727200 ] Entity Spawned:Pos: (-1970.7438,0.0,-340.83582) Type: ASTEROID ID: 3
+[ 2021-08-19T23:53:21.931553700 ] Asteroid Spawned!
+[ 2021-08-19T23:53:33.905538900 ] User successfully connected on port 54170
+[ 2021-08-19T23:53:33.976425800 ] entity list successfully sorted
+[ 2021-08-19T23:53:33.986372100 ] Entity Spawned:Pos: (924.2989,0.0,1181.3855) Type: PLAYER ID: 4
+[ 2021-08-19T23:53:58.178199400 ] user forced to disconnect from port: 54170
+[ 2021-08-19T23:53:58.196547400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:54:02.687040300 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:57:26.038351700 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:57:26.125342600 ] entity list successfully sorted
+[ 2021-08-19T23:57:26.129370900 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:57:26.132675200 ] entity list successfully sorted
+[ 2021-08-19T23:57:26.140059700 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:57:26.153381500 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:57:26.161859600 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:57:26.162861300 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:57:26.171432 ] entity list successfully sorted
+[ 2021-08-19T23:57:26.179242600 ] Entity Spawned:Pos: (1870.9407,0.0,-706.8105) Type: ASTEROID ID: 3
+[ 2021-08-19T23:57:26.182454900 ] Asteroid Spawned!
+[ 2021-08-19T23:57:33.404639400 ] User successfully connected on port 53878
+[ 2021-08-19T23:57:33.475867500 ] entity list successfully sorted
+[ 2021-08-19T23:57:33.481990200 ] Entity Spawned:Pos: (1138.7948,0.0,-976.29224) Type: PLAYER ID: 4
+[ 2021-08-19T23:57:57.850967 ] entity list successfully sorted
+[ 2021-08-19T23:57:57.865952300 ] Entity Spawned:Pos: (2185.341,-8.190319,-1667.109) Type: DEBRIS ID: 5
+[ 2021-08-19T23:58:18.617702700 ] user forced to disconnect from port: 53878
+[ 2021-08-19T23:58:18.650761100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-19T23:58:26.384512600 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-19T23:59:38.679253300 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-19T23:59:38.771185400 ] entity list successfully sorted
+[ 2021-08-19T23:59:38.774934100 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-19T23:59:38.780070900 ] entity list successfully sorted
+[ 2021-08-19T23:59:38.789440 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-19T23:59:38.802924100 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-19T23:59:38.811415900 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:59:38.814508900 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-19T23:59:38.819528800 ] entity list successfully sorted
+[ 2021-08-19T23:59:38.824609700 ] Entity Spawned:Pos: (-1826.1422,0.0,-815.6009) Type: ASTEROID ID: 3
+[ 2021-08-19T23:59:38.831350900 ] Asteroid Spawned!
+[ 2021-08-19T23:59:43.712468 ] User successfully connected on port 62118
+[ 2021-08-19T23:59:43.789572 ] entity list successfully sorted
+[ 2021-08-19T23:59:43.800319200 ] Entity Spawned:Pos: (791.63745,0.0,-1274.0918) Type: PLAYER ID: 4
+[ 2021-08-19T23:59:58.371587400 ] entity list successfully sorted
+[ 2021-08-19T23:59:58.382840300 ] Entity Spawned:Pos: (3014.0288,0.0,-4850.9067) Type: DEBRIS ID: 5
+[ 2021-08-20T00:00:53.542659700 ] user forced to disconnect from port: 62118
+[ 2021-08-20T00:00:53.562309500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-20T00:00:59.654833100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-20T00:06:16.887572300 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-20T00:06:16.986476400 ] entity list successfully sorted
+[ 2021-08-20T00:06:16.991514900 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-20T00:06:16.997107800 ] entity list successfully sorted
+[ 2021-08-20T00:06:17.007320300 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-20T00:06:17.021374100 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-20T00:06:17.029407300 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-20T00:06:17.033607200 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-20T00:06:17.040006200 ] entity list successfully sorted
+[ 2021-08-20T00:06:17.046313600 ] Entity Spawned:Pos: (-1895.8743,0.0,636.91504) Type: ASTEROID ID: 3
+[ 2021-08-20T00:06:17.054928300 ] Asteroid Spawned!
+[ 2021-08-20T00:06:22.218570500 ] User successfully connected on port 62243
+[ 2021-08-20T00:06:22.316024800 ] entity list successfully sorted
+[ 2021-08-20T00:06:22.324966 ] Entity Spawned:Pos: (-1176.9854,0.0,929.8955) Type: PLAYER ID: 4
+[ 2021-08-20T00:06:39.737541 ] entity list successfully sorted
+[ 2021-08-20T00:06:39.751465700 ] Entity Spawned:Pos: (-1580.6038,-4.6141334,1202.0975) Type: DEBRIS ID: 5
+[ 2021-08-20T00:07:19.448617700 ] user forced to disconnect from port: 62243
+[ 2021-08-20T00:07:19.463571600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-20T00:07:24.122496100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-20T00:11:43.365643300 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-20T00:11:43.454272 ] entity list successfully sorted
+[ 2021-08-20T00:11:43.455271600 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-20T00:11:43.465872600 ] entity list successfully sorted
+[ 2021-08-20T00:11:43.479020800 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-20T00:11:43.497937800 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-20T00:11:43.509839600 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-20T00:11:43.515710 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-20T00:11:43.523390 ] entity list successfully sorted
+[ 2021-08-20T00:11:43.531100500 ] Entity Spawned:Pos: (164.34134,0.0,1993.2366) Type: ASTEROID ID: 3
+[ 2021-08-20T00:11:43.537128100 ] Asteroid Spawned!
+[ 2021-08-20T00:11:52.967699700 ] User successfully connected on port 49436
+[ 2021-08-20T00:11:53.053216200 ] entity list successfully sorted
+[ 2021-08-20T00:11:53.058216100 ] Entity Spawned:Pos: (-181.94774,0.0,1488.9241) Type: PLAYER ID: 4
+[ 2021-08-20T00:12:06.174400500 ] entity list successfully sorted
+[ 2021-08-20T00:12:06.183357800 ] Entity Spawned:Pos: (-222.97275,1.0810263,1710.6821) Type: DEBRIS ID: 5
+[ 2021-08-20T00:12:17.011534400 ] user forced to disconnect from port: 49436
+[ 2021-08-20T00:12:17.022530200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-20T00:12:22.979627400 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-20T00:13:22.684842700 ] DESKTOP-E2274E2/172.29.48.1
+[ 2021-08-20T00:13:22.749439100 ] entity list successfully sorted
+[ 2021-08-20T00:13:22.755186700 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-20T00:13:22.759087500 ] entity list successfully sorted
+[ 2021-08-20T00:13:22.767557 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-20T00:13:22.780425900 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-20T00:13:22.789107100 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-20T00:13:22.794433 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-20T00:13:22.797213700 ] entity list successfully sorted
+[ 2021-08-20T00:13:22.803840500 ] Entity Spawned:Pos: (-1999.0784,0.0,60.70713) Type: ASTEROID ID: 3
+[ 2021-08-20T00:13:22.813476100 ] Asteroid Spawned!
+[ 2021-08-20T00:13:26.187816200 ] User successfully connected on port 63091
+[ 2021-08-20T00:13:26.281545400 ] entity list successfully sorted
+[ 2021-08-20T00:13:26.291482900 ] Entity Spawned:Pos: (782.6443,0.0,1279.6359) Type: PLAYER ID: 4
+[ 2021-08-20T00:13:30.315223100 ] entity list successfully sorted
+[ 2021-08-20T00:13:30.328157800 ] Entity Spawned:Pos: (782.6443,0.0,1279.6359) Type: DEBRIS ID: 5
+[ 2021-08-20T00:13:46.313976900 ] user forced to disconnect from port: 63091
+[ 2021-08-20T00:13:46.331156 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-20T00:14:38.962193100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------

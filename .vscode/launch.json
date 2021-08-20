@@ -6,24 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch ServerLauncher",
+            "name": "Launch DesktopLauncher",
             "request": "launch",
-            "mainClass": "my.gdx.game.desktop.ServerLauncher",
+            "mainClass": "my.gdx.game.desktop.DesktopLauncher",
             "projectName": "Eve-Online-2"
-        },
-        {
-            "type": "java",
-            "name": "Launch MyServer",
-            "request": "launch",
-            "mainClass": "my.gdx.server.MyServer",
-            "projectName": "my-gdx-game-core"
-        },
-        {
-            "type": "java",
-            "name": "Launch MyClient",
-            "request": "launch",
-            "mainClass": "my.gdx.server.MyClient",
-            "projectName": "my-gdx-game-core"
         },
         {
             "type": "java",
