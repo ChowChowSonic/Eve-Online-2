@@ -80,7 +80,7 @@ public abstract class Entity implements Serializable {
 		this.vel = this.vel.add(accel);
 		this.pos = this.pos.add(vel);
 		if (!this.vel.isZero()) {
-			this.direction.add(this.vel.cpy().nor());
+			this.direction.add(this.vel);
 			this.direction.nor();
 		}
 		if (this.instance == null)

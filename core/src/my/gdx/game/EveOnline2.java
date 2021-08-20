@@ -25,6 +25,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
 
 import my.gdx.game.entities.CelestialObject;
+import my.gdx.game.entities.Crate;
 import my.gdx.game.entities.Asteroid;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Entity.EntityType;
@@ -34,19 +35,19 @@ import my.gdx.game.entities.removedEntity;
 import my.gdx.game.inventory.Inventory;
 
 public class EveOnline2 extends ApplicationAdapter {
-
+	
 	public static Model DEFAULTMODEL;
 	public static ArrayList<Entity> entities = new ArrayList<Entity>();
-
+	
 	public static Player player;
 	public static ArrayList<Disposable> disposables = new ArrayList<Disposable>();
 	public static final Inventory materialcensus = new Inventory((float) Math.pow(3, 38)),
-			usedmaterials = new Inventory((float) Math.pow(3, 38)),
-			vanishedmaterials = new Inventory((float) Math.pow(3, 38));
+	usedmaterials = new Inventory((float) Math.pow(3, 38)),
+	vanishedmaterials = new Inventory((float) Math.pow(3, 38));
 	public static final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
-
+	
 	protected static ClientAntenna connection;
-
+	
 	private static Camera cam;
 	private static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private static final long serialVersionUID = 1L;// I need this for some reason and I don't know why.
@@ -57,15 +58,15 @@ public class EveOnline2 extends ApplicationAdapter {
 	private ShapeRenderer hudrenderer;
 	private SpriteBatch textrenderer;
 	private Environment env;
-
+	
 	/*
-	 * Reminder: X = -<------------------>+ Y = -[down] [up]+ Z = -[Forward]
-	 * [Backward]+
-	 */
-
+	* Reminder: X = -<------------------>+ Y = -[down] [up]+ Z = -[Forward]
+	* [Backward]+
+	*/
+	
 	/**
-	 * I need this in here to create the game for some reason.
-	 */
+	* I need this in here to create the game for some reason.
+	*/
 	@Override
 	public void create() {
 		super.create();
@@ -75,10 +76,10 @@ public class EveOnline2 extends ApplicationAdapter {
 		cam.near = 1f;
 		cam.far = renderDist;
 		batch = new ModelBatch();
-
+		
 		// Load in all assets from the assets folder
 		FileHandle assetFolder = Gdx.files.local("\\core\\assets\\");
-
+		
 		for (FileHandle entry : assetFolder.list()) {
 			if (entry.extension().equals("obj")) {
 				Entity.manager.load(entry.name(), Model.class);
@@ -87,334 +88,339 @@ public class EveOnline2 extends ApplicationAdapter {
 			}
 		}
 		Entity.manager.finishLoading();
-
+		
 		// Connect to the server & add the player
 		System.out.println("Attempting to connect...");
 		connection = new ClientAntenna(/* "Server" */ "DESKTOP-E2274E2", 26000);
 		System.out.println("Connected!");
 		player = (Player) entities.get(0);
 		connection.start();
-
+		
 		env = new Environment();
 		env.set(new ColorAttribute(ColorAttribute.AmbientLight, Color.YELLOW));
 		env.add(new DirectionalLight().set(0.95f, 0.8f, 0.5f, 0f, 0f, 0f));
-
+		
 		// add the sun
 		/*
-		 * material = new Material(TextureAttribute.createDiffuse(new
-		 * Texture(Gdx.files.internal("2k_sun.jpg"))), ColorAttribute.createSpecular(1,
-		 * 1, 1, 1), FloatAttribute.createShininess(100f)); object =
-		 * builder.createSphere(500f, 500f, 500f, 100, 100, material, attributes);
-		 */
+		* material = new Material(TextureAttribute.createDiffuse(new
+		* Texture(Gdx.files.internal("2k_sun.jpg"))), ColorAttribute.createSpecular(1,
+		* 1, 1, 1), FloatAttribute.createShininess(100f)); object =
+		* builder.createSphere(500f, 500f, 500f, 100, 100, material, attributes);
+		*/
 		// EveOnline2.addEntity(new CelestialObject(new Vector3(0,0,0),object, 5000000,
 		// 500f));
-
+		
 		// add a station & an asteroid
 		// EveOnline2.addEntity(new Station(new
 		// Vector3(2000,0,0),manager.get("SpaceStation.obj", Model.class), 5000, 50,
 		// 100));
-
+		
 		// material = new Material(TextureAttribute.createDiffuse(new
 		// Texture(Gdx.files.internal("badlogic.jpg"))),
 		// ColorAttribute.createSpecular(1, 1, 1, 1),
 		// FloatAttribute.createShininess(100f));
 		// object = builder.createSphere(10f, 10f, 10f, 10, 10, material, attributes);
 		// EveOnline2.addEntity(new Debris(new Vector3(600, 20, 0), object, 10, 1L));
-
+		
 		// add the background+HUD
 		Entity.manager.load("spacesphere3.obj", Model.class);
 		Entity.manager.finishLoading();
 		background = new ModelInstance(Entity.manager.get("spacesphere3.obj", Model.class));
-
+		
 		textrenderer = Hud.getTextrenderer();
-
+		
 		hudrenderer = Hud.getRenderer();
 		hudrenderer.setAutoShapeType(true);
-
+		
 		windows.add(new HealthBar(player));
 	}// ends create()
-
+	
 	/**
-	 * Here, Public Void Render() serves as an updater for the ingame world, AS WELL
-	 * AS image rendering.
-	 */
+	* Here, Public Void Render() serves as an updater for the ingame world, AS WELL
+	* AS image rendering.
+	*/
 	@Override
 	public void render() {
 		// TODO Auto-generated method stub
 		super.render();
 		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-
+		
 		/*
-		 * for(int i =0; i < entities.size(); i++){ Entity e1 = entities.get(i); for(int
-		 * i2 = i; i2 < entities.size(); i2++){ Entity e2 = entities.get(i2);
-		 * e1.touches(e2); } }
-		 */
-
-		// Camera rotation
-		if (Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2 * cam.near) {
-			cameradist -= 0.01;
-		} else if (Gdx.input.isButtonPressed(Buttons.FORWARD) && cameradist < 20) {
-			cameradist += 0.01;
-		}
-
-		Vector3 dir = cam.direction.cpy().nor();
-		if (Gdx.input.isKeyJustPressed(Keys.W) && !player.isBoosting()) {
-			connection.accelPlayer(dir.x, dir.y, dir.z);
-		} else if (Gdx.input.isKeyJustPressed(Keys.S) && !player.isBoosting()) {
-			connection.accelPlayer(-dir.x, -dir.y, -dir.z);
-		} else if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && Gdx.input.isKeyPressed(Keys.W)) {
-			connection.boostPlayer(dir.x, dir.y, dir.z, true);
-		} else if (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.W)) {
-			connection.boostPlayer(dir.x, dir.y, dir.z, false);
-		}
-
-		// entity management
-		if (Gdx.input.isKeyPressed(Keys.SPACE) && !player.isBoosting()) {
-			connection.decelplayer();
-		}
-
-		// Player boosting, HUD interaction
-		if (Gdx.input.isButtonJustPressed(Buttons.LEFT)) {
-			boolean isonHud = false;
-			for (Hud window : windows) {
-				int x = Gdx.input.getX(), y = Gdx.input.getY();
-				if (window.isInBounds(x, y)) {
-					isonHud = true;
-					window.interact(x, y);
-					break;
+		* for(int i =0; i < entities.size(); i++){ Entity e1 = entities.get(i); for(int
+			* i2 = i; i2 < entities.size(); i2++){ Entity e2 = entities.get(i2);
+				* e1.touches(e2); } }
+				*/
+				
+				// Camera rotation
+				if (Gdx.input.isButtonPressed(Buttons.BACK) && cameradist > 2 * cam.near) {
+					cameradist -= 0.01;
+				} else if (Gdx.input.isButtonPressed(Buttons.FORWARD) && cameradist < 20) {
+					cameradist += 0.01;
 				}
-			}
-		}
-
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
-			e.update(Gdx.graphics.getDeltaTime());
-
-		}
-		background.transform.set(player.getPos(), new Quaternion());
-
-		// camera rotations, distance correction & Movement
-		Vector3 normvec = cam.direction.cpy();
-		cam.position.set(player.getPos().x - (cameradist * normvec.x), player.getPos().y - (cameradist * normvec.y),
+				
+				Vector3 dir = cam.direction.cpy().nor();
+				if (Gdx.input.isKeyJustPressed(Keys.W) && !player.isBoosting()) {
+					connection.accelPlayer(dir.x, dir.y, dir.z);
+				} else if (Gdx.input.isKeyJustPressed(Keys.S) && !player.isBoosting()) {
+					connection.accelPlayer(-dir.x, -dir.y, -dir.z);
+				} else if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && Gdx.input.isKeyPressed(Keys.W)) {
+					dir = player.getRotation();
+					connection.boostPlayer(dir.x, dir.y, dir.z, true);
+				} else if (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.W)) {
+					dir = player.getRotation();
+					connection.boostPlayer(dir.x, dir.y, dir.z, false);
+				}
+				
+				// entity management
+				if (Gdx.input.isKeyPressed(Keys.SPACE) && !player.isBoosting()) {
+					connection.decelplayer();
+				}
+				
+				// Player boosting, HUD interaction
+				if (Gdx.input.isButtonJustPressed(Buttons.LEFT)) {
+					boolean isonHud = false;
+					for (Hud window : windows) {
+						int x = Gdx.input.getX(), y = Gdx.input.getY();
+						if (window.isInBounds(x, y)) {
+							isonHud = true;
+							window.interact(x, y);
+							break;
+						}
+					}
+				}
+				
+				for (int i = 0; i < entities.size(); i++) {
+					Entity e = entities.get(i);
+					e.update(Gdx.graphics.getDeltaTime());
+					
+				}
+				background.transform.set(player.getPos(), new Quaternion());
+				
+				// camera rotations, distance correction & Movement
+				Vector3 normvec = cam.direction.cpy();
+				cam.position.set(player.getPos().x - (cameradist * normvec.x), player.getPos().y - (cameradist * normvec.y),
 				player.getPos().z - (cameradist * normvec.z));
-		cam.lookAt(player.getPos());
-		cam.update();
-
-		if (Gdx.input.isButtonPressed(Buttons.RIGHT)) {
-			float deltax = Gdx.input.getDeltaX();
-			float deltay = Gdx.input.getDeltaY();
-			Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
-			cam.translate(direction.x * deltax * 0.025f, 0, direction.z * deltax * 0.025f);
-
-			direction = cam.up.nor();
-
-			if ((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0, 1, 0)) && deltay > 0)
+				cam.lookAt(player.getPos());
+				cam.update();
+				
+				if (Gdx.input.isButtonPressed(Buttons.RIGHT)) {
+					float deltax = Gdx.input.getDeltaX();
+					float deltay = Gdx.input.getDeltaY();
+					Vector3 direction = cam.direction.cpy().crs(cam.up).nor();
+					cam.translate(direction.x * deltax * 0.025f, 0, direction.z * deltax * 0.025f);
+					
+					direction = cam.up.nor();
+					
+					if ((direction.y > 0.1) || (cam.direction.hasSameDirection(new Vector3(0, 1, 0)) && deltay > 0)
 					|| (cam.direction.hasSameDirection(new Vector3(0, -1, 0)) && deltay < 0)) {
-				cam.translate(direction.x * deltay * 0.025f, direction.y * deltay * 0.025f,
+						cam.translate(direction.x * deltay * 0.025f, direction.y * deltay * 0.025f,
 						direction.z * deltay * 0.025f);
+					}
+					cam.lookAt(player.getPos());
+				}
+				cam.up.x = 0;
+				cam.up.z = 0;
+				
+				batch.begin(cam);
+				batch.render(background);
+				for (int i = 0; i < entities.size(); i++) {
+					Entity e = entities.get(i);
+					float distance = e.getPos().dst(player.getPos());
+					if (e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
+						e.render();
+						batch.render(e.getInstance());
+						
+					} else if (e.getEntityType() != Entity.EntityType.CELESTIALOBJ && distance < renderDist) {
+						e.render();
+						batch.render(e.getInstance());
+					}
+				}
+				batch.end();
+				usedmaterials.empty();
+				
+				// Inventory Menu stuff
+				if (Gdx.input.isKeyJustPressed(Keys.I)) {
+					if (windows.contains(new InventoryMenu(player)))
+					windows.remove(new InventoryMenu(player));
+					else
+					windows.add(new InventoryMenu(player));
+				}
+				if (player.isTethered() && !windows.contains(new DockingButton())) {
+					windows.add(new DockingButton());
+				} else if (!player.isTethered()) {
+					windows.remove(new DockingButton());
+				}
+				
+				// Hud rendering
+				for (Hud window : windows) {
+					window.updateShape();
+				}
+				hudrenderer.end();
+				
+				for (Hud window : windows) {
+					window.updateText();
+				}
+				
+				textrenderer.end();
+				if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+					this.dispose();
+					
+				}
+				System.gc();
 			}
-			cam.lookAt(player.getPos());
-		}
-		cam.up.x = 0;
-		cam.up.z = 0;
-
-		batch.begin(cam);
-		batch.render(background);
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
-			float distance = e.getPos().dst(player.getPos());
-			if (e.getEntityType() == Entity.EntityType.CELESTIALOBJ && distance <= vanishingpoint) {
-				e.render();
-				batch.render(e.getInstance());
-
-			} else if (e.getEntityType() != Entity.EntityType.CELESTIALOBJ && distance < renderDist) {
-				e.render();
-				batch.render(e.getInstance());
-			}
-		}
-		batch.end();
-		usedmaterials.empty();
-
-		// Inventory Menu stuff
-		if (Gdx.input.isKeyJustPressed(Keys.I)) {
-			if (windows.contains(new InventoryMenu(player)))
-				windows.remove(new InventoryMenu(player));
-			else
-				windows.add(new InventoryMenu(player));
-		}
-		if (player.isTethered() && !windows.contains(new DockingButton())) {
-			windows.add(new DockingButton());
-		} else if (!player.isTethered()) {
-			windows.remove(new DockingButton());
-		}
-
-		// Hud rendering
-		for (Hud window : windows) {
-			window.updateShape();
-		}
-		hudrenderer.end();
-
-		for (Hud window : windows) {
-			window.updateText();
-		}
-
-		textrenderer.end();
-		if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
-			this.dispose();
-
-		}
-		System.gc();
-	}
-
-	/**
-	 * I mean, it adds an entity. What did you expect? The spanish inquisition?
-	 */
-	public static void addEntity(Entity e) {
-		if (e == null) {
-			System.out.println("Null entity recieved!");
-			return;
-		} else if (e instanceof removedEntity) {
-			for (int i = 0; i < entities.size(); i++) {
-				if (e.equals(entities.get(i))) {
-					entities.remove(i);
-					System.out.print("entity removed!");
+			
+			/**
+			* I mean, it adds an entity. What did you expect? The spanish inquisition?
+			*/
+			public static void addEntity(Entity e) {
+				if (e == null) {
+					System.out.println("Null entity recieved!");
 					return;
+				} else if (e instanceof removedEntity) {
+					for (int i = 0; i < entities.size(); i++) {
+						if (e.equals(entities.get(i))) {
+							entities.remove(i);
+							System.out.print("entity removed!");
+							return;
+						}
+					}
+				}
+				for (Entity e2 : entities) {
+					if (e.equals(e2)) {
+						e2.updateEntityFromSerialized(e);
+						return;
+					}
+					
+				}
+				Entity e3 = buildEntity(e);
+				entities.add(e3);
+				// System.out.println(e.toString());
+			}
+			
+			/**
+			* "Builds" the entity, loading and giving it a model from the Entity's
+			* assetmanager, then copies the entity's properties, applies it to an
+			* appropriate class and returns said class.
+			*/
+			public static Entity buildEntity(Entity e) {
+				if (e == null)
+				return new removedEntity(0L);
+				switch(e.getEntityType()){
+					case PLAYER:
+					Player p = new Player(e.getModelName(), e.getID());
+					return p;
+					case ASTEROID:
+					Asteroid d = new Asteroid(e.getModelName(), e.inventory, (int) e.getSize(), e.getID());
+					return d;
+					case DEBRIS:
+					Crate c = new Crate(e.getModelName(), new Inventory(2500), e.getID()); 
+					case CELESTIALOBJ:
+					CelestialObject o = new CelestialObject(new Vector3(), e.getModelName(), e.getMass(), e.getSize(),
+					e.getID());
+					return o;
+					case STATION:
+					Station e2 = (Station) e;
+					Station o2 = new Station(new Vector3(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(),
+					e.getID());
+					return o2;
+					default:
+					Player defaul = new Player(e.getModelName(), e.getID());
+					System.out.println("Entity not recognised!");
+					return defaul;
 				}
 			}
-		}
-		for (Entity e2 : entities) {
-			if (e.equals(e2)) {
-				e2.updateEntityFromSerialized(e);
-				return;
-			}
-
-		}
-		Entity e3 = buildEntity(e);
-		entities.add(e3);
-		// System.out.println(e.toString());
-	}
-
-	/**
-	 * "Builds" the entity, loading and giving it a model from the Entity's
-	 * assetmanager, then copies the entity's properties, applies it to an
-	 * appropriate class and returns said class.
-	 */
-	public static Entity buildEntity(Entity e) {
-		if (e == null)
-			return new removedEntity(0L);
-		if (e.getEntityType() == EntityType.PLAYER) {
-			Player p = new Player(e.getModelName(), e.getID());
-			return p;
-		} else if (e.getEntityType() == EntityType.ASTEROID) {
-			Asteroid d = new Asteroid(e.getModelName(), e.inventory, (int) e.getSize(), e.getID());
-			return d;
-		} else if (e.getEntityType() == EntityType.CELESTIALOBJ) {
-			CelestialObject o = new CelestialObject(new Vector3(), e.getModelName(), e.getMass(), e.getSize(),
-					e.getID());
-			return o;
-		} else if (e.getEntityType() == EntityType.STATION) {
-			Station e2 = (Station) e;
-			Station o = new Station(new Vector3(), e.getModelName(), e.getMass(), e.getSize(), e2.getouterRadius(),
-					e.getID());
-			return o;
-		} else {
-			Player p = new Player(e.getModelName(), e.getID());
-			System.out.println("Entity not recognised!");
-			return p;
-		}
-	}
-
-	/**
-	 * Sorts the entity list by entity type such that all entities go in the
-	 * following order: Celestial Object, Station, <Literally anything that's not a
-	 * player>, players.
-	 */
-	public static void sortEntities() {
-		ArrayList<Entity> newlist = new ArrayList<Entity>();
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
-			if (e.getEntityType() == EntityType.CELESTIALOBJ)
-				newlist.add(e);
-		}
-
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
-			if (e.getEntityType() == EntityType.STATION)
-				newlist.add(e);
-		}
-
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
-			if (e.getEntityType() != EntityType.PLAYER || e.getEntityType() != EntityType.CELESTIALOBJ
+			
+			/**
+			* Sorts the entity list by entity type such that all entities go in the
+			* following order: Celestial Object, Station, <Literally anything that's not a
+			* player>, players.
+			*/
+			public static void sortEntities() {
+				ArrayList<Entity> newlist = new ArrayList<Entity>();
+				for (int i = 0; i < entities.size(); i++) {
+					Entity e = entities.get(i);
+					if (e.getEntityType() == EntityType.CELESTIALOBJ)
+					newlist.add(e);
+				}
+				
+				for (int i = 0; i < entities.size(); i++) {
+					Entity e = entities.get(i);
+					if (e.getEntityType() == EntityType.STATION)
+					newlist.add(e);
+				}
+				
+				for (int i = 0; i < entities.size(); i++) {
+					Entity e = entities.get(i);
+					if (e.getEntityType() != EntityType.PLAYER || e.getEntityType() != EntityType.CELESTIALOBJ
 					|| e.getEntityType() != EntityType.STATION) {
-				newlist.add(e);
+						newlist.add(e);
+					}
+				}
+				
+				for (int i = 0; i < entities.size(); i++) {
+					Entity e = entities.get(i);
+					if (e.getEntityType() == EntityType.PLAYER)
+					newlist.add(e);
+				}
+				
+				entities = newlist;
 			}
-		}
-
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
-			if (e.getEntityType() == EntityType.PLAYER)
-				newlist.add(e);
-		}
-
-		entities = newlist;
-	}
-
-	/**
-	 * Adds a HUD to the screen
-	 * 
-	 * @param h
-	 */
-	public static void addHUD(Hud h) {
-		if (!windows.contains(h))
-			windows.add(h);
-	}
-
-	/**
-	 * i Removes a HUD from the screen
-	 * 
-	 * @param hud
-	 */
-	public static void removeHUD(Hud hud) {
-		// if(windows.contains(hud))
-		ArrayList<Button> b = hud.getButtons();
-		if (b != null)
-			for (int i = 0; i < b.size(); i++) {
-				Button button = b.get(i);
-				windows.remove(button);
+			
+			/**
+			* Adds a HUD to the screen
+			* 
+			* @param h
+			*/
+			public static void addHUD(Hud h) {
+				if (!windows.contains(h))
+				windows.add(h);
 			}
-		windows.remove(hud);
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-		super.dispose();
-		Entity.manager.dispose();
-		batch.dispose();
-		textrenderer.dispose();
-		hudrenderer.dispose();
-		connection.close();
-		System.gc();
-		System.exit(0);
-	}
-}// ends class
+			
+			/**
+			* i Removes a HUD from the screen
+			* 
+			* @param hud
+			*/
+			public static void removeHUD(Hud hud) {
+				// if(windows.contains(hud))
+				ArrayList<Button> b = hud.getButtons();
+				if (b != null)
+				for (int i = 0; i < b.size(); i++) {
+					Button button = b.get(i);
+					windows.remove(button);
+				}
+				windows.remove(hud);
+			}
+			
+			@Override
+			public void resize(int width, int height) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void pause() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void resume() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void dispose() {
+				// TODO Auto-generated method stub
+				super.dispose();
+				Entity.manager.dispose();
+				batch.dispose();
+				textrenderer.dispose();
+				hudrenderer.dispose();
+				connection.close();
+				System.gc();
+				System.exit(0);
+			}
+		}// ends class

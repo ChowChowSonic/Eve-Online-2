@@ -266,12 +266,15 @@ public class Server extends ApplicationAdapter {
     protected static void DropItem(Entity e, Item i) {
         Vector3 chestpos = e.getPos().cpy();
         Vector3 rotation = e.getRotation();
+        if(rotation.isZero()) rotation = e.getPos().cpy().nor();
         float sz = e.getSize() + 1;
         chestpos.sub(rotation.x * sz, rotation.y * sz, rotation.z * sz);
         ArrayList<Item> wrapper = new ArrayList<Item>();
+        if(e.inventory.contains(i)){
         wrapper.add(i);
         e.inventory.removeItem(i);
         spawnEntity(new Crate("Asteroid.obj", wrapper, assignID()), chestpos);
+        }else{appendToLogs("Illegal item drop attempted!");}
     }
 
     /**

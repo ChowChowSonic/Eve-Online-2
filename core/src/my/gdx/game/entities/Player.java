@@ -157,7 +157,7 @@ public class Player extends Entity {
 	}
 
 	public void setAccelerating(boolean ac, float x, float y, float z) {
-		this.direction.set(x, y, z);
+		this.direction.set(x, y, z).nor();
 		this.isAccelerating = ac;
 	}
 
