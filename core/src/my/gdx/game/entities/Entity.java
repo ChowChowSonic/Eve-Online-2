@@ -20,7 +20,7 @@ import my.gdx.game.inventory.Item;
 
 public abstract class Entity implements Serializable{
 	public static AssetManager manager = new AssetManager();
-
+	
 	protected static final long serialVersionUID = 1L;
 	protected transient Vector3 pos,vel,accel;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
@@ -29,7 +29,8 @@ public abstract class Entity implements Serializable{
 	protected final long ID; 
 	protected EntityType type; 
 	protected String modelname; 
-	
+	/** NOT THE PLAYER'S ACTUAL DIRECTION. THIS IS FOR BOOSTING/ACCELERATING PURPOSES ONLY.*/
+	protected Vector3 direction = new Vector3(0,0,0);
 	
 	/**Internal, non-transient variables meant to update the position of the entity after serialization */
 	protected float x, dx, ddx, y, dy, ddy, z, dz, ddz; 
@@ -67,15 +68,16 @@ public abstract class Entity implements Serializable{
 		//System.out.println("Entity.update called" + this.toString());
 		this.vel = this.vel.add(accel);
 		this.pos = this.pos.add(vel);
+		if(!this.vel.isZero()) this.rotate(this.vel);
 		if(this.instance == null)accel = accel.setZero();
 		if(this.pos != null){
 			x = this.pos.x; y= this.pos.y; z = this.pos.z; 
 			dx = this.vel.x; dy = this.vel.y; dz = this.vel.z; 
 			ddx = this.accel.x; ddy = this.accel.y; ddz = this.accel.z; 
 		}
-
+		
 	}
-
+	
 	public void render(){
 		if(this.instance == null){
 			this.model = manager.get(this.modelname, Model.class);
@@ -86,9 +88,16 @@ public abstract class Entity implements Serializable{
 			Quaternion quaternion = new Quaternion();
 			if(this.vel.len2()>0) {
 				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform.cpy());
-				instanceRotation.setToLookAt(
-				new Vector3(-(this.vel.x+this.accel.x),-(this.vel.y+this.accel.y),-(this.vel.z+this.accel.z)), 
-				new Vector3(0,-1,0));
+				if(this.vel.len2() > 1){
+					instanceRotation.setToLookAt(
+					new Vector3(-(this.vel.x+this.accel.x),-(this.vel.y+this.accel.y),-(this.vel.z+this.accel.z)), 
+					new Vector3(0,-1,0));
+				}else{
+					instanceRotation.setToLookAt(
+						new Vector3(-(this.vel.x+this.direction.x),-(this.vel.y+this.direction.y),-(this.vel.z+this.direction.z)),
+						new Vector3(0,-1,0));
+				}
+
 				instanceRotation.rotate(0, 0, 1, 180);
 				instanceRotation.getRotation(quaternion);
 			}else {
@@ -115,7 +124,7 @@ public abstract class Entity implements Serializable{
 		return false;
 		
 	}
-
+	
 	/**
 	* Takes two equivalent entities: one outdated entity, and an "updated" yet unbuilt one from the server. 
 	* It builds the updated one, and sets all outdated info on the old one to the more recent info. Namely, the position, velocity and accel. 
@@ -234,6 +243,22 @@ public abstract class Entity implements Serializable{
 	
 	public String getModelName() {
 		return modelname;
+	}
+
+	//rotation
+	public void rotate(float x, float y, float z){
+		this.direction.set(x, y, z);
+	}
+	/**
+	 * Rotates this model and/or entity to look at a certain direction, usually determined by the velocity
+	 * @param vec
+	 */
+	public void rotate(Vector3 vec){
+		this.direction.set(vec);
+	}
+	
+	public Vector3 getRotation(){
+		return this.direction; 
 	}
 	
 }

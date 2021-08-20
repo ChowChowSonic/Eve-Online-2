@@ -19,8 +19,6 @@ public class Player extends Entity {
 	private boolean justpressedboost = false;
 	private float totalDeltaTime= 0;
 	private boolean isAccelerating = false;
-	/** NOT THE PLAYER'S ACTUAL DIRECTION. THIS IS FOR BOOSTING/ACCELERATING PURPOSES ONLY.*/
-	private Vector3 direction = new Vector3(0,0,0);
 	
 	protected long tetheringstationID = 0; 
 
@@ -214,18 +212,6 @@ public class Player extends Entity {
 	 */
 	public boolean isTethered(){
 		return this.tetheringstationID != 0 && !this.isBoosting();
-	}
-	
-	public void rotate(float x, float y, float z){
-		this.direction.set(x, y, z);
-	}
-	
-	public void rotate(Vector3 vec){
-		this.direction.set(vec);
-	}
-	
-	public Vector3 getRotation(){
-		return this.direction; 
 	}
 	
 }

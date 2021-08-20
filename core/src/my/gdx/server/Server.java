@@ -319,7 +319,7 @@ public class Server extends ApplicationAdapter{
 
     protected static void DropItem(Entity e, Item i){
         Vector3 chestpos = e.getPos().cpy();
-        Quaternion rotation = e.getInstance().transform.getRotation(new Quaternion());
+        Vector3 rotation = e.getRotation(); 
         float sz = e.getSize();  
         chestpos.sub(rotation.x*sz, rotation.y*sz, rotation.z*sz); 
         ArrayList<Item> wrapper = new ArrayList<Item>(); 
