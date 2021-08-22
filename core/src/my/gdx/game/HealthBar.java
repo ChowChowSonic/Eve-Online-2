@@ -14,6 +14,7 @@ public class HealthBar extends Hud{
 	private final float AU = (float) (Math.pow(10, 11)*1.4960);
 
 	HealthBar(Player player2track) {
+		super(screenwidth/2, 0, 100, 100);
 		this.p = player2track;
 		health = new BitmapFont();
 		this.type = Hud.hudtype.HealthBar; 
@@ -27,7 +28,7 @@ public class HealthBar extends Hud{
 		int armor = p.getArmor(), maxarmor = p.getMaxarmor();
 		int hull = p.getHull(), maxhull = p.getMaxhull();
 		renderer.setColor(Color.WHITE);
-		renderer.circle(Gdx.graphics.getWidth()/2, 0, 100);
+		renderer.circle(x, y, width);
 		renderer.setColor(Color.BLUE);
 		renderer.rect(Gdx.graphics.getWidth()/2-50, 75, 100*shields/maxshields, 10);
 		renderer.setColor(Color.DARK_GRAY);
@@ -53,8 +54,8 @@ public class HealthBar extends Hud{
 
 	@Override
 	public boolean isInBounds(float x, float y) {
-		float dx = Gdx.graphics.getWidth()/2 - x; 
-		float dy = Gdx.graphics.getHeight() - y; 
+		float dx = this.x - x; 
+		float dy = this.y - y; 
 		return Math.sqrt((dx*dx)+(dy*dy)) <= 100; 
 	}
 

@@ -134,6 +134,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		hudrenderer.setAutoShapeType(true);
 		
 		windows.add(new HealthBar(player));
+		windows.add(new InfoMenu("E.png", "Today while playing Fortnite I ran into Allah at pleasant parks while he was trying to run solo squads. Knowing he was weakened, I told my squad to stay high ground while I engaged him on my own. He had worse loot and no heals but he's an amazing player. He is so fucking powerful. I'm not cracked enough at the game to do this alone. I barely escaped with my life and ran out of heals. His edits are immensely cracked and he cranks 90s at an ungodly speeds. I can't imagine what he would do to a new, unsuspecting default skin. I'm scared that I will have to face him again soon if I ever want to continue climbing the Fortnite ladder. I'm currently using medkits and mini shields that my squad gave me to try and heal as quickly as possible. Please be safe everyone. Allah is much stronger than I first imagined and we will have to do this together (maybe even cross team) if we want to shit on this god.")); 
 	}// ends create()
 	
 	/**
@@ -256,12 +257,14 @@ public class EveOnline2 extends ApplicationAdapter {
 				}
 				
 				// Hud rendering
-				for (Hud window : windows) {
+				for (int i = 0; i < windows.size(); i++) {
+					Hud window = windows.get(i);
 					window.updateShape();
 				}
 				hudrenderer.end();
 				
-				for (Hud window : windows) {
+				for (int i = 0; i < windows.size(); i++) {
+					Hud window = windows.get(i);
 					window.updateText();
 				}
 				

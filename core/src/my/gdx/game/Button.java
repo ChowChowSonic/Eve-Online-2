@@ -3,27 +3,23 @@ package my.gdx.game;
 import com.badlogic.gdx.Gdx;
 
 public abstract class Button extends Hud {
-    protected float x, y, height, width;
     protected boolean isactive;
 
     public Button(float xpos, float ypos, float width, float height) {
-        this.x = xpos;
-        this.y = screenheight - ypos;
-        this.height = height;
-        this.width = width;
+        super(xpos, ypos, width, height); 
         isactive = false;
     }
 
     @Override
-    public boolean isInBounds(float mousex, float mousey) {
+    public boolean isInBounds(float xpos, float ypos) {
         boolean xisgood = false, yisgood = false;
-        if (mousex < x + (width / 2) && mousex > x - (width / 2)) {
-            xisgood = true;
-        }
-        if (mousey < y + (height / 2) && mousey > y - (height / 2)) {
-            yisgood = true;
-        }
-        return xisgood && yisgood;
+		if (xpos < (this.x + width/2) && xpos > (this.x - width/2)) {
+			xisgood = true;
+		}
+		if (ypos < (this.y + height/2) && ypos > (this.y - height/2)) {
+			yisgood = true;
+		}
+		return xisgood && yisgood;
     }
 
     @Override
@@ -43,5 +39,9 @@ public abstract class Button extends Hud {
 
     public float getWidth() {
         return width;
+    }
+
+    public boolean isActive(){
+        return isactive; 
     }
 }

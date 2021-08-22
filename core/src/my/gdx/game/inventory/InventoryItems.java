@@ -2,6 +2,7 @@ package my.gdx.game.inventory;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;

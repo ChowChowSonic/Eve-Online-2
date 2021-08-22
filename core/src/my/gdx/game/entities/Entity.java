@@ -109,8 +109,8 @@ public abstract class Entity implements Serializable {
 			Quaternion quaternion = new Quaternion();
 			if (this.vel.len2() > 0) {
 				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform.cpy());
-				instanceRotation.setToLookAt(new Vector3(-(this.vel.x + this.direction.x),
-						-(this.vel.y + this.direction.y), -(this.vel.z + this.direction.z)), new Vector3(0, -1, 0));
+				instanceRotation.setToLookAt(new Vector3(-(this.direction.x),
+						-(this.direction.y), -(this.direction.z)), new Vector3(0, -1, 0));
 				instanceRotation.rotate(0, 0, 1, 180);
 				instanceRotation.getRotation(quaternion);
 			} else {

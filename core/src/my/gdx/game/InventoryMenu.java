@@ -19,6 +19,7 @@ public class InventoryMenu extends Hud {
 	ArrayList<Button> buttons;
 
 	public InventoryMenu(Player user) {
+		super(screenwidth/2, screenheight/2, 400, 400); 
 		this.user = user;
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont();
@@ -30,7 +31,7 @@ public class InventoryMenu extends Hud {
 		// y++ = up; x-- = left
 		int counter = 0;
 		for (Item i : user.inventory.getItems()) {
-			buttons.add(new InventoryButton(slotx, sloty, i, this));
+			buttons.add(new InventoryButton(slotx, screenheight - sloty, i, this));
 			slotx += 100;
 			counter += 1;
 			if (counter == 4) {
@@ -45,7 +46,7 @@ public class InventoryMenu extends Hud {
 	public void updateShape() {
 		super.updateShape();
 		renderer.setColor(Color.GRAY);
-		renderer.rect((screenwidth - width) / 2, (screenheight - height) / 2, width, height);
+		renderer.rect(x-width/2, y-height/2, width, height);
 		for (int i = 0; i < buttons.size(); i++) {
 			Button b = buttons.get(i); 
 			b.updateShape();
@@ -60,16 +61,17 @@ public class InventoryMenu extends Hud {
 		}
 	}
 
-	public boolean isInBounds(float x, float y) {
-		boolean xisgood = false, yisgood = false;
-		if (x < (screenwidth + width) / 2 && x > (screenwidth - width) / 2) {
+	@Override
+    public boolean isInBounds(float xpos, float ypos) {
+        boolean xisgood = false, yisgood = false;
+		if (xpos < (this.x + width/2) && xpos > (this.x - width/2)) {
 			xisgood = true;
 		}
-		if (y < (screenheight + height) / 2 && y > (screenheight - height) / 2) {
+		if (ypos < (this.y + height/2) && ypos > (this.y - height/2)) {
 			yisgood = true;
 		}
 		return xisgood && yisgood;
-	}
+    }
 
 	public void interact(float x, float y) {
 		// Do something

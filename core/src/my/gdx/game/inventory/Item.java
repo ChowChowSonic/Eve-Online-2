@@ -12,7 +12,7 @@ public class Item implements Serializable{
 	private InventoryItems blueprint;
 	private int stacksize = 1; 
 	private static final long serialVersionUID = 1L;
-	
+
 	public Item(InventoryItems itemtype) {
 		this.blueprint = itemtype; 
 	}

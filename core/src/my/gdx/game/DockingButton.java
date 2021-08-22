@@ -10,12 +10,11 @@ import my.gdx.game.entities.Player;
 import my.gdx.game.inventory.Item;
 
 public class DockingButton extends Hud {
-	private int width = 200, height = 50; 
 	SpriteBatch spriteBatch;
 	BitmapFont font;
-	private int screenwidth = Gdx.graphics.getWidth(), screenheight = Gdx.graphics.getHeight();
 	
 	public DockingButton(){
+		super(screenwidth/2, screenheight/2-350, 200, 50);
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont();
 		this.type = Hud.hudtype.DockingButton; 
@@ -24,10 +23,8 @@ public class DockingButton extends Hud {
 	@Override
 	public void updateShape() {
 		super.updateShape();
-		//if(isvisible) {
-			renderer.setColor(Color.GRAY);
-			renderer.rect((screenwidth-width)/2, (screenheight-height)/2-350, width, height);
-		//}
+		renderer.setColor(Color.GRAY);
+		renderer.rect((screenwidth-width)/2, (screenheight-height)/2-350, width, height);
 	}
 	
 	@Override
@@ -41,21 +38,21 @@ public class DockingButton extends Hud {
 			spriteBatch.end();
 			//}
 		}
-
-	@Override
-	public boolean isInBounds(float x, float y) {
-		boolean xisgood = false, yisgood = false; 
-		if(x < (screenwidth+width)/2 && x > (screenwidth-width)/2){
-			xisgood = true; 
+		
+		@Override
+		public boolean isInBounds(float xpos, float ypos) {
+			boolean xisgood = false, yisgood = false;
+			if (xpos < (this.x + width/2) && xpos > (this.x - width/2)) {
+				xisgood = true;
+			}
+			if (ypos < (this.y + height/2) && ypos > (this.y - height/2)) {
+				yisgood = true;
+			}
+			return xisgood && yisgood;
 		}
-		if(y < (screenheight+height)/2+350 && y > (screenheight-height)/2+350){
-			yisgood = true; 
+		
+		public void interact(float x, float y){
+			System.exit(0);
 		}
-		return xisgood && yisgood; 
-	}
-
-	public void interact(float x, float y){
-		System.exit(0);
-	}
 	}
 	
