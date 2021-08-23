@@ -1,7 +1,6 @@
 package my.gdx.server;
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -18,7 +17,7 @@ import my.gdx.game.inventory.Item;
 class Account extends Thread {
     Socket user;
     DataInputStream din;
-    DataOutputStream dout;
+    ObjectOutputStream dout;
     private static final long serialVersionUID = 1L;
     Player userEntity;
     private boolean isrunning = false;
@@ -26,12 +25,12 @@ class Account extends Thread {
     public Account(Socket s) {
         user = s;
         try {
-            this.dout = new DataOutputStream(s.getOutputStream());
+            this.dout = new ObjectOutputStream(s.getOutputStream());
             this.din = new DataInputStream(s.getInputStream());
             short cmd = din.readShort();
             if (cmd == 0)
                 userEntity = (Player) Server.getEntityCopy(din.readLong());
-            userEntity.Serialize(dout);
+            dout.writeObject((Entity) userEntity);
             dout.flush();
             isrunning = true;
         } catch (Exception e) {
@@ -129,9 +128,9 @@ class Account extends Thread {
     }// ends run
 
     public void sendEntity(Entity e) throws Exception {
-        e.Serialize(dout);
+        dout.writeObject(e);
         dout.flush();
-        //dout.reset(); 
+        dout.reset();
     }
 
     public boolean isRunning() {
