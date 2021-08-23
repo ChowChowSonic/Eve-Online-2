@@ -14,32 +14,36 @@ public class InfoMenu extends Hud{
     /**
      * Creates a menu screen that presents the player with a slideshow of helpful images and detailing "readers notes". 
      * Each image in the array is presented with the correlated text in the order it is in.  
-     * Each array must be of size "PANELS" in order to work properly. <p>
+     * Each array must be of the same size (imageNAME.length) in order to work properly. <p>
      * So imageNAME[0] is presented alongside TEXT[0]; and both are presented on panel number 1; <p>
      * ...imageNAME[1] is presented alongside TEXT[1]; and both are presented on panel number 2; <p>
-     * ... and so on and so forth up until you have passed through exactly "PANELS" amount of slides.  
+     * ... and so on and so forth up until you have passed through exactly imageNAME.length amount of slides.  
      * @param imageNAME - the name of the images to go on the infomenu - all put into an array in order. 
      * @param TEXT - The text that goes with it
-     * @param panels - Referred to in the documentation as "PANELS" - The number of slides on the slideshow
      */
-    public InfoMenu(String[] imageNAME, String[] TEXT, int PANELS){
+    public InfoMenu(String[] imageNAME, String[] TEXT){
         super(screenwidth/2, screenheight/2, 700, 900);
+        this.type = hudtype.Infomenu; 
+        text = new String[imageNAME.length]; 
+        images = new Texture[imageNAME.length];
         for(int i = 0; i < imageNAME.length; i++){
             images[i] = new Texture(imageNAME[i]); 
         }
         text = TEXT; 
-        panels = PANELS; 
+        panels = imageNAME.length; 
         Lbutton = new PagerButton(x-width/4, screenheight-(y-height/2+30), "< < <", width/2-10); 
         Rbutton = new PagerButton(x+width/4, screenheight-(y-height/2+30), "> > >", width/2-10); 
         for(int i = 0; i < panels; i++){
             text[i] = correctAlignment(text[i], 110); 
         }
     }
+
     /**
      * Creates a menu screen that presents the player with a slideshow of helpful images and detailing "readers notes". 
      * */
     public InfoMenu(String Imagename, String TEXT){
         super(screenwidth/2, screenheight/2, 700, 900); 
+        this.type = hudtype.Infomenu; 
         this.text = new String[1]; 
         text[0] = TEXT; 
         images = new Texture[1];
@@ -59,9 +63,9 @@ public class InfoMenu extends Hud{
     
         Lbutton.updateShape();
         Rbutton.updateShape();
-        if(Lbutton.isactive){
+        if(Lbutton.getInput()){
             activepanel--; 
-        }else if(Rbutton.isactive){
+        }else if(Rbutton.getInput()){
             activepanel++;
         }
         if(activepanel >= panels || activepanel < 0) EveOnline2.removeHUD(this);
@@ -72,6 +76,7 @@ public class InfoMenu extends Hud{
         float imgscaleFactor = 2; 
         textrenderer.draw(images[activepanel], x-width/2+10, y-10, width-20, height/imgscaleFactor);
         font.getData().setScale(0.975f);
+        font.setColor(Color.WHITE);
         font.draw(textrenderer, this.text[activepanel], x-width/2+10, y-20);
         if(activepanel == panels-1)Rbutton.setText("Close");
         else {Rbutton.setText("> > >");}
