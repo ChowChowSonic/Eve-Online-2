@@ -1,11 +1,10 @@
 package my.gdx.game.entities;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g3d.Model;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.inventory.Inventory;
 //import my.gdx.server.Server;
@@ -14,7 +13,7 @@ import my.gdx.game.inventory.InventoryItems;
 public class Player extends Entity {
 	float invmass, basemass = 10;
 	private int shields = 1000, armor = 250, hull = 500;
-	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
+	private transient final int maxshields = 1000, maxarmor = 250, maxhull = 500; //will be determined by the shiptype; no need to serialize
 	private static final long serialVersionUID = 1L;
 	private boolean justpressedboost = false, isBoosting = false;
 	private float totalDeltaTime = 0;
@@ -146,6 +145,26 @@ public class Player extends Entity {
 			this.justpressedboost = p.justpressedboost;
 			this.tetheringstationID = p.tetheringstationID;
 		}
+	}
+
+	@Override
+	public void Serialize(DataOutputStream s) throws IOException{
+		super.Serialize(s); //56 bytes (MINIMUM)
+		s.writeFloat(basemass);
+		s.writeInt(shields);
+		s.writeInt(armor);
+		s.writeInt(hull);
+		s.writeLong(tetheringstationID); //80 Bytes (MINIMUM)
+	}
+
+	@Override
+	public void Deserialize(DataInputStream s) throws IOException{
+		super.Deserialize(s);
+		basemass = s.readFloat();
+		shields = s.readInt();
+		armor = s.readInt();
+		hull = s.readInt();
+		tetheringstationID = s.readLong(); //80 Bytes (MINIMUM)
 	}
 
 	public boolean isAccelerating() {

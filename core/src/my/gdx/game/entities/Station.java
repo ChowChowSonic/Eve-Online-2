@@ -1,5 +1,9 @@
 package my.gdx.game.entities;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 
@@ -83,6 +87,17 @@ public class Station extends CelestialObject {
 			} // instanceof player
 		}
 		return false;
+	}
+
+	public void Serialize(DataOutputStream s) throws IOException{
+		super.Serialize(s);
+		s.writeFloat(tetherradius);
+	}
+
+	@Override
+	public void Deserialize(DataInputStream s) throws IOException{
+		super.Deserialize(s);
+		tetherradius = s.readFloat();
 	}
 
 	private void interactWith(Player p, float distance) {

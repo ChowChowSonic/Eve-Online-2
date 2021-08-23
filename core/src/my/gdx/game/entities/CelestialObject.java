@@ -8,14 +8,12 @@ import my.gdx.game.EveOnline2;
 
 public class CelestialObject extends Entity{
 	
-	protected final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
 	private static final long serialVersionUID = 1L;
 	
 	public CelestialObject(Vector3 position, String modelname, float mass, float radius, long ID) {
 		super(modelname, EntityType.CELESTIALOBJ, radius, ID);
 		this.pos = position;
 		this.setMass(mass);
-		x = this.pos.x; y = this.pos.y; z = this.pos.z; 
 		// TODO Auto-generated constructor stub
 	}
 	

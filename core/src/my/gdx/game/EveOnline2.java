@@ -338,15 +338,7 @@ public class EveOnline2 extends ApplicationAdapter {
 				}
 			}
 		}
-		for (Entity e2 : entities) {
-			if (e.equals(e2)) {
-				e2.updateEntityFromSerialized(e);
-				return;
-			}
-			
-		}
-		Entity e3 = buildEntity(e);
-		entities.add(e3);
+		entities.add(e);
 		// System.out.println(e.toString());
 	}
 	
