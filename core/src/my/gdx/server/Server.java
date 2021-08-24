@@ -40,7 +40,6 @@ import my.gdx.game.inventory.Item;
 public class Server extends ApplicationAdapter {
     public static ArrayList<Entity> entities;
     public static File ENTITYFILE, LOGFILE;
-    public static DataSender sender;
 
     private static final long serialVersionUID = 1L;
     private static Inventory materialcensus, usedmaterials, vanishedmaterials;
@@ -53,7 +52,6 @@ public class Server extends ApplicationAdapter {
     private static long nextID = 0L;
     private static float cumDeltaTime = 0f;
     private static int logposition = 0;
-     
 
     public void create() {
         r = new Random();
@@ -80,8 +78,6 @@ public class Server extends ApplicationAdapter {
 
         antenna = new ServerAntenna(26000);
         antenna.start();
-        sender = new DataSender(antenna); 
-        sender.start();
 
         super.create();
     }
@@ -125,7 +121,7 @@ public class Server extends ApplicationAdapter {
         if (cumDeltaTime >= 0.1) {
             for (int i = 0; i < entities.size(); i++) {
                 Entity e = entities.get(i);
-                sender.sendObjectToAll(e);
+                antenna.sendEntity(e);
             }
             cumDeltaTime = 0;
         }
@@ -193,7 +189,7 @@ public class Server extends ApplicationAdapter {
 
         if (!entities.contains(e)) {
             openIDs.add(e.getID());
-            sender.sendObjectToAll(new removedEntity(e.getID()));
+            antenna.sendEntity(new removedEntity(e.getID()));
             appendToLogs("Entity removed:" + e.getEntityType() + ", ID: " + e.getID());
         } else {
             appendToLogs("Entity unable to be removed!");

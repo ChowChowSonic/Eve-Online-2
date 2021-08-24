@@ -24,10 +24,10 @@ public abstract class Entity implements Serializable {
 	protected transient Vector3 pos, vel, accel;
 	protected transient Model model = EveOnline2.DEFAULTMODEL;
 	protected transient ModelInstance instance;
-	protected transient float mass, size;
 	protected final long ID;
 	protected EntityType type;
 	protected String modelname;
+	protected float mass, size;
 	/**
 	 * NOT THE PLAYER'S ACTUAL DIRECTION. THIS IS FOR BOOSTING/ACCELERATING PURPOSES
 	 * ONLY.
@@ -48,7 +48,7 @@ public abstract class Entity implements Serializable {
 		PLAYER, ASTEROID, DEBRIS, FRIEND, FOE, CELESTIALOBJ, STATION
 	}
 
-	public transient Inventory inventory = new Inventory(new ArrayList<Item>(), 0);
+	public transient Inventory inventory;
 
 	public Entity(String modelname, EntityType type, float size, long id) {
 		this.type = type;
@@ -103,9 +103,9 @@ public abstract class Entity implements Serializable {
 		if (this.instance == null) {
 			this.model = manager.get(this.modelname, Model.class);
 			this.instance = new ModelInstance(this.model, pos);
+			this.instance.transform.scl(this.size, this.size, this.size);
 		}
 		if (this.instance != null) {
-			this.instance.transform.scl(this.size, this.size, this.size);
 			Quaternion quaternion = new Quaternion();
 			if (this.vel.len2() > 0) {
 				Matrix4 instanceRotation = this.instance.transform.cpy().mul(this.instance.transform.cpy());
@@ -162,10 +162,10 @@ public abstract class Entity implements Serializable {
 		// this.modelname = serializedEntity.modelname;
 		// if(this.mass != serializedEntity.mass) System.out.println(this.mass + "
 		// (Mass) "+ serializedEntity.mass);
-		// this.mass = serializedEntity.mass;
+		 this.mass = serializedEntity.mass;
 		// if(this.size != serializedEntity.size) System.out.println(this.size + "
 		// (Size) "+ serializedEntity.size);
-		// this.size = serializedEntity.size;
+		 this.size = serializedEntity.size;
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import com.badlogic.gdx.Gdx;
 
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
-import my.gdx.game.inventory.*;
+import my.gdx.game.inventory.Item;
 public class ClientAntenna extends Thread{  
     
     private Socket clientSocket;
@@ -109,19 +109,6 @@ public class ClientAntenna extends Thread{
         }catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
-
-    public void requestInventory(Entity e){
-        try{
-        outgoing.writeShort(5);
-        outgoing.writeLong(e.getID());
-        outgoing.flush();
-        System.out.println(e.inventory.toString());
-        e.inventory = (Inventory) incoming.readObject(); 
-        System.out.println(e.inventory.toString());
-        }catch (Exception exc){
-            exc.printStackTrace();
         }
     }
     

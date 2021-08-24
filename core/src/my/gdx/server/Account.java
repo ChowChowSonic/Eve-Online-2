@@ -11,7 +11,6 @@ import com.badlogic.gdx.math.Vector3;
 
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
-import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 
@@ -54,7 +53,7 @@ class Account extends Thread {
                         // System.out.println(ID+" Entity copy requested");
                         Entity e = Server.getEntityCopy(ID);
                         if (e != null) {
-                            sendObject(e);
+                            sendEntity(e);
                         }
                         break;
 
@@ -99,10 +98,6 @@ class Account extends Thread {
                         Item i = new Item(template, din.readInt());
                         Server.DropItem(this.userEntity, i);
                         break;
-                    case 5:
-                    Entity entity = Server.getEntityCopy(din.readLong()); 
-                    Server.sender.sendObject(entity.inventory, this);
-                        
                 }
             } catch (SocketException e) {
                 Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
@@ -132,12 +127,7 @@ class Account extends Thread {
 
     }// ends run
 
-    /**
-     * DO NOT CALL THIS METHOD OUTSIDE DATASENDER.JAVA'S RUN METHOD; DOING SO WILL CORRUPT THE DATAOUTPUTSTREAMS. 
-     * @param e
-     * @throws Exception
-     */
-    public void sendObject(Object e) throws Exception {
+    public void sendEntity(Entity e) throws Exception {
         dout.writeObject(e);
         dout.flush();
         dout.reset();

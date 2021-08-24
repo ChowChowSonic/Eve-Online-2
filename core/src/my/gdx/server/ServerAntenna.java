@@ -5,13 +5,6 @@ import java.net.*;
 import java.util.ArrayList;
 
 import my.gdx.game.entities.Entity;
-
-
-
-/**
- * Handles incoming connections, and allows the user to send entities to all connections. 
- * 
- */
 public class ServerAntenna extends Thread{ 
     ServerSocket socket;
     int port;
@@ -64,7 +57,7 @@ public class ServerAntenna extends Thread{
         if(connections.size() == 0) return;
         for(int i =0; i < connections.size(); i++){
             try{
-                connections.get(i).sendObject(e);
+                connections.get(i).sendEntity(e);
             }catch(Exception e2){
                 if(connections.size() > 0)
                 connections.remove(i);

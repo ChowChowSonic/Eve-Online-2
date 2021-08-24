@@ -8,17 +8,18 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.inventory.Item;
 
 public class InventoryMenu extends Hud {
-	private Player user;
+	private Entity user;
 	private int width = 400, height = 400;
 	SpriteBatch spriteBatch;
 	BitmapFont font;
 	ArrayList<Button> buttons;
 
-	public InventoryMenu(Player user) {
+	public InventoryMenu(Entity user) {
 		super(screenwidth/2, screenheight/2, 400, 400); 
 		this.user = user;
 		spriteBatch = new SpriteBatch();
