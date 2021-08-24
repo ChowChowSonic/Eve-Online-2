@@ -26,8 +26,8 @@ public abstract class Hud {
 		this.width = width; this.height = height; 
 	}
 	
-	public static enum hudtype {
-		HealthBar, InventoryMenu, DockingButton, Infomenu, dropdown
+	public enum hudtype {
+		HealthBar, InventoryMenu, DockingButton
 	}
 	/**
 	* Updates the shape of the image (I.E. the Opaque white/gray/colorful rectangles, a circle acting as a border)
