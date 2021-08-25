@@ -45,6 +45,7 @@ public class InventoryMenu extends Hud {
 		super.updateShape();
 		renderer.setColor(Color.GRAY);
 		renderer.rect(x-width/2, screenheight-(y+height/2), width, height);
+
 		for (int i = 0; i < buttons.size(); i++) {
 			Button b = buttons.get(i); 
 			b.updateShape();

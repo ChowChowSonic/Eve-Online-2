@@ -22,7 +22,6 @@ public class DropdownMenu extends Hud{
                 @Override
                 public void interact(float x, float y){
                     EveOnline2.addHUD(new InventoryMenu(target)); 
-                    System.out.println("Menu displayed"); 
                     EveOnline2.removeHUD(hudtype.dropdown);
                 }
             }); 

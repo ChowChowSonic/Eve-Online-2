@@ -119,7 +119,7 @@ public class ClientAntenna extends Thread{
             outgoing.writeLong(to.getID());
             outgoing.writeInt(i.getTemplate().ordinal());
             outgoing.writeInt(i.getStacksize());
-
+            outgoing.flush();
         }catch(IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

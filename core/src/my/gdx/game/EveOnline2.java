@@ -175,7 +175,7 @@ public class EveOnline2 extends ApplicationAdapter {
 			dir = player.getRotation();
 			connection.boostPlayer(dir.x, dir.y, dir.z, true);
 			justboosted = true; 
-		} else if (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.W) && justboosted) {
+		} else if ((!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || !Gdx.input.isKeyPressed(Keys.W)) && justboosted) {
 			dir = player.getRotation();
 			connection.boostPlayer(dir.x, dir.y, dir.z, false);
 			justboosted = false;
@@ -320,6 +320,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		}
 		
 		System.gc();
+		//System.out.println(player.inventory.toString());
 	}
 	
 	/**

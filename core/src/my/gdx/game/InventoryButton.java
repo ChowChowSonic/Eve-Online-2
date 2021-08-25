@@ -35,9 +35,19 @@ public class InventoryButton extends Button {
                     Hud h = EveOnline2.windows.get(i);
                     if(h.type == hudtype.InventoryMenu && h.isInBounds(x, y)) {
                         InventoryMenu menu = (InventoryMenu) h;
+                        if(!parent.equals(menu)){
                         EveOnline2.connection.transferInventoryItem(this.parent.user, menu.user, this.item);
+                        if(menu.user.inventory.hasRoomFor(this.item)){
+                        menu.buttons.add(new InventoryButton(x, y, this.item, menu));
+                        }else{
+                            int stack = (int) ((menu.user.inventory.getCapacity() - menu.user.inventory.getOccupiedspace()) / this.item.getTemplate().getVolume()); 
+                        menu.buttons.add(new InventoryButton(x, y, new Item(this.item.getTemplate(), stack), menu));
+                        this.parent.buttons.add(new InventoryButton(parent.x, parent.y, new Item(this.item.getTemplate(), this.item.getStacksize()-stack), parent));
+                        }
                         parent.removeButton(this);
                         return;
+                        }
+                        
                     }
                 }
                 EveOnline2.connection.dropInventoryItem(item); 
@@ -74,4 +84,9 @@ public class InventoryButton extends Button {
         }
         return false; 
     }
+
+    public Item getItem() {
+        return this.item;
+    }
+
 }
