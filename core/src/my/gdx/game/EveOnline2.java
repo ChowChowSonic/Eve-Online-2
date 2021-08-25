@@ -57,7 +57,7 @@ public class EveOnline2 extends ApplicationAdapter {
 	protected static ClientAntenna connection;
 	
 	private static Camera cam;
-	private static ArrayList<Hud> windows = new ArrayList<Hud>();
+	static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private static final long serialVersionUID = 1L;// I need this for some reason and I don't know why.
 	private final int renderDist = 260000, vanishingpoint = 9000;// 20100;
 	private static float cameradist = 3f;
@@ -212,7 +212,7 @@ public class EveOnline2 extends ApplicationAdapter {
 					
 				}
 				removeHUD(hudtype.dropdown);
-				if(target!= null)addHUD(new DropdownMenu(x, y, target));
+				if(target!= null &&!isonHud)addHUD(new DropdownMenu(x, y, target));
 			}
 		}
 		
@@ -436,11 +436,13 @@ public class EveOnline2 extends ApplicationAdapter {
 	*/
 	public static void removeHUD(Hud hud) {
 		// if(windows.contains(hud))
-		ArrayList<Button> b = hud.getButtons();
-		if (b != null)
-		for (int i = 0; i < b.size(); i++) {
-			Button button = b.get(i);
-			windows.remove(button);
+		if(hud == null) return; 
+		if (hud.getButtons() != null){
+			ArrayList<Button> b = hud.getButtons();
+			for (int i = 0; i < b.size(); i++) {
+				Button button = b.get(i);
+				windows.remove(button);
+			}
 		}
 		windows.remove(hud);
 	}

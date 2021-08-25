@@ -48,7 +48,7 @@ public abstract class Entity implements Serializable {
 		PLAYER, ASTEROID, DEBRIS, FRIEND, FOE, CELESTIALOBJ, STATION
 	}
 
-	public transient Inventory inventory;
+	public Inventory inventory;
 
 	public Entity(String modelname, EntityType type, float size, long id) {
 		this.type = type;
@@ -159,6 +159,7 @@ public abstract class Entity implements Serializable {
 		this.setPos(serializedEntity.x, serializedEntity.y, serializedEntity.z);
 		this.setVel(serializedEntity.dx, serializedEntity.dy, serializedEntity.dz);
 		this.setAccel(serializedEntity.ddx, serializedEntity.ddy, serializedEntity.ddz);
+		this.inventory = serializedEntity.inventory; 
 		// this.modelname = serializedEntity.modelname;
 		// if(this.mass != serializedEntity.mass) System.out.println(this.mass + "
 		// (Mass) "+ serializedEntity.mass);

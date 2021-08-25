@@ -153,6 +153,14 @@ public class Inventory implements Serializable{
 		return false;
 	}
 	
+	public boolean transferInventoryItemTo(Inventory i, Item item){
+		if(this.contains(item) && i.hasRoomFor(item)){
+			this.removeItem(item);
+			i.additem(item); 
+		}
+		return false; 
+	}
+
 	/**
 	* Emptys the inventory of all items, sets the volume to 0 and weight to 0
 	*/
@@ -166,7 +174,7 @@ public class Inventory implements Serializable{
 	public boolean contains(Item i) {
 		verifycontents();
 		for(Item e : this.items) {
-			if(e.getName().equals(i.getName())) return true;
+			if(e.getName().equals(i.getName()) && e.getStacksize() >=i.getStacksize()) return true;
 		}
 		
 		return false;
@@ -209,6 +217,11 @@ public class Inventory implements Serializable{
 		}
 		return occupiedspace;
 	}
+
+	public boolean hasRoomFor(Item i){
+		return this.occupiedspace+i.getVolume() >= this.capacity; 
+	}
+
 	public float getCapacity() {
 		return capacity;
 	}

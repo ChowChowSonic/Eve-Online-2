@@ -113,4 +113,41 @@ public abstract class Hud {
         }
     return formattedString;
     }
+
+	/**
+	 * Sets the HUD's position to{@code (x,y)} & All its buttons get translated to match its current setup
+	 * @param x
+	 * @param y
+	 */
+	public void translateTo(float x, float y){
+        float dx = this.x-x;
+        float dy = this.y-y;
+		this.x-=dx;
+		this.y-=dy;
+
+		if(buttons !=null) 
+		for(Button b : buttons){
+			b.translate(dx, dy);
+		}
+    }
+
+	public void translate(float dx, float dy){
+		this.x+=dx;
+		this.y+=dy; 
+
+		if(buttons !=null) 
+		for(Button b : buttons){
+			b.translate(dx, dy);
+		}
+	}
+
+	public void moveTo(float x, float y){
+        this.x=x;
+        this.y=screenheight-y; 
+		if(buttons !=null)
+		for(Button b : buttons){
+			b.x = x;
+			b.y = screenheight-y; 
+		}
+    }
 }

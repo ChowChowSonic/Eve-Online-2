@@ -13,22 +13,17 @@ import my.gdx.game.entities.Player;
 import my.gdx.game.inventory.Item;
 
 public class InventoryMenu extends Hud {
-	private Entity user;
-	private int width = 400, height = 400;
-	SpriteBatch spriteBatch;
-	BitmapFont font;
-	ArrayList<Button> buttons;
-
+	protected Entity user;
+	
 	public InventoryMenu(Entity user) {
 		super(screenwidth/2, screenheight/2, 400, 400); 
 		this.user = user;
-		spriteBatch = new SpriteBatch();
 		font = new BitmapFont();
 		this.type = Hud.hudtype.InventoryMenu;
 		buttons = new ArrayList<Button>();
-
-		int slotx = (screenwidth) / 2 - width / 3;
-		int sloty = (screenheight) / 2 + height / 5;
+		
+		float slotx = (screenwidth) / 2 - width / 3;
+		float sloty = (screenheight) / 2 + height / 5;
 		// y++ = up; x-- = left
 		int counter = 0;
 		for (Item i : user.inventory.getItems()) {
@@ -41,19 +36,21 @@ public class InventoryMenu extends Hud {
 				counter = 0;
 			}
 		}
+		
+		buttons.add(new HeaderButton(x, screenheight-(y+height/2), width, this)); 
 	}
-
+	
 	@Override
 	public void updateShape() {
 		super.updateShape();
 		renderer.setColor(Color.GRAY);
-		renderer.rect(x-width/2, y-height/2, width, height);
+		renderer.rect(x-width/2, screenheight-(y+height/2), width, height);
 		for (int i = 0; i < buttons.size(); i++) {
 			Button b = buttons.get(i); 
 			b.updateShape();
 		}
 	}
-
+	
 	@Override
 	public void updateText() {
 		super.updateText();
@@ -61,19 +58,18 @@ public class InventoryMenu extends Hud {
 			b.updateText();
 		}
 	}
-
+	
 	@Override
-    public boolean isInBounds(float xpos, float ypos) {
-        boolean xisgood = false, yisgood = false;
-		if (xpos < (this.x + width/2) && xpos > (this.x - width/2)) {
-			xisgood = true;
+	public boolean isInBounds(float xpos, float ypos) {
+		
+		for (Button b : buttons) {
+			if(b.isInBounds(x,y)){
+				return true;
+			}
 		}
-		if (ypos < (this.y + height/2) && ypos > (this.y - height/2)) {
-			yisgood = true;
-		}
-		return xisgood && yisgood;
-    }
-
+		return super.isInBounds(xpos, ypos); 
+	}
+	
 	public void interact(float x, float y) {
 		// Do something
 		for (Button b : buttons) {
@@ -83,8 +79,16 @@ public class InventoryMenu extends Hud {
 			}
 		}
 	}
-
+	
 	public void removeButton(Button b){
 		buttons.remove(b); 
+	}
+
+	public boolean equals(Object o){
+		if(o instanceof InventoryMenu){
+		InventoryMenu m = (InventoryMenu) o;
+			return this.user.equals(m.user);
+		}
+		return false;
 	}
 }

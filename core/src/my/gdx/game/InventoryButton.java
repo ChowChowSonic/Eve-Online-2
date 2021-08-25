@@ -15,7 +15,7 @@ public class InventoryButton extends Button {
     private Item item;
     private InventoryMenu parent; 
     private Texture texture; 
-
+    
     
     public InventoryButton(float xpos, float ypos, Item baseItem, InventoryMenu parent) {
         super(xpos, ypos, 90, 160);
@@ -31,6 +31,15 @@ public class InventoryButton extends Button {
             x = Gdx.input.getX();
             y = Gdx.input.getY();
             if (!parent.isInBounds(x,y) && Gdx.input.isButtonJustPressed(Buttons.LEFT)) {
+                for(int i = 0; i < EveOnline2.windows.size(); i++){
+                    Hud h = EveOnline2.windows.get(i);
+                    if(h.type == hudtype.InventoryMenu && h.isInBounds(x, y)) {
+                        InventoryMenu menu = (InventoryMenu) h;
+                        EveOnline2.connection.transferInventoryItem(this.parent.user, menu.user, this.item);
+                        parent.removeButton(this);
+                        return;
+                    }
+                }
                 EveOnline2.connection.dropInventoryItem(item); 
                 parent.removeButton(this);
                 return; 

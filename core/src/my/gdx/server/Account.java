@@ -98,6 +98,11 @@ class Account extends Thread {
                         Item i = new Item(template, din.readInt());
                         Server.DropItem(this.userEntity, i);
                         break;
+                    case 5:
+                    Entity from = Server.getEntityCopy(din.readLong()); 
+                    Entity to = Server.getEntityCopy(din.readLong());
+                    Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt()); 
+                    from.inventory.transferInventoryItemTo(to.inventory, item);
                 }
             } catch (SocketException e) {
                 Server.appendToLogs("user forced to disconnect from port: " + user.getPort());

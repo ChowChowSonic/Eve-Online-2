@@ -111,6 +111,20 @@ public class ClientAntenna extends Thread{
             e.printStackTrace();
         }
     }
+
+    public void transferInventoryItem(Entity from, Entity to, Item i){
+        try{
+            outgoing.writeShort(5);
+            outgoing.writeLong(from.getID());
+            outgoing.writeLong(to.getID());
+            outgoing.writeInt(i.getTemplate().ordinal());
+            outgoing.writeInt(i.getStacksize());
+
+        }catch(IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     
     public void close(){
         try {

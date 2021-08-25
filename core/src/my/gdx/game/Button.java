@@ -25,6 +25,12 @@ public abstract class Button extends Hud {
     @Override
     public abstract void interact(float x, float y);
 
+    @Override
+    public void translate(float dx, float dy){
+        this.x-=dx;
+        this.y-=dy; 
+    }
+
     public float getX() {
         return x;
     }
