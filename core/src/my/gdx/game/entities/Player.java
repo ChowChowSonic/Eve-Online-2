@@ -78,7 +78,7 @@ public class Player extends Entity {
 		if (isBoosting) {
 			this.tetheringstationID = 0;
 			justpressedboost = true;
-			Vector3 accelnorm = this.vel.cpy().nor();
+			Vector3 accelnorm = this.direction.cpy().nor();
 			this.addVel(
 					(float) (accelnorm.x * (deltaTime / Math.sqrt(this.mass + 1))
 							* ((1000 - (METER * this.mass)) - this.vel.len2())),

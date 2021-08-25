@@ -45,7 +45,7 @@ class Account extends Thread {
         while (isrunning) {
             try {
                 short cmd = din.readShort();
-                System.out.println(cmd + "");
+                System.out.println("CMD: " + cmd);
 
                 switch (cmd) {
                     case 0:
@@ -61,10 +61,9 @@ class Account extends Thread {
                            // System.out.println(ID+" Entity Movement requested");
                         float x = din.readFloat(), y = din.readFloat(), z = din.readFloat();
                         // Server.appendToLogs(x+" "+y+" "+z);
-                        userEntity.setAccelerating(!userEntity.getAccel().hasOppositeDirection(new Vector3(x, y, z)),
-                                x, y, z);
+                        userEntity.setAccelerating(!userEntity.getAccel().hasOppositeDirection(new Vector3(x, y, z)), x,
+                                y, z);
                         break;
-
                     case 2:// decelPlayer
                         if (!this.userEntity.isBoosting()) {
                             Vector3 vel = this.userEntity.getVel();
@@ -99,11 +98,19 @@ class Account extends Thread {
                         Server.DropItem(this.userEntity, i);
                         break;
                     case 5:
-                    Entity from = Server.getEntityCopy(din.readLong()); 
-                    Entity to = Server.getEntityCopy(din.readLong());
-                    Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt()); 
-                    from.inventory.transferInventoryItemTo(to.inventory, item);
+                        Entity from = Server.getEntityCopy(din.readLong());
+                        Entity to = Server.getEntityCopy(din.readLong());
+                        Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt());
+                        Server.appendToLogs(
+                                "Attempting to transfer item from " + from.toString() + " to " + to.toString());
+                        if (from.inventory.transferInventoryItemTo(to.inventory, item)) {
+                            Server.appendToLogs("Transfer successful!");
+                        } else {
+                            Server.appendToLogs("Transfer failed!");
+                        }
+                        break;
                 }
+
             } catch (SocketException e) {
                 Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
                 Server.removeEntity(userEntity);
