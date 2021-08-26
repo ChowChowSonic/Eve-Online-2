@@ -27,7 +27,7 @@ public abstract class Hud {
 	}
 	
 	public static enum hudtype {
-		HealthBar, InventoryMenu, DockingButton, Infomenu, dropdown
+		HealthBar, InventoryMenu, DockingButton, Infomenu, dropdown, target
 	}
 	/**
 	* Updates the shape of the image (I.E. the Opaque white/gray/colorful rectangles, a circle acting as a border)

@@ -67,6 +67,7 @@ public class EveOnline2 extends ApplicationAdapter {
 	private SpriteBatch textrenderer;
 	private Environment env;
 	private boolean justboosted = false; 
+	private TargetHud targetmanager; 
 	
 	/*
 	* Reminder: X = -<------------------>+ Y = -[down] [up]+ Z = -[Forward]
@@ -82,8 +83,8 @@ public class EveOnline2 extends ApplicationAdapter {
 		cam = new PerspectiveCamera(80, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		cam.position.set(0f, 0f, 3f);
 		cam.lookAt(0f, 0f, 0f);
-		cam.near = 1f;
-		cam.far = renderDist;
+		cam.near = 1f; //closest possible render dist
+		cam.far = renderDist; //max render dist
 		batch = new ModelBatch();
 		
 		// Load in all assets from the assets folder
@@ -140,9 +141,13 @@ public class EveOnline2 extends ApplicationAdapter {
 		
 		hudrenderer = Hud.getRenderer();
 		hudrenderer.setAutoShapeType(true);
-		
+
+		//Adding the HUD
+		targetmanager = (new TargetHud(3)); 
+		windows.add(targetmanager);
 		windows.add(new HealthBar(player));
-		String[] strings = {"Welcome to Eve Online 2! \n Press W or S to move backwards and forwards in the direction your camera is facing. \n SHIFT+W Boosts you at extreme speeds \n Press I to open your inventory. \n Right click and drag to rotate the camera \n Left click on objects or people to display options regarding them", "In this game, you can choose what you want to do; mining, exploring, trading, fighting, hunting enemies of Humanity: you name it!\n Please enjoy your stay, and remember that the game is still in the alpha stages of development.","Today while playing Fortnite I ran into Allah at pleasant parks while he was trying to run solo squads. Knowing he was weakened, I told my squad to stay high ground while I engaged him on my own. He had worse loot and no heals but he's an amazing player. He is so fucking powerful. I'm not cracked enough at the game to do this alone. I barely escaped with my life and ran out of heals. His edits are immensely cracked and he cranks 90s at an ungodly speeds. I can't imagine what he would do to a new, unsuspecting default skin. I'm scared that I will have to face him again soon if I ever want to continue climbing the Fortnite ladder. I'm currently using medkits and mini shields that my squad gave me to try and heal as quickly as possible. Please be safe everyone. Allah is much stronger than I first imagined and we will have to do this together (maybe even cross team) if we want to shit on this god."};
+		String[] strings = {"Welcome to Eve Online 2! \n Press W or S to move backwards and forwards in the direction your camera is facing. \n SHIFT+W Boosts you at extreme speeds \n Press I to open your inventory. \n Right click and drag to rotate the camera "+
+		"\n Left click on objects or people to display options regarding them \n CTRL+Left-Click on objects or people to target them.", "In this game, you can choose what you want to do; mining, exploring, trading, fighting, hunting enemies of Humanity: you name it!\n Please enjoy your stay, and remember that the game is still in the alpha stages of development.","Today while playing Fortnite I ran into Allah at pleasant parks while he was trying to run solo squads. Knowing he was weakened, I told my squad to stay high ground while I engaged him on my own. He had worse loot and no heals but he's an amazing player. He is so fucking powerful. I'm not cracked enough at the game to do this alone. I barely escaped with my life and ran out of heals. His edits are immensely cracked and he cranks 90s at an ungodly speeds. I can't imagine what he would do to a new, unsuspecting default skin. I'm scared that I will have to face him again soon if I ever want to continue climbing the Fortnite ladder. I'm currently using medkits and mini shields that my squad gave me to try and heal as quickly as possible. Please be safe everyone. Allah is much stronger than I first imagined and we will have to do this together (maybe even cross team) if we want to shit on this god."};
 		String[] imgnames = {"Space.jpg", "Screenshot (1).png","E.png"}; 
 		windows.add(new InfoMenu(imgnames, strings)); 
 	}// ends create()
@@ -206,13 +211,18 @@ public class EveOnline2 extends ApplicationAdapter {
 					float dist = e.getPos().dst(position); 
 					Vector3 rayLine = position.cpy().add(vec.direction.x * dist, vec.direction.y*dist, vec.direction.z*dist); 
 					if(rayLine.dst(e.getPos()) <= e.getSize()){
-						//addHUD(new InfoMenu("ship.png", "Here you can bring up a dropdown list of options for this entity \n\n\n\n\n DISCLAIMER: Dropdown list has not actually been implemented yet so you'll just have to suck it.")); 
 						if(target == null || target.getPos().dst(position) > e.getPos().dst(position)) target = e; 
 					}
 					
 				}
 				removeHUD(hudtype.dropdown);
-				if(target!= null &&!isonHud)addHUD(new DropdownMenu(x, y, target));
+				if(target != null && !isonHud){
+					if(Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)){
+						targetmanager.addTarget(target);
+					}else{
+						 addHUD(new DropdownMenu(x, y, target));
+					}
+				}
 			}
 		}
 		

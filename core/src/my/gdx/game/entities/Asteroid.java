@@ -26,7 +26,7 @@ public class Asteroid extends Entity{
 		* @param type
 		*/
 		public Asteroid(String modelname, ArrayList<Item> contents, long ID) {
-			super(modelname, EntityType.ASTEROID, 0, ID);
+			super(modelname, EntityType.ASTEROID, 1, ID);
 			this.inventory = new Inventory(contents, 999999999);  
 			this.size = 0; 
 			for(Item i : contents){
@@ -39,7 +39,7 @@ public class Asteroid extends Entity{
 		}
 		
 		public Asteroid(String modelname, Inventory contents, int radius, long ID) {
-			super(modelname, EntityType.ASTEROID, 0,ID);
+			super(modelname, EntityType.ASTEROID, 1,ID);
 			this.inventory = contents;  
 			if(contents != null){
 				for(Item i : contents.getItems()){
