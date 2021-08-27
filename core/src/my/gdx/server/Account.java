@@ -10,6 +10,7 @@ import java.net.SocketException;
 import com.badlogic.gdx.math.Vector3;
 
 import my.gdx.game.entities.Entity;
+import my.gdx.game.entities.KillableEntity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
@@ -101,6 +102,7 @@ class Account extends Thread {
                         Entity from = Server.getEntityCopy(din.readLong());
                         Entity to = Server.getEntityCopy(din.readLong());
                         Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt());
+                        if(from.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER && to.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER){
                         Server.appendToLogs(
                                 "Attempting to transfer item from " + from.toString() + " to " + to.toString());
                         if (from.inventory.transferInventoryItemTo(to.inventory, item)) {
@@ -108,7 +110,16 @@ class Account extends Thread {
                         } else {
                             Server.appendToLogs("Transfer failed!");
                         }
+                    }
                         break;
+                    case 6:
+                        Entity victim = Server.getEntityCopy(din.readLong()); 
+                        if(victim instanceof KillableEntity){
+                        KillableEntity victim2 = (KillableEntity) victim;
+                        victim2.dealDamage(20);
+                        //At some point in the future i'll have the server spawn in A.R.F.S. (Aggression Regulation Force(s)) to defend the victim
+                        }
+                    break;
                 }
 
             } catch (SocketException e) {

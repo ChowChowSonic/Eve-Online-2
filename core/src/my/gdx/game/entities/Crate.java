@@ -19,6 +19,7 @@ public class Crate extends Entity{
         this.mass = inventory.getWeight()+1;
         //TODO Auto-generated constructor stub
     }
+    
     public Crate(String modelname, ArrayList<Item> inv,  long id) {
         super(modelname, EntityType.DEBRIS, 0.25f, id);
         this.inventory = new Inventory(inv, 2500); 

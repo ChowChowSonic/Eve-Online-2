@@ -191,7 +191,7 @@ public class EveOnline2 extends ApplicationAdapter {
 			connection.decelplayer();
 		}
 		
-		// HUD & Entity interaction
+		// HUD & Entity interaction, targeting
 		if (Gdx.input.isButtonJustPressed(Buttons.LEFT)) {
 			boolean isonHud = false;
 			int x = Gdx.input.getX(), y = Gdx.input.getY();
@@ -217,14 +217,14 @@ public class EveOnline2 extends ApplicationAdapter {
 				}
 				removeHUD(hudtype.dropdown);
 				if(target != null && !isonHud){
-					if(Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)){
+					if(Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !target.equals(player)){
 						targetmanager.addTarget(target);
 					}else{
 						 addHUD(new DropdownMenu(x, y, target));
 					}
 				}
 			}
-		}
+		}// end of HUD, Targeting stuff
 		
 		for (int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);

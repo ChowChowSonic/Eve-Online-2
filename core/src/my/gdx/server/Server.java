@@ -90,6 +90,7 @@ public class Server extends ApplicationAdapter {
         super.render();
         Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);// clears the screen of text
+        
         // Cumulative Delta Time - used for sending the entities to the clients
         cumDeltaTime += Gdx.graphics.getDeltaTime();
 

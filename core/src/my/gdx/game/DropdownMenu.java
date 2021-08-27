@@ -17,7 +17,9 @@ public class DropdownMenu extends Hud{
         this.buttons = new ArrayList<Button>(); 
         //if(y < screenheight/2) y+=height; 
         float nextopenspace = this.y-height/2+15; 
-        if(ent.inventory != null){
+        System.out.println(ent.getPos().dst(EveOnline2.player.getPos()));
+        System.out.println(100000*Entity.METER);
+        if(ent.inventory != null && ent.getPos().dst(EveOnline2.player.getPos()) <= 100000*(EveOnline2.player.getSize()+ent.getSize())*Entity.METER){
             this.buttons.add(new DropdownButton(this.x, nextopenspace, "Open Inventory", target){//define custom method for this button
                 @Override
                 public void interact(float x, float y){
@@ -45,7 +47,7 @@ public class DropdownMenu extends Hud{
             b.updateText();
         }
     }
-
+    
     public boolean isInBounds(float x, float y){
         for(Button b : buttons){
             if(b.isInBounds(x, y)) return true; 

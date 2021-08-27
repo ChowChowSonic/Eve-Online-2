@@ -11,13 +11,10 @@ import my.gdx.game.inventory.Inventory;
 //import my.gdx.server.Server;
 import my.gdx.game.inventory.InventoryItems;
 
-public class Player extends Entity {
+public class Player extends KillableEntity {
 	float invmass, basemass = 10;
-	private int shields = 1000, armor = 250, hull = 500;
-	private final int maxshields = 1000, maxarmor = 250, maxhull = 500;
 	private static final long serialVersionUID = 1L;
 	private boolean justpressedboost = false, isBoosting = false;
-	private float totalDeltaTime = 0;
 	private boolean isAccelerating = false;
 
 	protected long tetheringstationID = 0;
@@ -39,7 +36,6 @@ public class Player extends Entity {
 			invmass = inventory.getWeight();
 			this.mass = basemass + invmass;
 		}
-		totalDeltaTime += deltaTime;
 
 		// Movement controls
 		/*
@@ -97,51 +93,15 @@ public class Player extends Entity {
 			}
 		}
 
-		if (totalDeltaTime > 5.0f) {
-			totalDeltaTime -= 5;
-			if (this.shields < this.maxshields - 20)
-				this.shields += 20;
-			else
-				this.shields = maxshields;
-		}
+		
 		// System.out.println("Player.update called "+this.toString());
 		super.update(deltaTime);
-	}
-
-	public void dealDamage(int damage) {
-		if (!justpressedboost) {
-			if (damage > this.shields) {
-				damage -= shields;
-				shields = 0;
-			} else {
-				shields -= damage;
-				return;
-			}
-			if (damage > this.armor) {
-				damage -= armor;
-				armor = 0;
-			} else {
-				armor -= damage;
-				return;
-			}
-		}
-		// Most people: Implements a way to die
-		// Me, an intellectual:
-		if (damage >= this.hull) {
-			System.exit(0);
-		} else {
-			hull -= damage;
-			return;
-		}
 	}
 
 	public void updateEntityFromSerialized(Entity serializedEntity) {
 		super.updateEntityFromSerialized(serializedEntity);
 		if (serializedEntity.getEntityType() == this.type) {
 			Player p = (Player) serializedEntity;
-			this.shields = p.shields;
-			this.armor = p.armor;
-			this.hull = p.hull;
 			this.isAccelerating = p.isAccelerating;
 			this.justpressedboost = p.justpressedboost;
 			this.tetheringstationID = p.tetheringstationID;
@@ -167,42 +127,6 @@ public class Player extends Entity {
 
 	public void setBoosting(boolean b) {
 		this.isBoosting = b;
-	}
-
-	public int getShields() {
-		return shields;
-	}
-
-	public void setShields(int shields) {
-		this.shields = shields;
-	}
-
-	public int getArmor() {
-		return armor;
-	}
-
-	public void setArmor(int armor) {
-		this.armor = armor;
-	}
-
-	public int getHull() {
-		return hull;
-	}
-
-	public void setHull(int hull) {
-		this.hull = hull;
-	}
-
-	public int getMaxshields() {
-		return maxshields;
-	}
-
-	public int getMaxarmor() {
-		return maxarmor;
-	}
-
-	public int getMaxhull() {
-		return maxhull;
 	}
 
 	public void setTetheringStation(Station s) {

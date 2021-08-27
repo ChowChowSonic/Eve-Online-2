@@ -125,7 +125,16 @@ public class ClientAntenna extends Thread{
             e.printStackTrace();
         }
     }
-    
+    public void shoot(Entity e){
+        try{
+        outgoing.writeShort(6);
+            outgoing.writeLong(e.getID());
+            outgoing.flush();
+        }catch(IOException e2) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace();
+        }
+    }
     public void close(){
         try {
             this.isRunning = false;
