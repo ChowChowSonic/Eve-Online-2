@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import com.badlogic.gdx.graphics.Color;
 
@@ -31,5 +31,10 @@ public class DropdownButton extends Button{
 		// TODO Auto-generated method stub
 		
 	}
+
+    public void dispose(){
+        e =null;
+        text = null;
+    }
     
 }

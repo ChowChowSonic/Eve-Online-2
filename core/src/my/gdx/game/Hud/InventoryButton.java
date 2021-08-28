@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import java.util.ArrayList;
 
@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Item;
 
 public class InventoryButton extends Button {
@@ -87,6 +89,15 @@ public class InventoryButton extends Button {
 
     public Item getItem() {
         return this.item;
+    }
+
+    @Override
+    public void dispose(){
+        this.texture.dispose();
+        texture = null;
+        parent = null;
+        text = null; 
+        item = null; 
     }
 
 }

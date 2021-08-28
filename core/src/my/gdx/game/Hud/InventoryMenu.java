@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,6 @@ public class InventoryMenu extends Hud {
 	public InventoryMenu(Entity user) {
 		super(screenwidth/2, screenheight/2, 400, 400); 
 		this.user = user;
-		font = new BitmapFont();
 		this.type = Hud.hudtype.InventoryMenu;
 		buttons = new ArrayList<Button>();
 		
@@ -37,7 +36,7 @@ public class InventoryMenu extends Hud {
 			}
 		}
 		
-		buttons.add(new HeaderButton(x, screenheight-(y+height/2), width, this)); 
+		buttons.add(new HeaderButton(x, screenheight-(y+height/2), width, this.user.getEntityType().name()+"'s Inventory", this)); 
 	}
 	
 	@Override
@@ -82,6 +81,7 @@ public class InventoryMenu extends Hud {
 	}
 	
 	public void removeButton(Button b){
+		b.dispose();
 		buttons.remove(b); 
 	}
 
@@ -91,5 +91,10 @@ public class InventoryMenu extends Hud {
 			return this.user.equals(m.user);
 		}
 		return false;
+	}
+
+	public void dispose(){
+		super.dispose();
+		user = null;
 	}
 }

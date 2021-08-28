@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import java.util.ArrayList;
 
@@ -9,14 +9,15 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.utils.Disposable;
 
-public abstract class Hud {
+public abstract class Hud implements Disposable{
 	protected static ShapeRenderer renderer = new ShapeRenderer();
 	protected static SpriteBatch textrenderer = new SpriteBatch();
+	protected static BitmapFont font = new BitmapFont(); 
 	protected float x, y, height, width;
 	protected hudtype type;
-	protected static BitmapFont font = new BitmapFont(); 
-	
+		
 	public static final int screenheight = Gdx.graphics.getHeight(), screenwidth = Gdx.graphics.getWidth();
 	ArrayList<Button> buttons;
 	
@@ -85,6 +86,10 @@ public abstract class Hud {
 	public static ShapeRenderer getRenderer() {
 		return renderer;
 	}
+
+	public static BitmapFont getFont(){
+		return font; 
+	}
 	
 	@Override
 	public boolean equals(Object h) {
@@ -141,6 +146,12 @@ public abstract class Hud {
 		}
 	}
 
+	/**
+	 * Moves the HUD & ALL ASSOCIATED BUTTONS to the point {@code (x,y)} on the screen. DOES NOT PRESERVE THEIR ORIGINAL ORIENTATION
+	 * @see translateTo(float x, float y)
+	 * @param x
+	 * @param y
+	 */
 	public void moveTo(float x, float y){
         this.x=x;
         this.y=screenheight-y; 
@@ -150,4 +161,20 @@ public abstract class Hud {
 			b.y = screenheight-y; 
 		}
     }
+
+	public void dispose(){
+		if(buttons != null){
+		for(Button b : buttons){
+			b.dispose();
+		}
+		buttons = null;
+	}
+		this.type = null; 
+
+	}
+
+	public hudtype getType(){
+		return type;
+	}
+
 }

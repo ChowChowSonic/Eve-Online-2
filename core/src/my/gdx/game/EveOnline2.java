@@ -1,6 +1,5 @@
 package my.gdx.game;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -26,12 +25,19 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import my.gdx.game.Hud.hudtype;
+import my.gdx.game.Hud.Button;
+import my.gdx.game.Hud.DockingButton;
+import my.gdx.game.Hud.DropdownMenu;
+import my.gdx.game.Hud.HealthBar;
+import my.gdx.game.Hud.Hud;
+import my.gdx.game.Hud.Hud.hudtype;
+import my.gdx.game.Hud.InfoMenu;
+import my.gdx.game.Hud.InventoryMenu;
+import my.gdx.game.Hud.TargetHud;
 import my.gdx.game.entities.Asteroid;
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Crate;
@@ -53,11 +59,11 @@ public class EveOnline2 extends ApplicationAdapter {
 	usedmaterials = new Inventory((float) Math.pow(3, 38)),
 	vanishedmaterials = new Inventory((float) Math.pow(3, 38));
 	public static final long attributes = Usage.Position | Usage.Normal | Usage.TextureCoordinates;
+	public static ArrayList<Hud> windows = new ArrayList<Hud>();
 	
-	protected static ClientAntenna connection;
+	public static ClientAntenna connection;
 	
 	private static Camera cam;
-	static ArrayList<Hud> windows = new ArrayList<Hud>();
 	private static final long serialVersionUID = 1L;// I need this for some reason and I don't know why.
 	private final int renderDist = 260000, vanishingpoint = 9000;// 20100;
 	private static float cameradist = 3f;
@@ -441,7 +447,7 @@ public class EveOnline2 extends ApplicationAdapter {
 	}
 	
 	/**
-	* i Removes a HUD from the screen
+	* it Removes a HUD from the screen
 	* 
 	* @param hud
 	*/
@@ -452,15 +458,18 @@ public class EveOnline2 extends ApplicationAdapter {
 			ArrayList<Button> b = hud.getButtons();
 			for (int i = 0; i < b.size(); i++) {
 				Button button = b.get(i);
+				button.dispose();
 				windows.remove(button);
 			}
 		}
+		hud.dispose();
 		windows.remove(hud);
 	}
 	
 	public static void removeHUD(hudtype type){
 		for(int i = 0; i < windows.size(); i++){
-			if(windows.get(i).type == type) {
+			if(windows.get(i).getType() == type) {
+				windows.get(i).dispose();
 				removeHUD(windows.get(i));
 				return; 
 			}
@@ -490,10 +499,12 @@ public class EveOnline2 extends ApplicationAdapter {
 	public void dispose() {
 		// TODO Auto-generated method stub
 		super.dispose();
+		for(Hud h : windows) h.dispose();
 		Entity.manager.dispose();
 		batch.dispose();
 		textrenderer.dispose();
 		hudrenderer.dispose();
+		Hud.getFont().dispose();
 		connection.close();
 		System.gc();
 		System.exit(0);

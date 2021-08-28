@@ -25,6 +25,7 @@ public class KillableEntity extends Entity{
             else
             this.shields = maxshields;
         }
+        super.update(deltaTime);
     }
     
     public void dealDamage(int damage) {

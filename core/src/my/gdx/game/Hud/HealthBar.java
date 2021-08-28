@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 
 import com.badlogic.gdx.Gdx;
@@ -10,13 +10,11 @@ import my.gdx.game.entities.Player;
 
 public class HealthBar extends Hud{
 	private Player p;
-	BitmapFont health;
-	private final float AU = (float) (Math.pow(10, 11)*1.4960);
+	private final static float AU = (float) (Math.pow(10, 11)*1.4960);
 
-	HealthBar(Player player2track) {
+	public HealthBar(Player player2track) {
 		super(screenwidth/2, 0, 100, 100);
 		this.p = player2track;
-		health = new BitmapFont();
 		this.type = Hud.hudtype.HealthBar; 
 		// TODO Auto-generated constructor stub
 	}
@@ -41,14 +39,14 @@ public class HealthBar extends Hud{
 
 	public void updateText() {
 		super.updateText();
-		health.setColor(Color.BLACK);
+		font.setColor(Color.BLACK);
 		float velocity = p.getVel().len()/Entity.METER;
 		if (velocity < 1000) {
-		health.draw(textrenderer, String.format("%.2f", velocity)+" m/s", Gdx.graphics.getWidth()/2-20, 20);
+		font.draw(textrenderer, String.format("%.2f", velocity)+" m/s", Gdx.graphics.getWidth()/2-20, 20);
 		}else if(velocity < 100000){
-			health.draw(textrenderer, String.format("%.2f", velocity/1000)+" km/s", Gdx.graphics.getWidth()/2-20, 20);
+			font.draw(textrenderer, String.format("%.2f", velocity/1000)+" km/s", Gdx.graphics.getWidth()/2-20, 20);
 		}else {
-			health.draw(textrenderer, String.format("%.2f", velocity/100000)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
+			font.draw(textrenderer, String.format("%.2f", velocity/100000)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
 		}
 	}
 
@@ -61,5 +59,10 @@ public class HealthBar extends Hud{
 
 	public void interact(float x, float y){
 		
+	}
+
+	public void dispose(){
+		super.dispose();
+		p = null; 
 	}
 }

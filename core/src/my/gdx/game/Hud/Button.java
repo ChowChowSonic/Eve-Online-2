@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import com.badlogic.gdx.Gdx;
 
@@ -49,5 +49,10 @@ public abstract class Button extends Hud {
 
     public boolean isActive(){
         return isactive; 
+    }
+
+    @Override
+    public void dispose(){
+
     }
 }

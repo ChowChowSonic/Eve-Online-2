@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -47,6 +47,7 @@ public class TargetButton extends Button{
             }
         }
         img = new Texture(newmap); // load the pixmap into a new texture
+        newmap.dispose();
      }
     
     public boolean equals(Object o){
@@ -79,6 +80,12 @@ public class TargetButton extends Button{
     public void interact(float x, float y) {
         // TODO Auto-generated method stub
         
+    }
+    @Override
+    public void dispose(){
+        img.dispose();
+        img = null;
+        target = null;
     }
     
 }

@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import java.util.ArrayList;
 
@@ -13,6 +13,7 @@ public class TargetHud extends Hud{
     private TargetButton activeTarget; 
     private float slotx, sloty;
     private int errorFrames = 0;
+
     public TargetHud(int lim) {
         super(screenwidth-(110*lim/2), 0, 110*lim, 150);
         if(this.width > screenwidth*0.4) {
@@ -116,6 +117,9 @@ public class TargetHud extends Hud{
         
     }
     
-    
+    public void dispose(){
+        super.dispose();
+        activeTarget = null; 
+    }
     
 }

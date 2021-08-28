@@ -117,6 +117,7 @@ class Account extends Thread {
                         if(victim instanceof KillableEntity){
                         KillableEntity victim2 = (KillableEntity) victim;
                         victim2.dealDamage(20);
+                        Server.appendToLogs(userEntity.toString() + " Has shot at " + victim.toString() +"!");
                         //At some point in the future i'll have the server spawn in A.R.F.S. (Aggression Regulation Force(s)) to defend the victim
                         }
                     break;

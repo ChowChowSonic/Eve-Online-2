@@ -1,9 +1,11 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import my.gdx.game.EveOnline2;
 
 public class InfoMenu extends Hud{
     private String[] text;
@@ -104,5 +106,16 @@ public class InfoMenu extends Hud{
         else if(Rbutton.isInBounds(x, y))Rbutton.interact(x, y); 
         
     } 
+
+    public void dispose(){
+        super.dispose();
+        for(Texture t : images){
+            t.dispose();
+        }
+        Lbutton.dispose();
+        Rbutton.dispose();
+        images = null;
+        text = null;
+    }
     
 }

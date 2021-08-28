@@ -1,24 +1,36 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.Color;
 
+import my.gdx.game.EveOnline2;
+
 public class HeaderButton extends Button{
     
     Hud parent; 
-    public HeaderButton(float x, float y, float width, Hud parent){
-        super(x,y+25, width, 50); 
+    String text;
+    public HeaderButton(float x, float y, float width, String text, Hud parent){
+        super(x,y+10, width, 20); 
         this.parent = parent; 
+        this.text = text; 
     }
     
     public void updateShape(){
         renderer.setColor(Color.WHITE);
         renderer.rect(x - width / 2, (screenheight - y) - (height / 2), width, height);
         if(isactive){
-        parent.translateTo(Gdx.input.getX(), Gdx.input.getY()+parent.height/2-25);
+        parent.translateTo(Gdx.input.getX(), Gdx.input.getY()+parent.height/2-this.height/2);
         //if(Gdx.input.isButtonJustPressed(Buttons.LEFT)) isactive = false;
         }
+    }
+
+    public void updateText(){
+        font.getData().setScale(1.4f);
+        font.setColor(Color.BLACK);
+        font.draw(textrenderer, "X", x+width/2-15, screenheight-y+7); 
+        font.draw(textrenderer, text, x-width/4, screenheight - y +7); 
+        font.getData().setScale(1f);
     }
     
     @Override
@@ -32,6 +44,11 @@ public class HeaderButton extends Button{
             }
         }
         
+    }
+
+    public void dispose(){
+        parent = null; 
+        text = null;
     }
     
 }

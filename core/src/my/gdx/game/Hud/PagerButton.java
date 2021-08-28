@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
@@ -64,6 +64,8 @@ public class PagerButton extends Button{
         return false; 
     }
     
-    
+    public void dispose(){
+        text = null; 
+    }
     
 }

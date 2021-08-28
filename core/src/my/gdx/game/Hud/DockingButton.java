@@ -1,4 +1,4 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -10,13 +10,9 @@ import my.gdx.game.entities.Player;
 import my.gdx.game.inventory.Item;
 
 public class DockingButton extends Hud {
-	SpriteBatch spriteBatch;
-	BitmapFont font;
 	
 	public DockingButton(){
 		super(screenwidth/2, screenheight/2-350, 200, 50);
-		spriteBatch = new SpriteBatch();
-		font = new BitmapFont();
 		this.type = Hud.hudtype.DockingButton; 
 	}
 	
@@ -31,11 +27,9 @@ public class DockingButton extends Hud {
 	public void updateText() {
 		//if(isvisible) {
 			super.updateText();
-			spriteBatch.begin();
 			font.setColor(Color.WHITE);
 			font.getData().setScale((float) 3.8);
-			font.draw(spriteBatch, "Dock?", (screenwidth-width)/2+25, (screenheight-height)/2-352.5f+height);
-			spriteBatch.end();
+			font.draw(textrenderer, "Dock?", (screenwidth-width)/2+25, (screenheight-height)/2-352.5f+height);
 			//}
 		}
 		

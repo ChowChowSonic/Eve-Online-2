@@ -1,9 +1,10 @@
-package my.gdx.game;
+package my.gdx.game.Hud;
 
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
 
+import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity;
 
 public class DropdownMenu extends Hud{
@@ -17,8 +18,6 @@ public class DropdownMenu extends Hud{
         this.buttons = new ArrayList<Button>(); 
         //if(y < screenheight/2) y+=height; 
         float nextopenspace = this.y-height/2+15; 
-        System.out.println(ent.getPos().dst(EveOnline2.player.getPos()));
-        System.out.println(100000*Entity.METER);
         if(ent.inventory != null && ent.getPos().dst(EveOnline2.player.getPos()) <= 100000*(EveOnline2.player.getSize()+ent.getSize())*Entity.METER){
             this.buttons.add(new DropdownButton(this.x, nextopenspace, "Open Inventory", target){//define custom method for this button
                 @Override
@@ -27,8 +26,16 @@ public class DropdownMenu extends Hud{
                     EveOnline2.removeHUD(hudtype.dropdown);
                 }
             }); 
-            nextopenspace+=15; 
+            nextopenspace+=25; 
         }
+
+        this.buttons.add(new DropdownButton(this.x, nextopenspace, "Shoot", target){//define custom method for this button
+            @Override
+            public void interact(float x, float y){
+                EveOnline2.connection.shoot(target);
+            }
+        }); 
+        nextopenspace+=25; 
     }
     @Override
     public void updateShape(){
@@ -64,5 +71,9 @@ public class DropdownMenu extends Hud{
         }
         
     }
-    
+    @Override
+    public void dispose(){
+        super.dispose();
+        target = null;
+    }
 }
