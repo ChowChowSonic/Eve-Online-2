@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public enum InventoryItems {
 	Jimbabwe_Shipping_Crates("Jimbabwe Shipping Crates", 10, 1), Iron("Chunk of Iron", 7.874f, 1),
+	Apollyon("Apollyon Class Battleship", 600000, 5000),
 	Cobalt("Chunk of Cobalt", 8.900f, 1), Nickel("Chunk of Cobalt", 8.908f, 1), Silver("Chunk of Silver", 10.490f, 1),
 	Gold("Chunk of Gold", 19.300f, 1), Platinum("Chunk of Platinum", 21.090f, 1),
 	Palladium("Chunk of Palladium", 12.023f, 1), Copper("Chunk of Copper", 8.920f, 1),

@@ -1,28 +1,25 @@
 package my.gdx.game.entities;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Json.Serializable;
 
 import my.gdx.game.inventory.Inventory;
 //import my.gdx.server.Server;
 import my.gdx.game.inventory.InventoryItems;
+import my.gdx.game.inventory.Shipclass;
 
 public class Player extends KillableEntity {
 	float invmass, basemass = 10;
 	private static final long serialVersionUID = 1L;
 	private boolean justpressedboost = false, isBoosting = false;
 	private boolean isAccelerating = false;
-
+	private Shipclass ship; 
 	protected long tetheringstationID = 0;
 
-	public Player(String modelname, long ID) {
-		super(modelname, EntityType.PLAYER, 1, ID);
-		this.mass = basemass;
-		inventory = new Inventory(100);
+	public Player(Shipclass type, long ID) {
+		super(type.getModelName(), EntityType.PLAYER, type.getSize(), ID);
+		this.ship = type; 
+		this.basemass = InventoryItems.valueOf(type.name()).getWeight();
+		inventory = new Inventory(type.getInventorySize());
 		inventory.additem(InventoryItems.Platinum, 100);
 		invmass = inventory.getWeight();
 		this.mass = basemass + invmass;
@@ -139,6 +136,10 @@ public class Player extends KillableEntity {
 
 	public long getTetheringStationID() {
 		return this.tetheringstationID;
+	}
+
+	public Shipclass getShipclass(){
+		return ship;
 	}
 
 	/**

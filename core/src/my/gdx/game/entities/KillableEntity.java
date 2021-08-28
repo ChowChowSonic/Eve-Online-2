@@ -2,18 +2,42 @@ package my.gdx.game.entities;
 
 import com.badlogic.gdx.math.Vector3;
 
+import my.gdx.game.inventory.Shipclass;
+
 public class KillableEntity extends Entity{
-    protected int shields = 1000, armor = 250, hull = 500;
-    protected final int maxshields = 1000, maxarmor = 250, maxhull = 500;
+    protected int shields, armor, hull;
+    protected final int maxshields, maxarmor, maxhull;
     protected float totalDeltaTime = 0;
     
     public KillableEntity(Vector3 position, String modelname, EntityType type, float size, long id) {
         super(position, modelname, type, size, id);
+        maxshields = 1000;
+        shields = maxshields; 
+        maxarmor = 750;
+        armor = maxarmor; 
+        maxhull = 500; 
+        hull = maxhull; 
         //TODO Auto-generated constructor stub
     }
     
     public KillableEntity(String modelname, EntityType type, float size, long ID) {
         super(modelname, type, size, ID); 
+        maxshields = 1000;
+        shields = maxshields; 
+        maxarmor = 750;
+        armor = maxarmor; 
+        maxhull = 500; 
+        hull = maxhull; 
+    }
+
+    public KillableEntity(Shipclass shiptype, EntityType type, long ID) {
+        super(shiptype.getModelName(), type, shiptype.getSize(), ID); 
+        maxshields = shiptype.getMaxShields();
+        maxarmor = shiptype.getMaxArmor();
+        maxhull = shiptype.getMaxhull();
+        shields = shiptype.getMaxShields();
+        armor = shiptype.getMaxArmor();
+        hull = shiptype.getMaxhull();
     }
     
     public void update(float deltaTime){

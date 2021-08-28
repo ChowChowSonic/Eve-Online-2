@@ -36,6 +36,7 @@ import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
+import my.gdx.game.inventory.Shipclass;
 
 public class Server extends ApplicationAdapter {
     public static ArrayList<Entity> entities;
@@ -294,7 +295,7 @@ public class Server extends ApplicationAdapter {
                     return e;
             }
         }
-        Player p = new Player("ship.obj", assignID());
+        Player p = new Player(Shipclass.Apollyon, assignID());
         p.setPos(r.nextFloat(), r.nextFloat(), r.nextFloat());
         spawnEntity(p, 1500);
         return p;

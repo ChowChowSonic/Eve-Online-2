@@ -153,7 +153,8 @@ public class EveOnline2 extends ApplicationAdapter {
 		windows.add(targetmanager);
 		windows.add(new HealthBar(player));
 		String[] strings = {"Welcome to Eve Online 2! \n Press W or S to move backwards and forwards in the direction your camera is facing. \n SHIFT+W Boosts you at extreme speeds \n Press I to open your inventory. \n Right click and drag to rotate the camera "+
-		"\n Left click on objects or people to display options regarding them \n CTRL+Left-Click on objects or people to target them.", "In this game, you can choose what you want to do; mining, exploring, trading, fighting, hunting enemies of Humanity: you name it!\n Please enjoy your stay, and remember that the game is still in the alpha stages of development.","Today while playing Fortnite I ran into Allah at pleasant parks while he was trying to run solo squads. Knowing he was weakened, I told my squad to stay high ground while I engaged him on my own. He had worse loot and no heals but he's an amazing player. He is so fucking powerful. I'm not cracked enough at the game to do this alone. I barely escaped with my life and ran out of heals. His edits are immensely cracked and he cranks 90s at an ungodly speeds. I can't imagine what he would do to a new, unsuspecting default skin. I'm scared that I will have to face him again soon if I ever want to continue climbing the Fortnite ladder. I'm currently using medkits and mini shields that my squad gave me to try and heal as quickly as possible. Please be safe everyone. Allah is much stronger than I first imagined and we will have to do this together (maybe even cross team) if we want to shit on this god."};
+		"\n Left click on objects or people to display options regarding them \n CTRL+Left-Click on objects or people to target them.", "In this game, you can choose what you want to do; mining, exploring, trading, fighting, hunting enemies of Humanity: you name it!\n Please enjoy your stay, and remember that the game is still in the alpha stages of development.",
+	"Today when I walked into my economics class I saw something I dread every time I close my eyes. Someone had brought their new gaming laptop to class. The Forklift he used to bring it was still running idle at the back. I started sweating as I sat down and gazed over at the 700lb beast that was his laptop. He had already reinforced his desk with steel support beams and was in the process of finding an outlet for a power cable thicker than Amy Schumer's thigh. I start shaking. I keep telling myself I'm going to be alright and that there's nothing to worry about. He somehow finds a fucking outlet. Tears are running down my cheeks as I send my last texts to my family saying I love them. The teacher starts the lecture, and the student turns his laptop on. The colored lights on his RGB Backlit keyboard flare to life like a nuclear flash, and a deep humming fills my ears and shakes my very soul. The entire city power grid goes dark. The classroom begins to shake as the massive fans begin to spin. In mere seconds my world has gone from vibrant life, to a dark, earth shattering void where my body is getting torn apart by the 150mph gale force winds and the 500 decibel groan of the cooling fans. As my body finally surrenders, I weep, as my school and my city go under. I fucking hate gaming laptops."};
 		String[] imgnames = {"Space.jpg", "Screenshot (1).png","E.png"}; 
 		windows.add(new InfoMenu(imgnames, strings)); 
 	}// ends create()
@@ -377,7 +378,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		return new removedEntity(0L);
 		switch(e.getEntityType()){
 			case PLAYER:
-			Player p = new Player(e.getModelName(), e.getID());
+			Player p = (Player) e;
 			return p;
 			case ASTEROID:
 			Asteroid d = new Asteroid(e.getModelName(), e.inventory, (int) e.getSize(), e.getID());
@@ -394,7 +395,7 @@ public class EveOnline2 extends ApplicationAdapter {
 			e.getID());
 			return o2;
 			default:
-			Player defaul = new Player(e.getModelName(), e.getID());
+			Player defaul = (Player) e;
 			System.out.println("Entity not recognised!");
 			return defaul;
 		}
