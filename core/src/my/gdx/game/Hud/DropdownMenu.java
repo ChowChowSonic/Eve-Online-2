@@ -65,10 +65,15 @@ public class DropdownMenu extends Hud{
     @Override
     public void interact(float x, float y) {
         // TODO Auto-generated method stub
+        if(buttons != null){
         for(int i = 0; i < buttons.size(); i++){
             Button b = buttons.get(i); 
-            if(b.isInBounds(x, y))b.interact(x, y);
+            if(b.isInBounds(x, y)){
+                b.interact(x, y);
+                break;
+            }
         }
+    }
         
     }
     @Override

@@ -19,10 +19,18 @@ public class InventoryButton extends Button {
     private Texture texture; 
     
     
-    public InventoryButton(float xpos, float ypos, Item baseItem, InventoryMenu parent) {
+    public InventoryButton(float xpos, float ypos, Item baseItem, String texturename, InventoryMenu parent) {
         super(xpos, ypos, 90, 160);
         this.parent = parent; 
         this.item = baseItem;
+        this.texture = new Texture(texturename);
+        text = correctAlignment(baseItem.toString(), 15);
+    }
+    public InventoryButton(float xpos, float ypos, Item baseItem, Texture texturename, InventoryMenu parent) {
+        super(xpos, ypos, 90, 160);
+        this.parent = parent; 
+        this.item = baseItem;
+        this.texture = new Texture(texturename.getTextureData());
         text = correctAlignment(baseItem.toString(), 15);
     }
     
@@ -40,11 +48,11 @@ public class InventoryButton extends Button {
                         if(!parent.equals(menu)){
                         EveOnline2.connection.transferInventoryItem(this.parent.user, menu.user, this.item);
                         if(menu.user.inventory.hasRoomFor(this.item)){
-                        menu.buttons.add(new InventoryButton(x, y, this.item, menu));
+                        menu.buttons.add(new InventoryButton(x, y, this.item, this.texture, menu));
                         }else{
                             int stack = (int) ((menu.user.inventory.getCapacity() - menu.user.inventory.getOccupiedspace()) / this.item.getTemplate().getVolume()); 
-                        menu.buttons.add(new InventoryButton(x, y, new Item(this.item.getTemplate(), stack), menu));
-                        this.parent.buttons.add(new InventoryButton(parent.x, parent.y, new Item(this.item.getTemplate(), this.item.getStacksize()-stack), parent));
+                        menu.buttons.add(new InventoryButton(x, y, new Item(this.item.getTemplate(), stack), texture ,menu));
+                        this.parent.buttons.add(new InventoryButton(parent.x, parent.y, new Item(this.item.getTemplate(), this.item.getStacksize()-stack), texture,parent));
                         }
                         parent.removeButton(this);
                         return;
@@ -64,7 +72,7 @@ public class InventoryButton extends Button {
     @Override
     public void updateText() {
         super.updateText();
-        textrenderer.draw(new Texture("E.png"), x-width/2+8, screenheight-(this.y)+4, width-16, width-16);
+        textrenderer.draw(texture, x-width/2+8, screenheight-(this.y)+4, width-16, width-16);
         font.getData().setScale((float) 0.95);
         font.setColor(Color.BLACK);
         font.draw(textrenderer, text, x - width / 2, screenheight - y);
@@ -94,7 +102,6 @@ public class InventoryButton extends Button {
     @Override
     public void dispose(){
         this.texture.dispose();
-        texture = null;
         parent = null;
         text = null; 
         item = null; 

@@ -75,7 +75,7 @@ public class Item implements Serializable {
 		return blueprint.getVolume() * this.stacksize;
 	}
 
-	public ArrayList<InventoryItems> getComponents() {
+	public Item[] getComponents() {
 		return blueprint.getComponents();
 	}
 

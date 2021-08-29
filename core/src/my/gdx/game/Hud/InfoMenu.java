@@ -36,7 +36,7 @@ public class InfoMenu extends Hud{
         Lbutton = new PagerButton(x-width/4, screenheight-(y-height/2+30), "< < <", width/2-10); 
         Rbutton = new PagerButton(x+width/4, screenheight-(y-height/2+30), "> > >", width/2-10); 
         for(int i = 0; i < panels; i++){
-            text[i] = correctAlignment(text[i], 110); 
+            text[i] = correctAlignment(text[i], 107); 
         }
     }
 

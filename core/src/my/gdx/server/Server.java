@@ -273,12 +273,13 @@ public class Server extends ApplicationAdapter {
         float sz = e.getSize() * 2;
         chestpos.sub(rotation.x * sz, rotation.y * sz, rotation.z * sz);
         ArrayList<Item> wrapper = new ArrayList<Item>();
-        if (e.inventory.containsItemType(i)) {
+        if (e.inventory.containsWithQuantity(i)) {
             wrapper.add(i);
             e.inventory.removeItem(i);
             spawnEntity(new Crate("Crate.obj", wrapper, assignID()), chestpos);
         } else {
-            appendToLogs("Illegal item drop attempted!");
+            appendToLogs("Illegal item drop attempted! "+i.toString()+" not contained within the inventory!");
+            appendToLogs(e.inventory.toString());
         }
     }
 

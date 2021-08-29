@@ -103,7 +103,10 @@ public abstract class Entity implements Serializable {
 		if (this.instance == null) {
 			this.model = manager.get(this.modelname, Model.class);
 			this.instance = new ModelInstance(this.model, pos);
-			this.instance.transform.scl(this.size, this.size, this.size);
+			for (int i = 0; i < instance.nodes.size; i++) {
+				instance.nodes.get(i).scale.set(new Vector3(size, size, size));
+			}
+			instance.calculateTransforms();
 		}
 		if (this.instance != null) {
 			Quaternion quaternion = new Quaternion();

@@ -102,7 +102,7 @@ class Account extends Thread {
                         Entity from = Server.getEntityCopy(din.readLong());
                         Entity to = Server.getEntityCopy(din.readLong());
                         Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt());
-                        if(from.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER && to.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER){
+                        if(from.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER && to.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+to.getSize())*Entity.METER){
                         Server.appendToLogs(
                                 "Attempting to transfer item from " + from.toString() + " to " + to.toString());
                         if (from.inventory.transferInventoryItemTo(to.inventory, item)) {
@@ -110,7 +110,7 @@ class Account extends Thread {
                         } else {
                             Server.appendToLogs("Transfer failed!");
                         }
-                    }
+                    }else {Server.appendToLogs("Transfer failed! "+from.toString()+" is too far away from"+to.toString());}
                         break;
                     case 6:
                         Entity victim = Server.getEntityCopy(din.readLong()); 

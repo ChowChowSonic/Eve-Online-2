@@ -455,16 +455,9 @@ public class EveOnline2 extends ApplicationAdapter {
 	public static void removeHUD(Hud hud) {
 		// if(windows.contains(hud))
 		if(hud == null) return; 
-		if (hud.getButtons() != null){
-			ArrayList<Button> b = hud.getButtons();
-			for (int i = 0; i < b.size(); i++) {
-				Button button = b.get(i);
-				button.dispose();
-				windows.remove(button);
-			}
-		}
-		hud.dispose();
 		windows.remove(hud);
+		hud.dispose();
+		
 	}
 	
 	public static void removeHUD(hudtype type){

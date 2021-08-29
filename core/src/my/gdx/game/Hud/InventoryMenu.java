@@ -26,7 +26,7 @@ public class InventoryMenu extends Hud {
 		// y++ = up; x-- = left
 		int counter = 0;
 		for (Item i : user.inventory.getItems()) {
-			buttons.add(new InventoryButton(slotx, screenheight - sloty, i, this));
+			buttons.add(new InventoryButton(slotx, screenheight - sloty, i, "E.png",this));
 			slotx += 100;
 			counter += 1;
 			if (counter == 4) {
@@ -81,8 +81,8 @@ public class InventoryMenu extends Hud {
 	}
 	
 	public void removeButton(Button b){
-		b.dispose();
 		buttons.remove(b); 
+		b.dispose();
 	}
 
 	public boolean equals(Object o){
