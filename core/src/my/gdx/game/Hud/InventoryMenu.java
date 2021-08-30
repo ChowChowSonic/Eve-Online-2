@@ -16,9 +16,8 @@ public class InventoryMenu extends Hud {
 	protected Entity user;
 	
 	public InventoryMenu(Entity user) {
-		super(screenwidth/2, screenheight/2, 400, 400); 
+		super(screenwidth/2, screenheight/2, 400, 400, hudtype.InventoryMenu); 
 		this.user = user;
-		this.type = Hud.hudtype.InventoryMenu;
 		buttons = new ArrayList<Button>();
 		
 		float slotx = (screenwidth) / 2 - width / 3;

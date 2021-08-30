@@ -16,7 +16,8 @@ public class DropdownButton extends Button{
 
     @Override
     public void updateShape(){
-        renderer.setColor(Color.WHITE);
+        if(isactive) renderer.setColor(Color.GREEN);
+        else renderer.setColor(Color.WHITE);
         renderer.rect(x - width / 2, (screenheight - y) - (height / 2), width, height);
     }
 
@@ -34,7 +35,22 @@ public class DropdownButton extends Button{
 
     public void dispose(){
         e =null;
-        text = null;
+    }
+
+    public void setText(String s){
+        text = s; 
+    }
+
+    public String getText(){
+        return text; 
+    }
+
+    public boolean equals(Object o){
+        if(o instanceof DropdownButton){
+            DropdownButton d = (DropdownButton) o; 
+        return e.equals(d.e) && text.equals(d.text); 
+        }
+        return false;
     }
     
 }

@@ -76,7 +76,6 @@ public abstract class Entity implements Serializable {
 	}
 
 	public void update(float deltaTime) {
-		// System.out.println("Entity.update called" + this.toString());
 		this.vel = this.vel.add(accel);
 		this.pos = this.pos.add(vel);
 		if (!this.vel.isZero()) {

@@ -24,19 +24,19 @@ public class InfoMenu extends Hud{
      * @param TEXT - The text that goes with it
      */
     public InfoMenu(String[] imageNAME, String[] TEXT){
-        super(screenwidth/2, screenheight/2, 700, 900);
-        this.type = hudtype.Infomenu; 
+        super(screenwidth/2, screenheight/2+60, 0.35f*screenwidth, 0.85f*screenheight, hudtype.Infomenu);
         text = new String[imageNAME.length]; 
         images = new Texture[imageNAME.length];
         for(int i = 0; i < imageNAME.length; i++){
-            images[i] = new Texture(imageNAME[i]); 
+            images[i] = new Texture(EveOnline2.assetFolder.child(imageNAME[i])); 
         }
         text = TEXT; 
         panels = imageNAME.length; 
         Lbutton = new PagerButton(x-width/4, screenheight-(y-height/2+30), "< < <", width/2-10); 
         Rbutton = new PagerButton(x+width/4, screenheight-(y-height/2+30), "> > >", width/2-10); 
         for(int i = 0; i < panels; i++){
-            text[i] = correctAlignment(text[i], 107); 
+            text[i] = correctAlignment(text[i], (int) (width/(font.getSpaceXadvance()+2))-10); 
+            System.out.println((int)0.35f*screenwidth);
         }
     }
 

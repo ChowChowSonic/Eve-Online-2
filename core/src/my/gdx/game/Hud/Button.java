@@ -6,7 +6,7 @@ public abstract class Button extends Hud {
     protected boolean isactive;
 
     public Button(float xpos, float ypos, float width, float height) {
-        super(xpos, ypos, width, height); 
+        super(xpos, ypos, width, height, null); 
         isactive = false;
     }
 

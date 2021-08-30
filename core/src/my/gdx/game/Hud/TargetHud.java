@@ -15,7 +15,7 @@ public class TargetHud extends Hud{
     private int errorFrames = 0;
 
     public TargetHud(int lim) {
-        super(screenwidth-(110*lim/2), 0, 110*lim, 150);
+        super(screenwidth-(110*lim/2), 0, 110*lim, 150,hudtype.target);
         if(this.width > screenwidth*0.4) {
             this.width = screenwidth*0.4f;
             this.x = screenwidth-(width/2); 
@@ -23,7 +23,6 @@ public class TargetHud extends Hud{
         this.limit = lim; 
         slotx = screenwidth-85; 
         sloty = this.y+85; 
-        this.type = hudtype.target;
         buttons = new ArrayList<Button>(); 
         //TODO Auto-generated constructor stub
     }
@@ -109,6 +108,7 @@ public class TargetHud extends Hud{
     }
     
     public Entity getActiveTarget(){
+        if(activeTarget == null) return null; 
         return activeTarget.getEntity();
     }
     

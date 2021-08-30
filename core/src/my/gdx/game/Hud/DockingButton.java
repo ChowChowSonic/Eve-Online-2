@@ -12,8 +12,7 @@ import my.gdx.game.inventory.Item;
 public class DockingButton extends Hud {
 	
 	public DockingButton(){
-		super(screenwidth/2, screenheight/2-350, 200, 50);
-		this.type = Hud.hudtype.DockingButton; 
+		super(screenwidth/2, screenheight/2-350, 200, 50, hudtype.DockingButton);
 	}
 	
 	@Override

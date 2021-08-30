@@ -19,17 +19,20 @@ public abstract class Hud implements Disposable{
 	protected hudtype type;
 		
 	public static final int screenheight = Gdx.graphics.getHeight(), screenwidth = Gdx.graphics.getWidth();
-	ArrayList<Button> buttons;
+	public ArrayList<Button> buttons;
 	
-	public Hud(float x, float y, float width, float height){
+	public static enum hudtype {
+		HealthBar, InventoryMenu, DockingButton, Infomenu, dropdown, target, equipment
+	}
+	
+	public Hud(float x, float y, float width, float height, hudtype type){
 		this.x = x;
 		this.y = y; 
 		this.width = width; this.height = height; 
+		this.type = type; 
 	}
 	
-	public static enum hudtype {
-		HealthBar, InventoryMenu, DockingButton, Infomenu, dropdown, target
-	}
+	
 	/**
 	* Updates the shape of the image (I.E. the Opaque white/gray/colorful rectangles, a circle acting as a border)
 	* DOES NOT UPDATE THE IMAGES SHOWN ON SCREEN. updateText() does that.  <p>
@@ -105,7 +108,7 @@ public abstract class Hud implements Disposable{
 
 	protected static String correctAlignment(String oldstring, int MaxLineLength){
         String formattedString = ""; 
-        String[] words = oldstring.split(" "); 
+        String[] words = oldstring.split(" ");
         
         for(String s : words){
             int lastindex = formattedString.lastIndexOf("\n"); 

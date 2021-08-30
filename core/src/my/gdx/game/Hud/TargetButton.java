@@ -69,9 +69,6 @@ public class TargetButton extends Button{
         return this.target; 
     }
     
-    public void updateShape(){
-    }
-    
     public void updateText(){
         textrenderer.draw(img, this.x-(this.width/2), screenheight-(y+height/2), this.width, this.height);
     }
