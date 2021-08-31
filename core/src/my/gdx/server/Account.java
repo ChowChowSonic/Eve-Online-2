@@ -102,7 +102,7 @@ class Account extends Thread {
                         Entity from = Server.getEntityCopy(din.readLong());
                         Entity to = Server.getEntityCopy(din.readLong());
                         Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt());
-                        if(from.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER && to.getPos().dst(userEntity.getPos()) <= 2500*(userEntity.getSize()+to.getSize())*Entity.METER){
+                        if(from.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER && to.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+to.getSize())*Entity.METER){
                         Server.appendToLogs(
                                 "Attempting to transfer item from " + from.toString() + " to " + to.toString());
                         if (from.inventory.transferInventoryItemTo(to.inventory, item)) {
@@ -118,8 +118,8 @@ class Account extends Thread {
                         KillableEntity victim2 = (KillableEntity) victim;
                         victim2.dealDamage(20);
                         Server.appendToLogs(userEntity.toString() + " Has shot at " + victim.toString() +"!");
-                        Server.SpawnARFSDefenseForce(userEntity);
-                    }
+                        //At some point in the future i'll have the server spawn in A.R.F.S. (Aggression Regulation Force(s)) to defend the victim
+                        }
                     break;
                 }
 
