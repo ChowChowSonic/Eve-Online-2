@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;
 
-import org.w3c.dom.Text;
-
 import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity;
 

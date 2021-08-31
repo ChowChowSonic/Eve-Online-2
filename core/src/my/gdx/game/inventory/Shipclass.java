@@ -1,7 +1,8 @@
 package my.gdx.game.inventory;
 
 public enum Shipclass {
-    Apollyon(8, 5, 8, 500, 600, 500, 1, 100,"ship.obj");
+    Apollyon(8, 5, 8, 500, 600, 500, 1, 100,"Ship.obj"), 
+    ARFSBattleship(10, 10, 10, 9999, 9999,9999, 10, 0, "Stratios.obj");
 
     private int guns, defenses, suppliments, shields, armor, hull, size, invsize; 
     private String modelname; 

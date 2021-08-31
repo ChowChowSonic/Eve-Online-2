@@ -44,7 +44,7 @@ public class InfoMenu extends Hud{
      * Creates a menu screen that presents the player with a slideshow of helpful images and detailing "readers notes". 
      * */
     public InfoMenu(String Imagename, String TEXT){
-        super(screenwidth/2, screenheight/2, 700, 900); 
+        super(screenwidth/2, screenheight/2, 700, 900, hudtype.Infomenu); 
         this.type = hudtype.Infomenu; 
         this.text = new String[1]; 
         text[0] = TEXT; 

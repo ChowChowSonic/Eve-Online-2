@@ -13,9 +13,8 @@ public class HealthBar extends Hud{
 	private final static float AU = (float) (Math.pow(10, 11)*1.4960);
 
 	public HealthBar(Player player2track) {
-		super(screenwidth/2, 0, 100, 100);
+		super(screenwidth/2, 0, 100, 100, hudtype.HealthBar);
 		this.p = player2track;
-		this.type = Hud.hudtype.HealthBar; 
 		// TODO Auto-generated constructor stub
 	}
 

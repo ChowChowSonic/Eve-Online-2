@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 
+import my.gdx.game.inventory.Shipclass;
+
 public class NPC extends KillableEntity{
 	
 	public NPC(String modelname, EntityType type, long ID) {
@@ -12,6 +14,10 @@ public class NPC extends KillableEntity{
 		this.setMass(2f);
 		// TODO Auto-generated constructor stub
 	}
+	public NPC(Shipclass Shiptype, EntityType type, long ID){
+		super(Shiptype.getModelName(), type, Shiptype.getSize(), ID); 
+	}
+	
 	public NPC(Vector3 position, String modelname, EntityType type, long ID) {
 		super(position, modelname, type, 1, ID);
 		this.setMass(2f);

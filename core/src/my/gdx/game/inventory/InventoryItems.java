@@ -14,6 +14,7 @@ public enum InventoryItems {
 		new Item(InventoryItems.Palladium, 50000), new Item(InventoryItems.Copper, 50000), 
 		new Item(InventoryItems.Tantalum, 50000), new Item(InventoryItems.Aluminum, 50000),
 		new Item(InventoryItems.Tin, 50000), new Item(InventoryItems.Neodymium, 50000),} ),
+		ARFSBattleship("A.R.F.S. Enforcement Battleship", 5000, 6000),
 	Odor_Blocker_Bodywash("Odor Blocker Bodywash", 1, 5);
 
 	private String name;

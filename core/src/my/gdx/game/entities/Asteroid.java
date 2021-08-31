@@ -14,7 +14,7 @@ import my.gdx.game.inventory.Inventory;
 import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 
-public class Asteroid extends Entity{
+public class Asteroid extends KillableEntity{
 	static transient Random RNG = new Random(); 
 	protected static final transient InventoryItems[] defaultpossiblecontents =
 	{InventoryItems.Iron, InventoryItems.Cobalt, InventoryItems.Nickel, InventoryItems.Silver, InventoryItems.Gold, InventoryItems.Platinum,

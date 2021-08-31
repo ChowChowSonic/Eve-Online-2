@@ -27,8 +27,10 @@ import com.badlogic.gdx.utils.Json;
 
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Crate;
+import my.gdx.game.entities.ARFSDefender;
 import my.gdx.game.entities.Asteroid;
 import my.gdx.game.entities.Entity;
+import my.gdx.game.entities.KillableEntity;
 import my.gdx.game.entities.Player;
 import my.gdx.game.entities.Station;
 import my.gdx.game.entities.removedEntity;
@@ -53,6 +55,7 @@ public class Server extends ApplicationAdapter {
     private static long nextID = 0L;
     private static float cumDeltaTime = 0f;
     private static int logposition = 0;
+    private static Entity[] activeDefenders = new Entity[10]; 
 
     public void create() {
         r = new Random();
@@ -302,4 +305,27 @@ public class Server extends ApplicationAdapter {
         return p;
     }
 
+    public static void SpawnARFSDefenseForce(KillableEntity criminal){
+        //Get a station to spawn them at
+        Station spawnpoint = null; 
+        for(int i = 0; i < entities.size(); i++){
+            if(entities.get(i).getEntityType() == EntityType.STATION) {
+                spawnpoint = (Station) entities.get(i); 
+                break; 
+            }
+        }
+        if(spawnpoint == null) return; 
+
+        for(int i = 0; i < activeDefenders.length; i++){
+            Entity e = activeDefenders[i]; 
+            if(e == null){
+                ARFSDefender police = new ARFSDefender(Shipclass.ARFSBattleship, criminal, assignID()); 
+                activeDefenders[i] = police; 
+                Vector3 position = spawnpoint.getPos(); 
+                double angle = r.nextFloat() * Math.PI *2f; 
+                position = new Vector3(position.x - (spawnpoint.getouterRadius() * (float) Math.cos(angle)), position.y, position.z -(spawnpoint.getouterRadius() * (float) Math.sin(angle)));
+                spawnEntity(e, position);
+            }
+        }
+    }
 }
