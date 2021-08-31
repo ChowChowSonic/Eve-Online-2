@@ -19,15 +19,15 @@ public class ARFSDefender extends NPC {
     @Override
     public void update(float deltaTime) {
         timer += deltaTime;
-        Vector3 accelnorm = this.pos.cpy().sub(target.pos).nor();
-        if (timer >= 5.0f && this.pos.dst(target.pos) <= range) {
+        Vector3 accelnorm = this.pos.cpy().sub(target.pos.cpy()).nor();
+        if (timer >= 5.0f && this.pos.dst(target.pos.cpy()) <= range) {
             this.vel.x /= 2;
             this.vel.y /= 2;
             this.vel.z /= 2;
             this.accel.setZero();
             target.dealDamage(20);
             timer = 0;
-        } else if (this.pos.dst(target.pos) >= range * 10 && this.vel.len() > 10) {
+        } else if (this.pos.dst(target.pos.cpy()) >= range * 10 && this.vel.len() > 10) {
             this.addVel(
                     (float) (accelnorm.x * (deltaTime / Math.sqrt(this.mass + 1))
                             * ((1000 - (METER * this.mass)) - this.vel.len2())),

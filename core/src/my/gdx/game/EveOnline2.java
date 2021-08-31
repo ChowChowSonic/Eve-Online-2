@@ -41,6 +41,7 @@ import my.gdx.game.Hud.TargetHud;
 import my.gdx.game.entities.Asteroid;
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Crate;
+import my.gdx.game.entities.ARFSDefender;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Entity.EntityType;
 import my.gdx.game.entities.Player;
@@ -398,6 +399,10 @@ public class EveOnline2 extends ApplicationAdapter {
 			e.getID());
 			o2.updateEntityFromSerialized(e);
 			return o2;
+			case ENFORCER: 
+			ARFSDefender police = (ARFSDefender) e; 
+			police.updateEntityFromSerialized(e);
+			return police; 
 			default:
 			Player defaul = (Player) e;
 			defaul.updateEntityFromSerialized(e);
