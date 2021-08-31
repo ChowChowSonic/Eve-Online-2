@@ -7,14 +7,14 @@ public enum InventoryItems {
 	Palladium("Chunk of Palladium", 12.023f, 1), Copper("Chunk of Copper", 8.920f, 1),
 	Tantalum("Chunk of Tantalum", 16.650f, 1), Aluminum("Chunk of Aluminum", 2.700f, 1), Tin("Chunk of Tin", 7.310f, 1),
 	Zinc("Chunk of Zinc", 7.140f, 1), Neodymium("Chunk of Neodymium", 7.010f, 1),
-	Apollyon("Apollyon Class Battleship", 5000, new Item[]{
-		new Item(InventoryItems.Iron, 50000), new Item(InventoryItems.Cobalt, 50000), 
-		new Item(InventoryItems.Nickel, 50000), new Item(InventoryItems.Silver, 50000), 
-		new Item(InventoryItems.Gold, 50000), new Item(InventoryItems.Platinum, 50000), 
-		new Item(InventoryItems.Palladium, 50000), new Item(InventoryItems.Copper, 50000), 
-		new Item(InventoryItems.Tantalum, 50000), new Item(InventoryItems.Aluminum, 50000),
-		new Item(InventoryItems.Tin, 50000), new Item(InventoryItems.Neodymium, 50000),} ),
-	Odor_Blocker_Bodywash("Odor Blocker Bodywash", 1, 5);
+	Apollyon("Apollyon Class Battleship", 5000,
+			new Item[] { new Item(InventoryItems.Iron, 50000), new Item(InventoryItems.Cobalt, 50000),
+					new Item(InventoryItems.Nickel, 50000), new Item(InventoryItems.Silver, 50000),
+					new Item(InventoryItems.Gold, 50000), new Item(InventoryItems.Platinum, 50000),
+					new Item(InventoryItems.Palladium, 50000), new Item(InventoryItems.Copper, 50000),
+					new Item(InventoryItems.Tantalum, 50000), new Item(InventoryItems.Aluminum, 50000),
+					new Item(InventoryItems.Tin, 50000), new Item(InventoryItems.Neodymium, 50000), }),
+	ARFSBattleship("A.R.F.S. Enforcement Battleship", 5000, 6000), Odor_Blocker_Bodywash("Odor Blocker Bodywash", 1, 5);
 
 	private String name;
 	private float weight;
@@ -38,10 +38,11 @@ public enum InventoryItems {
 	InventoryItems(String name, float cubicm3, Item[] components) {
 		this.name = name;
 		this.weight = 1;
-		for(Item i : components){
-			this.weight+= i.getWeight(); 
+		for (Item i : components) {
+			this.weight += i.getWeight();
 		}
-		if(this.weight > 0) this.weight--;
+		if (this.weight > 0)
+			this.weight--;
 		this.size = cubicm3;
 		this.components = components;
 	}

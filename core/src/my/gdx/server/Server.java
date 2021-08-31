@@ -55,7 +55,7 @@ public class Server extends ApplicationAdapter {
     private static long nextID = 0L;
     private static float cumDeltaTime = 0f;
     private static int logposition = 0;
-    private static Entity[] activeDefenders = new Entity[10]; 
+    private static Entity[] activeDefenders = new Entity[10];
 
     public void create() {
         r = new Random();
@@ -94,7 +94,7 @@ public class Server extends ApplicationAdapter {
         super.render();
         Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);// clears the screen of text
-        
+
         // Cumulative Delta Time - used for sending the entities to the clients
         cumDeltaTime += Gdx.graphics.getDeltaTime();
 
@@ -192,6 +192,14 @@ public class Server extends ApplicationAdapter {
             }
         }
 
+        for (Entity def : activeDefenders) {
+            if (def == null)
+                continue;
+            ARFSDefender d = (ARFSDefender) def;
+            if (d.getTarget().equals(e))
+                d.setTarget(null);
+        }
+
         if (!entities.contains(e)) {
             openIDs.add(e.getID());
             antenna.sendEntity(new removedEntity(e.getID()));
@@ -281,7 +289,7 @@ public class Server extends ApplicationAdapter {
             e.inventory.removeItem(i);
             spawnEntity(new Crate("Crate.obj", wrapper, assignID()), chestpos);
         } else {
-            appendToLogs("Illegal item drop attempted! "+i.toString()+" not contained within the inventory!");
+            appendToLogs("Illegal item drop attempted! " + i.toString() + " not contained within the inventory!");
             appendToLogs(e.inventory.toString());
         }
     }
