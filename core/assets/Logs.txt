@@ -5713,3 +5713,1467 @@ Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
 [ 2021-08-24T23:40:56.556778900 ] user forced to disconnect from port: 53512
 [ 2021-08-24T23:40:56.589947800 ] Entity removed:PLAYER, ID: 4
 [ 2021-08-24T23:40:59.214535700 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T01:11:01.387156400 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T01:11:01.435156300 ] entity list successfully sorted
+[ 2021-08-30T01:11:01.437155500 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T01:11:01.439154100 ] entity list successfully sorted
+[ 2021-08-30T01:11:01.444156300 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T01:11:01.451156300 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T01:11:01.454156800 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T01:11:01.457158 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T01:11:01.460159900 ] entity list successfully sorted
+[ 2021-08-30T01:11:01.463165400 ] Entity Spawned:Pos: (1851.7258,0.0,-755.71924) Type: ASTEROID ID: 3
+[ 2021-08-30T01:11:01.465154400 ] Asteroid Spawned!
+[ 2021-08-30T01:25:32.640556900 ] User successfully connected on port 63457
+[ 2021-08-30T01:25:32.706561400 ] entity list successfully sorted
+[ 2021-08-30T01:25:32.708557300 ] Entity Spawned:Pos: (1279.0177,0.0,-783.65405) Type: PLAYER ID: 4
+[ 2021-08-30T01:26:54.911434300 ] user forced to disconnect from port: 63457
+[ 2021-08-30T01:26:54.918486600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:26:56.939198700 ] User successfully connected on port 52049
+[ 2021-08-30T01:26:57.001990100 ] entity list successfully sorted
+[ 2021-08-30T01:26:57.005979900 ] Entity Spawned:Pos: (761.3296,0.0,-1292.4308) Type: PLAYER ID: 4
+[ 2021-08-30T01:27:11.210953700 ] user forced to disconnect from port: 52049
+[ 2021-08-30T01:27:11.216877600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:29:28.073737600 ] User successfully connected on port 52070
+[ 2021-08-30T01:29:28.130556600 ] entity list successfully sorted
+[ 2021-08-30T01:29:28.133601200 ] Entity Spawned:Pos: (1454.1499,0.0,-368.03268) Type: PLAYER ID: 4
+[ 2021-08-30T01:29:49.135362100 ] user forced to disconnect from port: 52070
+[ 2021-08-30T01:29:49.142426900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:31:09.986340400 ] User successfully connected on port 63669
+[ 2021-08-30T01:31:10.049786500 ] entity list successfully sorted
+[ 2021-08-30T01:31:10.055884800 ] Entity Spawned:Pos: (603.2364,0.0,1373.3557) Type: PLAYER ID: 4
+[ 2021-08-30T01:31:22.083442100 ] user forced to disconnect from port: 63669
+[ 2021-08-30T01:31:22.089433900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:34:22.475045900 ] User successfully connected on port 65379
+[ 2021-08-30T01:34:22.535869500 ] entity list successfully sorted
+[ 2021-08-30T01:34:22.541866800 ] Entity Spawned:Pos: (-887.1196,0.0,-1209.5531) Type: PLAYER ID: 4
+[ 2021-08-30T01:34:26.599869700 ] user forced to disconnect from port: 65379
+[ 2021-08-30T01:34:26.607784300 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:34:39.199398800 ] User successfully connected on port 53346
+[ 2021-08-30T01:34:39.264229400 ] entity list successfully sorted
+[ 2021-08-30T01:34:39.268232600 ] Entity Spawned:Pos: (-46.474953,0.0,1499.2798) Type: PLAYER ID: 4
+[ 2021-08-30T01:34:42.855703100 ] user forced to disconnect from port: 53346
+[ 2021-08-30T01:34:42.862687400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:35:01.509319 ] User successfully connected on port 53351
+[ 2021-08-30T01:35:01.608424 ] entity list successfully sorted
+[ 2021-08-30T01:35:01.613420300 ] Entity Spawned:Pos: (-1497.4971,0.0,86.61741) Type: PLAYER ID: 4
+[ 2021-08-30T01:35:07.026467600 ] user forced to disconnect from port: 53351
+[ 2021-08-30T01:35:07.033462700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:35:30.422052900 ] User successfully connected on port 57117
+[ 2021-08-30T01:35:30.480824600 ] entity list successfully sorted
+[ 2021-08-30T01:35:30.487828500 ] Entity Spawned:Pos: (1134.4594,0.0,981.32666) Type: PLAYER ID: 4
+[ 2021-08-30T01:35:40.182178100 ] user forced to disconnect from port: 57117
+[ 2021-08-30T01:35:40.191180700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:36:57.492040100 ] User successfully connected on port 53612
+[ 2021-08-30T01:36:57.555132600 ] entity list successfully sorted
+[ 2021-08-30T01:36:57.559133500 ] Entity Spawned:Pos: (1447.8455,0.0,392.1011) Type: PLAYER ID: 4
+[ 2021-08-30T01:37:11.154454700 ] user forced to disconnect from port: 53612
+[ 2021-08-30T01:37:11.157455800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:37:36.757069400 ] User successfully connected on port 53617
+[ 2021-08-30T01:37:36.844366600 ] entity list successfully sorted
+[ 2021-08-30T01:37:36.851418 ] Entity Spawned:Pos: (274.23514,0.0,1474.7186) Type: PLAYER ID: 4
+[ 2021-08-30T01:37:45.808843700 ] user forced to disconnect from port: 53617
+[ 2021-08-30T01:37:45.813841100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:39:31.951303700 ] User successfully connected on port 53640
+[ 2021-08-30T01:39:32.196236500 ] entity list successfully sorted
+[ 2021-08-30T01:39:32.204245800 ] Entity Spawned:Pos: (306.9576,0.0,-1468.2565) Type: PLAYER ID: 4
+[ 2021-08-30T01:39:36.522999600 ] user forced to disconnect from port: 53640
+[ 2021-08-30T01:39:36.525986 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:40:08.070994800 ] User successfully connected on port 59869
+[ 2021-08-30T01:40:08.135177400 ] entity list successfully sorted
+[ 2021-08-30T01:40:08.139255300 ] Entity Spawned:Pos: (-940.4789,0.0,-1168.5459) Type: PLAYER ID: 4
+[ 2021-08-30T01:40:21.496873500 ] user forced to disconnect from port: 59869
+[ 2021-08-30T01:40:21.502807100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:40:37.376772200 ] User successfully connected on port 59873
+[ 2021-08-30T01:40:37.442670900 ] entity list successfully sorted
+[ 2021-08-30T01:40:37.444709100 ] Entity Spawned:Pos: (1001.465,0.0,1116.7219) Type: PLAYER ID: 4
+[ 2021-08-30T01:40:45.260636200 ] user forced to disconnect from port: 59873
+[ 2021-08-30T01:40:45.265637100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:41:06.003087200 ] User successfully connected on port 59878
+[ 2021-08-30T01:41:06.062889500 ] entity list successfully sorted
+[ 2021-08-30T01:41:06.065947600 ] Entity Spawned:Pos: (401.07245,0.0,-1445.386) Type: PLAYER ID: 4
+[ 2021-08-30T01:41:14.940105800 ] user forced to disconnect from port: 59878
+[ 2021-08-30T01:41:14.944119 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:41:44.544713700 ] User successfully connected on port 59883
+[ 2021-08-30T01:41:44.629536300 ] entity list successfully sorted
+[ 2021-08-30T01:41:44.633532200 ] Entity Spawned:Pos: (1274.4723,0.0,791.025) Type: PLAYER ID: 4
+[ 2021-08-30T01:41:49.052216300 ] user forced to disconnect from port: 59883
+[ 2021-08-30T01:41:49.059273800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:41:58.411040600 ] User successfully connected on port 59886
+[ 2021-08-30T01:41:58.470849600 ] entity list successfully sorted
+[ 2021-08-30T01:41:58.475869800 ] Entity Spawned:Pos: (-1390.1843,0.0,563.3714) Type: PLAYER ID: 4
+[ 2021-08-30T01:42:21.616436400 ] user forced to disconnect from port: 59886
+[ 2021-08-30T01:42:21.623432500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:42:55.561541 ] User successfully connected on port 59896
+[ 2021-08-30T01:42:55.625066800 ] entity list successfully sorted
+[ 2021-08-30T01:42:55.632096800 ] Entity Spawned:Pos: (39.32823,0.0,1499.4843) Type: PLAYER ID: 4
+[ 2021-08-30T01:43:04.129804600 ] user forced to disconnect from port: 59896
+[ 2021-08-30T01:43:04.136799200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:43:14.957076900 ] User successfully connected on port 59900
+[ 2021-08-30T01:43:15.011180800 ] entity list successfully sorted
+[ 2021-08-30T01:43:15.016182800 ] Entity Spawned:Pos: (-25.046358,0.0,-1499.7909) Type: PLAYER ID: 4
+[ 2021-08-30T01:43:23.721372600 ] user forced to disconnect from port: 59900
+[ 2021-08-30T01:43:23.726346500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:43:43.062038400 ] User successfully connected on port 59905
+[ 2021-08-30T01:43:43.121200600 ] entity list successfully sorted
+[ 2021-08-30T01:43:43.125419600 ] Entity Spawned:Pos: (1075.6664,0.0,1045.4385) Type: PLAYER ID: 4
+[ 2021-08-30T01:43:49.073576100 ] user forced to disconnect from port: 59905
+[ 2021-08-30T01:43:49.078577900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:44:08.707868500 ] User successfully connected on port 59910
+[ 2021-08-30T01:44:08.899454600 ] entity list successfully sorted
+[ 2021-08-30T01:44:08.902457600 ] Entity Spawned:Pos: (-1408.552,0.0,-515.7339) Type: PLAYER ID: 4
+[ 2021-08-30T01:44:16.202302 ] user forced to disconnect from port: 59910
+[ 2021-08-30T01:44:16.210287100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:44:29.243351 ] User successfully connected on port 56152
+[ 2021-08-30T01:44:29.309482300 ] entity list successfully sorted
+[ 2021-08-30T01:44:29.314527400 ] Entity Spawned:Pos: (-1499.1685,0.0,-49.939) Type: PLAYER ID: 4
+[ 2021-08-30T01:44:35.841889600 ] user forced to disconnect from port: 56152
+[ 2021-08-30T01:44:35.849900900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:44:47.144355800 ] User successfully connected on port 56157
+[ 2021-08-30T01:44:47.207128300 ] entity list successfully sorted
+[ 2021-08-30T01:44:47.212135800 ] Entity Spawned:Pos: (-894.9701,0.0,-1203.756) Type: PLAYER ID: 4
+[ 2021-08-30T01:44:56.924346 ] user forced to disconnect from port: 56157
+[ 2021-08-30T01:44:56.932354100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:45:29.030198400 ] User successfully connected on port 59100
+[ 2021-08-30T01:45:29.133053500 ] entity list successfully sorted
+[ 2021-08-30T01:45:29.137100100 ] Entity Spawned:Pos: (-27.45738,0.0,1499.7487) Type: PLAYER ID: 4
+[ 2021-08-30T01:45:35.633730900 ] user forced to disconnect from port: 59100
+[ 2021-08-30T01:45:35.640724200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:45:47.098392800 ] User successfully connected on port 62389
+[ 2021-08-30T01:45:47.167046100 ] entity list successfully sorted
+[ 2021-08-30T01:45:47.172086800 ] Entity Spawned:Pos: (189.92923,0.0,-1487.927) Type: PLAYER ID: 4
+[ 2021-08-30T01:45:54.827113300 ] user forced to disconnect from port: 62389
+[ 2021-08-30T01:45:54.832098100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:46:06.431897100 ] User successfully connected on port 62394
+[ 2021-08-30T01:46:06.496185200 ] entity list successfully sorted
+[ 2021-08-30T01:46:06.502250100 ] Entity Spawned:Pos: (-1253.1536,0.0,824.3822) Type: PLAYER ID: 4
+[ 2021-08-30T01:46:10.632778100 ] user forced to disconnect from port: 62394
+[ 2021-08-30T01:46:10.639785200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:46:23.906361 ] User successfully connected on port 62398
+[ 2021-08-30T01:46:23.972440300 ] entity list successfully sorted
+[ 2021-08-30T01:46:23.976446800 ] Entity Spawned:Pos: (-531.2306,0.0,1402.7809) Type: PLAYER ID: 4
+[ 2021-08-30T01:46:28.796149800 ] user forced to disconnect from port: 62398
+[ 2021-08-30T01:46:28.801155300 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:46:38.572298700 ] User successfully connected on port 62402
+[ 2021-08-30T01:46:38.641126600 ] entity list successfully sorted
+[ 2021-08-30T01:46:38.648118300 ] Entity Spawned:Pos: (-637.5273,0.0,-1357.7772) Type: PLAYER ID: 4
+[ 2021-08-30T01:46:42.809869300 ] user forced to disconnect from port: 62402
+[ 2021-08-30T01:46:42.815884400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:46:56.359817800 ] User successfully connected on port 62406
+[ 2021-08-30T01:46:56.480176300 ] entity list successfully sorted
+[ 2021-08-30T01:46:56.484218200 ] Entity Spawned:Pos: (1448.8785,0.0,388.26675) Type: PLAYER ID: 4
+[ 2021-08-30T01:47:27.996833 ] user forced to disconnect from port: 62406
+[ 2021-08-30T01:47:28.005831200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:48:19.032214700 ] User successfully connected on port 62416
+[ 2021-08-30T01:48:19.234138900 ] entity list successfully sorted
+[ 2021-08-30T01:48:19.241172900 ] Entity Spawned:Pos: (-1159.902,0.0,951.119) Type: PLAYER ID: 4
+[ 2021-08-30T01:48:23.934913 ] user forced to disconnect from port: 62416
+[ 2021-08-30T01:48:23.942912800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:48:34.760827500 ] User successfully connected on port 62420
+[ 2021-08-30T01:48:34.829777800 ] entity list successfully sorted
+[ 2021-08-30T01:48:34.835802900 ] Entity Spawned:Pos: (802.683,0.0,1267.1622) Type: PLAYER ID: 4
+[ 2021-08-30T01:48:41.840565800 ] user forced to disconnect from port: 62420
+[ 2021-08-30T01:48:41.846561500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:49:00.429395500 ] User successfully connected on port 62428
+[ 2021-08-30T01:49:00.486489500 ] entity list successfully sorted
+[ 2021-08-30T01:49:00.489482500 ] Entity Spawned:Pos: (-350.01447,0.0,-1458.5917) Type: PLAYER ID: 4
+[ 2021-08-30T01:49:37.481014700 ] user forced to disconnect from port: 62428
+[ 2021-08-30T01:49:37.490078100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:52:03.879069 ] User successfully connected on port 53498
+[ 2021-08-30T01:52:03.943874700 ] entity list successfully sorted
+[ 2021-08-30T01:52:03.945911700 ] Entity Spawned:Pos: (19.286356,0.0,-1499.876) Type: PLAYER ID: 4
+[ 2021-08-30T01:52:10.109471 ] user forced to disconnect from port: 53498
+[ 2021-08-30T01:52:10.114463100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:52:34.155888800 ] User successfully connected on port 53506
+[ 2021-08-30T01:52:34.216297300 ] entity list successfully sorted
+[ 2021-08-30T01:52:34.222445500 ] Entity Spawned:Pos: (-918.4366,0.0,-1185.9486) Type: PLAYER ID: 4
+[ 2021-08-30T01:52:37.933668200 ] user forced to disconnect from port: 53506
+[ 2021-08-30T01:52:37.937670600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:52:48.028924900 ] User successfully connected on port 53510
+[ 2021-08-30T01:52:48.101319100 ] entity list successfully sorted
+[ 2021-08-30T01:52:48.109307700 ] Entity Spawned:Pos: (-822.3232,0.0,1254.5057) Type: PLAYER ID: 4
+[ 2021-08-30T01:52:55.603631600 ] user forced to disconnect from port: 53510
+[ 2021-08-30T01:52:55.607625800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:53:23.970116100 ] User successfully connected on port 53517
+[ 2021-08-30T01:53:24.023115700 ] entity list successfully sorted
+[ 2021-08-30T01:53:24.026116500 ] Entity Spawned:Pos: (-1483.7633,0.0,220.10576) Type: PLAYER ID: 4
+[ 2021-08-30T01:53:27.020330 ] user forced to disconnect from port: 53517
+[ 2021-08-30T01:53:27.024332200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:53:36.435044800 ] User successfully connected on port 53520
+[ 2021-08-30T01:53:36.500300200 ] entity list successfully sorted
+[ 2021-08-30T01:53:36.503208700 ] Entity Spawned:Pos: (-1005.1301,0.0,-1113.4242) Type: PLAYER ID: 4
+[ 2021-08-30T01:53:39.148576900 ] user forced to disconnect from port: 53520
+[ 2021-08-30T01:53:39.155606400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:53:49.460032700 ] User successfully connected on port 53523
+[ 2021-08-30T01:53:49.558968900 ] entity list successfully sorted
+[ 2021-08-30T01:53:49.561008700 ] Entity Spawned:Pos: (-1052.8075,0.0,-1068.4551) Type: PLAYER ID: 4
+[ 2021-08-30T01:53:54.913632900 ] user forced to disconnect from port: 53523
+[ 2021-08-30T01:53:54.916635800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:54:05.217689300 ] User successfully connected on port 53527
+[ 2021-08-30T01:54:05.289690700 ] entity list successfully sorted
+[ 2021-08-30T01:54:05.291730 ] Entity Spawned:Pos: (-1497.0594,0.0,-93.87792) Type: PLAYER ID: 4
+[ 2021-08-30T01:54:09.001659300 ] user forced to disconnect from port: 53527
+[ 2021-08-30T01:54:09.005678 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:54:20.581074 ] User successfully connected on port 51945
+[ 2021-08-30T01:54:20.631067300 ] entity list successfully sorted
+[ 2021-08-30T01:54:20.634068900 ] Entity Spawned:Pos: (-765.4197,0.0,-1290.0127) Type: PLAYER ID: 4
+[ 2021-08-30T01:54:25.125740700 ] user forced to disconnect from port: 51945
+[ 2021-08-30T01:54:25.134742800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:54:37.794102300 ] User successfully connected on port 52821
+[ 2021-08-30T01:54:37.855618100 ] entity list successfully sorted
+[ 2021-08-30T01:54:37.858618100 ] Entity Spawned:Pos: (-1441.7197,0.0,-414.0582) Type: PLAYER ID: 4
+[ 2021-08-30T01:54:43.139238400 ] user forced to disconnect from port: 52821
+[ 2021-08-30T01:54:43.143196 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:54:53.189656400 ] User successfully connected on port 52828
+[ 2021-08-30T01:54:53.252092700 ] entity list successfully sorted
+[ 2021-08-30T01:54:53.258133700 ] Entity Spawned:Pos: (1499.8613,0.0,-20.397488) Type: PLAYER ID: 4
+[ 2021-08-30T01:54:56.980488600 ] user forced to disconnect from port: 52828
+[ 2021-08-30T01:54:56.983505300 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:55:05.524092400 ] User successfully connected on port 59659
+[ 2021-08-30T01:55:05.589350500 ] entity list successfully sorted
+[ 2021-08-30T01:55:05.595394100 ] Entity Spawned:Pos: (-649.8397,0.0,-1351.9276) Type: PLAYER ID: 4
+[ 2021-08-30T01:55:09.291492400 ] user forced to disconnect from port: 59659
+[ 2021-08-30T01:55:09.296482600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:55:32.070250100 ] User successfully connected on port 58987
+[ 2021-08-30T01:55:32.159011900 ] entity list successfully sorted
+[ 2021-08-30T01:55:32.161067700 ] Entity Spawned:Pos: (746.2122,0.0,1301.2177) Type: PLAYER ID: 4
+[ 2021-08-30T01:55:37.610997900 ] user forced to disconnect from port: 58987
+[ 2021-08-30T01:55:37.615001100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:55:48.148890400 ] User successfully connected on port 55551
+[ 2021-08-30T01:55:48.218464100 ] entity list successfully sorted
+[ 2021-08-30T01:55:48.223547400 ] Entity Spawned:Pos: (-1496.2825,0.0,-105.54039) Type: PLAYER ID: 4
+[ 2021-08-30T01:55:51.663245 ] user forced to disconnect from port: 55551
+[ 2021-08-30T01:55:51.671195 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:56:17.336979900 ] User successfully connected on port 55556
+[ 2021-08-30T01:56:17.396032900 ] entity list successfully sorted
+[ 2021-08-30T01:56:17.405027600 ] Entity Spawned:Pos: (1484.3947,0.0,-215.80692) Type: PLAYER ID: 4
+[ 2021-08-30T01:56:20.805974 ] user forced to disconnect from port: 55556
+[ 2021-08-30T01:56:20.813969900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:56:31.285452600 ] User successfully connected on port 55560
+[ 2021-08-30T01:56:31.368336200 ] entity list successfully sorted
+[ 2021-08-30T01:56:31.372327100 ] Entity Spawned:Pos: (-1069.6348,0.0,-1051.609) Type: PLAYER ID: 4
+[ 2021-08-30T01:56:36.195565700 ] user forced to disconnect from port: 55560
+[ 2021-08-30T01:56:36.202551900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T01:56:47.398372500 ] User successfully connected on port 55565
+[ 2021-08-30T01:56:47.463326900 ] entity list successfully sorted
+[ 2021-08-30T01:56:47.466326200 ] Entity Spawned:Pos: (-603.5685,0.0,-1373.2098) Type: PLAYER ID: 4
+[ 2021-08-30T01:57:27.105622200 ] user forced to disconnect from port: 55565
+[ 2021-08-30T01:57:27.113652500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:00:02.253698700 ] User successfully connected on port 56306
+[ 2021-08-30T02:00:02.342494600 ] entity list successfully sorted
+[ 2021-08-30T02:00:02.346495900 ] Entity Spawned:Pos: (-627.93854,0.0,-1362.2384) Type: PLAYER ID: 4
+[ 2021-08-30T02:00:09.813803300 ] user forced to disconnect from port: 56306
+[ 2021-08-30T02:00:09.816804700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:02:40.230028800 ] User successfully connected on port 53913
+[ 2021-08-30T02:02:40.288234100 ] entity list successfully sorted
+[ 2021-08-30T02:02:40.291231400 ] Entity Spawned:Pos: (-481.84576,0.0,1420.5016) Type: PLAYER ID: 4
+[ 2021-08-30T02:02:42.947058300 ] user forced to disconnect from port: 53913
+[ 2021-08-30T02:02:42.955051800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:03:02.211806200 ] User successfully connected on port 53918
+[ 2021-08-30T02:03:02.271715300 ] entity list successfully sorted
+[ 2021-08-30T02:03:02.276720100 ] Entity Spawned:Pos: (-1075.7709,0.0,-1045.3309) Type: PLAYER ID: 4
+[ 2021-08-30T02:03:06.082299800 ] user forced to disconnect from port: 53918
+[ 2021-08-30T02:03:06.087296200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:04:35.614536500 ] User successfully connected on port 53695
+[ 2021-08-30T02:04:35.685608300 ] entity list successfully sorted
+[ 2021-08-30T02:04:35.687653300 ] Entity Spawned:Pos: (-733.1711,0.0,-1308.61) Type: PLAYER ID: 4
+[ 2021-08-30T02:04:38.804399500 ] user forced to disconnect from port: 53695
+[ 2021-08-30T02:04:38.811402200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:05:01.565851500 ] User successfully connected on port 64101
+[ 2021-08-30T02:05:01.636592600 ] entity list successfully sorted
+[ 2021-08-30T02:05:01.639227400 ] Entity Spawned:Pos: (1134.6989,0.0,981.0497) Type: PLAYER ID: 4
+[ 2021-08-30T02:05:13.379096600 ] user forced to disconnect from port: 64101
+[ 2021-08-30T02:05:13.387087900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:05:43.230286600 ] User successfully connected on port 55795
+[ 2021-08-30T02:05:43.334572300 ] entity list successfully sorted
+[ 2021-08-30T02:05:43.339597400 ] Entity Spawned:Pos: (-444.23752,0.0,1432.7083) Type: PLAYER ID: 4
+[ 2021-08-30T02:05:49.947718400 ] user forced to disconnect from port: 55795
+[ 2021-08-30T02:05:49.953749700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:06:00.107113300 ] User successfully connected on port 55799
+[ 2021-08-30T02:06:00.160181100 ] entity list successfully sorted
+[ 2021-08-30T02:06:00.163236600 ] Entity Spawned:Pos: (-1320.1533,0.0,-712.1764) Type: PLAYER ID: 4
+[ 2021-08-30T02:06:08.359044700 ] user forced to disconnect from port: 55799
+[ 2021-08-30T02:06:08.366040100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:08:18.644891500 ] User successfully connected on port 55819
+[ 2021-08-30T02:08:18.702592900 ] entity list successfully sorted
+[ 2021-08-30T02:08:18.704633400 ] Entity Spawned:Pos: (502.21292,0.0,1413.4292) Type: PLAYER ID: 4
+[ 2021-08-30T02:08:32.966311700 ] user forced to disconnect from port: 55819
+[ 2021-08-30T02:08:32.972315600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:08:50.038976800 ] User successfully connected on port 58193
+[ 2021-08-30T02:08:50.180046300 ] entity list successfully sorted
+[ 2021-08-30T02:08:50.189050100 ] Entity Spawned:Pos: (-1409.9156,0.0,-511.99405) Type: PLAYER ID: 4
+[ 2021-08-30T02:08:55.014367800 ] user forced to disconnect from port: 58193
+[ 2021-08-30T02:08:55.017401200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:09:05.488616900 ] User successfully connected on port 58197
+[ 2021-08-30T02:09:05.556894600 ] entity list successfully sorted
+[ 2021-08-30T02:09:05.564888100 ] Entity Spawned:Pos: (100.04648,0.0,-1496.6598) Type: PLAYER ID: 4
+[ 2021-08-30T02:09:09.651082900 ] user forced to disconnect from port: 58197
+[ 2021-08-30T02:09:09.659146800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:09:35.401026 ] User successfully connected on port 58201
+[ 2021-08-30T02:09:35.625303600 ] entity list successfully sorted
+[ 2021-08-30T02:09:35.632296400 ] Entity Spawned:Pos: (516.07166,0.0,-1408.4282) Type: PLAYER ID: 4
+[ 2021-08-30T02:09:46.565997700 ] user forced to disconnect from port: 58201
+[ 2021-08-30T02:09:46.573993400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:09:56.280741 ] User successfully connected on port 58205
+[ 2021-08-30T02:09:56.344546500 ] entity list successfully sorted
+[ 2021-08-30T02:09:56.348504600 ] Entity Spawned:Pos: (-1187.6039,0.0,-916.29535) Type: PLAYER ID: 4
+[ 2021-08-30T02:10:08.300642500 ] user forced to disconnect from port: 58205
+[ 2021-08-30T02:10:08.306643700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:10:25.895338400 ] User successfully connected on port 58650
+[ 2021-08-30T02:10:25.965215800 ] entity list successfully sorted
+[ 2021-08-30T02:10:25.971158 ] Entity Spawned:Pos: (-1079.8416,0.0,-1041.1255) Type: PLAYER ID: 4
+[ 2021-08-30T02:10:37.919659700 ] user forced to disconnect from port: 58650
+[ 2021-08-30T02:10:37.922611500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:10:54.545125300 ] User successfully connected on port 55278
+[ 2021-08-30T02:10:54.622585900 ] entity list successfully sorted
+[ 2021-08-30T02:10:54.628578 ] Entity Spawned:Pos: (-995.722,0.0,-1121.8457) Type: PLAYER ID: 4
+[ 2021-08-30T02:11:15.592748600 ] user forced to disconnect from port: 55278
+[ 2021-08-30T02:11:15.601750100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:11:27.613279 ] User successfully connected on port 55282
+[ 2021-08-30T02:11:27.677794700 ] entity list successfully sorted
+[ 2021-08-30T02:11:27.682811200 ] Entity Spawned:Pos: (1492.9954,0.0,144.79156) Type: PLAYER ID: 4
+[ 2021-08-30T02:11:32.967355400 ] user forced to disconnect from port: 55282
+[ 2021-08-30T02:11:32.975359 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:11:41.404674500 ] User successfully connected on port 55286
+[ 2021-08-30T02:11:41.459665900 ] entity list successfully sorted
+[ 2021-08-30T02:11:41.462706200 ] Entity Spawned:Pos: (1492.6553,0.0,148.2567) Type: PLAYER ID: 4
+[ 2021-08-30T02:12:13.949982500 ] user forced to disconnect from port: 55286
+[ 2021-08-30T02:12:13.954982700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:12:49.179251800 ] User successfully connected on port 55293
+[ 2021-08-30T02:12:49.269920600 ] entity list successfully sorted
+[ 2021-08-30T02:12:49.278922200 ] Entity Spawned:Pos: (1464.4125,0.0,324.8019) Type: PLAYER ID: 4
+[ 2021-08-30T02:13:24.603127300 ] user forced to disconnect from port: 55293
+[ 2021-08-30T02:13:24.610113400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T02:18:15.080305200 ] User successfully connected on port 58026
+[ 2021-08-30T02:18:15.151703 ] entity list successfully sorted
+[ 2021-08-30T02:18:15.157755500 ] Entity Spawned:Pos: (-438.32736,0.0,-1434.5275) Type: PLAYER ID: 4
+[ 2021-08-30T02:21:27.793557300 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T12:40:34.371914100 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T12:40:34.412194200 ] entity list successfully sorted
+[ 2021-08-30T12:40:34.421859 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T12:40:34.421859 ] entity list successfully sorted
+[ 2021-08-30T12:40:34.421859 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T12:40:34.431920700 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T12:40:34.431920700 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T12:40:34.442060400 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T12:40:34.442060400 ] entity list successfully sorted
+[ 2021-08-30T12:40:34.442060400 ] Entity Spawned:Pos: (-1558.4167,0.0,1253.5299) Type: ASTEROID ID: 3
+[ 2021-08-30T12:40:34.442060400 ] Asteroid Spawned!
+[ 2021-08-30T12:40:55.009088700 ] User successfully connected on port 59524
+[ 2021-08-30T12:40:55.082240100 ] entity list successfully sorted
+[ 2021-08-30T12:40:55.085184 ] Entity Spawned:Pos: (767.3654,0.0,1288.8562) Type: PLAYER ID: 4
+[ 2021-08-30T12:44:10.598291300 ] user forced to disconnect from port: 59524
+[ 2021-08-30T12:44:10.617872800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T12:50:58.980673100 ] User successfully connected on port 61749
+[ 2021-08-30T12:50:59.060704300 ] entity list successfully sorted
+[ 2021-08-30T12:50:59.069940400 ] Entity Spawned:Pos: (1130.9637,0.0,985.3532) Type: PLAYER ID: 4
+[ 2021-08-30T12:51:21.457038100 ] user forced to disconnect from port: 61749
+[ 2021-08-30T12:51:21.471896 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T12:51:51.194867 ] User successfully connected on port 61759
+[ 2021-08-30T12:51:51.269775500 ] entity list successfully sorted
+[ 2021-08-30T12:51:51.280930900 ] Entity Spawned:Pos: (-611.93005,0.0,-1369.5042) Type: PLAYER ID: 4
+[ 2021-08-30T12:52:05.680413900 ] user forced to disconnect from port: 61759
+[ 2021-08-30T12:52:05.694267400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T12:53:00.141327400 ] User successfully connected on port 58103
+[ 2021-08-30T12:53:00.211885900 ] entity list successfully sorted
+[ 2021-08-30T12:53:00.224072900 ] Entity Spawned:Pos: (753.7524,0.0,1296.8644) Type: PLAYER ID: 4
+[ 2021-08-30T12:54:48.062984300 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T12:54:55.403923 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T12:54:55.557351300 ] entity list successfully sorted
+[ 2021-08-30T12:54:55.571005100 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T12:54:55.583766500 ] entity list successfully sorted
+[ 2021-08-30T12:54:55.601924300 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T12:54:55.631851500 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T12:54:55.642488700 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T12:54:55.644079200 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T12:54:55.650373800 ] entity list successfully sorted
+[ 2021-08-30T12:54:55.654258800 ] Entity Spawned:Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3
+[ 2021-08-30T12:54:55.655259800 ] Asteroid Spawned!
+[ 2021-08-30T12:55:03.749047900 ] User successfully connected on port 50807
+[ 2021-08-30T12:55:03.838311400 ] entity list successfully sorted
+[ 2021-08-30T12:55:03.847294 ] Entity Spawned:Pos: (796.2083,0.0,-1271.2405) Type: PLAYER ID: 4
+[ 2021-08-30T12:55:16.675075300 ] Pos: (796.2083,0.0,-1271.2405) Type: PLAYER ID: 4 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T12:55:19.352350200 ] Pos: (796.2083,0.0,-1271.2405) Type: PLAYER ID: 4 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T12:55:20.027360400 ] Pos: (796.2083,0.0,-1271.2405) Type: PLAYER ID: 4 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T12:55:20.468125500 ] Pos: (796.2083,0.0,-1271.2405) Type: PLAYER ID: 4 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T12:55:20.904963500 ] Pos: (796.2083,0.0,-1271.2405) Type: PLAYER ID: 4 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T12:56:07.923270700 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3... but it doesn't seem to do much...
+[ 2021-08-30T12:56:10.283489 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3... but it doesn't seem to do much...
+[ 2021-08-30T12:56:10.761440300 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3... but it doesn't seem to do much...
+[ 2021-08-30T12:56:11.189695700 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3... but it doesn't seem to do much...
+[ 2021-08-30T12:56:13.186706300 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3... but it doesn't seem to do much...
+[ 2021-08-30T12:56:13.382946100 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3... but it doesn't seem to do much...
+[ 2021-08-30T12:56:13.520694 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3... but it doesn't seem to do much...
+[ 2021-08-30T12:56:13.739571400 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (-909.5936,0.0,1781.1906) Type: ASTEROID ID: 3... but it doesn't seem to do much...
+[ 2021-08-30T12:56:20.807386900 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:21.007428400 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:21.171695700 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:21.417786700 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:21.937406900 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:22.584191300 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:22.712200600 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:23.018494800 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:23.238305500 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:23.393398900 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:23.552887200 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:23.670300400 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:23.853472500 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:24.006530900 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:24.119544800 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:24.309822100 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:24.436821 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:24.553353300 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:24.753376200 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:24.889832200 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:25.001260100 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:25.207612100 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:25.320623400 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:25.618399100 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:25.755506300 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:25.941538200 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:26.070158300 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:26.170176 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:26.378281400 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:26.506269500 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:26.687506500 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:26.821979 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:27.030086700 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:27.153346700 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:27.369627400 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:27.555557200 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:27.692031 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:27.872725600 ] Pos: (1600.6133,-53.914448,949.8128) Type: PLAYER ID: 4 has shot at Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1... but it doesn't seem to do much...
+[ 2021-08-30T12:56:28.557483500 ] user forced to disconnect from port: 50807
+[ 2021-08-30T12:56:28.588125800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T12:56:50.016373700 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T12:57:46.913077100 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T12:57:47.010435800 ] entity list successfully sorted
+[ 2021-08-30T12:57:47.017522700 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T12:57:47.022084600 ] entity list successfully sorted
+[ 2021-08-30T12:57:47.031202500 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T12:57:47.047783200 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T12:57:47.060362900 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T12:57:47.068661900 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T12:57:47.078326 ] entity list successfully sorted
+[ 2021-08-30T12:57:47.091758900 ] Entity Spawned:Pos: (1723.6637,0.0,-1014.3883) Type: ASTEROID ID: 3
+[ 2021-08-30T12:57:47.098270300 ] Asteroid Spawned!
+[ 2021-08-30T13:03:46.324103400 ] User successfully connected on port 51916
+[ 2021-08-30T13:03:46.404063600 ] entity list successfully sorted
+[ 2021-08-30T13:03:46.411069600 ] Entity Spawned:Pos: (-1419.4432,0.0,484.95444) Type: PLAYER ID: 4
+[ 2021-08-30T13:03:55.363773800 ] user forced to disconnect from port: 51916
+[ 2021-08-30T13:03:55.385401100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:04:44.282393300 ] User successfully connected on port 61372
+[ 2021-08-30T13:04:44.361215100 ] entity list successfully sorted
+[ 2021-08-30T13:04:44.371218900 ] Entity Spawned:Pos: (-1020.4829,0.0,-1099.3701) Type: PLAYER ID: 4
+[ 2021-08-30T13:04:59.828150 ] user forced to disconnect from port: 61372
+[ 2021-08-30T13:04:59.845676600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:05:22.166671500 ] User successfully connected on port 59872
+[ 2021-08-30T13:05:22.237391300 ] entity list successfully sorted
+[ 2021-08-30T13:05:22.250378200 ] Entity Spawned:Pos: (-1390.0709,0.0,563.6514) Type: PLAYER ID: 4
+[ 2021-08-30T13:06:26.945154200 ] user forced to disconnect from port: 59872
+[ 2021-08-30T13:06:26.959398500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:26:57.842155500 ] User successfully connected on port 50800
+[ 2021-08-30T13:26:57.931965 ] entity list successfully sorted
+[ 2021-08-30T13:26:57.942080300 ] Entity Spawned:Pos: (-1458.1359,0.0,-351.90887) Type: PLAYER ID: 4
+[ 2021-08-30T13:27:38.226334100 ] user forced to disconnect from port: 50800
+[ 2021-08-30T13:27:38.241951600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:28:28.108147300 ] User successfully connected on port 50810
+[ 2021-08-30T13:28:28.169627600 ] entity list successfully sorted
+[ 2021-08-30T13:28:28.179255600 ] Entity Spawned:Pos: (1382.4362,0.0,582.1257) Type: PLAYER ID: 4
+[ 2021-08-30T13:28:58.353812600 ] user forced to disconnect from port: 50810
+[ 2021-08-30T13:28:58.369811800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:29:13.830057600 ] User successfully connected on port 49659
+[ 2021-08-30T13:29:13.914486200 ] entity list successfully sorted
+[ 2021-08-30T13:29:13.925476400 ] Entity Spawned:Pos: (-115.14584,0.0,1495.5739) Type: PLAYER ID: 4
+[ 2021-08-30T13:30:36.444135200 ] user forced to disconnect from port: 49659
+[ 2021-08-30T13:30:36.459398100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:30:55.002346600 ] User successfully connected on port 58332
+[ 2021-08-30T13:30:55.088981500 ] entity list successfully sorted
+[ 2021-08-30T13:30:55.102619700 ] Entity Spawned:Pos: (-118.801796,0.0,1495.288) Type: PLAYER ID: 4
+[ 2021-08-30T13:32:16.469843 ] user forced to disconnect from port: 58332
+[ 2021-08-30T13:32:16.476839 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:35:16.623766700 ] User successfully connected on port 58261
+[ 2021-08-30T13:35:16.691980800 ] entity list successfully sorted
+[ 2021-08-30T13:35:16.702102200 ] Entity Spawned:Pos: (1476.0739,0.0,266.84476) Type: PLAYER ID: 4
+[ 2021-08-30T13:35:35.729785400 ] user forced to disconnect from port: 58261
+[ 2021-08-30T13:35:35.746958600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:40:55.580923800 ] User successfully connected on port 58060
+[ 2021-08-30T13:40:55.669807200 ] entity list successfully sorted
+[ 2021-08-30T13:40:55.679809100 ] Entity Spawned:Pos: (-1171.0599,0.0,937.3467) Type: PLAYER ID: 4
+[ 2021-08-30T13:42:39.221872300 ] user forced to disconnect from port: 58060
+[ 2021-08-30T13:42:39.232864900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:42:41.326327400 ] User successfully connected on port 60929
+[ 2021-08-30T13:42:41.399806600 ] entity list successfully sorted
+[ 2021-08-30T13:42:41.405642600 ] Entity Spawned:Pos: (987.1018,0.0,-1129.438) Type: PLAYER ID: 4
+[ 2021-08-30T13:43:11.363220700 ] user forced to disconnect from port: 60929
+[ 2021-08-30T13:43:11.374691500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:45:40.355560900 ] User successfully connected on port 50678
+[ 2021-08-30T13:45:40.434645200 ] entity list successfully sorted
+[ 2021-08-30T13:45:40.445583800 ] Entity Spawned:Pos: (-1410.912,0.0,-509.242) Type: PLAYER ID: 4
+[ 2021-08-30T13:48:21.837615300 ] user forced to disconnect from port: 50678
+[ 2021-08-30T13:48:21.849675400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:48:23.878935300 ] User successfully connected on port 49441
+[ 2021-08-30T13:48:23.948845700 ] entity list successfully sorted
+[ 2021-08-30T13:48:23.962812300 ] Entity Spawned:Pos: (53.709698,0.0,1499.0381) Type: PLAYER ID: 4
+[ 2021-08-30T13:49:11.543747300 ] user forced to disconnect from port: 49441
+[ 2021-08-30T13:49:11.558331400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:54:55.469518300 ] User successfully connected on port 64326
+[ 2021-08-30T13:54:55.534296100 ] entity list successfully sorted
+[ 2021-08-30T13:54:55.543513800 ] Entity Spawned:Pos: (1499.7263,0.0,28.651978) Type: PLAYER ID: 4
+[ 2021-08-30T13:55:06.219131200 ] user forced to disconnect from port: 64326
+[ 2021-08-30T13:55:06.235837900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:55:25.106519500 ] User successfully connected on port 64335
+[ 2021-08-30T13:55:25.182894400 ] entity list successfully sorted
+[ 2021-08-30T13:55:25.195657400 ] Entity Spawned:Pos: (-965.5276,0.0,1147.9358) Type: PLAYER ID: 4
+[ 2021-08-30T13:55:58.884046700 ] user forced to disconnect from port: 64335
+[ 2021-08-30T13:55:58.893932900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T13:57:08.880677200 ] User successfully connected on port 49979
+[ 2021-08-30T13:57:08.956375 ] entity list successfully sorted
+[ 2021-08-30T13:57:08.970371800 ] Entity Spawned:Pos: (382.99316,0.0,1450.2814) Type: PLAYER ID: 4
+[ 2021-08-30T13:57:42.890535700 ] user forced to disconnect from port: 49979
+[ 2021-08-30T13:57:42.903530500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:09:55.570415700 ] User successfully connected on port 63767
+[ 2021-08-30T14:09:55.639190 ] entity list successfully sorted
+[ 2021-08-30T14:09:55.649411300 ] Entity Spawned:Pos: (410.50565,0.0,1442.7352) Type: PLAYER ID: 4
+[ 2021-08-30T14:10:29.641350600 ] user forced to disconnect from port: 63767
+[ 2021-08-30T14:10:29.653352700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:11:18.105644500 ] User successfully connected on port 60091
+[ 2021-08-30T14:11:18.187229700 ] entity list successfully sorted
+[ 2021-08-30T14:11:18.196686600 ] Entity Spawned:Pos: (-579.8242,0.0,-1383.4031) Type: PLAYER ID: 4
+[ 2021-08-30T14:11:27.315333600 ] user forced to disconnect from port: 60091
+[ 2021-08-30T14:11:27.328338400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:11:42.786042400 ] User successfully connected on port 60095
+[ 2021-08-30T14:11:42.865379500 ] entity list successfully sorted
+[ 2021-08-30T14:11:42.874618300 ] Entity Spawned:Pos: (1204.6117,0.0,-893.81805) Type: PLAYER ID: 4
+[ 2021-08-30T14:11:50.574127100 ] user forced to disconnect from port: 60095
+[ 2021-08-30T14:11:50.589618700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:12:00.296145300 ] User successfully connected on port 60099
+[ 2021-08-30T14:12:00.388993100 ] entity list successfully sorted
+[ 2021-08-30T14:12:00.398573200 ] Entity Spawned:Pos: (1388.1017,0.0,-568.48364) Type: PLAYER ID: 4
+[ 2021-08-30T14:12:08.605215100 ] user forced to disconnect from port: 60099
+[ 2021-08-30T14:12:08.617390200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:13:29.904346400 ] User successfully connected on port 60111
+[ 2021-08-30T14:13:29.988362500 ] entity list successfully sorted
+[ 2021-08-30T14:13:29.999164100 ] Entity Spawned:Pos: (-157.38031,0.0,1491.721) Type: PLAYER ID: 4
+[ 2021-08-30T14:13:50.589212 ] user forced to disconnect from port: 60111
+[ 2021-08-30T14:13:50.606313300 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:14:44.443676400 ] User successfully connected on port 54417
+[ 2021-08-30T14:14:44.517041900 ] entity list successfully sorted
+[ 2021-08-30T14:14:44.528462900 ] Entity Spawned:Pos: (1443.0052,0.0,-409.55566) Type: PLAYER ID: 4
+[ 2021-08-30T14:15:11.298663600 ] user forced to disconnect from port: 54417
+[ 2021-08-30T14:15:11.310586600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:16:38.620097600 ] User successfully connected on port 51706
+[ 2021-08-30T14:16:38.703532300 ] entity list successfully sorted
+[ 2021-08-30T14:16:38.715532200 ] Entity Spawned:Pos: (-1497.9657,0.0,78.09443) Type: PLAYER ID: 4
+[ 2021-08-30T14:17:54.010195100 ] user forced to disconnect from port: 51706
+[ 2021-08-30T14:17:54.024192 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:18:00.045363900 ] User successfully connected on port 54520
+[ 2021-08-30T14:18:00.126706100 ] entity list successfully sorted
+[ 2021-08-30T14:18:00.138746100 ] Entity Spawned:Pos: (-1363.1058,0.0,-626.05304) Type: PLAYER ID: 4
+[ 2021-08-30T14:18:18.604882500 ] user forced to disconnect from port: 54520
+[ 2021-08-30T14:18:18.620375200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:18:24.334316200 ] User successfully connected on port 54525
+[ 2021-08-30T14:18:24.410577800 ] entity list successfully sorted
+[ 2021-08-30T14:18:24.416596100 ] Entity Spawned:Pos: (25.943195,0.0,-1499.7756) Type: PLAYER ID: 4
+[ 2021-08-30T14:18:44.909088600 ] entity list successfully sorted
+[ 2021-08-30T14:18:44.920640400 ] Entity Spawned:Pos: (-2588.0225,0.0,-2247.125) Type: DEBRIS ID: 5
+[ 2021-08-30T14:18:57.595911800 ] user forced to disconnect from port: 54525
+[ 2021-08-30T14:18:57.610595200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:19:16.830155200 ] User successfully connected on port 54902
+[ 2021-08-30T14:19:16.910433 ] entity list successfully sorted
+[ 2021-08-30T14:19:16.921322300 ] Entity Spawned:Pos: (-1480.0066,0.0,-244.09126) Type: PLAYER ID: 4
+[ 2021-08-30T14:19:30.890411100 ] user forced to disconnect from port: 54902
+[ 2021-08-30T14:19:30.901861100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:19:37.190113400 ] User successfully connected on port 54906
+[ 2021-08-30T14:19:37.269162400 ] entity list successfully sorted
+[ 2021-08-30T14:19:37.278164200 ] Entity Spawned:Pos: (485.536,0.0,1419.2444) Type: PLAYER ID: 4
+[ 2021-08-30T14:19:49.068459200 ] user forced to disconnect from port: 54906
+[ 2021-08-30T14:19:49.075456300 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:20:04.348440100 ] User successfully connected on port 54910
+[ 2021-08-30T14:20:04.440289100 ] entity list successfully sorted
+[ 2021-08-30T14:20:04.451088400 ] Entity Spawned:Pos: (-920.76917,0.0,-1184.1385) Type: PLAYER ID: 4
+[ 2021-08-30T14:20:09.821281500 ] user forced to disconnect from port: 54910
+[ 2021-08-30T14:20:09.838642 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:20:39.878036400 ] User successfully connected on port 50675
+[ 2021-08-30T14:20:39.962069900 ] entity list successfully sorted
+[ 2021-08-30T14:20:39.975291100 ] Entity Spawned:Pos: (162.57266,0.0,1491.164) Type: PLAYER ID: 4
+[ 2021-08-30T14:20:57.101397600 ] User successfully connected on port 50683
+[ 2021-08-30T14:20:57.170533400 ] entity list successfully sorted
+[ 2021-08-30T14:20:57.179327400 ] Entity Spawned:Pos: (-1497.3971,0.0,-88.32851) Type: PLAYER ID: 6
+[ 2021-08-30T14:21:05.756195600 ] user forced to disconnect from port: 50675
+[ 2021-08-30T14:21:05.774201 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:21:10.505996100 ] user forced to disconnect from port: 50683
+[ 2021-08-30T14:21:10.517474400 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T14:21:17.938889400 ] User successfully connected on port 50687
+[ 2021-08-30T14:21:18.013231300 ] entity list successfully sorted
+[ 2021-08-30T14:21:18.017135 ] Entity Spawned:Pos: (1283.6287,0.0,776.0781) Type: PLAYER ID: 4
+[ 2021-08-30T14:21:46.165689300 ] user forced to disconnect from port: 50687
+[ 2021-08-30T14:21:46.179341 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T14:22:12.332300200 ] User successfully connected on port 50694
+[ 2021-08-30T14:22:12.404109100 ] entity list successfully sorted
+[ 2021-08-30T14:22:12.413439800 ] Entity Spawned:Pos: (433.36182,0.0,1436.0353) Type: PLAYER ID: 6
+[ 2021-08-30T14:23:12.346149 ] user forced to disconnect from port: 50694
+[ 2021-08-30T14:23:12.360324800 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T14:43:42.510422300 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T15:44:15.718212700 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T15:44:15.769211400 ] entity list successfully sorted
+[ 2021-08-30T15:44:15.772212400 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T15:44:15.774212700 ] entity list successfully sorted
+[ 2021-08-30T15:44:15.778211500 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T15:44:15.784211500 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T15:44:15.788211200 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T15:44:15.791208500 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T15:44:15.793213400 ] entity list successfully sorted
+[ 2021-08-30T15:44:15.796208 ] Entity Spawned:Pos: (693.7955,0.0,-1875.806) Type: ASTEROID ID: 3
+[ 2021-08-30T15:44:15.798212300 ] Asteroid Spawned!
+[ 2021-08-30T16:25:17.243128600 ] User successfully connected on port 60290
+[ 2021-08-30T16:25:17.316718800 ] entity list successfully sorted
+[ 2021-08-30T16:25:17.321742400 ] Entity Spawned:Pos: (-755.90704,0.0,-1295.6097) Type: PLAYER ID: 4
+[ 2021-08-30T16:27:09.107521700 ] user forced to disconnect from port: 60290
+[ 2021-08-30T16:27:09.121505900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T16:28:27.615494600 ] User successfully connected on port 65053
+[ 2021-08-30T16:28:27.673395300 ] entity list successfully sorted
+[ 2021-08-30T16:28:27.676352400 ] Entity Spawned:Pos: (1108.0092,0.0,1011.0963) Type: PLAYER ID: 4
+[ 2021-08-30T16:29:07.136730900 ] entity list successfully sorted
+[ 2021-08-30T16:29:07.142739100 ] Entity Spawned:Pos: (1907.9846,0.0,104.300766) Type: DEBRIS ID: 5
+[ 2021-08-30T16:32:04.499965300 ] user forced to disconnect from port: 65053
+[ 2021-08-30T16:32:04.502969 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T16:33:59.856613600 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T16:44:52.618281800 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T16:44:52.659284400 ] entity list successfully sorted
+[ 2021-08-30T16:44:52.662281300 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T16:44:52.664281400 ] entity list successfully sorted
+[ 2021-08-30T16:44:52.668282 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T16:44:52.675284800 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T16:44:52.679283600 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T16:44:52.682282700 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T16:44:52.685283100 ] entity list successfully sorted
+[ 2021-08-30T16:44:52.687281300 ] Entity Spawned:Pos: (1727.0818,0.0,1008.5577) Type: ASTEROID ID: 3
+[ 2021-08-30T16:44:52.690283300 ] Asteroid Spawned!
+[ 2021-08-30T16:56:15.260140300 ] User successfully connected on port 57918
+[ 2021-08-30T16:56:15.323902200 ] entity list successfully sorted
+[ 2021-08-30T16:56:15.327943600 ] Entity Spawned:Pos: (1109.2236,0.0,-1009.7638) Type: PLAYER ID: 4
+[ 2021-08-30T16:57:44.981326800 ] User successfully connected on port 49977
+[ 2021-08-30T16:57:45.041753200 ] entity list successfully sorted
+[ 2021-08-30T16:57:45.045688 ] Entity Spawned:Pos: (583.7798,0.0,-1381.7384) Type: PLAYER ID: 5
+[ 2021-08-30T16:58:50.663436100 ] user forced to disconnect from port: 57918
+[ 2021-08-30T16:58:50.672437700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:01:36.614794600 ] User successfully connected on port 49943
+[ 2021-08-30T17:01:36.711841600 ] entity list successfully sorted
+[ 2021-08-30T17:01:36.715839200 ] Entity Spawned:Pos: (1470.8228,0.0,-294.41556) Type: PLAYER ID: 4
+[ 2021-08-30T17:02:29.607324700 ] user forced to disconnect from port: 49943
+[ 2021-08-30T17:02:29.610042600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:03:09.243968 ] User successfully connected on port 49958
+[ 2021-08-30T17:03:09.309031700 ] entity list successfully sorted
+[ 2021-08-30T17:03:09.314075300 ] Entity Spawned:Pos: (-1149.3785,0.0,-963.8095) Type: PLAYER ID: 4
+[ 2021-08-30T17:03:52.323916500 ] user forced to disconnect from port: 49958
+[ 2021-08-30T17:03:52.329775500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:06:07.386445900 ] User successfully connected on port 50000
+[ 2021-08-30T17:06:07.458432300 ] entity list successfully sorted
+[ 2021-08-30T17:06:07.465473300 ] Entity Spawned:Pos: (1488.0055,0.0,189.31322) Type: PLAYER ID: 4
+[ 2021-08-30T17:07:42.140462500 ] User successfully connected on port 50005
+[ 2021-08-30T17:07:42.206358600 ] entity list successfully sorted
+[ 2021-08-30T17:07:42.212355600 ] Entity Spawned:Pos: (822.3946,0.0,1254.4589) Type: PLAYER ID: 6
+[ 2021-08-30T17:07:53.604434700 ] user forced to disconnect from port: 50000
+[ 2021-08-30T17:07:53.611439 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:08:11.559306 ] user forced to disconnect from port: 50005
+[ 2021-08-30T17:08:11.565292600 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:09:03.707598200 ] User successfully connected on port 50013
+[ 2021-08-30T17:09:03.802003700 ] entity list successfully sorted
+[ 2021-08-30T17:09:03.808049600 ] Entity Spawned:Pos: (-849.6531,0.0,1236.1592) Type: PLAYER ID: 4
+[ 2021-08-30T17:09:09.712714400 ] user forced to disconnect from port: 50013
+[ 2021-08-30T17:09:09.719745700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:11:58.220999 ] User successfully connected on port 52396
+[ 2021-08-30T17:11:58.291662200 ] entity list successfully sorted
+[ 2021-08-30T17:11:58.298680100 ] Entity Spawned:Pos: (-1444.0929,0.0,405.7042) Type: PLAYER ID: 6
+[ 2021-08-30T17:12:11.343889100 ] user forced to disconnect from port: 52396
+[ 2021-08-30T17:12:11.351961900 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:12:12.706317300 ] user forced to disconnect from port: 49977
+[ 2021-08-30T17:12:12.708357500 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T17:14:57.757762900 ] User successfully connected on port 53564
+[ 2021-08-30T17:14:57.844670800 ] entity list successfully sorted
+[ 2021-08-30T17:14:57.846719100 ] Entity Spawned:Pos: (-1480.4958,0.0,-241.10591) Type: PLAYER ID: 4
+[ 2021-08-30T17:15:11.133079100 ] user forced to disconnect from port: 53564
+[ 2021-08-30T17:15:11.140991600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:15:41.991125500 ] User successfully connected on port 53572
+[ 2021-08-30T17:15:42.051554500 ] entity list successfully sorted
+[ 2021-08-30T17:15:42.056487900 ] Entity Spawned:Pos: (-1499.6754,0.0,-31.203415) Type: PLAYER ID: 6
+[ 2021-08-30T17:15:48.175059 ] user forced to disconnect from port: 53572
+[ 2021-08-30T17:15:48.180990600 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:16:53.901415400 ] User successfully connected on port 58498
+[ 2021-08-30T17:16:53.972923900 ] entity list successfully sorted
+[ 2021-08-30T17:16:53.976788800 ] Entity Spawned:Pos: (-1392.5918,0.0,-557.39417) Type: PLAYER ID: 5
+[ 2021-08-30T17:16:57.569330600 ] user forced to disconnect from port: 58498
+[ 2021-08-30T17:16:57.574366500 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T17:17:42.524515200 ] User successfully connected on port 56330
+[ 2021-08-30T17:17:42.588461200 ] entity list successfully sorted
+[ 2021-08-30T17:17:42.591460100 ] Entity Spawned:Pos: (1242.6016,0.0,840.20325) Type: PLAYER ID: 4
+[ 2021-08-30T17:17:55.188452 ] user forced to disconnect from port: 56330
+[ 2021-08-30T17:17:55.192448100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:20:15.363672900 ] User successfully connected on port 50105
+[ 2021-08-30T17:20:15.437609100 ] entity list successfully sorted
+[ 2021-08-30T17:20:15.442608300 ] Entity Spawned:Pos: (1253.1403,0.0,824.4024) Type: PLAYER ID: 6
+[ 2021-08-30T17:20:35.797387300 ] user forced to disconnect from port: 50105
+[ 2021-08-30T17:20:35.805272200 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:20:58.774754500 ] User successfully connected on port 50111
+[ 2021-08-30T17:20:58.837728400 ] entity list successfully sorted
+[ 2021-08-30T17:20:58.845717300 ] Entity Spawned:Pos: (-333.60022,0.0,-1462.4332) Type: PLAYER ID: 5
+[ 2021-08-30T17:21:18.351939 ] user forced to disconnect from port: 50111
+[ 2021-08-30T17:21:18.358969600 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T17:21:43.132787400 ] User successfully connected on port 50114
+[ 2021-08-30T17:21:43.203429800 ] entity list successfully sorted
+[ 2021-08-30T17:21:43.209419400 ] Entity Spawned:Pos: (1303.753,0.0,-741.77356) Type: PLAYER ID: 4
+[ 2021-08-30T17:23:40.490228300 ] user forced to disconnect from port: 50114
+[ 2021-08-30T17:23:40.496229600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:24:26.630482400 ] User successfully connected on port 50120
+[ 2021-08-30T17:24:26.698948300 ] entity list successfully sorted
+[ 2021-08-30T17:24:26.703950 ] Entity Spawned:Pos: (-646.1169,0.0,1353.7108) Type: PLAYER ID: 6
+[ 2021-08-30T17:24:39.096669200 ] user forced to disconnect from port: 50120
+[ 2021-08-30T17:24:39.102666500 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:25:18.259192400 ] User successfully connected on port 50121
+[ 2021-08-30T17:25:18.323748600 ] entity list successfully sorted
+[ 2021-08-30T17:25:18.327811700 ] Entity Spawned:Pos: (-853.2826,0.0,-1233.6567) Type: PLAYER ID: 5
+[ 2021-08-30T17:25:38.986357200 ] user forced to disconnect from port: 50121
+[ 2021-08-30T17:25:38.992411500 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T17:36:53.645876100 ] User successfully connected on port 54816
+[ 2021-08-30T17:36:53.722408500 ] entity list successfully sorted
+[ 2021-08-30T17:36:53.726446 ] Entity Spawned:Pos: (-1496.6005,0.0,-100.930084) Type: PLAYER ID: 4
+[ 2021-08-30T17:37:05.626767500 ] user forced to disconnect from port: 54816
+[ 2021-08-30T17:37:05.633794 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:37:59.243531800 ] User successfully connected on port 59222
+[ 2021-08-30T17:37:59.315644600 ] entity list successfully sorted
+[ 2021-08-30T17:37:59.320646 ] Entity Spawned:Pos: (-881.8404,0.0,1213.4073) Type: PLAYER ID: 6
+[ 2021-08-30T17:39:48.498715300 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:48.738046700 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:48.927359300 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:49.122544700 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:49.265480100 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:49.563654600 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:49.793946400 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:53.994516500 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:54.213425800 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:54.434642200 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:54.632689700 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:54.780268800 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:54.995837500 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:55.214986800 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:55.429819600 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:55.653717400 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:56.328431100 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:56.977333500 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:57.405389900 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:57.510291900 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:57.715905300 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:57.885032 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:58.031557700 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:58.188469 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:58.827947300 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:58.946145600 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:59.149150400 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:59.280644600 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:59.491820600 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:59.628224400 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:39:59.825765100 ] Pos: (1960.1064,-4.5854857E-5,139.84698) Type: PLAYER ID: 6 has shot at Pos: (2000.0,0.0,0.0) Type: STATION ID: 2... but it doesn't seem to do much...
+[ 2021-08-30T17:40:54.854859300 ] User successfully connected on port 55462
+[ 2021-08-30T17:40:54.923490800 ] entity list successfully sorted
+[ 2021-08-30T17:40:54.929484400 ] Entity Spawned:Pos: (1478.5785,0.0,-252.59746) Type: PLAYER ID: 5
+[ 2021-08-30T17:42:02.956648400 ] user forced to disconnect from port: 55462
+[ 2021-08-30T17:42:02.961807300 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T17:42:16.258575900 ] user forced to disconnect from port: 59222
+[ 2021-08-30T17:42:16.261611300 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:43:20.745763500 ] User successfully connected on port 61051
+[ 2021-08-30T17:43:20.811403600 ] entity list successfully sorted
+[ 2021-08-30T17:43:20.816403600 ] Entity Spawned:Pos: (1476.3953,0.0,265.06067) Type: PLAYER ID: 4
+[ 2021-08-30T17:43:30.724296400 ] User successfully connected on port 49979
+[ 2021-08-30T17:43:30.804320400 ] entity list successfully sorted
+[ 2021-08-30T17:43:30.810355100 ] Entity Spawned:Pos: (-1038.8455,0.0,1082.0352) Type: PLAYER ID: 5
+[ 2021-08-30T17:43:53.792806 ] user forced to disconnect from port: 49979
+[ 2021-08-30T17:43:53.797799600 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T17:47:14.076455200 ] user forced to disconnect from port: 61051
+[ 2021-08-30T17:47:14.084474400 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:47:26.878126700 ] User successfully connected on port 63466
+[ 2021-08-30T17:47:26.948861600 ] entity list successfully sorted
+[ 2021-08-30T17:47:26.950884600 ] Entity Spawned:Pos: (-1027.5518,0.0,-1092.7659) Type: PLAYER ID: 6
+[ 2021-08-30T17:47:37.561127500 ] User successfully connected on port 49316
+[ 2021-08-30T17:47:37.654798 ] entity list successfully sorted
+[ 2021-08-30T17:47:37.659848600 ] Entity Spawned:Pos: (370.24515,0.0,-1453.5881) Type: PLAYER ID: 5
+[ 2021-08-30T17:47:59.527188600 ] user forced to disconnect from port: 63466
+[ 2021-08-30T17:47:59.533190700 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:48:14.656937400 ] user forced to disconnect from port: 49316
+[ 2021-08-30T17:48:14.664921900 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T17:49:12.046273 ] User successfully connected on port 63472
+[ 2021-08-30T17:49:12.136645700 ] entity list successfully sorted
+[ 2021-08-30T17:49:12.142650400 ] Entity Spawned:Pos: (-1140.9531,0.0,-973.7689) Type: PLAYER ID: 4
+[ 2021-08-30T17:49:20.441166400 ] User successfully connected on port 64799
+[ 2021-08-30T17:49:20.509007400 ] entity list successfully sorted
+[ 2021-08-30T17:49:20.512047300 ] Entity Spawned:Pos: (-848.0347,0.0,-1237.27) Type: PLAYER ID: 6
+[ 2021-08-30T17:49:31.222479300 ] user forced to disconnect from port: 63472
+[ 2021-08-30T17:49:31.226325300 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:49:50.464920500 ] User successfully connected on port 52586
+[ 2021-08-30T17:49:50.543298600 ] entity list successfully sorted
+[ 2021-08-30T17:49:50.547350200 ] Entity Spawned:Pos: (-1492.8104,0.0,146.68646) Type: PLAYER ID: 5
+[ 2021-08-30T17:50:01.633113700 ] user forced to disconnect from port: 64799
+[ 2021-08-30T17:50:01.636162100 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:50:24.102841200 ] user forced to disconnect from port: 52586
+[ 2021-08-30T17:50:24.112826200 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T17:50:30.913232200 ] User successfully connected on port 64809
+[ 2021-08-30T17:50:30.977445500 ] entity list successfully sorted
+[ 2021-08-30T17:50:30.983447700 ] Entity Spawned:Pos: (-1053.4032,0.0,-1067.8678) Type: PLAYER ID: 4
+[ 2021-08-30T17:50:38.137404100 ] User successfully connected on port 55879
+[ 2021-08-30T17:50:38.205929100 ] entity list successfully sorted
+[ 2021-08-30T17:50:38.211932300 ] Entity Spawned:Pos: (1199.5084,0.0,-900.655) Type: PLAYER ID: 6
+[ 2021-08-30T17:53:41.972198800 ] user forced to disconnect from port: 55879
+[ 2021-08-30T17:53:41.977193100 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:54:59.394271600 ] user forced to disconnect from port: 64809
+[ 2021-08-30T17:54:59.399172800 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T17:55:01.552146 ] User successfully connected on port 53694
+[ 2021-08-30T17:55:01.615388200 ] entity list successfully sorted
+[ 2021-08-30T17:55:01.622386500 ] Entity Spawned:Pos: (-237.86125,0.0,1481.0206) Type: PLAYER ID: 5
+[ 2021-08-30T17:55:11.669279200 ] User successfully connected on port 52289
+[ 2021-08-30T17:55:11.742438400 ] entity list successfully sorted
+[ 2021-08-30T17:55:11.745437 ] Entity Spawned:Pos: (-1480.5737,0.0,-240.62727) Type: PLAYER ID: 6
+[ 2021-08-30T17:55:29.779036300 ] user forced to disconnect from port: 52289
+[ 2021-08-30T17:55:29.784032800 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T17:55:45.026502100 ] User successfully connected on port 52290
+[ 2021-08-30T17:55:45.090451500 ] entity list successfully sorted
+[ 2021-08-30T17:55:45.093489500 ] Entity Spawned:Pos: (-1499.8999,0.0,-17.331465) Type: PLAYER ID: 4
+[ 2021-08-30T18:03:05.100000200 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:05.223120100 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:05.339093800 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:05.501230700 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:05.660719500 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:05.752933400 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:05.888920500 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:06.002070700 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:06.208155200 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:06.322240100 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:06.438486600 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:06.540195600 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:06.650449900 ] Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4 Has shot at Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5!
+[ 2021-08-30T18:03:27.382526 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:27.546094100 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:27.678268200 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:27.814871900 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:28.030097700 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:28.203128200 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:28.346685500 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:28.562668900 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:28.748712200 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:28.875893200 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:29.014332 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:29.205318 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:29.313857600 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:29.431490800 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:29.758870700 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:29.863803600 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:30.056280700 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:30.181451400 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:30.367542700 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:30.497167200 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:30.665805 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:30.810393900 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:31.064886400 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:31.241445900 ] Pos: (1951.5491,-4.6354094,-51.139336) Type: PLAYER ID: 5 Has shot at Pos: (1954.9999,-4.674821,-55.16531) Type: PLAYER ID: 4!
+[ 2021-08-30T18:03:50.637352300 ] user forced to disconnect from port: 52290
+[ 2021-08-30T18:03:50.642356500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T18:04:02.051865800 ] User successfully connected on port 52205
+[ 2021-08-30T18:04:02.123398400 ] entity list successfully sorted
+[ 2021-08-30T18:04:02.126393100 ] Entity Spawned:Pos: (894.4477,0.0,-1204.1442) Type: PLAYER ID: 6
+[ 2021-08-30T18:06:24.659207300 ] user forced to disconnect from port: 52205
+[ 2021-08-30T18:06:24.666210700 ] Entity removed:PLAYER, ID: 6
+[ 2021-08-30T18:07:13.399556600 ] user forced to disconnect from port: 53694
+[ 2021-08-30T18:07:13.406542700 ] Entity removed:PLAYER, ID: 5
+[ 2021-08-30T18:23:34.629361500 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T18:24:48.263644200 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T18:24:48.303642400 ] entity list successfully sorted
+[ 2021-08-30T18:24:48.306645700 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T18:24:48.309645500 ] entity list successfully sorted
+[ 2021-08-30T18:24:48.313646600 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T18:24:48.319683100 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T18:24:48.323682 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T18:24:48.326698800 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T18:24:48.329643900 ] entity list successfully sorted
+[ 2021-08-30T18:24:48.332641400 ] Entity Spawned:Pos: (-699.5605,0.0,-1873.6636) Type: ASTEROID ID: 3
+[ 2021-08-30T18:24:48.334686900 ] Asteroid Spawned!
+[ 2021-08-30T19:48:58.425898 ] User successfully connected on port 58508
+[ 2021-08-30T19:48:58.514261900 ] entity list successfully sorted
+[ 2021-08-30T19:48:58.522203200 ] Entity Spawned:Pos: (-1250.591,0.0,-828.26465) Type: PLAYER ID: 4
+[ 2021-08-30T19:49:04.215415500 ] user forced to disconnect from port: 58508
+[ 2021-08-30T19:49:04.218414200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T20:47:32.702958300 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T20:48:28.502420200 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T20:48:28.630752500 ] entity list successfully sorted
+[ 2021-08-30T20:48:28.640007300 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T20:48:28.649573800 ] entity list successfully sorted
+[ 2021-08-30T20:48:28.667066400 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T20:48:28.696667100 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T20:48:28.711481300 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:48:28.719618800 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:48:28.729798200 ] entity list successfully sorted
+[ 2021-08-30T20:48:28.735056600 ] Entity Spawned:Pos: (-54.750603,0.0,1999.2504) Type: ASTEROID ID: 3
+[ 2021-08-30T20:48:28.744879900 ] Asteroid Spawned!
+[ 2021-08-30T20:48:37.165596300 ] User successfully connected on port 50870
+[ 2021-08-30T20:48:37.253994900 ] entity list successfully sorted
+[ 2021-08-30T20:48:37.264935100 ] Entity Spawned:Pos: (709.063,0.0,-1321.8282) Type: PLAYER ID: 4
+[ 2021-08-30T20:49:24.758410300 ] user forced to disconnect from port: 50870
+[ 2021-08-30T20:49:24.767144500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T20:49:39.240704200 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T20:50:17.513563200 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T20:50:17.622770400 ] entity list successfully sorted
+[ 2021-08-30T20:50:17.627345 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T20:50:17.639236300 ] entity list successfully sorted
+[ 2021-08-30T20:50:17.650415400 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T20:50:17.662723300 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T20:50:17.666086200 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:50:17.669089800 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:50:17.673580200 ] entity list successfully sorted
+[ 2021-08-30T20:50:17.675261500 ] Entity Spawned:Pos: (-687.95215,0.0,-1877.9569) Type: ASTEROID ID: 3
+[ 2021-08-30T20:50:17.675261500 ] Asteroid Spawned!
+[ 2021-08-30T20:50:21.858880200 ] User successfully connected on port 57288
+[ 2021-08-30T20:50:21.954296200 ] entity list successfully sorted
+[ 2021-08-30T20:50:21.964441900 ] Entity Spawned:Pos: (-959.8568,0.0,-1152.6815) Type: PLAYER ID: 4
+[ 2021-08-30T20:50:30.974761900 ] user forced to disconnect from port: 57288
+[ 2021-08-30T20:50:30.997759 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T20:51:17.367908600 ] User successfully connected on port 57293
+[ 2021-08-30T20:51:17.455781700 ] entity list successfully sorted
+[ 2021-08-30T20:51:17.465493600 ] Entity Spawned:Pos: (-1431.1469,0.0,449.24255) Type: PLAYER ID: 4
+[ 2021-08-30T20:51:31.900014100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T20:51:53.592966500 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T20:51:53.689241300 ] entity list successfully sorted
+[ 2021-08-30T20:51:53.690741400 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T20:51:53.700741800 ] entity list successfully sorted
+[ 2021-08-30T20:51:53.708617600 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T20:51:53.722034900 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T20:51:53.728447700 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:51:53.734531400 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:51:53.741452200 ] entity list successfully sorted
+[ 2021-08-30T20:51:53.744498800 ] Entity Spawned:Pos: (1168.9614,0.0,1622.8152) Type: ASTEROID ID: 3
+[ 2021-08-30T20:51:53.753519800 ] Asteroid Spawned!
+[ 2021-08-30T20:51:55.379686900 ] User successfully connected on port 57298
+[ 2021-08-30T20:51:55.458812100 ] entity list successfully sorted
+[ 2021-08-30T20:51:55.468648300 ] Entity Spawned:Pos: (-1438.9082,0.0,423.7253) Type: PLAYER ID: 4
+[ 2021-08-30T20:52:23.642142500 ] Pos: (-2255.5151,-67.70229,908.64526) Type: PLAYER ID: 4 Has shot at Pos: (1168.9614,0.0,1622.8152) Type: ASTEROID ID: 3!
+[ 2021-08-30T20:52:23.668889100 ] user forced to disconnect from port: 57298
+[ 2021-08-30T20:52:23.686555300 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T20:53:28.419375500 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T20:53:50.509498500 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T20:53:50.592146400 ] entity list successfully sorted
+[ 2021-08-30T20:53:50.600682700 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T20:53:50.610059500 ] entity list successfully sorted
+[ 2021-08-30T20:53:50.621309800 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T20:53:50.639971900 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T20:53:50.652355800 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:53:50.660392700 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:53:50.669757 ] entity list successfully sorted
+[ 2021-08-30T20:53:50.677740900 ] Entity Spawned:Pos: (-1173.245,0.0,1619.7211) Type: ASTEROID ID: 3
+[ 2021-08-30T20:53:50.681186900 ] Asteroid Spawned!
+[ 2021-08-30T20:54:00.075452700 ] User successfully connected on port 57314
+[ 2021-08-30T20:54:00.159692700 ] entity list successfully sorted
+[ 2021-08-30T20:54:00.169668300 ] Entity Spawned:Pos: (1111.2062,0.0,-1007.58167) Type: PLAYER ID: 4
+[ 2021-08-30T20:54:26.887230400 ] entity list successfully sorted
+[ 2021-08-30T20:54:26.899531800 ] Entity Spawned:Pos: (1717.6344,22.867716,408.38895) Type: DEBRIS ID: 5
+[ 2021-08-30T20:54:41.934871 ] Pos: (2385.1575,45.701168,2015.7655) Type: PLAYER ID: 4 Has shot at Pos: (-1173.245,0.0,1619.7211) Type: ASTEROID ID: 3!
+[ 2021-08-30T20:54:41.960620100 ] user forced to disconnect from port: 57314
+[ 2021-08-30T20:54:41.975623600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T20:55:58.937800100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T20:56:02.720178900 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T20:56:02.798611300 ] entity list successfully sorted
+[ 2021-08-30T20:56:02.805057200 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T20:56:02.807066900 ] entity list successfully sorted
+[ 2021-08-30T20:56:02.816633300 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T20:56:02.830367100 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T20:56:02.839037100 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:56:02.842858 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:56:02.845943 ] entity list successfully sorted
+[ 2021-08-30T20:56:02.855197200 ] Entity Spawned:Pos: (-1752.822,0.0,963.1277) Type: ASTEROID ID: 3
+[ 2021-08-30T20:56:02.856265800 ] Asteroid Spawned!
+[ 2021-08-30T20:56:09.044540800 ] User successfully connected on port 49848
+[ 2021-08-30T20:56:09.126647 ] entity list successfully sorted
+[ 2021-08-30T20:56:09.136420300 ] Entity Spawned:Pos: (304.3489,0.0,1468.7994) Type: PLAYER ID: 4
+[ 2021-08-30T20:56:17.312602600 ] Pos: (304.3489,0.0,1468.7994) Type: PLAYER ID: 4 Has shot at Pos: (-1752.822,0.0,963.1277) Type: ASTEROID ID: 3!
+[ 2021-08-30T20:56:17.337532300 ] user forced to disconnect from port: 49848
+[ 2021-08-30T20:56:17.357018500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T20:58:47.931960400 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T20:58:52.020137300 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T20:58:52.086784100 ] entity list successfully sorted
+[ 2021-08-30T20:58:52.089358800 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T20:58:52.092631100 ] entity list successfully sorted
+[ 2021-08-30T20:58:52.100233 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T20:58:52.109591100 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T20:58:52.115856800 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:58:52.119144900 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T20:58:52.123440100 ] entity list successfully sorted
+[ 2021-08-30T20:58:52.127252600 ] Entity Spawned:Pos: (-1448.5413,0.0,1379.0315) Type: ASTEROID ID: 3
+[ 2021-08-30T20:58:52.131079900 ] Asteroid Spawned!
+[ 2021-08-30T20:58:58.161713400 ] User successfully connected on port 58383
+[ 2021-08-30T20:58:58.234094200 ] entity list successfully sorted
+[ 2021-08-30T20:58:58.243847100 ] Entity Spawned:Pos: (1451.7161,0.0,-377.51874) Type: PLAYER ID: 4
+[ 2021-08-30T20:59:27.443395900 ] Pos: (2006.0009,-30.6153,1592.3352) Type: PLAYER ID: 4 Has shot at Pos: (-1448.5413,0.0,1379.0315) Type: ASTEROID ID: 3!
+[ 2021-08-30T20:59:27.456714200 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.468434100 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: ENFORCER ID: 5
+[ 2021-08-30T20:59:27.479046500 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.489193 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 6
+[ 2021-08-30T20:59:27.500033700 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.509888500 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 7
+[ 2021-08-30T20:59:27.520862500 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.531885300 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 8
+[ 2021-08-30T20:59:27.542026100 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.552283900 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 9
+[ 2021-08-30T20:59:27.565273200 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.578916 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 10
+[ 2021-08-30T20:59:27.592615400 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.602594600 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 11
+[ 2021-08-30T20:59:27.616441 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.630422 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 12
+[ 2021-08-30T20:59:27.643393200 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.657606500 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 13
+[ 2021-08-30T20:59:27.671248200 ] entity list successfully sorted
+[ 2021-08-30T20:59:27.684283200 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 14
+[ 2021-08-30T20:59:27.776825800 ] user forced to disconnect from port: 58383
+[ 2021-08-30T20:59:27.801415100 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:02:14.376365100 ] User successfully connected on port 55979
+[ 2021-08-30T21:02:14.461010900 ] entity list successfully sorted
+[ 2021-08-30T21:02:14.469944900 ] Entity Spawned:Pos: (-112.788765,0.0,1495.7535) Type: PLAYER ID: 4
+[ 2021-08-30T21:03:17.786493 ] user forced to disconnect from port: 55979
+[ 2021-08-30T21:03:17.798078700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:03:19.948425900 ] User successfully connected on port 49616
+[ 2021-08-30T21:03:20.042165 ] entity list successfully sorted
+[ 2021-08-30T21:03:20.053157600 ] Entity Spawned:Pos: (-1397.3195,0.0,545.43414) Type: PLAYER ID: 4
+[ 2021-08-30T21:03:32.507150300 ] user forced to disconnect from port: 49616
+[ 2021-08-30T21:03:32.517095600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:04:40.128159300 ] User successfully connected on port 54509
+[ 2021-08-30T21:04:40.203072800 ] entity list successfully sorted
+[ 2021-08-30T21:04:40.206068700 ] Entity Spawned:Pos: (1426.1151,0.0,-464.96866) Type: PLAYER ID: 4
+[ 2021-08-30T21:04:49.632384700 ] user forced to disconnect from port: 54509
+[ 2021-08-30T21:04:49.643236900 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:04:53.856223200 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T21:06:00.682443300 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T21:06:00.819821300 ] entity list successfully sorted
+[ 2021-08-30T21:06:00.823820100 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T21:06:00.831205900 ] entity list successfully sorted
+[ 2021-08-30T21:06:00.836813 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T21:06:00.848997200 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T21:06:00.855805600 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:06:00.860245200 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:06:00.863200900 ] entity list successfully sorted
+[ 2021-08-30T21:06:00.869467700 ] Entity Spawned:Pos: (-303.92065,0.0,1976.7732) Type: ASTEROID ID: 3
+[ 2021-08-30T21:06:00.873720 ] Asteroid Spawned!
+[ 2021-08-30T21:06:03.125201400 ] User successfully connected on port 62350
+[ 2021-08-30T21:06:03.216684100 ] entity list successfully sorted
+[ 2021-08-30T21:06:03.226625100 ] Entity Spawned:Pos: (593.9375,0.0,1377.4027) Type: PLAYER ID: 4
+[ 2021-08-30T21:06:11.331525300 ] Pos: (593.9375,0.0,1377.4027) Type: PLAYER ID: 4 Has shot at Pos: (-303.92065,0.0,1976.7732) Type: ASTEROID ID: 3!
+[ 2021-08-30T21:06:11.347586800 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.357598900 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: ENFORCER ID: 5
+[ 2021-08-30T21:06:11.370379300 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.381365700 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 6
+[ 2021-08-30T21:06:11.391363300 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.403362800 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 7
+[ 2021-08-30T21:06:11.413471100 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.423494800 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 8
+[ 2021-08-30T21:06:11.433118700 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.442114200 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 9
+[ 2021-08-30T21:06:11.452112200 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.462117 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 10
+[ 2021-08-30T21:06:11.472670900 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.483704300 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 11
+[ 2021-08-30T21:06:11.493667400 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.502865600 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 12
+[ 2021-08-30T21:06:11.513363600 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.522138700 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 13
+[ 2021-08-30T21:06:11.532405100 ] entity list successfully sorted
+[ 2021-08-30T21:06:11.540405500 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 14
+[ 2021-08-30T21:06:52.367754400 ] Pos: (1981.8527,10.12483,14.573788) Type: PLAYER ID: 4 Has shot at Pos: (-303.92065,0.0,1976.7732) Type: ASTEROID ID: 3!
+[ 2021-08-30T21:06:57.432696100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T21:08:57.919155100 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T21:08:58.006406 ] entity list successfully sorted
+[ 2021-08-30T21:08:58.013673700 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T21:08:58.013673700 ] entity list successfully sorted
+[ 2021-08-30T21:08:58.026274500 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T21:08:58.039558300 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T21:08:58.047918500 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:08:58.051966500 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:08:58.051966500 ] entity list successfully sorted
+[ 2021-08-30T21:08:58.061818900 ] Entity Spawned:Pos: (1239.9161,0.0,-1569.2699) Type: ASTEROID ID: 3
+[ 2021-08-30T21:08:58.069042500 ] Asteroid Spawned!
+[ 2021-08-30T21:09:03.712564400 ] User successfully connected on port 64434
+[ 2021-08-30T21:09:03.795946 ] entity list successfully sorted
+[ 2021-08-30T21:09:03.808883700 ] Entity Spawned:Pos: (51.124916,0.0,1499.1284) Type: PLAYER ID: 4
+[ 2021-08-30T21:10:14.199310600 ] Pos: (1987.7594,-16.35984,173.96764) Type: PLAYER ID: 4 Has shot at Pos: (1239.9161,0.0,-1569.2699) Type: ASTEROID ID: 3!
+[ 2021-08-30T21:10:14.213714 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.227062900 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: ENFORCER ID: 5
+[ 2021-08-30T21:10:14.238544500 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.247207600 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: ENFORCER ID: 6
+[ 2021-08-30T21:10:14.258135900 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.268086600 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 7
+[ 2021-08-30T21:10:14.277608200 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.288860200 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 8
+[ 2021-08-30T21:10:14.300824600 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.312244400 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 9
+[ 2021-08-30T21:10:14.323776600 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.334799100 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 10
+[ 2021-08-30T21:10:14.339818600 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.343443300 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 11
+[ 2021-08-30T21:10:14.346621600 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.349844600 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 12
+[ 2021-08-30T21:10:14.353933300 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.358480700 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 13
+[ 2021-08-30T21:10:14.363122100 ] entity list successfully sorted
+[ 2021-08-30T21:10:14.366175300 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 14
+[ 2021-08-30T21:10:14.526656 ] user forced to disconnect from port: 64434
+[ 2021-08-30T21:10:14.541777200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:10:57.514754100 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T21:11:13.571719400 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T21:11:13.638639200 ] entity list successfully sorted
+[ 2021-08-30T21:11:13.642322400 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T21:11:13.646690300 ] entity list successfully sorted
+[ 2021-08-30T21:11:13.651706200 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T21:11:13.661406600 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T21:11:13.667501200 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:11:13.670676200 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:11:13.674472900 ] entity list successfully sorted
+[ 2021-08-30T21:11:13.678541600 ] Entity Spawned:Pos: (1991.0043,0.0,-189.47906) Type: ASTEROID ID: 3
+[ 2021-08-30T21:11:13.680924500 ] Asteroid Spawned!
+[ 2021-08-30T21:11:16.572448100 ] User successfully connected on port 58311
+[ 2021-08-30T21:11:16.651158700 ] entity list successfully sorted
+[ 2021-08-30T21:11:16.662266 ] Entity Spawned:Pos: (-748.68134,0.0,-1299.7986) Type: PLAYER ID: 4
+[ 2021-08-30T21:12:15.399427600 ] user forced to disconnect from port: 58311
+[ 2021-08-30T21:12:15.413692 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:12:21.803073400 ] User successfully connected on port 58318
+[ 2021-08-30T21:12:21.872993100 ] entity list successfully sorted
+[ 2021-08-30T21:12:21.886943500 ] Entity Spawned:Pos: (277.5626,0.0,-1474.0961) Type: PLAYER ID: 4
+[ 2021-08-30T21:13:23.480105900 ] Pos: (2022.6064,-16.790941,-11.613434) Type: PLAYER ID: 4 Has shot at Pos: (1991.0043,0.0,-189.47906) Type: ASTEROID ID: 3!
+[ 2021-08-30T21:13:23.492106300 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.502800800 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: ENFORCER ID: 5
+[ 2021-08-30T21:13:23.518564400 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.560396600 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 6
+[ 2021-08-30T21:13:23.586042200 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.611248300 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 7
+[ 2021-08-30T21:13:23.645852100 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.659065900 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 8
+[ 2021-08-30T21:13:23.666975700 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.676084800 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 9
+[ 2021-08-30T21:13:23.682156100 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.688878200 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 10
+[ 2021-08-30T21:13:23.696591400 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.701646900 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 11
+[ 2021-08-30T21:13:23.706278700 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.711037900 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 12
+[ 2021-08-30T21:13:23.715037900 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.719039200 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 13
+[ 2021-08-30T21:13:23.723161700 ] entity list successfully sorted
+[ 2021-08-30T21:13:23.728038 ] Entity Spawned:Pos: (NaN,NaN,NaN) Type: ENFORCER ID: 14
+[ 2021-08-30T21:13:40.227606600 ] user forced to disconnect from port: 58318
+[ 2021-08-30T21:13:40.245133700 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:13:42.128681 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T21:15:21.557367600 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T21:15:21.648626400 ] entity list successfully sorted
+[ 2021-08-30T21:15:21.650705300 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T21:15:21.661105600 ] entity list successfully sorted
+[ 2021-08-30T21:15:21.668820400 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T21:15:21.681791800 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T21:15:21.689609300 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:15:21.690615100 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:15:21.699515 ] entity list successfully sorted
+[ 2021-08-30T21:15:21.699515 ] Entity Spawned:Pos: (1829.7064,0.0,-807.5732) Type: ASTEROID ID: 3
+[ 2021-08-30T21:15:21.707308600 ] Asteroid Spawned!
+[ 2021-08-30T21:15:28.171932200 ] User successfully connected on port 58307
+[ 2021-08-30T21:15:28.252173700 ] entity list successfully sorted
+[ 2021-08-30T21:15:28.261937900 ] Entity Spawned:Pos: (-1365.0692,0.0,-621.7604) Type: PLAYER ID: 4
+[ 2021-08-30T21:15:34.460749300 ] user forced to disconnect from port: 58307
+[ 2021-08-30T21:15:34.475876200 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:15:40.507034500 ] User successfully connected on port 58311
+[ 2021-08-30T21:15:40.579531200 ] entity list successfully sorted
+[ 2021-08-30T21:15:40.591557600 ] Entity Spawned:Pos: (1335.0582,0.0,683.82715) Type: PLAYER ID: 4
+[ 2021-08-30T21:15:50.243511400 ] Pos: (1452.1718,2.2243595,441.2329) Type: PLAYER ID: 4 Has shot at Pos: (1829.7064,0.0,-807.5732) Type: ASTEROID ID: 3!
+[ 2021-08-30T21:15:50.257510600 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.269506200 ] Entity Spawned:Pos: (1960.9286,0.0,-8.568564) Type: ENFORCER ID: 5
+[ 2021-08-30T21:15:50.283506700 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.294546 ] Entity Spawned:Pos: (2011.823,0.0,-38.212772) Type: ENFORCER ID: 6
+[ 2021-08-30T21:15:50.305546300 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.314547100 ] Entity Spawned:Pos: (1965.1688,0.0,-19.666912) Type: ENFORCER ID: 7
+[ 2021-08-30T21:15:50.324911200 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.335398900 ] Entity Spawned:Pos: (1978.9568,0.0,34.017426) Type: ENFORCER ID: 8
+[ 2021-08-30T21:15:50.344347 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.354340700 ] Entity Spawned:Pos: (1963.9541,0.0,17.340399) Type: ENFORCER ID: 9
+[ 2021-08-30T21:15:50.364526900 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.375163300 ] Entity Spawned:Pos: (2039.0264,0.0,8.771811) Type: ENFORCER ID: 10
+[ 2021-08-30T21:15:50.384398 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.394576100 ] Entity Spawned:Pos: (1960.167,0.0,-3.6512823) Type: ENFORCER ID: 11
+[ 2021-08-30T21:15:50.404690200 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.414545700 ] Entity Spawned:Pos: (2028.4407,0.0,28.127012) Type: ENFORCER ID: 12
+[ 2021-08-30T21:15:50.423934 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.433729900 ] Entity Spawned:Pos: (2031.2365,0.0,-24.985746) Type: ENFORCER ID: 13
+[ 2021-08-30T21:15:50.443354900 ] entity list successfully sorted
+[ 2021-08-30T21:15:50.453360600 ] Entity Spawned:Pos: (1993.0826,0.0,39.39733) Type: ENFORCER ID: 14
+[ 2021-08-30T21:16:46.782360100 ] user forced to disconnect from port: 58311
+[ 2021-08-30T21:16:46.798910500 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:16:57.721209400 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
+[ 2021-08-30T21:18:41.904966200 ] DESKTOP-E2274E2/172.25.0.1
+[ 2021-08-30T21:18:41.958306300 ] entity list successfully sorted
+[ 2021-08-30T21:18:41.959259900 ] Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[ 2021-08-30T21:18:41.959259900 ] entity list successfully sorted
+[ 2021-08-30T21:18:41.974040 ] Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[ 2021-08-30T21:18:41.987025500 ] Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[ 2021-08-30T21:18:41.995890400 ] Available: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used: 
+max size: 1.35085174E18
+
+Unaccounted for: max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:18:42.000607800 ] Excess:
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[ 2021-08-30T21:18:42.000607800 ] entity list successfully sorted
+[ 2021-08-30T21:18:42.008048200 ] Entity Spawned:Pos: (-1920.1357,0.0,559.53436) Type: ASTEROID ID: 3
+[ 2021-08-30T21:18:42.008048200 ] Asteroid Spawned!
+[ 2021-08-30T21:18:46.829318700 ] User successfully connected on port 52397
+[ 2021-08-30T21:18:46.913278200 ] entity list successfully sorted
+[ 2021-08-30T21:18:46.922895900 ] Entity Spawned:Pos: (1453.6315,0.0,-370.07507) Type: PLAYER ID: 4
+[ 2021-08-30T21:20:02.531618 ] user forced to disconnect from port: 52397
+[ 2021-08-30T21:20:02.545485600 ] Entity removed:PLAYER, ID: 4
+[ 2021-08-30T21:20:07.084389600 ] ------END OF SERVER LOGS UNTIL NEXT RESTART------
