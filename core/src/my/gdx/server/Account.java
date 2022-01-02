@@ -21,23 +21,25 @@ class Account extends Thread {
     ObjectOutputStream dout;
     private static final long serialVersionUID = 1L;
     Player userEntity;
+    Server connectedWorld; 
     private boolean isrunning = false;
 
-    public Account(Socket s) {
+    public Account(Socket s, Server conn) {
         user = s;
+        connectedWorld = conn; 
         try {
             this.dout = new ObjectOutputStream(s.getOutputStream());
             this.din = new DataInputStream(s.getInputStream());
             short cmd = din.readShort();
             if (cmd == 0)
-                userEntity = (Player) Server.getEntityCopy(din.readLong());
+                userEntity = (Player) connectedWorld.getEntityCopy(din.readLong());
             dout.writeObject((Entity) userEntity);
             dout.flush();
             isrunning = true;
         } catch (Exception e) {
             e.printStackTrace();
             Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
-            Server.removeEntity(userEntity);
+            connectedWorld.removeEntity(userEntity);
         }
     }
 
@@ -52,7 +54,7 @@ class Account extends Thread {
                     case 0:
                         long ID = din.readLong();
                         // System.out.println(ID+" Entity copy requested");
-                        Entity e = Server.getEntityCopy(ID);
+                        Entity e = connectedWorld.getEntityCopy(ID);
                         if (e != null) {
                             sendEntity(e);
                         }
@@ -96,11 +98,11 @@ class Account extends Thread {
                         // so I just get the
                         // Enum.ordinal() value
                         Item i = new Item(template, din.readInt());
-                        Server.DropItem(this.userEntity, i);
+                        connectedWorld.DropItem(this.userEntity, i);
                         break;
                     case 5:
-                        Entity from = Server.getEntityCopy(din.readLong());
-                        Entity to = Server.getEntityCopy(din.readLong());
+                        Entity from = connectedWorld.getEntityCopy(din.readLong());
+                        Entity to = connectedWorld.getEntityCopy(din.readLong());
                         Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt());
                         if(from.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER && to.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+to.getSize())*Entity.METER){
                         Server.appendToLogs(
@@ -113,19 +115,19 @@ class Account extends Thread {
                     }else {Server.appendToLogs("Transfer failed! "+from.toString()+" is too far away from"+to.toString());}
                         break;
                     case 6:
-                        Entity victim = Server.getEntityCopy(din.readLong()); 
+                        Entity victim = connectedWorld.getEntityCopy(din.readLong()); 
                         if(victim instanceof KillableEntity){
                         KillableEntity victim2 = (KillableEntity) victim;
                         victim2.dealDamage(20);
                         Server.appendToLogs(userEntity.toString() + " Has shot at " + victim.toString() +"!");
-                        Server.SpawnARFSDefenseForce(userEntity); 
+                        connectedWorld.SpawnARFSDefenseForce(userEntity); 
                         }
                     break;
                 }
 
             } catch (SocketException e) {
                 Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
-                Server.removeEntity(userEntity);
+                connectedWorld.removeEntity(userEntity);
                 try {
                     user.close();
                     isrunning = false;
@@ -137,7 +139,7 @@ class Account extends Thread {
             } catch (Exception e) {
                 e.printStackTrace();
                 Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
-                Server.removeEntity(userEntity);
+                connectedWorld.removeEntity(userEntity);
                 try {
                     user.close();
                     isrunning = false;
@@ -163,5 +165,9 @@ class Account extends Thread {
 
     public int getPort() {
         return user.getPort();
+    }
+
+    public void changeWorld(Server s){
+        this.connectedWorld = s; 
     }
 }// ends class

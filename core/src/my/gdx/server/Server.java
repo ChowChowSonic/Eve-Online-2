@@ -1,29 +1,20 @@
 package my.gdx.server;
 
+import java.io.Console;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.InetAddress;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g3d.Model;
-import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Json;
 
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Crate;
@@ -40,38 +31,32 @@ import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Item;
 import my.gdx.game.inventory.Shipclass;
 
-public class Server extends ApplicationAdapter {
-    public static ArrayList<Entity> entities;
-    public static File ENTITYFILE, LOGFILE;
+public class Server extends Thread{
+    public File ENTITYFILE; 
+    public ArrayList<Entity> entities;
+    public static final File LOGFILE = new File("core\\assets\\Logs.txt") ;
 
+    private ServerAntenna antenna;
+    private float cumDeltaTime = 0f;
+    private Entity[] activeDefenders = new Entity[10];
+    private static final Console logs = System.console(); 
     private static final long serialVersionUID = 1L;
-    private static Inventory materialcensus, usedmaterials, vanishedmaterials;
-    private static SpriteBatch textrenderer;
-    private static BitmapFont font;
-    private static String[] logs = new String[31];
-    private static ServerAntenna antenna;
+    private static final Inventory  materialcensus = new Inventory((float) Math.pow(3, 38)),
+                                    usedmaterials = new Inventory((float) Math.pow(3, 38)),
+                                    vanishedmaterials = new Inventory((float) Math.pow(3, 38));
     private static Random r;
     private static ArrayList<Long> openIDs = new ArrayList<Long>();
     private static long nextID = 0L;
-    private static float cumDeltaTime = 0f;
-    private static int logposition = 0;
-    private static Entity[] activeDefenders = new Entity[10];
+    
 
-    public void create() {
+    public Server(File entity) {
         r = new Random();
-        materialcensus = new Inventory((float) Math.pow(3, 38));
-        usedmaterials = new Inventory((float) Math.pow(3, 38));
-        vanishedmaterials = new Inventory((float) Math.pow(3, 38));
         entities = new ArrayList<Entity>();
-        textrenderer = new SpriteBatch();
-        font = new BitmapFont();
-        font.setColor(Color.WHITE);
+        
         materialcensus.additem(new Item(InventoryItems.Gold, 1000));
         try {
-            LOGFILE = new File("C:\\Users\\dmcdc\\Documents\\GitHub\\Eve-Online-2\\core\\assets\\Logs.txt");
+            ENTITYFILE = entity; 
             appendToLogs(InetAddress.getLocalHost().toString());
-            ENTITYFILE = new File(Gdx.files.internal("Entities.txt").path());
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,23 +65,24 @@ public class Server extends ApplicationAdapter {
         spawnEntity(new Station(new Vector3(2000, 0, 0), "SpaceStation.obj", 1000000, 20, 40, assignID()),
                 new Vector3(2000, 0, 0));
 
-        antenna = new ServerAntenna(26000);
+        antenna = new ServerAntenna(26000, this);
         antenna.start();
 
-        super.create();
+        //super.create();
     }
 
+    @Override
     /**
-     * Public Void Render() in this case serves as both an updater for the ingame
+     * Public Void run() in this case serves as both an updater for the ingame
      * world AND the makeshift terminal that shows its running.
      */
-    public void render() {
-        super.render();
-        Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);// clears the screen of text
+    public void run() {
+        //super.render();
+        //Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);// clears the screen of text
 
         // Cumulative Delta Time - used for sending the entities to the clients
-        cumDeltaTime += Gdx.graphics.getDeltaTime();
+        //cumDeltaTime += Gdx.graphics.getDeltaTime();
 
         // In-game Physics
         for (int i = 0; i < entities.size(); i++) {
@@ -110,7 +96,7 @@ public class Server extends ApplicationAdapter {
                  * playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID())); }
                  */
             }
-            entities.get(i).update(Gdx.graphics.getDeltaTime());
+            entities.get(i).update(0);
         }
 
         // Logs all items in existance and tries to regulate them with the item census
@@ -132,17 +118,16 @@ public class Server extends ApplicationAdapter {
         }
 
         // Logging
-        textrenderer.begin();
+        /*textrenderer.begin();
         for (int i = 0; i < logs.length; i++) {
             if (logs[i] != null) {
                 font.draw(textrenderer, logs[i], 0, Gdx.graphics.getHeight() - 15 * (i));
             }
         }
-        textrenderer.end();
+        textrenderer.end();*/
     }
 
-    @Override
-    public void dispose() {
+    public void close() {
         appendToLogs("------END OF SERVER LOGS UNTIL NEXT RESTART------");
         antenna.close();
 
@@ -153,7 +138,7 @@ public class Server extends ApplicationAdapter {
      * 
      * @param e
      */
-    public static void spawnEntity(Entity e, int radius) {
+    public void spawnEntity(Entity e, int radius) {
         entities.add(e);
         float angle = (float) (r.nextFloat() * 2 * Math.PI);
         e.setPos(radius * (float) Math.cos(angle), 0, radius * (float) Math.sin(angle));
@@ -161,7 +146,7 @@ public class Server extends ApplicationAdapter {
         appendToLogs("Entity Spawned:" + e.toString());
     }
 
-    public static void spawnEntity(Entity e, int radius, int maxOffset) {
+    public void spawnEntity(Entity e, int radius, int maxOffset) {
         entities.add(e);
         radius += r.nextInt(maxOffset);
         radius -= r.nextInt(maxOffset);
@@ -177,14 +162,14 @@ public class Server extends ApplicationAdapter {
      * @param e
      * @param pos
      */
-    public static void spawnEntity(Entity e, Vector3 pos) {
+    public void spawnEntity(Entity e, Vector3 pos) {
         e.setPos(pos);
         entities.add(e);
         sortEntities();
         appendToLogs("Entity Spawned:" + e.toString());
     }
 
-    public static void removeEntity(Entity e) {
+    public void removeEntity(Entity e) {
         for (Iterator<Entity> ents = entities.iterator(); ents.hasNext();) {
             Entity e2 = ents.next();
             if (e.equals(e2)) {
@@ -192,13 +177,13 @@ public class Server extends ApplicationAdapter {
             }
         }
 
-        for (Entity def : activeDefenders) {
+        /*for (Entity def : activeDefenders) {
             if (def == null)
                 continue;
             ARFSDefender d = (ARFSDefender) def;
             if (d.getTarget().equals(e))
                 d.setTarget(null);
-        }
+        }*/
 
         if (!entities.contains(e)) {
             openIDs.add(e.getID());
@@ -209,7 +194,7 @@ public class Server extends ApplicationAdapter {
         }
     }
 
-    private static void sortEntities() {
+    private void sortEntities() {
         ArrayList<Entity> newlist = new ArrayList<Entity>();
         for (Entity e : entities) {
             if (e.getEntityType() == EntityType.CELESTIALOBJ || e.getEntityType() == EntityType.STATION)
@@ -248,35 +233,7 @@ public class Server extends ApplicationAdapter {
         }
     }// ends runItemCensus()
 
-    protected static void appendToLogs(String s) {
-        if (logposition < logs.length) {
-            logs[logposition] = s.replaceAll("\n", " / ");
-            logposition++;
-        } else {
-            logposition = 0;
-            logs[0] = s.replaceAll("\n", " / ");
-        }
-        try (FileWriter logger = new FileWriter(LOGFILE, true);) {
-            logger.append("[ " + LocalDateTime.now() + " ] " + s + "\n");
-            logger.flush();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-    }
-
-    private static long assignID() {
-        if (openIDs.size() > 0) {
-            long l = openIDs.get(0);
-            openIDs.remove(0);
-            return l;
-        }
-        nextID++;
-        return nextID;
-    }
-
-    protected static void DropItem(Entity e, Item i) {
+    protected void DropItem(Entity e, Item i) {
         Vector3 chestpos = e.getPos().cpy();
         Vector3 rotation = e.getRotation();
         if (rotation.isZero())
@@ -300,7 +257,7 @@ public class Server extends ApplicationAdapter {
      * @param ID - the ID of the entity in question
      * @return a copy of a player
      */
-    public static Entity getEntityCopy(long ID) {
+    public Entity getEntityCopy(long ID) {
         if (ID > 0) {
             for (Entity e : entities) {
                 if (e != null && e.getID() == ID)
@@ -313,7 +270,7 @@ public class Server extends ApplicationAdapter {
         return p;
     }
 
-    public static void SpawnARFSDefenseForce(KillableEntity criminal) {
+    public void SpawnARFSDefenseForce(KillableEntity criminal) {
         // Get a station to spawn them at
         Station spawnpoint = null;
         for (int i = 0; i < entities.size(); i++) {
@@ -340,5 +297,36 @@ public class Server extends ApplicationAdapter {
                 e2.setTarget(criminal);
             }
         }
+    }
+
+    //Start of Static methods
+
+    protected static void appendToLogs(String s) {
+        /*if (logposition < logs.length) {
+            logs[logposition] = s.replaceAll("\n", " / ");
+            logposition++;
+        } else {
+            logposition = 0;
+            logs[0] = s.replaceAll("\n", " / ");
+        }*/
+        logs.printf(s+"\n"); 
+        try (FileWriter logger = new FileWriter(LOGFILE, true);) {
+            logger.append("[ " + LocalDateTime.now() + " ] " + s + "\n");
+            logger.flush();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    private static long assignID() {
+        if (openIDs.size() > 0) {
+            long l = openIDs.get(0);
+            openIDs.remove(0);
+            return l;
+        }
+        nextID++;
+        return nextID;
     }
 }

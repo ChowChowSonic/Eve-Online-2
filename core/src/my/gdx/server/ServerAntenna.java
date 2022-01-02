@@ -10,9 +10,11 @@ public class ServerAntenna extends Thread{
     int port;
     private static final long serialVersionUID = 1L; 
     ArrayList<Account> connections;
+    Server connectedWorld; 
 
-    public ServerAntenna(int port){
+    public ServerAntenna(int port, Server s){
         this.port = port; 
+        connectedWorld = s; 
         connections = new ArrayList<Account>();
         try{
             socket = new ServerSocket(port); 
@@ -28,7 +30,7 @@ public class ServerAntenna extends Thread{
             try {
                 Socket user = socket.accept();
                 Server.appendToLogs("User successfully connected on port "+user.getPort());
-                Account usersocket = new Account(user);
+                Account usersocket = new Account(user, connectedWorld);
                 connections.add(usersocket);
                 usersocket.start();
                 
