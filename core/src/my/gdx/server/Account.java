@@ -136,7 +136,9 @@ class Account extends Thread {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-            } catch (Exception e) {
+            } catch(EOFException disconnect){
+                //This is normal, an EOFException is what happens when someone disconnects.
+            }catch (Exception e) {
                 e.printStackTrace();
                 Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
                 connectedWorld.removeEntity(userEntity);

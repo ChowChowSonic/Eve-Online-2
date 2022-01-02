@@ -106,7 +106,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		
 		// Connect to the server & add the player
 		System.out.println("Attempting to connect...");
-		connection = new ClientAntenna(/* "Server" */ "DESKTOP-E2274E2", 26000);
+		connection = new ClientAntenna("DogsRus"/* "Server" "DESKTOP-E2274E2" */, 26000);
 		System.out.println("Connected!");
 		player = (Player) entities.get(0);
 		connection.start();
@@ -167,7 +167,6 @@ public class EveOnline2 extends ApplicationAdapter {
 	public void render() {
 		// TODO Auto-generated method stub
 		super.render();
-		
 		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 		
