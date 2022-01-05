@@ -34,12 +34,11 @@ import my.gdx.game.inventory.Shipclass;
 public class Server extends Thread{
     public File ENTITYFILE; 
     public ArrayList<Entity> entities;
-    public static final File LOGFILE = new File("core\\assets\\Logs.txt") ;
+    public static final File LOGFILE = new File("core\\assets\\Logs.txt");
     
     private ServerAntenna antenna;
     private long cumDeltaTime = 0, last;
     private Entity[] activeDefenders = new Entity[10];
-    private static final Console logs = System.console(); 
     private static final long serialVersionUID = 1L;
     private static final Inventory  materialcensus = new Inventory((float) Math.pow(3, 38)),
     usedmaterials = new Inventory((float) Math.pow(3, 38)),
@@ -50,6 +49,7 @@ public class Server extends Thread{
     
     
     public Server(File entity) {
+
         last = System.currentTimeMillis();
         r = new Random();
         entities = new ArrayList<Entity>();
@@ -57,7 +57,7 @@ public class Server extends Thread{
         materialcensus.additem(new Item(InventoryItems.Gold, 1000));
         try {
             ENTITYFILE = entity; 
-            appendToLogs(InetAddress.getLocalHost().toString());
+            System.out.println(InetAddress.getLocalHost().toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,13 +75,10 @@ public class Server extends Thread{
     @Override
     /**
     * Public Void run() in this case serves as both an updater for the ingame
-    * world AND the makeshift terminal that shows its running.
+    * world. DO NOT CALL THIS TOO MANY TIMES PER SECOND OR YOU WILL GET BUGGY GAMEPLAY! 
     */
     public void run() {
         while(true){
-            //super.render();
-            //Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            //Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);// clears the screen of text
             
             // Cumulative Delta Time - used for sending the entities to the clients
             last = System.currentTimeMillis(); 
@@ -118,7 +115,6 @@ public class Server extends Thread{
                         antenna.sendEntity(e);
                     }
                     cumDeltaTime = 0;
-                    System.out.println("Entities Sent!");
                 }
                 
                 // Logging
@@ -133,7 +129,7 @@ public class Server extends Thread{
         }
         
         public void close() {
-            appendToLogs("------END OF SERVER LOGS UNTIL NEXT RESTART------");
+            System.out.println("------END OF SERVER LOGS UNTIL NEXT RESTART------");
             antenna.close();
             
         }
@@ -148,7 +144,7 @@ public class Server extends Thread{
             float angle = (float) (r.nextFloat() * 2 * Math.PI);
             e.setPos(radius * (float) Math.cos(angle), 0, radius * (float) Math.sin(angle));
             sortEntities();
-            appendToLogs("Entity Spawned:" + e.toString());
+            System.out.println("Entity Spawned:" + e.toString());
         }
         
         public void spawnEntity(Entity e, int radius, int maxOffset) {
@@ -158,7 +154,7 @@ public class Server extends Thread{
             float angle = (float) (r.nextFloat() * 2 * Math.PI);
             e.setPos(radius * (float) Math.cos(angle), 0, radius * (float) Math.sin(angle));
             sortEntities();
-            appendToLogs("Entity Spawned:" + e.toString());
+            System.out.println("Entity Spawned:" + e.toString());
         }
         
         /**
@@ -171,7 +167,7 @@ public class Server extends Thread{
             e.setPos(pos);
             entities.add(e);
             sortEntities();
-            appendToLogs("Entity Spawned:" + e.toString());
+            System.out.println("Entity Spawned:" + e.toString());
         }
         
         public void removeEntity(Entity e) {
@@ -193,9 +189,9 @@ public class Server extends Thread{
             if (!entities.contains(e)) {
                 openIDs.add(e.getID());
                 antenna.sendEntity(new removedEntity(e.getID()));
-                appendToLogs("Entity removed:" + e.getEntityType() + ", ID: " + e.getID());
+                System.out.println("Entity removed:" + e.getEntityType() + ", ID: " + e.getID());
             } else {
-                appendToLogs("Entity unable to be removed!");
+                System.out.println("Entity unable to be removed!");
             }
         }
         
@@ -218,7 +214,7 @@ public class Server extends Thread{
             }
             
             entities = newlist;
-            appendToLogs("entity list successfully sorted");
+            System.out.println("entity list successfully sorted");
         }// ends sortEntities()
         
         private void runItemCensus() {
@@ -229,12 +225,12 @@ public class Server extends Thread{
             vanishedmaterials.additem(underflow.getItems());
             
             if (vanishedmaterials.getItemcount() > 100) {
-                appendToLogs("Available: \n" + materialcensus.toString() + "\nUsed: \n" + usedmaterials.toString()
+                System.out.println("Available: \n" + materialcensus.toString() + "\nUsed: \n" + usedmaterials.toString()
                 + "\nUnaccounted for: " + vanishedmaterials.toString());
-                appendToLogs("Excess:\n" + overflow.toString() + "Lacking:\n" + underflow.toString());
+                System.out.println("Excess:\n" + overflow.toString() + "Lacking:\n" + underflow.toString());
                 spawnEntity(new Asteroid("Asteroid.obj", vanishedmaterials.getItems(), assignID()), 2000);
                 vanishedmaterials.empty();
-                appendToLogs("Asteroid Spawned!");
+                System.out.println("Asteroid Spawned!");
             }
         }// ends runItemCensus()
         
@@ -251,8 +247,8 @@ public class Server extends Thread{
                 e.inventory.removeItem(i);
                 spawnEntity(new Crate("Crate.obj", wrapper, assignID()), chestpos);
             } else {
-                appendToLogs("Illegal item drop attempted! " + i.toString() + " not contained within the inventory!");
-                appendToLogs(e.inventory.toString());
+                System.out.println("Illegal item drop attempted! " + i.toString() + " not contained within the inventory!");
+                System.out.println(e.inventory.toString());
             }
         }
         
@@ -305,25 +301,6 @@ public class Server extends Thread{
         }
         
         //Start of Static methods
-        
-        protected static void appendToLogs(String s) {
-            /*if (logposition < logs.length) {
-                logs[logposition] = s.replaceAll("\n", " / ");
-                logposition++;
-            } else {
-                logposition = 0;
-                logs[0] = s.replaceAll("\n", " / ");
-            }*/
-            logs.printf(s+"\n"); 
-            try (FileWriter logger = new FileWriter(LOGFILE, true);) {
-                logger.append("[ " + LocalDateTime.now() + " ] " + s + "\n");
-                logger.flush();
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            
-        }
         
         private static long assignID() {
             if (openIDs.size() > 0) {

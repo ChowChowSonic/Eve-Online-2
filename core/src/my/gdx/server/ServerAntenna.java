@@ -18,7 +18,7 @@ public class ServerAntenna extends Thread{
         connections = new ArrayList<Account>();
         try{
             socket = new ServerSocket(port); 
-            Server.appendToLogs("Server successfully created on "+socket);
+            System.out.println("Server successfully created on "+socket);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -29,7 +29,7 @@ public class ServerAntenna extends Thread{
         while(true){
             try {
                 Socket user = socket.accept();
-                Server.appendToLogs("User successfully connected on port "+user.getPort());
+                System.out.println("User successfully connected on port "+user.getPort());
                 Account usersocket = new Account(user, connectedWorld);
                 connections.add(usersocket);
                 usersocket.start();

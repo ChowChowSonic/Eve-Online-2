@@ -38,7 +38,7 @@ class Account extends Thread {
             isrunning = true;
         } catch (Exception e) {
             e.printStackTrace();
-            Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
+            System.out.println("user forced to disconnect from port: " + user.getPort());
             connectedWorld.removeEntity(userEntity);
         }
     }
@@ -48,7 +48,7 @@ class Account extends Thread {
         while (isrunning) {
             try {
                 short cmd = din.readShort();
-                System.out.println("CMD: " + cmd);
+                //System.out.println("CMD: " + cmd);
 
                 switch (cmd) {
                     case 0:
@@ -61,9 +61,7 @@ class Account extends Thread {
                         break;
 
                     case 1:// accelPlayer
-                           // System.out.println(ID+" Entity Movement requested");
                         float x = din.readFloat(), y = din.readFloat(), z = din.readFloat();
-                        // Server.appendToLogs(x+" "+y+" "+z);
                         userEntity.setAccelerating(!userEntity.getAccel().hasOppositeDirection(new Vector3(x, y, z)), x,
                                 y, z);
                         break;
@@ -105,28 +103,28 @@ class Account extends Thread {
                         Entity to = connectedWorld.getEntityCopy(din.readLong());
                         Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt());
                         if(from.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER && to.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+to.getSize())*Entity.METER){
-                        Server.appendToLogs(
+                        System.out.println(
                                 "Attempting to transfer item from " + from.toString() + " to " + to.toString());
                         if (from.inventory.transferInventoryItemTo(to.inventory, item)) {
-                            Server.appendToLogs("Transfer successful!");
+                            System.out.println("Transfer successful!");
                         } else {
-                            Server.appendToLogs("Transfer failed!");
+                            System.out.println("Transfer failed!");
                         }
-                    }else {Server.appendToLogs("Transfer failed! "+from.toString()+" is too far away from"+to.toString());}
+                    }else {System.out.println("Transfer failed! "+from.toString()+" is too far away from"+to.toString());}
                         break;
                     case 6:
                         Entity victim = connectedWorld.getEntityCopy(din.readLong()); 
                         if(victim instanceof KillableEntity){
                         KillableEntity victim2 = (KillableEntity) victim;
                         victim2.dealDamage(20);
-                        Server.appendToLogs(userEntity.toString() + " Has shot at " + victim.toString() +"!");
+                        System.out.println(userEntity.toString() + " Has shot at " + victim.toString() +"!");
                         connectedWorld.SpawnARFSDefenseForce(userEntity); 
                         }
                     break;
                 }
 
             } catch (SocketException e) {
-                Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
+                System.out.println("user forced to disconnect from port: " + user.getPort());
                 connectedWorld.removeEntity(userEntity);
                 try {
                     user.close();
@@ -140,7 +138,7 @@ class Account extends Thread {
                 //This is normal, an EOFException is what happens when someone disconnects.
             }catch (Exception e) {
                 e.printStackTrace();
-                Server.appendToLogs("user forced to disconnect from port: " + user.getPort());
+                System.out.println("user forced to disconnect from port: " + user.getPort());
                 connectedWorld.removeEntity(userEntity);
                 try {
                     user.close();
