@@ -1,0 +1,163 @@
+[JAN/05/2022 16:50:57]	F
+[JAN/05/2022 16:50:57]	E
+[JAN/05/2022 17:00:32]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 17:00:32]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 17:00:32]	Jimbotron/192.168.1.242
+[JAN/05/2022 17:00:32]	entity list successfully sorted
+[JAN/05/2022 17:00:32]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 17:00:32]	entity list successfully sorted
+[JAN/05/2022 17:00:32]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 17:00:32]	Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[JAN/05/2022 17:00:32]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 17:00:32]	entity list successfully sorted
+[JAN/05/2022 17:00:32]	Entity Spawned:Pos: (-1802.2891,0.0,867.03766) Type: ASTEROID ID: 3
+[JAN/05/2022 17:00:32]	Asteroid Spawned!
+[JAN/05/2022 17:07:00]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 17:07:00]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 17:07:00]	Jimbotron/192.168.1.242
+[JAN/05/2022 17:07:00]	entity list successfully sorted
+[JAN/05/2022 17:07:00]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 17:07:00]	entity list successfully sorted
+[JAN/05/2022 17:07:00]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 17:07:00]	Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[JAN/05/2022 17:07:00]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 17:07:00]	entity list successfully sorted
+[JAN/05/2022 17:07:00]	Entity Spawned:Pos: (763.43866,0.0,1848.5566) Type: ASTEROID ID: 3
+[JAN/05/2022 17:07:00]	Asteroid Spawned!
+[JAN/05/2022 17:08:28]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 17:08:28]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 17:08:28]	Jimbotron/192.168.1.242
+[JAN/05/2022 17:08:28]	entity list successfully sorted
+[JAN/05/2022 17:08:28]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 17:08:28]	entity list successfully sorted
+[JAN/05/2022 17:08:28]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 17:08:28]	Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[JAN/05/2022 17:08:28]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 17:08:28]	entity list successfully sorted
+[JAN/05/2022 17:08:28]	Entity Spawned:Pos: (1025.0768,0.0,-1717.3286) Type: ASTEROID ID: 3
+[JAN/05/2022 17:08:28]	Asteroid Spawned!
+[JAN/05/2022 17:18:40]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 17:18:40]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 17:18:40]	Jimbotron/192.168.1.242
+[JAN/05/2022 17:18:40]	entity list successfully sorted
+[JAN/05/2022 17:18:40]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 17:18:40]	entity list successfully sorted
+[JAN/05/2022 17:18:40]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 17:18:40]	Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[JAN/05/2022 17:18:40]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 17:18:40]	entity list successfully sorted
+[JAN/05/2022 17:18:40]	Entity Spawned:Pos: (-78.69652,0.0,1998.4512) Type: ASTEROID ID: 3
+[JAN/05/2022 17:18:40]	Asteroid Spawned!
+[JAN/05/2022 17:22:02]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 17:22:02]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 17:22:02]	Jimbotron/192.168.1.242
+[JAN/05/2022 17:22:02]	entity list successfully sorted
+[JAN/05/2022 17:22:02]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 17:22:02]	entity list successfully sorted
+[JAN/05/2022 17:22:02]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 17:22:02]	Server successfully created on ServerSocket[addr=0.0.0.0/0.0.0.0,localport=26000]
+[JAN/05/2022 17:22:02]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 17:22:02]	entity list successfully sorted
+[JAN/05/2022 17:22:02]	Entity Spawned:Pos: (-1358.0465,0.0,-1468.2335) Type: ASTEROID ID: 3
+[JAN/05/2022 17:22:02]	Asteroid Spawned!
+[JAN/05/2022 17:22:05]	------END OF SERVER LOGS UNTIL NEXT RESTART------

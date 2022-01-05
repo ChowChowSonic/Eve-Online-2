@@ -1,19 +1,11 @@
 package my.gdx.server;
 
-import java.io.Console;
 import java.io.File;
-import java.io.FileWriter;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import java.time.LocalDateTime;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 
 import my.gdx.game.entities.CelestialObject;
@@ -34,9 +26,9 @@ import my.gdx.game.inventory.Shipclass;
 public class Server extends Thread{
     public File ENTITYFILE; 
     public ArrayList<Entity> entities;
-    public static final File LOGFILE = new File("core\\assets\\Logs.txt");
+    public final ArrayList<Account> connectedPlayers; 
     
-    private ServerAntenna antenna;
+    private static ServerAntenna antenna = null;
     private long cumDeltaTime = 0, last;
     private Entity[] activeDefenders = new Entity[10];
     private static final long serialVersionUID = 1L;
@@ -49,10 +41,11 @@ public class Server extends Thread{
     
     
     public Server(File entity) {
-
+        System.out.println("------SERVER STARTUP INITIATED------");
         last = System.currentTimeMillis();
         r = new Random();
         entities = new ArrayList<Entity>();
+        connectedPlayers = new ArrayList<Account>();
         
         materialcensus.additem(new Item(InventoryItems.Gold, 1000));
         try {
@@ -66,8 +59,10 @@ public class Server extends Thread{
         spawnEntity(new Station(new Vector3(2000, 0, 0), "SpaceStation.obj", 1000000, 20, 40, assignID()),
         new Vector3(2000, 0, 0));
         
-        antenna = new ServerAntenna(26000, this);
-        antenna.start();
+        if(antenna == null){
+            antenna = new ServerAntenna(26000, this);
+            antenna.start();
+        }
         
         //super.create();
     }
@@ -112,8 +107,16 @@ public class Server extends Thread{
                 if (cumDeltaTime >= 200) {
                     for (int i = 0; i < entities.size(); i++) {
                         Entity e = entities.get(i);
-                        antenna.sendEntity(e);
+                        for(Account player : connectedPlayers){
+                            try {
+                                player.sendEntity(e);
+                            } catch (Exception e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                            }
+                        }
                     }
+                    //System.out.println("Entities sent!");
                     cumDeltaTime = 0;
                 }
                 
@@ -178,17 +181,25 @@ public class Server extends Thread{
                 }
             }
             
-            /*for (Entity def : activeDefenders) {
+            //if the target is dead, remove it from the ARFS defender's hit list
+            for (Entity def : activeDefenders) {
                 if (def == null)
                 continue;
                 ARFSDefender d = (ARFSDefender) def;
                 if (d.getTarget().equals(e))
                 d.setTarget(null);
-            }*/
+            }
             
             if (!entities.contains(e)) {
                 openIDs.add(e.getID());
-                antenna.sendEntity(new removedEntity(e.getID()));
+                for(Account player : connectedPlayers){
+                    try {
+                        player.sendEntity(new removedEntity(e.getID()));
+                    } catch (Exception e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                }
                 System.out.println("Entity removed:" + e.getEntityType() + ", ID: " + e.getID());
             } else {
                 System.out.println("Entity unable to be removed!");
@@ -225,9 +236,10 @@ public class Server extends Thread{
             vanishedmaterials.additem(underflow.getItems());
             
             if (vanishedmaterials.getItemcount() > 100) {
-                System.out.println("Available: \n" + materialcensus.toString() + "\nUsed: \n" + usedmaterials.toString()
-                + "\nUnaccounted for: " + vanishedmaterials.toString());
-                System.out.println("Excess:\n" + overflow.toString() + "Lacking:\n" + underflow.toString());
+                System.out.println("WARNING: Item census has uncovered an abundance of items not present in the public economy."+
+                "\nServer will automatically regenerate these items by spawning in a new asteroid. \nThe item census is as follows:\n"+
+                "All available materials (used or raw): \n" + materialcensus.toString() + "\nUsed materials: \n" + usedmaterials.toString()
+                + "\nUnaccounted for: \n" + vanishedmaterials.toString()+"\nExcess materials (Possibly duplicated in some way):\n" + overflow.toString() + "Lacking:\n" + underflow.toString());
                 spawnEntity(new Asteroid("Asteroid.obj", vanishedmaterials.getItems(), assignID()), 2000);
                 vanishedmaterials.empty();
                 System.out.println("Asteroid Spawned!");
@@ -301,7 +313,20 @@ public class Server extends Thread{
         }
         
         //Start of Static methods
-        
+        /**
+         * Sends a player, originally located in their origin world, to the destination world 
+         * @param traveller - The player to send
+         * @param destination - The world to send them to
+         */
+        public static void changePlayerWorld(Account traveller, Server destination){
+            Server origin = traveller.connectedWorld; 
+            if(origin.connectedPlayers.contains(traveller)){
+                origin.connectedPlayers.remove(traveller); 
+                destination.connectedPlayers.add(traveller); 
+                traveller.changeWorld(destination);
+            }
+        }
+
         private static long assignID() {
             if (openIDs.size() > 0) {
                 long l = openIDs.get(0);

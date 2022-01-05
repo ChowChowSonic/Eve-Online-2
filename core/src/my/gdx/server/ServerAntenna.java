@@ -9,13 +9,11 @@ public class ServerAntenna extends Thread{
     ServerSocket socket;
     int port;
     private static final long serialVersionUID = 1L; 
-    ArrayList<Account> connections;
-    Server connectedWorld; 
+    Server connectedWorld; //Change this to an array later. 
 
     public ServerAntenna(int port, Server s){
         this.port = port; 
         connectedWorld = s; 
-        connections = new ArrayList<Account>();
         try{
             socket = new ServerSocket(port); 
             System.out.println("Server successfully created on "+socket);
@@ -31,7 +29,7 @@ public class ServerAntenna extends Thread{
                 Socket user = socket.accept();
                 System.out.println("User successfully connected on port "+user.getPort());
                 Account usersocket = new Account(user, connectedWorld);
-                connections.add(usersocket);
+                connectedWorld.connectedPlayers.add(usersocket); 
                 usersocket.start();
                 
             }catch(UnknownHostException ex) {
@@ -55,16 +53,4 @@ public class ServerAntenna extends Thread{
         }
     }
     
-    public void sendEntity(Entity e){
-        if(connections.size() == 0) return;
-        for(int i =0; i < connections.size(); i++){
-            try{
-                connections.get(i).sendEntity(e);
-            }catch(Exception e2){
-                if(connections.size() > 0)
-                connections.remove(i);
-                else connections.clear();
-            }
-        }
-    }
 }//ends class

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
@@ -15,16 +16,17 @@ public class ServerWindow extends JFrame{
     private JTextArea area;
     private JScrollPane bar; 
     private LogStream logs; 
-    private JFrame frame;
     
-    public ServerWindow(File file) throws FileNotFoundException{
-        int x = 120*5, y= 400; 
+    public ServerWindow(File file) throws IOException{
+        super(); 
+        int x = 120*6, y= 80*6; 
 
         area = new JTextArea();
         area.setBackground(Color.BLACK);
         area.setForeground(Color.LIGHT_GRAY);
         area.setBounds(0, 0, x-20, y);
-        area.setFont(new Font("Default", 0, 12));
+        area.setFont(new Font("Default", 0, 13));
+        area.setLineWrap(true);
 
         bar = new JScrollPane(area);//adds the previously defined text area to the Jscrollpane; Now it will be included with the scrollpane when you say frame.add(bar); 
         bar.setOpaque(true);
@@ -35,26 +37,25 @@ public class ServerWindow extends JFrame{
         bar.setForeground(Color.LIGHT_GRAY);
         bar.setOpaque(true);
         bar.setAutoscrolls(true);
-        
-        logs = new LogStream(area, file);  
+
+        logs = new LogStream(area, file); 
         System.setOut(logs);
-        //System.setErr(logs);
+        System.setErr(logs);
         
-        frame = new JFrame();
-        frame.add(bar);
-        frame.setResizable(false);
-        frame.setSize(x,y);
-        frame.setVisible(true);
-        frame.setLocation((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/2, (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()/2);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.add(bar);
+        this.setResizable(false);
+        this.setSize(x,y);
+        this.setVisible(true);
+        this.setLocation((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth()/2, (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()/2);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
     }
     
     @Override
     public void dispose(){
-        System.exit(0);
+        super.dispose();
+        System.out.println("------END OF SERVER LOGS UNTIL NEXT RESTART------");
+        System.exit(0);//Replace this with a way to shutdown all the servers later on
     }
     
-    public JFrame getFrame(){
-        return frame; 
-    }
 }
