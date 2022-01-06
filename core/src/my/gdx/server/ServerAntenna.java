@@ -90,8 +90,12 @@ public class ServerAntenna extends Thread{
             s.start(); 
         }
     }
-    
+    private static boolean isRunning = false; 
     public static ServerAntenna getActiveAntenna(){
+        if(!isRunning){
+            activeAntenna.start();
+            isRunning = true; 
+        }
         return activeAntenna; 
     }
     
