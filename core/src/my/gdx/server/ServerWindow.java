@@ -50,7 +50,9 @@ public class ServerWindow extends JFrame{
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
     }
-    
+    /**
+     * Disposes of this JFrame and also simultaneously shuts down all servers available.
+     */
     @Override
     public void dispose(){
         super.dispose();

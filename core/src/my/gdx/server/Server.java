@@ -28,7 +28,7 @@ public class Server extends Thread{
     public ArrayList<Entity> entities;
     public final ArrayList<Account> connectedPlayers; 
     
-    private static ServerAntenna antenna = null;
+    private static ServerAntenna antenna = ServerAntenna.getActiveAntenna();
     private long cumDeltaTime = 0, last;
     private Entity[] activeDefenders = new Entity[10];
     private static final long serialVersionUID = 1L;
@@ -38,6 +38,7 @@ public class Server extends Thread{
     private static Random r;
     private static ArrayList<Long> openIDs = new ArrayList<Long>();
     private static long nextID = 0L;
+    private static boolean isCensus = false; 
     
     
     public Server(File entity) {
@@ -59,11 +60,6 @@ public class Server extends Thread{
         spawnEntity(new Station(new Vector3(2000, 0, 0), "SpaceStation.obj", 1000000, 20, 40, assignID()),
         new Vector3(2000, 0, 0));
         
-        if(antenna == null){
-            antenna = new ServerAntenna(26000, this);
-            antenna.start();
-        }
-        
         //super.create();
     }
     
@@ -79,29 +75,33 @@ public class Server extends Thread{
             last = System.currentTimeMillis(); 
             
             // In-game Physics
-            for (int i = 0; i < entities.size(); i++) {
-                for (int e = i; e < entities.size(); e++) {
-                    if (i < e) {
-                        entities.get(i).touches(entities.get(e));
-                    }
-                    /*
-                    * if(entities.get(i) instanceof Player &&
-                    * entities.get(e).getPos().dst2(entities.get(i).getPos()) < 9000){ FileHandle
-                        * playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID())); }
-                        */
-                    }
-                    entities.get(i).update(0);
-                }
-                
-                // Logs all items in existance and tries to regulate them with the item census
+            if(cumDeltaTime >= 150){
                 for (int i = 0; i < entities.size(); i++) {
-                    Entity e = entities.get(i);
-                    if (e.inventory != null) {
-                        usedmaterials.additem(e.inventory.getItems());
+                    for (int e = i; e < entities.size(); e++) {
+                        if (i < e) {
+                            entities.get(i).touches(entities.get(e));
+                        }
+                        /*
+                        * if(entities.get(i) instanceof Player &&
+                        * entities.get(e).getPos().dst2(entities.get(i).getPos()) < 9000){ FileHandle
+                            * playerdist = Gdx.files.local(String.valueOf(entities.get(i).getID())); }
+                            */
+                        }
+                        entities.get(i).update(0);
                     }
                 }
-                runItemCensus();
-                
+                // Logs all items in existance and tries to regulate them with the item census
+                if(!isCensus){ 
+                    isCensus = true; 
+                    for (int i = 0; i < entities.size(); i++) {
+                        Entity e = entities.get(i);
+                        if (e.inventory != null) {
+                            usedmaterials.additem(e.inventory.getItems());
+                        }
+                    }
+                    runItemCensus();
+                    isCensus = false; 
+                }
                 cumDeltaTime+= (System.currentTimeMillis()-last); 
                 // sends all entities to all clients if CumDeltaTime > 0.2 seconds
                 if (cumDeltaTime >= 200) {
@@ -120,14 +120,6 @@ public class Server extends Thread{
                     cumDeltaTime = 0;
                 }
                 
-                // Logging
-                /*textrenderer.begin();
-                for (int i = 0; i < logs.length; i++) {
-                    if (logs[i] != null) {
-                        font.draw(textrenderer, logs[i], 0, Gdx.graphics.getHeight() - 15 * (i));
-                    }
-                }
-                textrenderer.end();*/
             }
         }
         
@@ -313,20 +305,6 @@ public class Server extends Thread{
         }
         
         //Start of Static methods
-        /**
-         * Sends a player, originally located in their origin world, to the destination world 
-         * @param traveller - The player to send
-         * @param destination - The world to send them to
-         */
-        public static void changePlayerWorld(Account traveller, Server destination){
-            Server origin = traveller.connectedWorld; 
-            if(origin.connectedPlayers.contains(traveller)){
-                origin.connectedPlayers.remove(traveller); 
-                destination.connectedPlayers.add(traveller); 
-                traveller.changeWorld(destination);
-            }
-        }
-
         private static long assignID() {
             if (openIDs.size() > 0) {
                 long l = openIDs.get(0);

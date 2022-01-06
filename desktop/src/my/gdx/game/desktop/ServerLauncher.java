@@ -8,15 +8,13 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-import javax.swing.JTextArea;
-
-import my.gdx.server.LogStream;
-import my.gdx.server.Server;
+import my.gdx.server.ServerAntenna;
 import my.gdx.server.ServerWindow;
 
 public class ServerLauncher {
     
     public static void main(String[] arg){
+        ServerAntenna antenna = ServerAntenna.getActiveAntenna(); 
         //Create new console and/or Use system console and link server to that
         if(arg.length == 0 || !arg[0].equals("hidden")){
             try {
@@ -33,6 +31,8 @@ public class ServerLauncher {
                 System.exit(1);
             }
         }
+
+        //Get system IP Address
         String systemipaddress = "";
         try{
             // reads system IPAddress
@@ -43,11 +43,10 @@ public class ServerLauncher {
         }catch(Exception E){
             System.out.println("Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.\n\tLocal IP address will be printed upon server creation; manual entry will be required in order to access it.");
         }
-        
+
         //Run server; 
-        //String ent= Gdx.files.internal("Entities.txt").path(); 
-        Server server = new Server(new File("core\\assets\\Entities.txt")); 
-        server.start();
+        antenna.createWorlds(1);
+        
     }
     
     
@@ -81,5 +80,4 @@ public class ServerLauncher {
         }
         return res;
     }
-    
 }

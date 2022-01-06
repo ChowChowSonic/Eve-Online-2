@@ -161,3 +161,2061 @@ Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
 [JAN/05/2022 17:22:02]	Entity Spawned:Pos: (-1358.0465,0.0,-1468.2335) Type: ASTEROID ID: 3
 [JAN/05/2022 17:22:02]	Asteroid Spawned!
 [JAN/05/2022 17:22:05]	------END OF SERVER LOGS UNTIL NEXT RESTART------
+[JAN/05/2022 19:42:20]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 19:42:20]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 19:42:20]	Jimbotron/192.168.1.242
+[JAN/05/2022 19:42:20]	entity list successfully sorted
+[JAN/05/2022 19:42:20]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 19:42:20]	entity list successfully sorted
+[JAN/05/2022 19:42:20]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 19:42:20]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:42:20]	entity list successfully sorted
+[JAN/05/2022 19:42:20]	Entity Spawned:Pos: (-1946.9803,0.0,-457.45755) Type: ASTEROID ID: 3
+[JAN/05/2022 19:42:20]	Asteroid Spawned!
+[JAN/05/2022 19:42:24]	------END OF SERVER LOGS UNTIL NEXT RESTART------
+[JAN/05/2022 19:42:30]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 19:42:30]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 19:42:30]	Jimbotron/192.168.1.242
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:42:31]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Jimbotron/192.168.1.242
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1175.2947,0.0,-1618.2344) Type: ASTEROID ID: 3
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 4
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 5
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1285.3389,0.0,1532.2871) Type: ASTEROID ID: 6
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (1033.9177,0.0,-1712.0205) Type: ASTEROID ID: 7
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x370000: 370000.0 m3, 7140999.5 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x370000: 370000.0 m3, 7140999.5 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x370000: 370000.0 m3, 7140999.5 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x370000: 370000.0 m3, 7140999.5 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-833.0902,0.0,-1818.2301) Type: ASTEROID ID: 8
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (393.24796,0.0,1960.9579) Type: ASTEROID ID: 9
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x388000: 388000.0 m3, 7488399.5 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x388000: 388000.0 m3, 7488399.5 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x5000: 5000.0 m3, 96500.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x388000: 388000.0 m3, 7488399.5 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x388000: 388000.0 m3, 7488399.5 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x5000: 5000.0 m3, 96500.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x5000: 5000.0 m3, 96500.0 kg
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-393.20908,0.0,1960.9657) Type: ASTEROID ID: 10
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1943.7372,0.0,471.0478) Type: ASTEROID ID: 11
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x453000: 453000.0 m3, 8742900.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x453000: 453000.0 m3, 8742900.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x11000: 11000.0 m3, 212299.98 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x11000: 11000.0 m3, 212299.98 kg
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x453000: 453000.0 m3, 8742900.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x453000: 453000.0 m3, 8742900.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x11000: 11000.0 m3, 212299.98 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (1669.0004,0.0,-1102.0154) Type: ASTEROID ID: 13
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-140.85385,0.0,1995.0338) Type: ASTEROID ID: 12
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1816000: 1816000.0 m3, 3.50488E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1813000: 1813000.0 m3, 3.49909E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x6000: 6000.0 m3, 115799.99 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1816000: 1816000.0 m3, 3.50488E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1813000: 1813000.0 m3, 3.49909E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x6000: 6000.0 m3, 115799.99 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1166.8518,0.0,-1624.3328) Type: ASTEROID ID: 15
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (47.43504,0.0,1999.4375) Type: ASTEROID ID: 14
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1919000: 1919000.0 m3, 3.70367E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1919000: 1919000.0 m3, 3.70367E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x25000: 25000.0 m3, 482499.97 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1916000: 1916000.0 m3, 3.69788E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1919000: 1919000.0 m3, 3.70367E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x25000: 25000.0 m3, 482499.97 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x25000: 25000.0 m3, 482499.97 kg
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1788.4214,0.0,-895.2926) Type: ASTEROID ID: 17
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (395.9861,0.0,1960.4069) Type: ASTEROID ID: 16
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x2125000: 2125000.0 m3, 4.10125E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x2125000: 2125000.0 m3, 4.10125E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x25000: 25000.0 m3, 482499.97 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x2125000: 2125000.0 m3, 4.10125E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x2125000: 2125000.0 m3, 4.10125E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x25000: 25000.0 m3, 482499.97 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x25000: 25000.0 m3, 482499.97 kg
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1999.1978,0.0,-56.64467) Type: ASTEROID ID: 18
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (393.37546,0.0,-1960.9324) Type: ASTEROID ID: 19
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x3043000: 3043000.0 m3, 5.8729896E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x3043000: 3043000.0 m3, 5.8729896E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x72000: 72000.0 m3, 1389600.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x72000: 72000.0 m3, 1389600.0 kg
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x3043000: 3043000.0 m3, 5.8729896E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x3043000: 3043000.0 m3, 5.8729896E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x72000: 72000.0 m3, 1389600.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1558.0352,0.0,-1254.0043) Type: ASTEROID ID: 20
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (1247.6726,0.0,-1563.1101) Type: ASTEROID ID: 21
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x3637000: 3637000.0 m3, 7.0194096E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x3637000: 3637000.0 m3, 7.0194096E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x147000: 147000.0 m3, 2837100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x3637000: 3637000.0 m3, 7.0194096E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x3637000: 3637000.0 m3, 7.0194096E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x147000: 147000.0 m3, 2837100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x147000: 147000.0 m3, 2837100.0 kg
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-41.566692,0.0,-1999.568) Type: ASTEROID ID: 22
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-617.52716,0.0,-1902.2776) Type: ASTEROID ID: 23
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x6784000: 6784000.0 m3, 1.30931192E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x6784000: 6784000.0 m3, 1.30931192E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x195000: 195000.0 m3, 3763499.8 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x195000: 195000.0 m3, 3763499.8 kg
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x6784000: 6784000.0 m3, 1.30931192E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x6784000: 6784000.0 m3, 1.30931192E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x195000: 195000.0 m3, 3763499.8 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x102000: 102000.0 m3, 1968599.9 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (1018.4814,0.0,-1721.2483) Type: ASTEROID ID: 25
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1956.3597,0.0,415.51956) Type: ASTEROID ID: 24
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x37150000: 3.715E7 m3, 7.1699494E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x36964000: 3.6964E7 m3, 7.1340518E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x811000: 811000.0 m3, 1.5652299E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x186000: 186000.0 m3, 3589799.8 kg
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x37150000: 3.715E7 m3, 7.1699494E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x36964000: 3.6964E7 m3, 7.1340518E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x811000: 811000.0 m3, 1.5652299E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x625000: 625000.0 m3, 1.20625E7 kg
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (1943.3837,0.0,-472.50357) Type: ASTEROID ID: 27
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (1998.5889,0.0,-75.11626) Type: ASTEROID ID: 26
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x46051000: 4.6051E7 m3, 8.8878426E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x46062000: 4.6062E7 m3, 8.8899654E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1292000: 1292000.0 m3, 2.49356E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1292000: 1292000.0 m3, 2.49356E7 kg
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x46062000: 4.6062E7 m3, 8.8899654E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x46062000: 4.6062E7 m3, 8.8899654E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1292000: 1292000.0 m3, 2.49356E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x11000: 11000.0 m3, 212299.98 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1766.9111,0.0,-937.0298) Type: ASTEROID ID: 28
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1486.1456,0.0,1338.4211) Type: ASTEROID ID: 29
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x143463000: 1.43463008E8 m3, 2.76883584E9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x144767000: 1.44767008E8 m3, 2.7940032E9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1288000: 1288000.0 m3, 2.48584E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1288000: 1288000.0 m3, 2.48584E7 kg
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x144767000: 1.44767008E8 m3, 2.7940032E9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x144767000: 1.44767008E8 m3, 2.7940032E9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1288000: 1288000.0 m3, 2.48584E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x1304000: 1304000.0 m3, 2.51672E7 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (1902.6609,0.0,616.3456) Type: ASTEROID ID: 31
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1836.0793,0.0,792.9772) Type: ASTEROID ID: 30
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x212085000: 2.12084992E8 m3, 4.09324006E9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x212310000: 2.1231E8 m3, 4.09758285E9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3658000: 3658000.0 m3, 7.05994E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x3658000: 3658000.0 m3, 7.05994E7 kg
+
+[JAN/05/2022 19:42:31]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x212310000: 2.1231E8 m3, 4.09758285E9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x212310000: 2.1231E8 m3, 4.09758285E9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3658000: 3658000.0 m3, 7.05994E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x225000: 225000.0 m3, 4342500.0 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	entity list successfully sorted
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (654.12964,0.0,1890.0038) Type: ASTEROID ID: 33
+[JAN/05/2022 19:42:31]	Entity Spawned:Pos: (-1444.7351,0.0,1383.0187) Type: ASTEROID ID: 32
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:31]	Asteroid Spawned!
+[JAN/05/2022 19:42:32]	Exception in thread "Thread-2" [JAN/05/2022 19:42:32]	Exception in thread "Thread-1" [JAN/05/2022 19:42:32]	java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 10
+[JAN/05/2022 19:42:32]		at java.base/java.util.ArrayList.fastRemove(ArrayList.java:642)
+[JAN/05/2022 19:42:32]		at java.base/java.util.ArrayList.remove(ArrayList.java:629)
+[JAN/05/2022 19:42:32]		at my.gdx.game.inventory.Inventory.verifycontents(Inventory.java:341)
+[JAN/05/2022 19:42:32]		at my.gdx.game.inventory.Inventory.getDifferences(Inventory.java:293)
+[JAN/05/2022 19:42:32]		at my.gdx.server.Server.runItemCensus(Server.java:227)
+[JAN/05/2022 19:42:32]		at my.gdx.server.Server.run(Server.java:98)
+[JAN/05/2022 19:42:32]	java.util.NoSuchElementException
+[JAN/05/2022 19:42:32]		at java.base/java.util.ArrayList$Itr.next(ArrayList.java:970)
+[JAN/05/2022 19:42:32]		at my.gdx.game.inventory.Inventory.toString(Inventory.java:306)
+[JAN/05/2022 19:42:32]		at my.gdx.server.Server.runItemCensus(Server.java:236)
+[JAN/05/2022 19:42:32]		at my.gdx.server.Server.run(Server.java:98)
+[JAN/05/2022 19:44:20]	------END OF SERVER LOGS UNTIL NEXT RESTART------
+[JAN/05/2022 19:44:25]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 19:44:25]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 19:44:25]	Jimbotron/192.168.1.242
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:44:25]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 19:44:25]	Jimbotron/192.168.1.242
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (1932.8229,0.0,-513.99994) Type: ASTEROID ID: 3
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 4
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 5
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-1310.6649,0.0,1510.6812) Type: ASTEROID ID: 6
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-1813.5099,0.0,-843.316) Type: ASTEROID ID: 7
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x315000: 315000.0 m3, 6079500.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x315000: 315000.0 m3, 6079500.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x315000: 315000.0 m3, 6079500.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x315000: 315000.0 m3, 6079500.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-1182.4808,0.0,-1612.9907) Type: ASTEROID ID: 9
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-1195.2992,0.0,1603.5149) Type: ASTEROID ID: 8
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x386000: 386000.0 m3, 7449799.5 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x386000: 386000.0 m3, 7449799.5 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x386000: 386000.0 m3, 7449799.5 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x386000: 386000.0 m3, 7449799.5 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3000: 3000.0 m3, 57899.996 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-612.675,0.0,-1903.846) Type: ASTEROID ID: 10
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (212.86911,0.0,-1988.6395) Type: ASTEROID ID: 11
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x513000: 513000.0 m3, 9900900.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x522000: 522000.0 m3, 1.00746E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x9000: 9000.0 m3, 173700.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x9000: 9000.0 m3, 173700.0 kg
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x522000: 522000.0 m3, 1.00746E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x522000: 522000.0 m3, 1.00746E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x9000: 9000.0 m3, 173700.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x9000: 9000.0 m3, 173700.0 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-1651.9504,0.0,-1127.413) Type: ASTEROID ID: 13
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-395.94272,0.0,-1960.4156) Type: ASTEROID ID: 12
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1874000: 1874000.0 m3, 3.61682E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1874000: 1874000.0 m3, 3.61682E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x18000: 18000.0 m3, 347400.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x18000: 18000.0 m3, 347400.0 kg
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1874000: 1874000.0 m3, 3.61682E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1874000: 1874000.0 m3, 3.61682E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x18000: 18000.0 m3, 347400.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (575.98346,0.0,-1915.2657) Type: ASTEROID ID: 15
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (1066.0302,0.0,-1692.2115) Type: ASTEROID ID: 14
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x4611000: 4611000.0 m3, 8.8992296E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x4591000: 4591000.0 m3, 8.8606296E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x58000: 58000.0 m3, 1119400.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x20000: 20000.0 m3, 386000.0 kg
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x4611000: 4611000.0 m3, 8.8992296E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x4591000: 4591000.0 m3, 8.8606296E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x58000: 58000.0 m3, 1119400.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x38000: 38000.0 m3, 733400.0 kg
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (1120.7195,0.0,-1656.4987) Type: ASTEROID ID: 16
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-227.97075,0.0,1986.9648) Type: ASTEROID ID: 17
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x4963000: 4963000.0 m3, 9.5785896E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x4963000: 4963000.0 m3, 9.5785896E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x67000: 67000.0 m3, 1293100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x18000: 18000.0 m3, 347400.0 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x4963000: 4963000.0 m3, 9.5785896E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x4963000: 4963000.0 m3, 9.5785896E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x67000: 67000.0 m3, 1293100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x67000: 67000.0 m3, 1293100.0 kg
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (731.4854,0.0,-1861.432) Type: ASTEROID ID: 18
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-1134.3185,0.0,-1647.2163) Type: ASTEROID ID: 19
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x12975000: 1.2975E7 m3, 2.50417488E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x12821000: 1.2821E7 m3, 2.47445296E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x308000: 308000.0 m3, 5944400.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x154000: 154000.0 m3, 2972200.0 kg
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x12975000: 1.2975E7 m3, 2.50417488E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x12821000: 1.2821E7 m3, 2.47445296E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x308000: 308000.0 m3, 5944400.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x154000: 154000.0 m3, 2972200.0 kg
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-810.994,0.0,1828.1927) Type: ASTEROID ID: 21
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (264.64346,0.0,-1982.4137) Type: ASTEROID ID: 20
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x18432000: 1.8432E7 m3, 3.557376E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x18432000: 1.8432E7 m3, 3.557376E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x457000: 457000.0 m3, 8820100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x457000: 457000.0 m3, 8820100.0 kg
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x18432000: 1.8432E7 m3, 3.557376E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x18432000: 1.8432E7 m3, 3.557376E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x457000: 457000.0 m3, 8820100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x9000: 9000.0 m3, 173700.0 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-804.035,0.0,-1831.264) Type: ASTEROID ID: 22
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-593.9126,0.0,1909.7822) Type: ASTEROID ID: 23
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x37501000: 3.7501E7 m3, 7.2376928E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x37501000: 3.7501E7 m3, 7.2376928E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x765000: 765000.0 m3, 1.4764499E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x37501000: 3.7501E7 m3, 7.2376928E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x37501000: 3.7501E7 m3, 7.2376928E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x765000: 765000.0 m3, 1.4764499E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x765000: 765000.0 m3, 1.4764499E7 kg
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-885.74506,0.0,1793.1692) Type: ASTEROID ID: 25
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (1551.0823,0.0,-1262.5941) Type: ASTEROID ID: 24
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x45954000: 4.5954E7 m3, 8.8691219E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x45954000: 4.5954E7 m3, 8.8691219E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1691000: 1691000.0 m3, 3.2636298E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1691000: 1691000.0 m3, 3.2636298E7 kg
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x45954000: 4.5954E7 m3, 8.8691219E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x45954000: 4.5954E7 m3, 8.8691219E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1691000: 1691000.0 m3, 3.2636298E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (1864.8407,0.0,-722.7511) Type: ASTEROID ID: 27
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (613.33685,0.0,-1903.6328) Type: ASTEROID ID: 26
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x93295000: 9.3295E7 m3, 1.80059341E9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x93295000: 9.3295E7 m3, 1.80059341E9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3379000: 3379000.0 m3, 6.5214696E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x93295000: 9.3295E7 m3, 1.80059341E9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x93295000: 9.3295E7 m3, 1.80059341E9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3379000: 3379000.0 m3, 6.5214696E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x3379000: 3379000.0 m3, 6.5214696E7 kg
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (1161.276,0.0,-1628.3237) Type: ASTEROID ID: 29
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (529.53284,0.0,1928.6251) Type: ASTEROID ID: 28
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1047712000: 1.047712E9 m3, 2.02208399E10 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1047703000: 1.04770298E9 m3, 2.02206659E10 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3397000: 3397000.0 m3, 6.5562096E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x3388000: 3388000.0 m3, 6.5388396E7 kg
+
+[JAN/05/2022 19:44:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1047712000: 1.047712E9 m3, 2.02208399E10 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1047703000: 1.04770298E9 m3, 2.02206659E10 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x3397000: 3397000.0 m3, 6.5562096E7 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x9000: 9000.0 m3, 173700.0 kg
+
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	entity list successfully sorted
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (-637.9556,0.0,-1895.5244) Type: ASTEROID ID: 31
+[JAN/05/2022 19:44:25]	Entity Spawned:Pos: (1613.9264,0.0,-1181.2035) Type: ASTEROID ID: 30
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Asteroid Spawned!
+[JAN/05/2022 19:44:25]	Exception in thread "Thread-1" [JAN/05/2022 19:44:25]	Exception in thread "Thread-2" [JAN/05/2022 19:44:25]	java.util.NoSuchElementException
+[JAN/05/2022 19:44:25]		at java.base/java.util.ArrayList$Itr.next(ArrayList.java:970)
+[JAN/05/2022 19:44:25]		at my.gdx.game.inventory.Inventory.getDifferences(Inventory.java:296)
+[JAN/05/2022 19:44:25]		at my.gdx.server.Server.runItemCensus(Server.java:227)
+[JAN/05/2022 19:44:25]		at my.gdx.server.Server.run(Server.java:98)
+[JAN/05/2022 19:44:25]	java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 10
+[JAN/05/2022 19:44:25]		at java.base/java.util.ArrayList.fastRemove(ArrayList.java:642)
+[JAN/05/2022 19:44:25]		at java.base/java.util.ArrayList.remove(ArrayList.java:629)
+[JAN/05/2022 19:44:25]		at my.gdx.game.inventory.Inventory.verifycontents(Inventory.java:341)
+[JAN/05/2022 19:44:25]		at my.gdx.game.inventory.Inventory.additem(Inventory.java:101)
+[JAN/05/2022 19:44:25]		at my.gdx.server.Server.run(Server.java:95)
+[JAN/05/2022 19:47:25]	------END OF SERVER LOGS UNTIL NEXT RESTART------
+[JAN/05/2022 19:47:33]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 19:47:33]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 19:47:33]	Jimbotron/192.168.1.242
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:47:33]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Jimbotron/192.168.1.242
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1986.5927,0.0,-231.19165) Type: ASTEROID ID: 3
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 4
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 5
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-238.05028,0.0,-1985.7825) Type: ASTEROID ID: 6
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (336.5836,0.0,-1971.4744) Type: ASTEROID ID: 7
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x84000: 84000.0 m3, 1621199.9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x83000: 83000.0 m3, 1601899.9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1576.4756,0.0,-1230.7413) Type: ASTEROID ID: 8
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x255000: 255000.0 m3, 4921500.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x255000: 255000.0 m3, 4921500.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x255000: 255000.0 m3, 4921500.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x255000: 255000.0 m3, 4921500.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1474.5387,0.0,-1351.1979) Type: ASTEROID ID: 9
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1958.4398,0.0,-405.60242) Type: ASTEROID ID: 10
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x290000: 290000.0 m3, 5597000.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x288000: 288000.0 m3, 5558400.0 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x2000: 2000.0 m3, 38600.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1468.5703,0.0,-1357.6823) Type: ASTEROID ID: 11
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x908000: 908000.0 m3, 1.75244E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x903000: 903000.0 m3, 1.74279E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x5000: 5000.0 m3, 96500.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x5000: 5000.0 m3, 96500.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1708.981,0.0,1038.9341) Type: ASTEROID ID: 12
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x993000: 993000.0 m3, 1.91649E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x993000: 993000.0 m3, 1.91649E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x7000: 7000.0 m3, 135100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x993000: 993000.0 m3, 1.91649E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x993000: 993000.0 m3, 1.91649E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x7000: 7000.0 m3, 135100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x7000: 7000.0 m3, 135100.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (534.5378,0.0,1927.2439) Type: ASTEROID ID: 13
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (68.99135,0.0,-1998.8097) Type: ASTEROID ID: 14
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1051000: 1051000.0 m3, 2.02843E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1068000: 1068000.0 m3, 2.06124E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x17000: 17000.0 m3, 328100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x17000: 17000.0 m3, 328100.0 kg
+
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1068000: 1068000.0 m3, 2.06124E7 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1068000: 1068000.0 m3, 2.06124E7 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x17000: 17000.0 m3, 328100.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x17000: 17000.0 m3, 328100.0 kg
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1828.552,0.0,-810.18365) Type: ASTEROID ID: 15
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1599.7543,0.0,-1200.3276) Type: ASTEROID ID: 16
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x9669000: 9669000.0 m3, 1.86611696E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x9669000: 9669000.0 m3, 1.86611696E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x11000: 11000.0 m3, 212299.98 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Chunk of Gold x6000: 6000.0 m3, 115799.99 kg
+Lacking:
+max size: 999999.0
+Chunk of Gold x11000: 11000.0 m3, 212299.98 kg
+
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x9669000: 9669000.0 m3, 1.86611696E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x9669000: 9669000.0 m3, 1.86611696E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x11000: 11000.0 m3, 212299.98 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1707.9639,0.0,1040.6055) Type: ASTEROID ID: 17
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1730.1821,0.0,1003.2296) Type: ASTEROID ID: 18
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x29488000: 2.9488E7 m3, 5.691184E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x29449000: 2.9449E7 m3, 5.683657E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x39000: 39000.0 m3, 752700.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x39000: 39000.0 m3, 752700.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1258.6415,0.0,1554.2914) Type: ASTEROID ID: 19
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x30841000: 3.0841E7 m3, 5.952313E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x30801000: 3.0801E7 m3, 5.9445926E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x40000: 40000.0 m3, 772000.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x40000: 40000.0 m3, 772000.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-327.4155,0.0,1973.0178) Type: ASTEROID ID: 20
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x35725000: 3.5725E7 m3, 6.8949248E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x35725000: 3.5725E7 m3, 6.8949248E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x40000: 40000.0 m3, 772000.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x35725000: 3.5725E7 m3, 6.8949248E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x35725000: 3.5725E7 m3, 6.8949248E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x40000: 40000.0 m3, 772000.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x40000: 40000.0 m3, 772000.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1832.5636,0.0,-801.06824) Type: ASTEROID ID: 22
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1976.76,0.0,304.00644) Type: ASTEROID ID: 21
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x36297000: 3.6297E7 m3, 7.005321E8 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x36213000: 3.6213E7 m3, 6.9891085E8 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x84000: 84000.0 m3, 1621199.9 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x84000: 84000.0 m3, 1621199.9 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-251.03778,0.0,1984.1825) Type: ASTEROID ID: 23
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x60808000: 6.0808E7 m3, 1.17359437E9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x60649000: 6.0649E7 m3, 1.1705257E9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x159000: 159000.0 m3, 3068700.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x159000: 159000.0 m3, 3068700.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1230.987,0.0,-1576.2838) Type: ASTEROID ID: 24
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x254478000: 2.54478E8 m3, 4.911425E9 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x254326000: 2.54326E8 m3, 4.9084918E9 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x152000: 152000.0 m3, 2933600.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x152000: 152000.0 m3, 2933600.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1482.1125,0.0,-1342.8859) Type: ASTEROID ID: 25
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x651884000: 6.5188403E8 m3, 1.25813617E10 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x651855000: 6.5185498E8 m3, 1.25808005E10 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x29000: 29000.0 m3, 559700.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x29000: 29000.0 m3, 559700.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1906.518,0.0,-604.3087) Type: ASTEROID ID: 26
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x707073000: 7.0707302E8 m3, 1.36465091E10 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x706909000: 7.0690899E8 m3, 1.36433428E10 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x164000: 164000.0 m3, 3165199.8 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x164000: 164000.0 m3, 3165199.8 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1627.9017,0.0,1161.8676) Type: ASTEROID ID: 27
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1063027000: 1.06302701E9 m3, 2.05164196E10 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1062701000: 1.06270099E9 m3, 2.05101281E10 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x326000: 326000.0 m3, 6291800.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x326000: 326000.0 m3, 6291800.0 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (1379.9895,0.0,-1447.6288) Type: ASTEROID ID: 28
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1161151000: 1.16115098E9 m3, 2.24102134E10 kg
+
+Used materials: 
+max size: 1.35085174E18
+Chunk of Gold x1160973000: 1.16097306E9 m3, 2.24067789E10 kg
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x178000: 178000.0 m3, 3435399.8 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x178000: 178000.0 m3, 3435399.8 kg
+
+[JAN/05/2022 19:47:33]	entity list successfully sorted
+[JAN/05/2022 19:47:33]	Entity Spawned:Pos: (-1935.2208,0.0,504.89645) Type: ASTEROID ID: 29
+[JAN/05/2022 19:47:33]	Asteroid Spawned!
+[JAN/05/2022 19:47:58]	------END OF SERVER LOGS UNTIL NEXT RESTART------
+[JAN/05/2022 19:48:25]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[JAN/05/2022 19:48:25]	------SERVER STARTUP INITIATED------
+[JAN/05/2022 19:48:25]	Jimbotron/192.168.1.242
+[JAN/05/2022 19:48:25]	entity list successfully sorted
+[JAN/05/2022 19:48:25]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[JAN/05/2022 19:48:25]	entity list successfully sorted
+[JAN/05/2022 19:48:25]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[JAN/05/2022 19:48:25]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[JAN/05/2022 19:48:25]	entity list successfully sorted
+[JAN/05/2022 19:48:25]	Entity Spawned:Pos: (-762.5212,0.0,-1848.9353) Type: ASTEROID ID: 3
+[JAN/05/2022 19:48:25]	Asteroid Spawned!
+[JAN/05/2022 19:48:30]	------END OF SERVER LOGS UNTIL NEXT RESTART------
