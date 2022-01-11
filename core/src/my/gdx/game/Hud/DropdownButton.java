@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import my.gdx.game.entities.Entity;
 
 public class DropdownButton extends Button{
-    private Entity e;
+    protected Entity e;
     private String text; 
 	public DropdownButton(float xpos, float ypos, String txt, Entity e) {
 		super(xpos, ypos, 190, 20);

@@ -178,15 +178,15 @@ public class EveOnline2 extends ApplicationAdapter {
 		}
 		
 		Vector3 dir = cam.direction.cpy().nor();
-		if (Gdx.input.isKeyJustPressed(Keys.W) && !player.isBoosting()) {
+		if (Gdx.input.isKeyJustPressed(Keys.W) && !justboosted) {
 			connection.accelPlayer(dir.x, dir.y, dir.z);
-		} else if (Gdx.input.isKeyJustPressed(Keys.S) && !player.isBoosting()) {
+		} else if (Gdx.input.isKeyJustPressed(Keys.S) && !justboosted) {
 			connection.accelPlayer(-dir.x, -dir.y, -dir.z);
 		} else if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && Gdx.input.isKeyPressed(Keys.W)) {
 			dir = player.getRotation();
 			connection.boostPlayer(dir.x, dir.y, dir.z, true);
 			justboosted = true; 
-		} else if ((!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || !Gdx.input.isKeyPressed(Keys.W)) && justboosted) {
+		} else if ((!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.W)) && justboosted) {
 			dir = player.getRotation();
 			connection.boostPlayer(dir.x, dir.y, dir.z, false);
 			justboosted = false;
@@ -216,7 +216,7 @@ public class EveOnline2 extends ApplicationAdapter {
 				for(Entity e : entities){
 					float dist = e.getPos().dst(position); 
 					Vector3 rayLine = position.cpy().add(vec.direction.x * dist, vec.direction.y*dist, vec.direction.z*dist); 
-					if(rayLine.dst(e.getPos()) <= e.getSize()){
+					if(rayLine.dst(e.getPos()) <= e.getSize()/2){
 						if(target == null || target.getPos().dst(position) > e.getPos().dst(position)) target = e; 
 					}
 					

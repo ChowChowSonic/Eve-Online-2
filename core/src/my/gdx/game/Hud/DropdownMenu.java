@@ -39,19 +39,22 @@ public class DropdownMenu extends Hud{
                 }
             }); 
             
-            addbutton(new DropdownButton(this.x, nextopenspace, "Warp to", target){//Warp-To Button
-                private final Entity t = target; 
+            //Oh fuck this code is messy
+            /*addbutton(new DropdownButton(this.x, nextopenspace, "Warp to", target){//Warp-To Button
+                //private final Entity t = target; 
                 @Override
                 public void updateShape(){
                     super.updateShape();
-                    Vector3 direction = EveOnline2.player.getPos().cpy().sub(t.getPos()); 
+                    Vector3 direction = EveOnline2.player.getPos().cpy().sub(e.getPos()); 
                     if(isactive && EveOnline2.player.getRotation().cpy().crs(direction).len2() <= 0.99){
-                        if(EveOnline2.player.getPos().dst(t.getPos()) > (t.getSize()+EveOnline2.player.getSize())*10){
+                        if(EveOnline2.player.getPos().dst(e.getPos()) > (e.getSize()+EveOnline2.player.getSize())*10){
                             EveOnline2.connection.boostPlayer(-direction.x, -direction.y, -direction.z, true);
                             isactive = false; 
+                            //EveOnline2.removeHUD(this);
+                            this.dispose();
                         }
 
-                    }else if(EveOnline2.player.getPos().dst(t.getPos()) <= (t.getSize()+EveOnline2.player.getSize())*10){
+                    }else if(EveOnline2.player.getPos().dst(e.getPos()) <= (e.getSize()+EveOnline2.player.getSize())*10){
                         EveOnline2.connection.boostPlayer(-direction.x, -direction.y, -direction.z, false);
                         EveOnline2.connection.accelPlayer(-direction.x, -direction.y, -direction.z);
                         EveOnline2.removeHUD(this);
@@ -68,6 +71,16 @@ public class DropdownMenu extends Hud{
                     // TODO Auto-generated method stub
                     return super.isInBounds(xpos, ypos) && !isactive;
                 }
+
+                @Override
+                public void dispose() {
+                    // TODO Auto-generated method stub
+                    if(isactive){
+                        this.moveTo(screenwidth/2, 160);
+                    }else{
+                        super.dispose();
+                    }
+                }
                 
                 @Override
                 public void interact(float x, float y){
@@ -76,7 +89,7 @@ public class DropdownMenu extends Hud{
                     Vector3 direction = t.getPos().cpy().sub(EveOnline2.player.getPos()).nor(); 
                     EveOnline2.connection.accelPlayer(direction.x, direction.y, direction.z);
                 }
-            }); 
+            }); //end of Warp-to button custom code*/
         }
     }
     @Override
@@ -128,9 +141,9 @@ public class DropdownMenu extends Hud{
     public void dispose(){
         if(buttons != null){
             for(Button b : buttons){
-                if(!EveOnline2.windows.contains(b))b.dispose();
-                else b.moveTo(screenwidth/2, 160);
+                b.dispose();
             }
+            buttons.clear();
             buttons = null;
         }
         this.type = null; 

@@ -38,14 +38,16 @@ public class Player extends KillableEntity {
 		if (isBoosting) {
 			this.tetheringstationID = 0;
 			justpressedboost = true;
+			if(this.vel.len2() <= 40000*KILOMETER){
 			Vector3 accelnorm = this.direction.cpy();
-			this.setVel(accelnorm.x*100*KILOMETER, accelnorm.y*100*KILOMETER, accelnorm.z*100*KILOMETER);
-		} else if (justpressedboost) {
+			this.addAccel(accelnorm.x*131*METER, accelnorm.y*131*METER, accelnorm.z*131*METER);
+		}
+		}else if (!isBoosting && justpressedboost) {
 			this.vel.x /= 1.05;
 			this.vel.y /= 1.05;
 			this.vel.z /= 1.05;
 			this.accel.setZero();
-			if (this.vel.len() <= 100 * METER) {
+			if (this.vel.len() <= 1 * METER) {
 				justpressedboost = false;
 				this.vel.setZero();
 				super.update(deltaTime);

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 
@@ -39,14 +40,16 @@ public class HealthBar extends Hud{
 	public void updateText() {
 		super.updateText();
 		font.setColor(Color.BLACK);
-		float velocity = p.getVel().len()/Entity.METER;
-		if (velocity < 1000) {
-		font.draw(textrenderer, String.format("%.2f", velocity)+" m/s", Gdx.graphics.getWidth()/2-20, 20);
-		}else if(velocity < 100000){
-			font.draw(textrenderer, String.format("%.2f", velocity/1000)+" km/s", Gdx.graphics.getWidth()/2-20, 20);
-		}else {
-			font.draw(textrenderer, String.format("%.2f", velocity/100000)+" AU/s", Gdx.graphics.getWidth()/2-20, 20);
+		String unit = "m/s"; 
+		float velocity = p.getVel().len()/Entity.METER; 
+		if(p.isBoosting()){
+			unit = "AU/s"; 
+			velocity /= 100000; 
+		}else if (velocity > 1000) {
+			unit = "Km/s"; 
+			velocity/=1000; 
 		}
+		font.draw(textrenderer, String.format("%.2f", velocity)+" "+unit, Gdx.graphics.getWidth()/2-20, 20);
 	}
 
 	@Override

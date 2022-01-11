@@ -6,16 +6,12 @@ import java.util.ArrayList;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonValue;
 
 import my.gdx.game.EveOnline2;
 import my.gdx.game.inventory.Inventory;
-import my.gdx.game.inventory.Item;
 
 public abstract class Entity implements Serializable {
 	public static AssetManager manager = new AssetManager();
