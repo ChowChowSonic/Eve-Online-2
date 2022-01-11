@@ -59,7 +59,8 @@ public class Server extends Thread{
         spawnEntity(new CelestialObject(new Vector3(0, 0, 0), "Sun.obj", 500000000, 1000, assignID()), new Vector3());
         spawnEntity(new Station(new Vector3(2000, 0, 0), "SpaceStation.obj", 1000000, 20, 40, assignID()),
         new Vector3(2000, 0, 0));
-        
+        for(Entity e : entities)
+        System.out.println(e.toString());
         //super.create();
     }
     
@@ -77,12 +78,13 @@ public class Server extends Thread{
             // In-game Physics
             if(deltatime2 >= 500000){
                 for (int i = 0; i < entities.size(); i++) {
-                    for (int e = i; e < entities.size(); e++) {
-                        if (i < e) {
-                            entities.get(i).touches(entities.get(e));
+                    for (int e = i+1; e < entities.size(); e++) {
+                        if (entities.get(i).touches(entities.get(e))) {
+                            System.out.println("Two entities have collided: " + entities.get(i).toString() + " and "+entities.get(e).toString());
                         }
                     }
                     entities.get(i).update(deltatime2);
+                    //System.out.println(entities.get(i).toString() + " "+entities.size());
                 }
                 deltatime2 = 0;
             }

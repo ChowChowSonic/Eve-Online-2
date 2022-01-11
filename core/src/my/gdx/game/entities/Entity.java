@@ -40,9 +40,10 @@ public abstract class Entity implements Serializable {
 	 */
 	protected float x, dx, ddx, y, dy, ddy, z, dz, ddz;
 	/**
-	 * One meter in length, as defined by me
+	 * One meter/kilometer in length, as defined by me. <p>
+	 * Useful for determining/displaying how fast an object can move 
 	 */
-	public static final float METER = 0.00005f;
+	public static final float METER = 0.00005f, KILOMETER = METER*1000;
 
 	public static enum EntityType {
 		PLAYER, ASTEROID, DEBRIS, FRIEND, FOE, CELESTIALOBJ, STATION, ENFORCER
@@ -103,7 +104,7 @@ public abstract class Entity implements Serializable {
 			this.model = manager.get(this.modelname, Model.class);
 			this.instance = new ModelInstance(this.model, pos);
 			for (int i = 0; i < instance.nodes.size; i++) {
-				instance.nodes.get(i).scale.set(new Vector3(size, size, size));
+				instance.nodes.get(i).scale.set(new Vector3(size/2, size/2, size/2));
 			}
 			instance.calculateTransforms();
 		}

@@ -56,6 +56,7 @@ public class ServerWindow extends JFrame{
     @Override
     public void dispose(){
         super.dispose();
+        logs.close();
         System.out.println("------END OF SERVER LOGS UNTIL NEXT RESTART------");
         System.exit(0);//Replace this with a way to shutdown all the servers later on
     }

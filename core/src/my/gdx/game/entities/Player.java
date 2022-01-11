@@ -34,6 +34,25 @@ public class Player extends KillableEntity {
 			this.mass = basemass + invmass;
 		}
 
+		// Starts up & shuts down the warp drive
+		if (isBoosting) {
+			this.tetheringstationID = 0;
+			justpressedboost = true;
+			Vector3 accelnorm = this.direction.cpy();
+			this.setVel(accelnorm.x*100*KILOMETER, accelnorm.y*100*KILOMETER, accelnorm.z*100*KILOMETER);
+		} else if (justpressedboost) {
+			this.vel.x /= 1.05;
+			this.vel.y /= 1.05;
+			this.vel.z /= 1.05;
+			this.accel.setZero();
+			if (this.vel.len() <= 100 * METER) {
+				justpressedboost = false;
+				this.vel.setZero();
+				super.update(deltaTime);
+				return; 
+			}
+		}
+
 		// Movement controls
 		/*
 		 * if(Gdx.input.isKeyJustPressed(Keys.W) && !justpressedboost) {
@@ -66,30 +85,6 @@ public class Player extends KillableEntity {
 		 * this.vel.z/100: this.vel.z/10; if(this.vel.len() < METER/(100*this.mass)) {
 		 * this.vel.setZero(); } }
 		 */
-
-		// Starts up & shuts down the warp drive
-		if (isBoosting) {
-			this.tetheringstationID = 0;
-			justpressedboost = true;
-			Vector3 accelnorm = this.direction.cpy();
-			this.addVel(
-					(float) (accelnorm.x * (deltaTime / Math.sqrt(this.mass + 1))
-							* ((1000 - (METER * this.mass)) - this.vel.len2())),
-					(float) (accelnorm.y * (deltaTime / Math.sqrt(this.mass + 1))
-							* ((1000 - (METER * this.mass)) - this.vel.len2())),
-					(float) (accelnorm.z * (deltaTime / Math.sqrt(this.mass + 1))
-							* ((1000 - (METER * this.mass)) - this.vel.len2())));
-		} else if (justpressedboost) {
-			this.vel.x /= 1.05;
-			this.vel.y /= 1.05;
-			this.vel.z /= 1.05;
-			this.accel.setZero();
-			if (this.vel.len() <= 100 * METER) {
-				justpressedboost = false;
-				this.vel.setZero();
-			}
-		}
-
 		
 		// System.out.println("Player.update called "+this.toString());
 		super.update(deltaTime);

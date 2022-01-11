@@ -47,6 +47,7 @@ class Account extends Thread {
     public void run() {
         Loop: while (isrunning) {
             try {
+                float x=0, y =0, z=0; 
                 short cmd = din.readShort();
                 //System.out.println("CMD: " + cmd);
                 
@@ -61,7 +62,7 @@ class Account extends Thread {
                     break;
                     
                     case 1:// accelPlayer
-                    float x = din.readFloat(), y = din.readFloat(), z = din.readFloat();
+                    x = din.readFloat(); y = din.readFloat(); z = din.readFloat();
                     userEntity.setAccelerating(!userEntity.getAccel().hasOppositeDirection(new Vector3(x, y, z)), x,
                     y, z);
                     break;
@@ -84,6 +85,7 @@ class Account extends Thread {
                     y = din.readFloat();
                     z = din.readFloat();
                     boolean isBoosting = din.readBoolean();
+                    System.out.println(x + " "+ y + " " + z + " "+ isBoosting);
                     this.userEntity.rotate(x, y, z);
                     this.userEntity.setTetheringStationID(0);
                     this.userEntity.setAccelerating(false);
@@ -141,9 +143,9 @@ class Account extends Thread {
     
     public void sendEntity(Entity e) throws Exception {
         if(isrunning){
-        dout.writeObject(e);
-        dout.flush();
-        dout.reset();
+            dout.writeObject(e);
+            dout.flush();
+            dout.reset();
         }
     }
     

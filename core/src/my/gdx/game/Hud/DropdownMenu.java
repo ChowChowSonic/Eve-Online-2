@@ -48,14 +48,15 @@ public class DropdownMenu extends Hud{
                     if(isactive && EveOnline2.player.getRotation().cpy().crs(direction).len2() <= 0.99){
                         if(EveOnline2.player.getPos().dst(t.getPos()) > (t.getSize()+EveOnline2.player.getSize())*10){
                             EveOnline2.connection.boostPlayer(-direction.x, -direction.y, -direction.z, true);
-                        }else{
-                            EveOnline2.connection.boostPlayer(-direction.x, -direction.y, -direction.z, false);
-                            EveOnline2.connection.accelPlayer(-direction.x, -direction.y, -direction.z);
-                            EveOnline2.removeHUD(this);
+                            isactive = false; 
                         }
 
+                    }else if(EveOnline2.player.getPos().dst(t.getPos()) <= (t.getSize()+EveOnline2.player.getSize())*10){
+                        EveOnline2.connection.boostPlayer(-direction.x, -direction.y, -direction.z, false);
+                        EveOnline2.connection.accelPlayer(-direction.x, -direction.y, -direction.z);
+                        EveOnline2.removeHUD(this);
                     }
-                }
+                }//updateshape
 
                 public void updateText() {
                     // TODO Auto-generated method stub
