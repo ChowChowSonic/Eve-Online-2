@@ -85,7 +85,7 @@ class Account extends Thread {
                     y = din.readFloat();
                     z = din.readFloat();
                     boolean isBoosting = din.readBoolean();
-                    System.out.println(x + " "+ y + " " + z + " "+ isBoosting);
+                    //System.out.println(x + " "+ y + " " + z + " "+ isBoosting);
                     this.userEntity.rotate(x, y, z);
                     this.userEntity.setTetheringStationID(0);
                     this.userEntity.setAccelerating(false);

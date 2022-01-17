@@ -5,11 +5,11 @@ import com.badlogic.gdx.graphics.Color;
 import my.gdx.game.entities.Entity;
 
 public class DropdownButton extends Button{
-    protected Entity e;
+    protected final Entity entity;
     private String text; 
 	public DropdownButton(float xpos, float ypos, String txt, Entity e) {
 		super(xpos, ypos, 190, 20);
-        this.e = e; 
+        this.entity = e; 
         text = txt; 
 		//TODO Auto-generated constructor stub
 	}
@@ -33,10 +33,6 @@ public class DropdownButton extends Button{
 		
 	}
 
-    public void dispose(){
-        e =null;
-    }
-
     public void setText(String s){
         text = s; 
     }
@@ -48,7 +44,7 @@ public class DropdownButton extends Button{
     public boolean equals(Object o){
         if(o instanceof DropdownButton){
             DropdownButton d = (DropdownButton) o; 
-        return e.equals(d.e) && text.equals(d.text); 
+        return entity.equals(d.entity) && text.equals(d.text); 
         }
         return false;
     }

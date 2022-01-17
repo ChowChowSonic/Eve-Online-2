@@ -99,6 +99,7 @@ public class EveOnline2 extends ApplicationAdapter {
 			if (entry.extension().equals("obj")) {
 				Entity.manager.load(entry.name(), Model.class);
 				Entity.manager.finishLoadingAsset(entry.name());
+				if(Entity.manager.contains(entry.name()))
 				System.out.println(entry.name() + " Loaded");
 			}
 		}
@@ -146,14 +147,14 @@ public class EveOnline2 extends ApplicationAdapter {
 		
 		hudrenderer = Hud.getRenderer();
 		hudrenderer.setAutoShapeType(true);
-
+		
 		//Adding the HUD
 		targetmanager = (new TargetHud(3)); 
 		windows.add(targetmanager);
 		windows.add(new HealthBar(player));
 		String[] strings = {"Welcome to Eve Online 2! \n Press W or S to move backwards and forwards in the direction your camera is facing. \n SHIFT+W Boosts you at extreme speeds \n Press I to open your inventory. \n Right click and drag to rotate the camera "+
 		"\n Left click on objects or people to display options regarding them \n CTRL+Left-Click on objects or people to target them.", "In this game, you can choose what you want to do; mining, exploring, trading, fighting, hunting enemies of Humanity: you name it!\n Please enjoy your stay, and remember that the game is still in the alpha stages of development.",
-	"Today when I walked into my economics class I saw something I dread every time I close my eyes. Someone had brought their new gaming laptop to class. The Forklift he used to bring it was still running idle at the back. I started sweating as I sat down and gazed over at the 700lb beast that was his laptop. He had already reinforced his desk with steel support beams and was in the process of finding an outlet for a power cable thicker than Amy Schumer's thigh. I start shaking. I keep telling myself I'm going to be alright and that there's nothing to worry about. He somehow finds a fucking outlet. Tears are running down my cheeks as I send my last texts to my family saying I love them. The teacher starts the lecture, and the student turns his laptop on. The colored lights on his RGB Backlit keyboard flare to life like a nuclear flash, and a deep humming fills my ears and shakes my very soul. The entire city power grid goes dark. The classroom begins to shake as the massive fans begin to spin. In mere seconds my world has gone from vibrant life, to a dark, earth shattering void where my body is getting torn apart by the 150mph gale force winds and the 500 decibel groan of the cooling fans. As my body finally surrenders, I weep, as my school and my city go under. I fucking hate gaming laptops."};
+		"Today when I walked into my economics class I saw something I dread every time I close my eyes. Someone had brought their new gaming laptop to class. The Forklift he used to bring it was still running idle at the back. I started sweating as I sat down and gazed over at the 700lb beast that was his laptop. He had already reinforced his desk with steel support beams and was in the process of finding an outlet for a power cable thicker than Amy Schumer's thigh. I start shaking. I keep telling myself I'm going to be alright and that there's nothing to worry about. He somehow finds a fucking outlet. Tears are running down my cheeks as I send my last texts to my family saying I love them. The teacher starts the lecture, and the student turns his laptop on. The colored lights on his RGB Backlit keyboard flare to life like a nuclear flash, and a deep humming fills my ears and shakes my very soul. The entire city power grid goes dark. The classroom begins to shake as the massive fans begin to spin. In mere seconds my world has gone from vibrant life, to a dark, earth shattering void where my body is getting torn apart by the 150mph gale force winds and the 500 decibel groan of the cooling fans. As my body finally surrenders, I weep, as my school and my city go under. I fucking hate gaming laptops."};
 		String[] imgnames = {"Space.jpg", "Screenshot (1).png","E.png"}; 
 		windows.add(new InfoMenu(imgnames, strings)); 
 		windows.add(new EquipmentMenu(player.getShipclass().getGunSlots(), player.getShipclass().getDefenseSlots(), player.getShipclass().getSupplimentSlots()));
@@ -226,7 +227,7 @@ public class EveOnline2 extends ApplicationAdapter {
 					if(Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !target.equals(player)){
 						targetmanager.addTarget(target);
 					}else{
-						 addHUD(new DropdownMenu(x, y, target));
+						addHUD(new DropdownMenu(x, y, target));
 					}
 				}
 			}
@@ -445,11 +446,11 @@ public class EveOnline2 extends ApplicationAdapter {
 		
 		entities = newlist;
 	}
-
+	
 	public static void shootActiveEntity(){
 		connection.shoot(targetmanager.getActiveTarget());
 	}
-
+	
 	/**
 	* Adds a HUD to the screen
 	* 

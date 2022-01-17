@@ -47,7 +47,7 @@ public class Player extends KillableEntity {
 			this.vel.y /= 1.05;
 			this.vel.z /= 1.05;
 			this.accel.setZero();
-			if (this.vel.len() <= 1 * METER) {
+			if (this.vel.len() <= 100 * METER) {
 				justpressedboost = false;
 				this.vel.setZero();
 				super.update(deltaTime);

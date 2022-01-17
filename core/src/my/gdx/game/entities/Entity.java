@@ -160,11 +160,7 @@ public abstract class Entity implements Serializable {
 		this.setAccel(serializedEntity.ddx, serializedEntity.ddy, serializedEntity.ddz);
 		this.inventory = serializedEntity.inventory; 
 		// this.modelname = serializedEntity.modelname;
-		// if(this.mass != serializedEntity.mass) System.out.println(this.mass + "
-		// (Mass) "+ serializedEntity.mass);
 		 this.mass = serializedEntity.mass;
-		// if(this.size != serializedEntity.size) System.out.println(this.size + "
-		// (Size) "+ serializedEntity.size);
 		 this.size = serializedEntity.size;
 	}
 

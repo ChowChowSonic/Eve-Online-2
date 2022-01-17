@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;
 
-import org.w3c.dom.Text;
-
 import my.gdx.game.EveOnline2;
 import my.gdx.game.entities.Entity;
 
@@ -39,57 +37,7 @@ public class DropdownMenu extends Hud{
                 }
             }); 
             
-            //Oh fuck this code is messy
-            /*addbutton(new DropdownButton(this.x, nextopenspace, "Warp to", target){//Warp-To Button
-                //private final Entity t = target; 
-                @Override
-                public void updateShape(){
-                    super.updateShape();
-                    Vector3 direction = EveOnline2.player.getPos().cpy().sub(e.getPos()); 
-                    if(isactive && EveOnline2.player.getRotation().cpy().crs(direction).len2() <= 0.99){
-                        if(EveOnline2.player.getPos().dst(e.getPos()) > (e.getSize()+EveOnline2.player.getSize())*10){
-                            EveOnline2.connection.boostPlayer(-direction.x, -direction.y, -direction.z, true);
-                            isactive = false; 
-                            //EveOnline2.removeHUD(this);
-                            this.dispose();
-                        }
-
-                    }else if(EveOnline2.player.getPos().dst(e.getPos()) <= (e.getSize()+EveOnline2.player.getSize())*10){
-                        EveOnline2.connection.boostPlayer(-direction.x, -direction.y, -direction.z, false);
-                        EveOnline2.connection.accelPlayer(-direction.x, -direction.y, -direction.z);
-                        EveOnline2.removeHUD(this);
-                    }
-                }//updateshape
-
-                public void updateText() {
-                    // TODO Auto-generated method stub
-                    if(isactive)this.setText("Warping to...");
-                    super.updateText(); 
-                }
-                @Override
-                public boolean isInBounds(float xpos, float ypos) {
-                    // TODO Auto-generated method stub
-                    return super.isInBounds(xpos, ypos) && !isactive;
-                }
-
-                @Override
-                public void dispose() {
-                    // TODO Auto-generated method stub
-                    if(isactive){
-                        this.moveTo(screenwidth/2, 160);
-                    }else{
-                        super.dispose();
-                    }
-                }
-                
-                @Override
-                public void interact(float x, float y){
-                    isactive = true; 
-                    EveOnline2.addHUD(this);
-                    Vector3 direction = t.getPos().cpy().sub(EveOnline2.player.getPos()).nor(); 
-                    EveOnline2.connection.accelPlayer(direction.x, direction.y, direction.z);
-                }
-            }); //end of Warp-to button custom code*/
+            addbutton(new DropdownBoostingButton(this.x, nextopenspace, "Warp to", ent));
         }
     }
     @Override

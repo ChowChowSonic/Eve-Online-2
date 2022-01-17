@@ -79,9 +79,7 @@ public class Server extends Thread{
             if(deltatime2 >= 500000){
                 for (int i = 0; i < entities.size(); i++) {
                     for (int e = i+1; e < entities.size(); e++) {
-                        if (entities.get(i).touches(entities.get(e))) {
-                            System.out.println("Two entities have collided: " + entities.get(i).toString() + " and "+entities.get(e).toString());
-                        }
+                        entities.get(i).touches(entities.get(e)); 
                     }
                     entities.get(i).update(deltatime2);
                     //System.out.println(entities.get(i).toString() + " "+entities.size());
