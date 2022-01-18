@@ -65,6 +65,7 @@ class Account extends Thread {
                     x = din.readFloat(); y = din.readFloat(); z = din.readFloat();
                     userEntity.setAccelerating(!userEntity.getAccel().hasOppositeDirection(new Vector3(x, y, z)), x,
                     y, z);
+                    //System.out.println(userEntity.getAccel().hasSameDirection(new Vector3(x, y, z)) +" "+ x + " " + y + " " + z);
                     break;
                     case 2:// decelPlayer
                     if (!this.userEntity.isBoosting()) {

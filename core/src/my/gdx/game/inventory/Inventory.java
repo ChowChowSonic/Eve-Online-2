@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Inventory implements Serializable {
-	private float weight, occupiedspace, capacity, itemcount;
+	private float capacity;
 	private static final long serialVersionUID = 1L;
 	ArrayList<Item> items;
 
@@ -14,11 +14,8 @@ public class Inventory implements Serializable {
 	 * @param size
 	 */
 	public Inventory(float size) {
-		weight = 0;
 		this.capacity = size;
-		occupiedspace = 0;
 		items = new ArrayList<Item>();
-		this.itemcount = 0;
 	}
 
 	/**
@@ -29,14 +26,7 @@ public class Inventory implements Serializable {
 	 */
 	public Inventory(ArrayList<Item> items, float size) {
 		this.items = new ArrayList<Item>(items);
-		weight = 0;
 		this.capacity = size;
-		occupiedspace = 0;
-		for (Item item : items) {
-			occupiedspace += (item.getVolume() * item.getStacksize());
-			weight += (item.getWeight() * item.getStacksize());
-			this.itemcount += item.getStacksize();
-		}
 	}
 
 	/**
@@ -49,10 +39,7 @@ public class Inventory implements Serializable {
 		for (Item e : i.getItems()) {
 			this.items.add(new Item(e));
 		}
-		weight = i.getWeight();
 		this.capacity = i.getCapacity();
-		occupiedspace = i.getOccupiedspace();
-		this.itemcount = i.getItemcount();
 	}
 
 	/**
@@ -67,14 +54,11 @@ public class Inventory implements Serializable {
 		if (i.getStacksize() <= 0) {
 			return false;
 		}
-		if (this.getOccupiedspace() + i.getVolume() <= this.capacity) {
+		if (this.hasRoomFor(i)) {
 			if (this.containsItemType(i)) {
 				for (Item e : this.items) {
 					if (i.getName().equals(e.getName())) {
 						e.combinestack(i.getStacksize());
-						this.weight += i.getWeight();
-						this.occupiedspace += i.getVolume();
-						this.itemcount += i.getStacksize();
 						break;
 					}
 				}
@@ -82,9 +66,6 @@ public class Inventory implements Serializable {
 				return true;
 			}
 			items.add(new Item(i));
-			this.weight += i.getWeight() * i.getStacksize();
-			this.occupiedspace += i.getVolume() * i.getStacksize();
-			this.itemcount += i.getStacksize();
 			verifycontents();
 			return true;
 		}
@@ -99,8 +80,7 @@ public class Inventory implements Serializable {
 	 */
 	public void additem(ArrayList<Item> inv) {
 		verifycontents();
-		for (int i =0; i < inv.size(); i++) {
-			Item item = inv.get(i); 
+		for (Item item : inv) {
 			if (item.getStacksize() > 0) {
 				this.additem(item.getTemplate(), item.getStacksize());
 			}
@@ -116,7 +96,7 @@ public class Inventory implements Serializable {
 	public boolean additem(InventoryItems i) {
 		verifycontents();
 		Item newitem = new Item(i);
-		if (this.occupiedspace + (newitem.getVolume() * newitem.getStacksize()) <= this.capacity) {
+		if (this.hasRoomFor(newitem)) {
 			for (Item e : this.items) {
 				if (e.getName().equals(newitem.getName())) {
 					e.combinestack(newitem.getStacksize());
@@ -124,9 +104,6 @@ public class Inventory implements Serializable {
 				}
 			}
 			items.add(newitem);
-			this.weight += i.getWeight() * newitem.getStacksize();
-			this.occupiedspace += newitem.getVolume() * newitem.getStacksize();
-			this.itemcount += 1;
 			return true;
 		}
 		return false;
@@ -145,7 +122,7 @@ public class Inventory implements Serializable {
 			return false;
 		}
 		Item newitem = new Item(i, stacksize);
-		if (this.occupiedspace + (newitem.getVolume()) <= this.capacity) {
+		if (this.hasRoomFor(newitem)) {
 			for (Item e : this.items) {
 				if (e.getName().equals(newitem.getName())) {
 					e.combinestack(newitem.getStacksize());
@@ -154,10 +131,6 @@ public class Inventory implements Serializable {
 				}
 			}
 			items.add(newitem);
-			this.weight += i.getWeight() * newitem.getStacksize();
-			this.occupiedspace += newitem.getVolume() * newitem.getStacksize();
-			this.itemcount += stacksize;
-
 			return true;
 		}
 		return false;
@@ -186,10 +159,7 @@ public class Inventory implements Serializable {
 	 * Emptys the inventory of all items, sets the volume to 0 and weight to 0
 	 */
 	public void empty() {
-		this.items = new ArrayList<Item>();
-		this.weight = 0;
-		this.itemcount = 0;
-		this.occupiedspace = 0;
+		this.items.clear();
 	}
 
 	public boolean containsItemType(Item i) {
@@ -203,8 +173,7 @@ public class Inventory implements Serializable {
 
 	public boolean containsWithQuantity(Item i) {
 		verifycontents();
-		for (int I =0; I < items.size(); I++) {
-			Item e = items.get(I); 
+		for (Item e : this.items) {
 			if (e.getName().equals(i.getName()) && e.getStacksize() >= i.getStacksize())
 				return true;
 		}
@@ -235,7 +204,7 @@ public class Inventory implements Serializable {
 	}
 
 	public float getWeight() {
-		weight = 0;
+		int weight = 0;
 		verifycontents();
 		for (Item i : this.items) {
 			weight += i.getWeight();
@@ -244,7 +213,7 @@ public class Inventory implements Serializable {
 	}
 
 	public float getOccupiedspace() {
-		occupiedspace = 0;
+		int occupiedspace = 0;
 		verifycontents();
 		for (Item i : this.items) {
 			occupiedspace += i.getVolume();
@@ -279,8 +248,8 @@ public class Inventory implements Serializable {
 	}
 
 	/**
-	 * Returns a list of items that are not present in both inventories. Will only
-	 * return items in the paramater inventory. Example:
+	 * Returns a list of items that are only present in one inventory (not present in both inventories). Will only
+	 * return items in the paramater inventory. Think of it as saying "Everything in the comparator that this does not contain".<p> Example:
 	 * <p>
 	 * inv1 = [yeet, yote, yaint]
 	 * <p>
@@ -333,16 +302,13 @@ public class Inventory implements Serializable {
 	 * (and removes any that aren't)
 	 */
 	private void verifycontents() {
-		ArrayList<Item> removals = new ArrayList<Item>();
+
 		for (int i = 0; i < items.size(); i++) {
 			Item e = items.get(i);
 			if (e.getStacksize() <= 0) {
-				removals.add(e);
+				items.remove(i); 
 			}
 		}
-		for (Item i : removals) {
-			items.remove(i);
-		} // */
 	}// ends VerifyContents
 
 }// ends class
