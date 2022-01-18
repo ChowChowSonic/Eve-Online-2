@@ -90,17 +90,19 @@ public class Server extends Thread{
                 deltatime2 = 0;
             }
             deltatime2+=(System.nanoTime()-last); 
+
+            //Tries to transfer all queued items between inventories
+            while(!itemtransfers.isEmpty()){
+                TransferRequest request = itemtransfers.removeFirst(); 
+                if(request.fufill()){
+                    System.out.println("Item transferred: "+request.toString());
+                }else{
+                    System.out.println("Request failed: "+request.toString());
+                }
+            }
+
             // Logs all items in existance and tries to regulate them with the item census
             if(!isCensus){ 
-
-                while(!itemtransfers.isEmpty()){
-                    TransferRequest request = itemtransfers.removeFirst(); 
-                    if(request.fufill()){
-                        System.out.println("Item transferred: "+request.toString());
-                    }else{
-                        System.out.println("Request failed: "+request.toString());
-                    }
-                }
                 isCensus = true; 
                 for (int i = 0; i < entities.size(); i++) {
                     Entity e = entities.get(i);
@@ -109,6 +111,7 @@ public class Server extends Thread{
                     }
                 }
                 runItemCensus();
+                usedmaterials.empty();
                 isCensus = false; 
             }
             cumDeltaTime+= (System.nanoTime()-last); 
@@ -235,18 +238,18 @@ public class Server extends Thread{
         Inventory underflow = new Inventory(usedmaterials.getDifferences(materialcensus), 999999);
         Inventory overflow = new Inventory(materialcensus.getDifferences(usedmaterials), 999999);
         
-        materialcensus.additem(overflow.getItems());
+        //materialcensus.additem(overflow.getItems());
         vanishedmaterials.additem(underflow.getItems());
         
         if (vanishedmaterials.getItemcount() > 100) {
             System.out.println("WARNING: Item census has uncovered an abundance of items not present in the public economy."+
-            "\nServer will automatically regenerate these items by spawning in a new asteroid. \nThe item census is as follows:\n"+
+            "\nServer will automatically regenerate these items by spawning in a new asteroid. \nThe item census is as follows:\n\n"+
             "All available materials (used or raw): \n" + materialcensus.toString() + "\nUsed materials: \n" + usedmaterials.toString()
-            + "\nUnaccounted for: \n" + vanishedmaterials.toString()+"\nExcess materials (Possibly duplicated in some way):\n" + overflow.toString() + "Lacking:\n" + underflow.toString());
+            + "\nUnaccounted for: \n" + vanishedmaterials.toString()+"\nExcess materials (Possibly duplicated in some way):\n" + overflow.toString() + "\nLacking:\n" + underflow.toString());
             spawnEntity(new Asteroid("Asteroid.obj", vanishedmaterials.getItems(), assignID()), 2000);
-            vanishedmaterials.empty();
             System.out.println("Asteroid Spawned!");
         }
+        vanishedmaterials.empty();
     }// ends runItemCensus()
     /**
      * Spawns a new crate and transfers a stack of an item to it. 
