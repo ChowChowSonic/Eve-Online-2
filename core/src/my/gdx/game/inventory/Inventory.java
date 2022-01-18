@@ -99,9 +99,10 @@ public class Inventory implements Serializable {
 	 */
 	public void additem(ArrayList<Item> inv) {
 		verifycontents();
-		for (Item i : inv) {
-			if (i.getStacksize() > 0) {
-				this.additem(i.getTemplate(), i.getStacksize());
+		for (int i =0; i < inv.size(); i++) {
+			Item item = inv.get(i); 
+			if (item.getStacksize() > 0) {
+				this.additem(item.getTemplate(), item.getStacksize());
 			}
 		}
 	}
@@ -163,6 +164,7 @@ public class Inventory implements Serializable {
 	}
 
 	public boolean transferInventoryItemTo(Inventory i, Item item) {
+		//System.out.println(this.toString() +"\n"+ i.toString());
 		if (this.containsWithQuantity(item) && i.hasRoomFor(item)) {
 			if (i.additem(item)) {
 				this.removeItem(item);
@@ -201,7 +203,8 @@ public class Inventory implements Serializable {
 
 	public boolean containsWithQuantity(Item i) {
 		verifycontents();
-		for (Item e : this.items) {
+		for (int I =0; I < items.size(); I++) {
+			Item e = items.get(I); 
 			if (e.getName().equals(i.getName()) && e.getStacksize() >= i.getStacksize())
 				return true;
 		}
@@ -235,7 +238,7 @@ public class Inventory implements Serializable {
 		weight = 0;
 		verifycontents();
 		for (Item i : this.items) {
-			weight += i.getWeight() * i.getStacksize();
+			weight += i.getWeight();
 		}
 		return weight;
 	}
@@ -244,7 +247,7 @@ public class Inventory implements Serializable {
 		occupiedspace = 0;
 		verifycontents();
 		for (Item i : this.items) {
-			occupiedspace += i.getVolume() * i.getStacksize();
+			occupiedspace += i.getVolume();
 		}
 		return occupiedspace;
 	}

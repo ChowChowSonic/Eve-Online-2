@@ -33,6 +33,7 @@ public class Asteroid extends KillableEntity{
 				size+=i.getVolume()/100; 
 				this.mass+=i.getWeight(); 
 			}
+			size = Math.min(70, size); 
 			if(this.instance !=null){
 			}
 			// TODO Auto-generated constructor stub

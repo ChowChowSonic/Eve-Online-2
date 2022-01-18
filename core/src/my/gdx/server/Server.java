@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Queue;
 
 import my.gdx.game.entities.CelestialObject;
 import my.gdx.game.entities.Crate;
@@ -39,6 +40,7 @@ public class Server extends Thread{
     private static ArrayList<Long> openIDs = new ArrayList<Long>();
     private static long nextID = 0L;
     private static boolean isCensus = false; 
+    private Queue<TransferRequest> itemtransfers = new Queue<TransferRequest>(); 
     
     
     public Server(File entity) {
@@ -82,6 +84,7 @@ public class Server extends Thread{
                         entities.get(i).touches(entities.get(e)); 
                     }
                     entities.get(i).update(deltatime2);
+                    //System.out.println(entities.get(i).toString()+" Mass:"+entities.get(i).getMass());
                     //System.out.println(entities.get(i).toString() + " "+entities.size());
                 }
                 deltatime2 = 0;
@@ -89,6 +92,15 @@ public class Server extends Thread{
             deltatime2+=(System.nanoTime()-last); 
             // Logs all items in existance and tries to regulate them with the item census
             if(!isCensus){ 
+
+                while(!itemtransfers.isEmpty()){
+                    TransferRequest request = itemtransfers.removeFirst(); 
+                    if(request.fufill()){
+                        System.out.println("Item transferred: "+request.toString());
+                    }else{
+                        System.out.println("Request failed: "+request.toString());
+                    }
+                }
                 isCensus = true; 
                 for (int i = 0; i < entities.size(); i++) {
                     Entity e = entities.get(i);
@@ -236,23 +248,32 @@ public class Server extends Thread{
             System.out.println("Asteroid Spawned!");
         }
     }// ends runItemCensus()
-    
+    /**
+     * Spawns a new crate and transfers a stack of an item to it. 
+     * @param e
+     * @param i
+     */
     protected void DropItem(Entity e, Item i) {
+        System.out.println("Dropping Item: "+i.toString());
         Vector3 chestpos = e.getPos().cpy();
-        Vector3 rotation = e.getRotation();
-        if (rotation.isZero())
-        rotation = e.getPos().cpy().nor();
+        Vector3 rotation = e.getRotation().cpy();
         float sz = e.getSize() * 2;
-        chestpos.sub(rotation.x * sz, rotation.y * sz, rotation.z * sz);
-        ArrayList<Item> wrapper = new ArrayList<Item>();
-        if (e.inventory.containsWithQuantity(i)) {
-            wrapper.add(i);
-            e.inventory.removeItem(i);
-            spawnEntity(new Crate("Crate.obj", wrapper, assignID()), chestpos);
-        } else {
-            System.out.println("Illegal item drop attempted! " + i.toString() + " not contained within the inventory!");
-            System.out.println(e.inventory.toString());
+        if (rotation.isZero()){
+            rotation = e.getPos().cpy().nor();
         }
+        chestpos.sub(rotation.x * sz, rotation.y * sz, rotation.z * sz);
+        Crate crate = new Crate("Crate.obj", new Inventory(i.getVolume()), assignID()); 
+        this.spawnEntity(crate, chestpos);
+        itemtransfers.addLast(new TransferRequest(e.inventory,i, crate.inventory)); 
+    }
+    /**
+     * Attempts to add an item transfer to the queue
+     * @param from
+     * @param i
+     * @param to
+     */
+    protected void queueTransfer(Inventory from, Item i, Inventory to){
+        itemtransfers.addLast(new TransferRequest(from, i, to)); 
     }
     
     /**

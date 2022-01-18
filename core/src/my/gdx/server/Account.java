@@ -105,13 +105,9 @@ class Account extends Thread {
                     Entity to = connectedWorld.getEntityCopy(din.readLong());
                     Item item = new Item(InventoryItems.values()[din.readInt()], din.readInt());
                     if(from.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+from.getSize())*Entity.METER && to.getPos().dst(userEntity.getPos()) <= 100000*(userEntity.getSize()+to.getSize())*Entity.METER){
-                        System.out.println(
-                        "Attempting to transfer item from " + from.toString() + " to " + to.toString());
-                        if (from.inventory.transferInventoryItemTo(to.inventory, item)) {
-                            System.out.println("Transfer successful!");
-                        } else {
-                            System.out.println("Transfer failed!");
-                        }
+                        System.out.println("Attempting to transfer item from " + from.toString() + " to " + to.toString());
+                        connectedWorld.queueTransfer(from.inventory, item, to.inventory);
+
                     }else {System.out.println("Transfer failed! "+from.toString()+" is too far away from"+to.toString());}
                     break;
                     case 6:

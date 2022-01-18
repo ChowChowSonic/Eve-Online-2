@@ -74,9 +74,10 @@ public class CelestialObject extends Entity{
 				e.setVel(forcetoapply1);
 				return true;
 			} else {
-				Vector3 difference = this.pos.cpy().sub(e.pos).nor();
-				e.addAccel(-difference.x * METER / e.mass, -difference.y * METER / e.mass,
-				-difference.z * METER / e.mass);
+				//Vector3 difference = e.pos.cpy().nor();
+				//difference.sub(this.pos.nor());  
+				//e.accel.set(METER * -e.direction.x/ e.getMass(), METER * -e.direction.y / e.getMass(),
+				//METER * -e.direction.z / e.getMass());
 			}
 		}
 		return false;
