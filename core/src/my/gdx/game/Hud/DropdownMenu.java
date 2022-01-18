@@ -24,7 +24,6 @@ public class DropdownMenu extends Hud{
                 @Override
                 public void interact(float x, float y){
                     EveOnline2.addHUD(new InventoryMenu(target)); 
-                    EveOnline2.removeHUD(hudtype.dropdown);
                 }
             }); 
         }
@@ -33,7 +32,12 @@ public class DropdownMenu extends Hud{
                 @Override
                 public void interact(float x, float y){
                     Vector3 direction = target.getPos().cpy().sub(EveOnline2.player.getPos()).nor(); 
+                    //while(!EveOnline2.player.isAccelerating())
                     EveOnline2.connection.accelPlayer(direction.x, direction.y, direction.z);
+                }
+
+                public void dispose(){
+                    Thread.dumpStack();
                 }
             }); 
             

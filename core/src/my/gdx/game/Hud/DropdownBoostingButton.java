@@ -9,7 +9,7 @@ import my.gdx.game.entities.Entity;
 import my.gdx.game.entities.Player;
 
 public class DropdownBoostingButton extends DropdownButton{
-    boolean isactive = false; 
+    private boolean isactive = false, once = true; 
     public DropdownBoostingButton(float xpos, float ypos, String txt, Entity e) {
         super(xpos, ypos, txt, e);
         //TODO Auto-generated constructor stub
@@ -22,22 +22,17 @@ public class DropdownBoostingButton extends DropdownButton{
         Vector3 direction = p.getPos().cpy().sub(entity.getPos()); 
         if(isactive && p.getRotation().cpy().crs(direction).len2() <= 0.99){
             
-            if(p.getPos().dst(entity.getPos()) > (entity.getSize()+p.getSize())*10){
+            if(once && p.getPos().dst(entity.getPos()) > (entity.getSize()+p.getSize())*10){
                 EveOnline2.connection.boostPlayer(-direction.x, -direction.y, -direction.z, true);
-                isactive = false; 
-            }
-            
-            if(!p.isBoosting() && !p.isAccelerating()){
-                EveOnline2.removeHUD(this);
-                this.dispose();
+                once = false; 
             }
             
         }else if(isactive && p.getPos().dst(entity.getPos()) >= (entity.getSize()+p.getSize())*10){
             EveOnline2.connection.accelPlayer(-direction.x, -direction.y, -direction.z);
         }
-        if(p.getPos().cpy().add(p.getVel()).dst2(entity.getPos())<= (entity.getSize()+p.getSize())*(entity.getSize()+p.getSize())*100 || Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+        if(p.getPos().cpy().add(p.getVel()).dst2(entity.getPos()) <= (entity.getSize()+p.getSize())*(entity.getSize()+p.getSize())*100 || Gdx.input.isKeyJustPressed(Keys.SPACE)) {
             EveOnline2.removeHUD(this);
-            this.dispose();
+            //System.out.println("hg");
         }
     }//updateshape
     
@@ -55,7 +50,9 @@ public class DropdownBoostingButton extends DropdownButton{
     @Override
     public void dispose() {
         // TODO Auto-generated method stub
+        if(isactive)
         EveOnline2.connection.boostPlayer(0,0,0, false);
+        //Thread.dumpStack();
     }
     
     @Override

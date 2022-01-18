@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 
 import my.gdx.game.entities.Entity;
 
+
 public class DropdownButton extends Button{
     protected final Entity entity;
     private String text; 
@@ -30,7 +31,6 @@ public class DropdownButton extends Button{
 	@Override
 	public void interact(float x, float y) {
 		// TODO Auto-generated method stub
-		
 	}
 
     public void setText(String s){
