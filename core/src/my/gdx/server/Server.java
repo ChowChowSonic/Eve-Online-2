@@ -90,7 +90,7 @@ public class Server extends Thread{
                 deltatime2 = 0;
             }
             deltatime2+=(System.nanoTime()-last); 
-
+            
             //Tries to transfer all queued items between inventories
             while(!itemtransfers.isEmpty()){
                 TransferRequest request = itemtransfers.removeFirst(); 
@@ -100,7 +100,7 @@ public class Server extends Thread{
                     System.out.println("Request failed: "+request.toString());
                 }
             }
-
+            
             // Logs all items in existance and tries to regulate them with the item census
             if(!isCensus){ 
                 isCensus = true; 
@@ -252,10 +252,10 @@ public class Server extends Thread{
         vanishedmaterials.empty();
     }// ends runItemCensus()
     /**
-     * Spawns a new crate and transfers a stack of an item to it. 
-     * @param e
-     * @param i
-     */
+    * Spawns a new crate and transfers a stack of an item to it. 
+    * @param e
+    * @param i
+    */
     protected void DropItem(Entity e, Item i) {
         System.out.println("Dropping Item: "+i.toString());
         Vector3 chestpos = e.getPos().cpy();
@@ -266,15 +266,18 @@ public class Server extends Thread{
         }
         chestpos.sub(rotation.x * sz, rotation.y * sz, rotation.z * sz);
         Crate crate = new Crate("Crate.obj", new Inventory(i.getVolume()), assignID()); 
-        this.spawnEntity(crate, chestpos);
-        itemtransfers.addLast(new TransferRequest(e.inventory,i, crate.inventory)); 
+        TransferRequest req = new TransferRequest(e.inventory,i, crate.inventory);
+        if(req.canFufill()){
+            this.spawnEntity(crate, chestpos);
+            itemtransfers.addLast(req);
+        } 
     }
     /**
-     * Attempts to add an item transfer to the queue
-     * @param from
-     * @param i
-     * @param to
-     */
+    * Attempts to add an item transfer to the queue
+    * @param from
+    * @param i
+    * @param to
+    */
     protected void queueTransfer(Inventory from, Item i, Inventory to){
         itemtransfers.addLast(new TransferRequest(from, i, to)); 
     }

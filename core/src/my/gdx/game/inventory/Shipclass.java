@@ -1,12 +1,13 @@
 package my.gdx.game.inventory;
 
 public enum Shipclass {
-    Apollyon(8, 5, 8, 500, 600, 500, 1, 100,"ship.obj"),
-    ARFSBattleship(10, 10, 10, 9999, 9999, 9999, 10, 0, "Stratios.obj");
+    Apollyon(8, 5, 8, 500, 600, 500, 1, 1000, 10, "ship.obj"),
+    ARFSBattleship(10, 10, 10, 9999, 9999, 9999, 10, 0, 999, "Stratios.obj");
 
-    private int guns, defenses, suppliments, shields, armor, hull, size, invsize; 
+    private int guns, defenses, suppliments, shields, armor, hull, size, invsize, thrusters; //WEIGHT IS IN THE ITEMS ENUM FILE
     private String modelname; 
-    Shipclass(int gunSlots, int defenseSlots, int supplimentSlots, int maxshields, int maxarmor, int maxhull, int ShipSize, int inventorySize, String modelName){
+
+    Shipclass(int gunSlots, int defenseSlots, int supplimentSlots, int maxshields, int maxarmor, int maxhull, int ShipSize, int inventorySize, int thrusterstrength, String modelName){
         guns = gunSlots;
         defenses = defenseSlots;
         suppliments = supplimentSlots;
@@ -15,6 +16,7 @@ public enum Shipclass {
         size = ShipSize; 
         invsize = inventorySize; 
         modelname = modelName; 
+        thrusters = thrusterstrength; 
     }
 
     public String getModelName(){
@@ -43,6 +45,10 @@ public enum Shipclass {
     }
     public int getInventorySize(){
         return invsize; 
+    }
+    public int getThrusterStrength(){
+        return thrusters;
+        
     }
     public InventoryItems toItemTemplate(){
         return InventoryItems.valueOf(this.name()); 

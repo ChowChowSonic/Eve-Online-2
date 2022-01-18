@@ -37,6 +37,17 @@ public class TransferRequest {
         return from.containsWithQuantity(item) && to.hasRoomFor(item); 
     }
 
+/**
+     * Returns whether or not this TransferRequest is able to be fufilled. HOWEVER THIS METHOD DOES NOT ACTUALLY FUFILL THE REQUEST.
+     * <p>If <param>debug=true</parama>, 
+     * @return from.containsWithQuantity(item) && to.hasRoomFor(item)
+     */
+    public boolean canFufill(boolean debug){
+        if(debug)
+        System.out.println("contains items: "+from.containsWithQuantity(item) + "\nHas room for items: "+to.hasRoomFor(item));
+        return from.containsWithQuantity(item) && to.hasRoomFor(item); 
+    }
+
     public String toString(){
         return "[Size:" + from.getCapacity() + " Occupied:"+from.getOccupiedspace()+"] -> "+String.format("[%s x%s %.1fm3]", item.getName(), item.getStacksize(), item.getVolume())+" -> [Size:" + to.getCapacity() + " Occupied:"+to.getOccupiedspace()+"]"; 
     }

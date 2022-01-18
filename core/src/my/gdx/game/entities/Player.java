@@ -8,7 +8,7 @@ import my.gdx.game.inventory.InventoryItems;
 import my.gdx.game.inventory.Shipclass;
 
 public class Player extends KillableEntity {
-	float invmass, basemass = 10;
+	float invmass, basemass;
 	private static final long serialVersionUID = 1L;
 	private boolean justpressedboost = false, isBoosting = false;
 	private boolean isAccelerating = false;
@@ -18,9 +18,10 @@ public class Player extends KillableEntity {
 	public Player(Shipclass type, long ID) {
 		super(type.getModelName(), EntityType.PLAYER, type.getSize(), ID);
 		this.ship = type; 
-		this.basemass = InventoryItems.valueOf(type.name()).getWeight();
+		this.basemass = type.toItemStack().getWeight();
 		inventory = new Inventory(type.getInventorySize());
-		inventory.additem(InventoryItems.Platinum, 100);
+		inventory.additem(InventoryItems.Platinum, type.getInventorySize());
+		System.out.println(inventory.toString());
 		invmass = inventory.getWeight();
 		this.mass = basemass + invmass;
 		// TODO Auto-generated constructor stub
@@ -32,6 +33,16 @@ public class Player extends KillableEntity {
 		if (this.instance == null) {
 			invmass = inventory.getWeight();
 			this.mass = basemass + invmass;
+		}
+
+		if (this.isAccelerating) {
+			int str = ship.getThrusterStrength(); 
+			if (direction.len2() != 1.0)
+				direction.nor();
+			this.accel.set( str * METER * direction.x / this.getMass(),
+							str * METER * direction.y / this.getMass(),
+							str * METER * direction.z / this.getMass());
+			// Server.appendToLogs("player at "+this.pos+" is now accelerating");
 		}
 
 		// Starts up & shuts down the warp drive
@@ -55,39 +66,6 @@ public class Player extends KillableEntity {
 			}
 		}
 
-		// Movement controls
-		/*
-		 * if(Gdx.input.isKeyJustPressed(Keys.W) && !justpressedboost) {
-		 * this.isAccelerating = true; camRot = new
-		 * Vector3(basemass*METER*camrotation.x/this.mass,
-		 * basemass*METER*camrotation.y/this.mass,
-		 * basemass*METER*camrotation.z/this.mass); }else
-		 * if(Gdx.input.isKeyPressed(Keys.S)) { this.isAccelerating = false; camRot =
-		 * new Vector3(basemass*METER*camrotation.x/this.mass,
-		 * basemass*METER*camrotation.y/this.mass,
-		 * basemass*METER*camrotation.z/this.mass); this.accel.add(-camRot.x, -camRot.y,
-		 * -camRot.z); }
-		 */
-
-		if (this.isAccelerating) {
-			if (direction.len2() != 1.0)
-				direction.nor();
-			this.accel.set(this.basemass * METER * direction.x / this.getMass(),
-					this.basemass * METER * direction.y / this.getMass(),
-					this.basemass * METER * direction.z / this.getMass());
-			// Server.appendToLogs("player at "+this.pos+" is now accelerating");
-		}
-
-		// Stop the player
-		/*
-		 * if(Gdx.input.isKeyPressed(Keys.SPACE) && !justpressedboost) {
-		 * this.isAccelerating = false; this.vel.x -= (Math.abs(this.vel.x) > 0.06) ?
-		 * this.vel.x/100: this.vel.x/10; this.vel.y -= (Math.abs(this.vel.y) > 0.06) ?
-		 * this.vel.y/100: this.vel.y/10; this.vel.z -= (Math.abs(this.vel.z) > 0.06) ?
-		 * this.vel.z/100: this.vel.z/10; if(this.vel.len() < METER/(100*this.mass)) {
-		 * this.vel.setZero(); } }
-		 */
-		
 		// System.out.println("Player.update called "+this.toString());
 		super.update(deltaTime);
 	}
