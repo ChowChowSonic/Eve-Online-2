@@ -8,7 +8,7 @@ public enum InventoryItems {
 	Tantalum("Chunk of Tantalum", 16.650f, 1), 					Aluminum("Chunk of Aluminum", 2.700f, 1), 
 	Tin("Chunk of Tin", 7.310f, 1),								Silver("Chunk of Silver", 10.490f, 1),
 	Zinc("Chunk of Zinc", 7.140f, 1), 							Neodymium("Chunk of Neodymium", 7.010f, 1),
-	Apollyon("Apollyon Class Battleship", 1, 1,
+	Apollyon("Apollyon Class Battleship", 10, 1,
 			new Item[] { new Item(InventoryItems.Iron, 50000), new Item(InventoryItems.Cobalt, 50000),
 					new Item(InventoryItems.Nickel, 50000), new Item(InventoryItems.Silver, 50000),
 					new Item(InventoryItems.Gold, 50000), new Item(InventoryItems.Platinum, 50000),

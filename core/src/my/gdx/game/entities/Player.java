@@ -2,9 +2,11 @@ package my.gdx.game.entities;
 
 import com.badlogic.gdx.math.Vector3;
 
+import my.gdx.game.inventory.DefensiveGear;
 import my.gdx.game.inventory.Inventory;
 //import my.gdx.server.Server;
 import my.gdx.game.inventory.InventoryItems;
+import my.gdx.game.inventory.OffensiveGear;
 import my.gdx.game.inventory.Shipclass;
 
 public class Player extends KillableEntity {
@@ -15,8 +17,8 @@ public class Player extends KillableEntity {
 	private Shipclass ship; 
 	protected long tetheringstationID = 0;
 
-	public Player(Shipclass type, long ID) {
-		super(type.getModelName(), EntityType.PLAYER, type.getSize(), ID);
+	public Player(Shipclass type, long ID, OffensiveGear[] guns, DefensiveGear[] shields) {
+		super(type, EntityType.PLAYER, ID, shields, guns);
 		this.ship = type; 
 		this.basemass = type.toItemStack().getWeight();
 		inventory = new Inventory(type.getInventorySize());
