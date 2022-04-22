@@ -1,0 +1,144 @@
+[APR/08/2022 18:42:04]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[APR/08/2022 18:42:04]	------SERVER STARTUP INITIATED------
+[APR/08/2022 18:42:04]	LAPTOP-PMT0TCL2/10.203.70.116
+[APR/08/2022 18:42:05]	entity list successfully sorted
+[APR/08/2022 18:42:05]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[APR/08/2022 18:42:05]	entity list successfully sorted
+[APR/08/2022 18:42:05]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[APR/08/2022 18:42:05]	Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[APR/08/2022 18:42:05]	Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[APR/08/2022 18:42:05]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[APR/08/2022 18:42:05]	entity list successfully sorted
+[APR/08/2022 18:42:05]	Entity Spawned:Pos: (-1801.7952,0.0,-868.06354) Type: ASTEROID ID: 3
+[APR/08/2022 18:42:05]	Asteroid Spawned!
+[APR/08/2022 18:45:58]	------END OF SERVER LOGS UNTIL NEXT RESTART------
+[APR/08/2022 19:38:58]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[APR/08/2022 19:38:58]	------SERVER STARTUP INITIATED------
+[APR/08/2022 19:38:58]	LAPTOP-PMT0TCL2/10.203.70.116
+[APR/08/2022 19:38:58]	entity list successfully sorted
+[APR/08/2022 19:38:58]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[APR/08/2022 19:38:58]	entity list successfully sorted
+[APR/08/2022 19:38:58]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[APR/08/2022 19:38:58]	Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[APR/08/2022 19:38:58]	Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[APR/08/2022 19:38:58]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[APR/08/2022 19:38:58]	entity list successfully sorted
+[APR/08/2022 19:38:58]	Entity Spawned:Pos: (-1835.1738,0.0,-795.0704) Type: ASTEROID ID: 3
+[APR/08/2022 19:38:58]	Asteroid Spawned!
+[APR/08/2022 19:39:51]	------END OF SERVER LOGS UNTIL NEXT RESTART------
+[APR/08/2022 20:00:16]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[APR/08/2022 20:00:16]	------SERVER STARTUP INITIATED------
+[APR/08/2022 20:00:16]	LAPTOP-PMT0TCL2/10.203.70.116
+[APR/08/2022 20:00:16]	entity list successfully sorted
+[APR/08/2022 20:00:16]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[APR/08/2022 20:00:16]	entity list successfully sorted
+[APR/08/2022 20:00:16]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[APR/08/2022 20:00:16]	Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[APR/08/2022 20:00:16]	Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[APR/08/2022 20:00:16]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[APR/08/2022 20:00:16]	entity list successfully sorted
+[APR/08/2022 20:00:16]	Entity Spawned:Pos: (899.6287,0.0,1786.2441) Type: ASTEROID ID: 3
+[APR/08/2022 20:00:16]	Asteroid Spawned!
+[APR/08/2022 20:01:49]	------END OF SERVER LOGS UNTIL NEXT RESTART------
+[APR/16/2022 21:33:33]	Error: Cannot access WAMPServer directory. Server will be forced to run on local network only.
+	Local IP address will be printed upon server creation; manual entry will be required in order to access it.
+[APR/16/2022 21:33:33]	------SERVER STARTUP INITIATED------
+[APR/16/2022 21:33:33]	LAPTOP-PMT0TCL2/192.168.1.205
+[APR/16/2022 21:33:33]	entity list successfully sorted
+[APR/16/2022 21:33:33]	Entity Spawned:Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[APR/16/2022 21:33:33]	entity list successfully sorted
+[APR/16/2022 21:33:33]	Entity Spawned:Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[APR/16/2022 21:33:33]	Pos: (0.0,0.0,0.0) Type: CELESTIALOBJ ID: 1
+[APR/16/2022 21:33:33]	Pos: (2000.0,0.0,0.0) Type: STATION ID: 2
+[APR/16/2022 21:33:33]	WARNING: Item census has uncovered an abundance of items not present in the public economy.
+Server will automatically regenerate these items by spawning in a new asteroid. 
+The item census is as follows:
+
+All available materials (used or raw): 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Used materials: 
+max size: 1.35085174E18
+
+Unaccounted for: 
+max size: 1.35085174E18
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+Excess materials (Possibly duplicated in some way):
+max size: 999999.0
+
+Lacking:
+max size: 999999.0
+Chunk of Gold x1000: 1000.0 m3, 19300.0 kg
+
+[APR/16/2022 21:33:33]	entity list successfully sorted
+[APR/16/2022 21:33:33]	Entity Spawned:Pos: (1136.1338,0.0,-1645.9647) Type: ASTEROID ID: 3
+[APR/16/2022 21:33:33]	Asteroid Spawned!
+[APR/16/2022 21:33:37]	------END OF SERVER LOGS UNTIL NEXT RESTART------

@@ -107,7 +107,7 @@ public class EveOnline2 extends ApplicationAdapter {
 		
 		// Connect to the server & add the player
 		System.out.println("Attempting to connect...");
-		connection = new ClientAntenna("DogsRus"/* "Server" "DESKTOP-E2274E2" */, 26000);
+		connection = new ClientAntenna("100.1.229.243"/* "Server" "DESKTOP-E2274E2" */, 26000);
 		System.out.println("Connected!");
 		player = (Player) entities.get(0);
 		connection.start();
